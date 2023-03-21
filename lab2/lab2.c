@@ -56,7 +56,7 @@ int(timer_test_int)(uint8_t time) {
   uint32_t irq_set = BIT(bit_no);
   int ipc_status;
   message msg;
-  while( 1 ) { /* You may want to use a different condition */
+  while( time ) { /* You may want to use a different condition */
       /* Get a request message. */
       int r;
     if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) { 
