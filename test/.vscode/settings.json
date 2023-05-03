@@ -6,13 +6,4 @@
   "editor.tabSize": 2,
   "editor.wordWrap": "bounded",
   "editor.wordWrapColumn": 100,
-  "files.associations": {
-    "vbe.h": "c",
-    "i8042.h": "c",
-    "keyboard.h": "c",
-    "i8254.h": "c",
-    "cstdlib": "c",
-    "timer.h": "c",
-    "mouse.h": "c"
-  },
 }

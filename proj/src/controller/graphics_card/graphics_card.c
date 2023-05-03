@@ -11,6 +11,7 @@ extern uint8_t green_mask_size;
 extern uint8_t blue_field_position;
 extern uint8_t blue_mask_size;
 extern uint8_t mem_model;
+uint8_t page_index = 0;
 
 void *(map_graphics_memory)(uint16_t mode) {
   vbe_mode_info_t vmi_p;
@@ -20,7 +21,7 @@ void *(map_graphics_memory)(uint16_t mode) {
   int r;
   struct minix_mem_range mr;
   unsigned int vram_base = vmi_p.PhysBasePtr;
-  unsigned int vram_size = vmi_p.XResolution * vmi_p.YResolution * vmi_p.BitsPerPixel / 8;
+  unsigned int vram_size = vmi_p.XResolution * vmi_p.YResolution * vmi_p.BitsPerPixel / 8 * 2; // Double of the size because of page flipping
 
   /* Allow memory mapping */
   mr.mr_base = (phys_bytes) vram_base;
@@ -47,6 +48,34 @@ void *(map_graphics_memory)(uint16_t mode) {
   return video_mem;
 }
 
+int (vg_flip_frame)() {
+  if (video_mem == NULL) 
+      return EXIT_FAILURE;
+
+  page_index = page_index == 0;
+
+  reg86_t reg86;
+  bzero(&reg86, sizeof reg86);
+  
+  reg86.intno = GRAPHICS_INT_NO;
+  reg86.ah = VESA_FUNC;
+  reg86.al = SET_DISPLAY_START;
+  reg86.bh = 0;
+  reg86.bl = 0;
+  reg86.cx = 0;
+  reg86.dx = v_res * page_index;
+
+  if (sys_int86(&reg86) != OK)
+    return EXIT_FAILURE;
+
+  if (reg86.ax != VBE_RETURN_SUCCESS) {
+    fprintf(stderr, "vg_flip_frame(): sys_int86() failed with: %x\n", reg86.ax);
+    return EXIT_FAILURE;
+  }
+
+  return EXIT_SUCCESS;
+}
+
 int (vg_draw_pixel)(uint16_t x, uint16_t y, uint32_t color) {
   if (video_mem == NULL) 
       return EXIT_FAILURE;
@@ -56,30 +85,30 @@ int (vg_draw_pixel)(uint16_t x, uint16_t y, uint32_t color) {
   int pixel_pos = h_res * y + x;
   int byte_offset = pixel_pos * bytes_per_pixel;
 
-  if (memcpy(&video_mem[byte_offset], &color, (unsigned) bytes_per_pixel) == NULL)
+  if (memcpy(&video_mem[byte_offset + page_index * (v_res * h_res)], &color, (unsigned) bytes_per_pixel) == NULL)
       return EXIT_FAILURE;
 
   return EXIT_SUCCESS;
 }
 
-int (vg_draw_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
-  uint8_t width = get_xpm_width(xpm);
-  uint8_t height = get_xpm_height(xpm);
-  uint8_t colors_no = get_xpm_colors_no(xpm); 
-  color_symbol *colors_symbols = get_xpm_colors(xpm, colors_no);
+// int (vg_draw_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
+//   uint8_t width = get_xpm_width(xpm);
+//   uint8_t height = get_xpm_height(xpm);
+//   uint8_t colors_no = get_xpm_colors_no(xpm); 
+//   color_symbol *colors_symbols = get_xpm_colors(xpm, colors_no);
 
-  for (int i = colors_no; i < height + colors_no; i++) {
-    for (int j = 0; j < width; j++) {
-      for (int k = 0; k < colors_no; k++) {
-        if (xpm[i][j] == colors_symbols[k].symbol) {
-          if (vg_draw_pixel(x + j, y + i - colors_no, colors_symbols[k].color_index) != OK)
-            return EXIT_FAILURE;
-        }
-      }
-    }
-  }
-  return EXIT_SUCCESS;
-}
+//   for (int i = colors_no; i < height + colors_no; i++) {
+//     for (int j = 0; j < width; j++) {
+//       for (int k = 0; k < colors_no; k++) {
+//         if (xpm[i][j] == colors_symbols[k].symbol) {
+//           if (vg_draw_pixel(x + j, y + i - colors_no, colors_symbols[k].color_index) != OK)
+//             return EXIT_FAILURE;
+//         }
+//       }
+//     }
+//   }
+//   return EXIT_SUCCESS;
+// }
 
 uint32_t (red)(unsigned y, uint32_t first, uint8_t step) {
   return (get_red_bits(first) + y * step) % (1 << red_mask_size);
@@ -151,41 +180,4 @@ uint8_t (get_xpm_colors_no)(xpm_map_t xpm) {
       i++;
   }
   return buffer;
-}
-
-color_symbol *(get_xpm_colors)(xpm_map_t xpm, uint8_t colors_no) {
-
-  // printf("__________________________\n");
-  // printf("|     get_xpm_colors:     |\n");
-  // printf("__________________________\n");
-  // printf("xpm[0] = %s\n", xpm[0]);
-  // printf("xpm[1] = %s\n", xpm[1]);
-  // printf("xpm[2] = %s\n", xpm[2]);
-  // printf("xpm[3] = %s\n", xpm[3]);
-  // printf("xpm[4] = %s\n", xpm[4]);
-  // printf("xpm[5] = %s\n", xpm[5]);
-  // printf("xpm[6] = %s\n", xpm[6]);
-  // printf("xpm[7] = %s\n", xpm[7]);
-  // printf("xpm[8] = %s\n", xpm[8]);
-  // printf("__________________________\n");
-
-
-  int buffer = 0, j = 2;
-  color_symbol *colors = (color_symbol *) malloc(colors_no * sizeof(color_symbol));
-  for (int i = 0; i < colors_no; i++) {
-    // printf("                         Line=%d\n", i + 1);
-    // printf("Reading symbol: %c\n", xpm[1 + i][0]);
-    colors[i].symbol = xpm[1 + i][0];
-    // printf("Reading color...\n");
-    while (xpm[1 + i][j] != '\0') {
-      // printf("   Char no. %d: %c         and      buffer: %d\n", j - 2, xpm[1 + i][j], buffer);
-      buffer = buffer * 10 + (xpm[1 + i][j] - '0');
-      j++;
-    }
-    // printf("Color no %d index: %d\n", i, buffer);
-    // printf("__________________________\n");
-    colors[i].color_index = buffer;
-    buffer = 0; j = 2;
-  }
-  return colors;
 }

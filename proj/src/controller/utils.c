@@ -3,7 +3,6 @@
 #include <stdint.h>
 #include "utils.h"
 
-//uint32_t sysinb_counter = 0;
 
 uint8_t(util_get_n_byte)(uint32_t val, int n) {
   return (val >> 8 * n) & 0xFF;
@@ -25,11 +24,6 @@ int (util_sys_inb)(int port, uint8_t *value) {
   uint32_t buffer;
   if (sys_inb(port, &buffer) != 0)
     return EXIT_FAILURE;
-  /* 
-  #ifdef LAB3
-  sysinb_counter++;
-  #endif
-  */  
   *value = buffer;
   return EXIT_SUCCESS;
 }

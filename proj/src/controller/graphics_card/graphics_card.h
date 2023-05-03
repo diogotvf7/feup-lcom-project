@@ -4,14 +4,15 @@
 #include <lcom/lcf.h>
 #include <lcom/video_gr.h>
 
-// #include "pixmap.h"
 #include "VBE.h"
 
 void *(map_graphics_memory)(uint16_t mode);
 
+int (vg_flip_frame)();
+
 int (vg_draw_pixel)(uint16_t x, uint16_t y, uint32_t color);
 
-int (vg_draw_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y);
+// int (vg_draw_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y);
 
 uint32_t (red)(unsigned y, uint32_t first, uint8_t step);
 

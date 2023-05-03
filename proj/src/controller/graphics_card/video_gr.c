@@ -1,5 +1,5 @@
 #include <lcom/lcf.h>
-#include <lcom/video_gr.h>
+// #include <video_gr.h>
 #include "VBE.h"
 #include "graphics_card.h"
 
@@ -14,6 +14,11 @@ uint8_t green_mask_size;
 uint8_t blue_field_position;
 uint8_t blue_mask_size;
 uint8_t mem_model;
+static uint16_t mode;
+
+uint16_t _mode() {
+    return mode;
+}
 
 void *(vg_init)(uint16_t mode) {
     void* video_mem = map_graphics_memory(mode);

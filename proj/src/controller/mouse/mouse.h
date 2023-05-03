@@ -1,27 +1,22 @@
-#pragma once
+#ifndef __MOUSE_H
+#define __MOUSE_H
+
 #include <lcom/lcf.h>
-#include "../keyboard/i8042.h"
-#include "../utils.h"
+#include "kbc.h"
+#include "i8042.h"
 
-int(mouse_subscribe_int)(uint8_t *bit_no);
+int (get_byte_index)();
 
-int(mouse_unsubscribe_int)();
+struct packet *(get_mouse_packet)();
 
-void(mouse_ih)();
+int (mouse_subscribe_int)(int *bit_no);
 
-int (mouse_disable_data_reporting)();
+int (mouse_unsubscribe_int)();
 
-bool (checkOutputBuffer)();
+int (set_data_reporting)(bool enable); 
 
-bool (checkInputBuffer)();
+void (mouse_ih)();
 
-void buildPacket(struct packet* pacote, uint8_t bytes[3]);
+void (parse_mouse_packet)();
 
-int (mouse_write_cmd)(uint32_t cmd, uint8_t* ans);
-
-int (mouse_enable_data_report)();
-
-bool (draw_handler)(uint8_t x_len, uint8_t tolerance, struct packet* pacote);
-
-struct mouse_ev * mouse_events(struct packet * pack);
-
+#endif /* __MOUSE_H */
