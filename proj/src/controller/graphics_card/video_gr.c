@@ -1,6 +1,6 @@
 #include <lcom/lcf.h>
 #include <lcom/video_gr.h>
-#include <VBE.h>
+#include "VBE.h"
 #include "graphics_card.h"
 
 uint8_t *video_mem = NULL;
