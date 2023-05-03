@@ -1,6 +1,6 @@
-#include <lcom/lcf.h> 
+#include <lcom/lcf.h>
 #include <lcom/video_gr.h>
-#include "graphics_card.h"
+#include "controller/graphics_card/graphics_card.h"
 
 int (main)(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)

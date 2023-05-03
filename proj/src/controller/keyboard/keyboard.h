@@ -1,8 +1,8 @@
 #ifndef __KEYBOARD_H
 #define __KEYBOARD_H
 
-#include <minix/sysutil.h>
 #include <lcom/lcf.h>
+#include "../utils.h"
 #include "i8042.h"
 
 /** @defgroup keyboard keyboard

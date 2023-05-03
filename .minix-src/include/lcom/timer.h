@@ -5,7 +5,7 @@
 #include <stdint.h>
 
 /** @defgroup timer timer
- * @{
+ * @
  *
  * Functions for using the i8254 timers
  */
