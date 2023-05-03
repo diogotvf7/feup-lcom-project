@@ -76,7 +76,7 @@ int (vg_draw_pixel)(uint16_t x, uint16_t y, uint32_t color){
 
   unsigned int index = (vbe_mode_info.XResolution * y + x) * BytesPerPixel;
 
-  if (memcpy(&frame_buffer[index],&color,BytesPerPixel) == NULL) return 1;
+  if (memcpy(frame_buffer + index,&color,BytesPerPixel) == NULL) return 1;
   return 0;
 }
 
@@ -93,7 +93,23 @@ int (vg_draw_rectangle)(uint16_t x, uint16_t y, uint16_t width, uint16_t height,
       vg_exit();
       return 1;
     }
+    /*
+    for (unsigned i = 0; i < height; i++){
+      for (unsigned j = 0; j < width; j++{
+        if (vg_draw_pixel(x + j, y + i, color) != 0) {vg_exit(); return 1;}
+      })
+
+     */
   }
+  return 0;
+}
+
+int (vg_draw_rectangulo)(uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint32_t color){
+  for (unsigned i = 0; i < height; i++){
+      for (unsigned j = 0; j < width; j++){
+        if (vg_draw_pixel(x + j, y + i, color) != 0) {vg_exit(); return 1;}
+  }}
+  printf("PASSEI AQUI");
   return 0;
 }
 

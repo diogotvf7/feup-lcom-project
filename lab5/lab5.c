@@ -93,7 +93,7 @@ int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y,
   if (normalize_color(color, &newColor) != 0) return 1;
 
   /* draw rectangle*/
-  if (vg_draw_rectangle(x, y, width, height, newColor) != 0) return 1;
+  if (vg_draw_rectangulo(x, y, width, height, newColor) != 0) return 1;
 
   /* function that returns when ESC is clicked*/
   if (ESC_key_pressed() != 0) return 1;
@@ -138,7 +138,6 @@ int(video_test_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, ui
 
       if (vg_draw_rectangle(i * rwidth, j * rheight, rwidth, rheight, color) != 0) return 1;
     }
-  
   }
 
   /* returns if ESC key pressed == end*/
@@ -151,24 +150,40 @@ int(video_test_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, ui
 }
 
 int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
-  /* To be completed */
-  printf("%s(%8p, %u, %u): under construction\n", __func__, xpm, x, y);
+  
+  if (create_frame_buffer(0x105) != 0) return 1;
+
+  if (set_graphic_mode(0x105) != 0) return 1;
+
+  xpm_image_t xpm_image;
+
+  uint8_t* pixmap = xpm_load(xpm,XPM_INDEXED,&xpm_image);
+
+  for (int h = 0; h < xpm_image.height; h++){
+    for (int w = 0; w < xpm_image.width; w++){
+      if (vg_draw_pixel(x + w, y + h, *pixmap) != 0) return 1;
+      pixmap++;
+    }
+  }
+
+  if (ESC_key_pressed() != 0) return 1;
+
+  if (vg_exit() != 0) return 1;
 
   return 1;
 }
 
 int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint16_t yf,
                      int16_t speed, uint8_t fr_rate) {
-  /* To be completed */
-  printf("%s(%8p, %u, %u, %u, %u, %d, %u): under construction\n",
-         __func__, xpm, xi, yi, xf, yf, speed, fr_rate);
+  
+  
 
   return 1;
 }
 
 int(video_test_controller)() {
-  /* To be completed */
-  printf("%s(): under construction\n", __func__);
+
+
 
   return 1;
 }

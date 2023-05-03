@@ -2,6 +2,7 @@
 #define _LCOM_KBC_H_
 
 #include <lcom/lcf.h>
+#include "i8042.h"
 
 int (read_KBC_status)(uint8_t* status);
 

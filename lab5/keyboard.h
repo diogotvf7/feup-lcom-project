@@ -2,6 +2,7 @@
 #define _LCOM_KEYBOARD_H_
 
 #include <lcom/lcf.h>
+#include "i8042.h"
 
 int (keyboard_subscribe_interrupts)(uint8_t *bit_no);
 
