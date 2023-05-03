@@ -11,6 +11,7 @@
  * Functions for using the i8042 kbd
  */
 
+uint8_t (get_scancode)(); 
 
 /**
  * @brief Subscribes and enables KBD 1 interrupts
@@ -38,11 +39,11 @@ int (keyboard_unsubscribe_int)();
  */
 void (kbc_ih)();
 
-int (read_kbc_status)(uint8_t *st);
+int (read_keyboard_status)(uint8_t *st);
 
 int (read_kbc_scancode)(uint8_t st, uint8_t *scancode);
 
-int (kbc_write)(int port, uint8_t cmd);
+int (keyboard_write)(int port, uint8_t cmd);
 
 int (keyboard_restore)();
 

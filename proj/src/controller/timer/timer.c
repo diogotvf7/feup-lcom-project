@@ -1,12 +1,17 @@
 #include <lcom/lcf.h>
 #include <lcom/timer.h>
+#include "timer.h"
 
 #include <stdint.h>
-#include "../utils.h"
+
 #include "i8254.h"
 
 static int hook_id = 0;
-int counter = 0;
+static int counter = 0;
+
+int (get_counter)() {
+  return counter;
+}
 
 int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
   uint8_t st, lsb, msb;
