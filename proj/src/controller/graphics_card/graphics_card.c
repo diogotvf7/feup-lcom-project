@@ -12,9 +12,10 @@ extern uint8_t blue_field_position;
 extern uint8_t blue_mask_size;
 extern uint8_t mem_model;
 uint8_t page_index = 0;
+vbe_mode_info_t vmi_p;
+
 
 void *(map_graphics_memory)(uint16_t mode) {
-  vbe_mode_info_t vmi_p;
   bzero(&vmi_p, sizeof vmi_p);
   vbe_get_mode_info(mode, &vmi_p);
 

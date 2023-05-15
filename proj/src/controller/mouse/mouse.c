@@ -4,6 +4,9 @@ static int hook_id = 12;
 static uint8_t mouse_byte;
 static int byte_index = 0;
 static struct packet mouse_packet;
+int x = 5;
+int y = 5;
+
 
 int (get_byte_index)() {
   return byte_index;
@@ -70,3 +73,27 @@ void (parse_mouse_packet)() {
   }
   byte_index++;
 }
+
+
+void updateMouseLocation(){
+
+  if(x + mouse_packet.delta_x < 0 && !mouse_packet.x_ov){
+    x = 0;
+  }
+  else if(x + mouse_packet.delta_x > 1152 && !mouse_packet.x_ov){
+    x = 1152;
+  }else if(!mouse_packet.x_ov){
+    x += mouse_packet.delta_x;
+  }
+
+  if(y - mouse_packet.delta_y < 0 && !mouse_packet.y_ov){
+    y = 0;
+  }
+  else if(y - mouse_packet.delta_y > 864 && !mouse_packet.y_ov){
+    y = 864;
+  }
+  else if(!mouse_packet.y_ov){
+    y -= mouse_packet.delta_y;
+  }
+}
+

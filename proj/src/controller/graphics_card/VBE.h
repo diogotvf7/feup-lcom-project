@@ -26,6 +26,17 @@
 
 #define VBE_RETURN_SUCCESS  0x004F
 
+#define RED 0xff0000
+#define ORANGE 0xd17b4f
+#define BLUE 0x19DBF0
+#define GREEN 0x2FF019
+#define YELLOW 0xF5DA2A
+#define DARKBLUE 0x0000ff
+#define PRESSED 0x333FFF
+#define TRANSPARENT 0xFFFFFE
+
+
+
 typedef struct {
   uint8_t color_index;
   char symbol;

@@ -19,4 +19,6 @@ void (mouse_ih)();
 
 void (parse_mouse_packet)();
 
+void updateMouseLocation();
+
 #endif /* __MOUSE_H */
