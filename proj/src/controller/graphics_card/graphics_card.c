@@ -1,9 +1,9 @@
 #include "graphics_card.h"
 
 uint8_t *video_mem = NULL;
-unsigned bytes_per_pixel;
-unsigned h_res;
-unsigned v_res;
+uint16_t bytes_per_pixel;
+uint16_t h_res;
+uint16_t v_res;
 uint8_t red_field_position;
 uint8_t red_mask_size;
 uint8_t green_field_position;
@@ -22,28 +22,27 @@ uint16_t _mode() {
 }
 
 void *(vg_init)(uint16_t mode) {
-    void* video_mem = map_graphics_memory(mode);
-    reg86_t reg86;
-    bzero(&reg86, sizeof reg86);
-    
-    reg86.intno = GRAPHICS_INT_NO;
-    reg86.ah = VESA_FUNC;
-    reg86.al = SET_GRAPHICS_MODE;
-    reg86.bx = mode | LINEAR_MODE;
+  void *video_mem = map_graphics_memory(mode);
+  reg86_t reg86;
+  bzero(&reg86, sizeof reg86);
+  
+  reg86.intno = GRAPHICS_INT_NO;
+  reg86.ah = VESA_FUNC;
+  reg86.al = SET_GRAPHICS_MODE;
+  reg86.bx = mode | LINEAR_MODE;
 
-    if (sys_int86(&reg86) != OK)
-        return NULL;
-    return video_mem;
+  if (sys_int86(&reg86) != OK)
+    return NULL;
+  return video_mem;
 }
 
 int (vg_draw_hline)(uint16_t x, uint16_t y, uint16_t len, uint32_t color) {
-    for (int i = 0; i < len; i++, x++)
-        vg_draw_pixel(x, y, color);
-    return EXIT_SUCCESS;
+  for (int i = 0; i < len; i++, x++)
+    vg_draw_pixel(x, y, color);
+  return EXIT_SUCCESS;
 }
 
-int (vg_draw_rectangle)(uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint32_t color) 
-{
+int (vg_draw_rectangle)(uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint32_t color) {
   for (int i = 0; i < height; i++, y++)
       vg_draw_hline(x, y, width, color);
   return EXIT_SUCCESS;
@@ -114,11 +113,11 @@ int (vg_flip_frame) () {
   return EXIT_SUCCESS;
 }
 
-int (copy_base_frame)(uint8_t *base_frame) {
+int (copy_base_frame)(frame_buffer_t frame_buffer) {
   if (video_mem == NULL) 
     return EXIT_FAILURE;
 
-  if (memcpy(video_mem + page_index * v_res * h_res * bytes_per_pixel, base_frame, v_res * h_res * bytes_per_pixel) == NULL)
+  if (memcpy(video_mem + page_index * v_res * h_res * bytes_per_pixel, frame_buffer.base_addr, frame_buffer.size) == NULL)
     return EXIT_FAILURE;
 
   return EXIT_SUCCESS;

@@ -4,7 +4,7 @@ Sprite *mouse;
 int flag = 0, num_bytes = 1;
 uint8_t scancode_arr[2];
 extern int x, y;
-extern uint8_t *base_frame;
+extern frame_buffer_t frame_buffer;
 
 void setup_sprites() {
     
@@ -12,25 +12,26 @@ void setup_sprites() {
 }
 
 void update_mouse_state() {
-
     mouse_ih();
     parse_mouse_packet();
     if (get_byte_index() == 3) {
         //nao se pode meter a desenhar a linha depois de desenhar a nova posiçao do cursor porque vai desenhar por cima
         if (get_mouse_packet()->lb) {
-            vg_draw_pixel(x,y,RED);
+            // vg_draw_pixel(x,y,RED);
+            draw_frame_pixel(x, y, RED);
         }
         updateMouseLocation();
-        draw_new_frame();
+        printf("x: %d, y: %d\n", x, y);
     }
 }
 
 void update_timer_state() {
     timer_int_handler();
-    if (get_counter() % 10 == 0) {
+    if (get_counter() % 1 == 0) {
         vg_flip_frame();
-        copy_base_frame(base_frame);
+        copy_base_frame(frame_buffer);
     }
+    draw_new_frame();
 }
 
 void update_keyboard_state() {
@@ -41,9 +42,8 @@ void update_keyboard_state() {
         num_bytes = 2;
     } else {
         scancode_arr[flag] = get_scancode();
-        if (kbd_print_scancode(!((get_scancode() & SCANCODE_MSB) >> 7),
-                                    num_bytes, scancode_arr) != OK)
-              return;
+        if (kbd_print_scancode(!((get_scancode() & SCANCODE_MSB) >> 7), num_bytes, scancode_arr) != OK)
+            return;
         num_bytes = 1;
         flag = 0;
     }

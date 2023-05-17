@@ -7,6 +7,7 @@
 #include "controller/timer/timer.h"
 #include "view/view.h"
 #include "xpm/mouse.xpm"
+#include "model/base_frame.h"
 
 
 typedef enum{

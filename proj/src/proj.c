@@ -14,11 +14,9 @@
 uint8_t irq_set_timer, irq_set_keyboard;
 int irq_set_mouse,  ipc_status, r;
 message msg;
-extern unsigned bytes_per_pixel;
-extern unsigned h_res;
-extern unsigned v_res;
-uint8_t *base_frame;
-
+extern uint16_t bytes_per_pixel;
+extern uint16_t h_res;
+extern uint16_t v_res;
 
 int(main)(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -44,7 +42,7 @@ int(main)(int argc, char *argv[]) {
   return 0;
 }
 
-int (setup)() {
+int (start_settings)() {
   if (vg_init(VBE_MODE) == NULL)
     return EXIT_FAILURE;
 
@@ -61,12 +59,12 @@ int (setup)() {
   if (timer_set_frequency(SEL_TIMER0, 10) != OK)
     return EXIT_FAILURE;
 
-  base_frame = (uint8_t *) create_frame_buffer(v_res, h_res, bytes_per_pixel);
+  create_frame_buffer(v_res, h_res, bytes_per_pixel);
 
   return 0;  
 }
 
-int teardown() {
+int (reset_settings)() {
   if (keyboard_unsubscribe_int(&irq_set_keyboard) != OK)
     return EXIT_FAILURE;
   if (timer_unsubscribe_int() != OK)
@@ -82,7 +80,7 @@ int teardown() {
 
 int (proj_main_loop)(int argc, char **argv) {
 
-  if(setup() != 0) return 1;
+  if (start_settings() != 0) return 1;
 
   while (get_scancode() != ESC_BREAK) {
     if ((r = driver_receive(ANY, &msg, &ipc_status)) != OK) {
@@ -109,7 +107,7 @@ int (proj_main_loop)(int argc, char **argv) {
     }
   }
 
-  if(teardown() != 0) return 1;
+  if (reset_settings() != 0) return 1;
   return 0;
 
 }

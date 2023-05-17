@@ -23,6 +23,7 @@
     "limits": "c",
     "functional": "c",
     "utility": "c",
-    "algorithm": "c"
+    "algorithm": "c",
+    "sprite.h": "c"
   },
 }
