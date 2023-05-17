@@ -1,6 +1,5 @@
 #include "base_frame.h"
 
-
 frame_buffer_t frame_buffer;
 uint16_t _width;
 uint16_t _height;
@@ -20,6 +19,10 @@ void create_frame_buffer(uint16_t width, uint16_t height, uint16_t bytes_per_pix
 int draw_frame_pixel(uint16_t x, uint16_t y, uint32_t color) {
   if (frame_buffer.base_addr == NULL) 
     return EXIT_FAILURE;
+
+  printf("x: %d, y: %d\n", x, y);
+  printf("frame_buffer.width: %d, frame_buffer.height: %d\n", frame_buffer.width, frame_buffer.height);
+
   if (x >= frame_buffer.width || x < 0 || y >= frame_buffer.height || y < 0)
     return EXIT_FAILURE;
 
@@ -27,7 +30,7 @@ int draw_frame_pixel(uint16_t x, uint16_t y, uint32_t color) {
   int byte_offset = pixel_pos * frame_buffer.bytes_per_pixel;
 
   if (memcpy(
-    &_base_addr[byte_offset], 
+    &frame_buffer.base_addr[byte_offset], 
     &color, 
     (unsigned) frame_buffer.bytes_per_pixel) == NULL)
       return EXIT_FAILURE;

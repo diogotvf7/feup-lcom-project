@@ -17,11 +17,12 @@ void update_mouse_state() {
     if (get_byte_index() == 3) {
         //nao se pode meter a desenhar a linha depois de desenhar a nova posiçao do cursor porque vai desenhar por cima
         if (get_mouse_packet()->lb) {
-            // vg_draw_pixel(x,y,RED);
             draw_frame_pixel(x, y, RED);
         }
+        if (get_mouse_packet()->rb) {
+            fill_frame(TRANSPARENT);
+        }
         updateMouseLocation();
-        printf("x: %d, y: %d\n", x, y);
     }
 }
 
