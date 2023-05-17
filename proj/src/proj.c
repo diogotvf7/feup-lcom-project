@@ -6,6 +6,7 @@
 #include "controller/keyboard/keyboard.h"
 #include "controller/mouse/mouse.h"
 #include "model/model.h"
+#include "model/base_frame.h"
 
 #include <lcom/lcf.h>
 #include <lcom/video_gr.h>
@@ -13,6 +14,10 @@
 uint8_t irq_set_timer, irq_set_keyboard;
 int irq_set_mouse,  ipc_status, r;
 message msg;
+extern unsigned bytes_per_pixel;
+extern unsigned h_res;
+extern unsigned v_res;
+uint8_t *base_frame;
 
 
 int(main)(int argc, char *argv[]) {
@@ -39,7 +44,7 @@ int(main)(int argc, char *argv[]) {
   return 0;
 }
 
-int (setup)(){
+int (setup)() {
   if (vg_init(VBE_MODE) == NULL)
     return EXIT_FAILURE;
 
@@ -56,11 +61,12 @@ int (setup)(){
   if (timer_set_frequency(SEL_TIMER0, 10) != OK)
     return EXIT_FAILURE;
 
-  return 0;  
+  base_frame = (uint8_t *) create_frame_buffer(v_res, h_res, bytes_per_pixel);
 
+  return 0;  
 }
 
-int teardown(){
+int teardown() {
   if (keyboard_unsubscribe_int(&irq_set_keyboard) != OK)
     return EXIT_FAILURE;
   if (timer_unsubscribe_int() != OK)
@@ -74,7 +80,7 @@ int teardown(){
   return EXIT_SUCCESS;
 }
 
-int(proj_main_loop)(int argc, char **argv) {
+int (proj_main_loop)(int argc, char **argv) {
 
   if(setup() != 0) return 1;
 

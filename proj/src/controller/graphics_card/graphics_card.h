@@ -10,8 +10,15 @@ void *(map_graphics_memory)(uint16_t mode);
 
 int (vg_flip_frame)();
 
+int (copy_base_frame)(uint8_t *base_frame);
+
 int (vg_draw_pixel)(uint16_t x, uint16_t y, uint32_t color);
 
+int (vg_draw_hline)(uint16_t x, uint16_t y, uint16_t len, uint32_t color);
+
+int (vg_draw_rectangle)(uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint32_t color) ;
+
+void *(vg_init)(uint16_t mode);
 // int (vg_draw_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y);
 
 uint32_t (red)(unsigned y, uint32_t first, uint8_t step);

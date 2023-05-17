@@ -4,34 +4,36 @@ Sprite *mouse;
 int flag = 0, num_bytes = 1;
 uint8_t scancode_arr[2];
 extern int x, y;
+extern uint8_t *base_frame;
 
-void setup_sprites(){
+void setup_sprites() {
     
     mouse = create_sprite_xpm((xpm_map_t) mouse_xpm);
 }
 
-void update_mouse_state(){
+void update_mouse_state() {
 
     mouse_ih();
     parse_mouse_packet();
-    if (get_byte_index() == 3){
+    if (get_byte_index() == 3) {
         //nao se pode meter a desenhar a linha depois de desenhar a nova posiçao do cursor porque vai desenhar por cima
-        if(get_mouse_packet()->lb){
+        if (get_mouse_packet()->lb) {
             vg_draw_pixel(x,y,RED);
-        } 
+        }
         updateMouseLocation();
         draw_new_frame();
     }
 }
 
-void update_timer_state(){
+void update_timer_state() {
     timer_int_handler();
-   // if (get_counter() % 60 == 0) {
-    //    vg_flip_frame();
-    //}
+    if (get_counter() % 10 == 0) {
+        vg_flip_frame();
+        copy_base_frame(base_frame);
+    }
 }
 
-void update_keyboard_state(){
+void update_keyboard_state() {
     kbc_ih();
     if (get_scancode() == DOUBLE_BYTE) {
         scancode_arr[0] = get_scancode();
@@ -47,7 +49,7 @@ void update_keyboard_state(){
     }
 }
 
-void destroy_sprites(){
+void destroy_sprites() {
     destroy_sprite(mouse);
 }
 

@@ -75,24 +75,24 @@ void (parse_mouse_packet)() {
 }
 
 
-void updateMouseLocation(){
+void updateMouseLocation() {
 
-  if(x + mouse_packet.delta_x < 0 && !mouse_packet.x_ov){
+  if (x + mouse_packet.delta_x < 0 && !mouse_packet.x_ov) {
     x = 0;
   }
-  else if(x + mouse_packet.delta_x > 1152 && !mouse_packet.x_ov){
+  else if (x + mouse_packet.delta_x > 1152 && !mouse_packet.x_ov) {
     x = 1152;
-  }else if(!mouse_packet.x_ov){
+  } else if (!mouse_packet.x_ov) {
     x += mouse_packet.delta_x;
   }
 
-  if(y - mouse_packet.delta_y < 0 && !mouse_packet.y_ov){
+  if (y - mouse_packet.delta_y < 0 && !mouse_packet.y_ov) {
     y = 0;
   }
-  else if(y - mouse_packet.delta_y > 864 && !mouse_packet.y_ov){
+  else if (y - mouse_packet.delta_y > 864 && !mouse_packet.y_ov) {
     y = 864;
   }
-  else if(!mouse_packet.y_ov){
+  else if (!mouse_packet.y_ov) {
     y -= mouse_packet.delta_y;
   }
 }
