@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "lab2.h": "c",
+        "timer.h": "c",
+        "system_error": "c"
+    }
+}
