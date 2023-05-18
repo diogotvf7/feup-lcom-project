@@ -20,7 +20,7 @@ void update_mouse_state() {
             draw_frame_pixel(x, y, RED);
         }
         if (get_mouse_packet()->rb) {
-            fill_frame(TRANSPARENT);
+            //fill_frame(TRANSPARENT);
         }
         updateMouseLocation();
     }
@@ -53,5 +53,7 @@ void update_keyboard_state() {
 void destroy_sprites() {
     destroy_sprite(mouse);
 }
+
+
 
 

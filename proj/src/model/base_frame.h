@@ -18,3 +18,4 @@ typedef struct {
 void create_frame_buffer(uint16_t width, uint16_t height, uint16_t bytes_per_pixel);
 
 int draw_frame_pixel(uint16_t x, uint16_t y, uint32_t color);
+
