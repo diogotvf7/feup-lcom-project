@@ -20,9 +20,6 @@ int draw_frame_pixel(uint16_t x, uint16_t y, uint32_t color) {
   if (frame_buffer.base_addr == NULL) 
     return EXIT_FAILURE;
 
-  printf("x: %d, y: %d\n", x, y);
-  printf("frame_buffer.width: %d, frame_buffer.height: %d\n", frame_buffer.width, frame_buffer.height);
-
   if (x >= frame_buffer.width || x < 0 || y >= frame_buffer.height || y < 0)
     return EXIT_FAILURE;
 
@@ -36,4 +33,20 @@ int draw_frame_pixel(uint16_t x, uint16_t y, uint32_t color) {
       return EXIT_FAILURE;
 
   return EXIT_SUCCESS;
+}
+
+int draw_frame_circle(uint16_t x, uint16_t y, uint16_t radius, uint32_t color) {
+  for (int i = 0; i < x + radius; i++) {
+    for (int j = 0; j < y + radius; j++) {
+      if ((i - x)*(i - x) + (j - y)*(j - y) <= radius * radius) {
+        if (draw_frame_pixel(i, j, color) != OK)
+          return EXIT_FAILURE;
+      }
+    }
+  }
+  return EXIT_SUCCESS;
+}
+
+void reset_frame() {
+  bzero(frame_buffer.base_addr, frame_buffer.size);
 }

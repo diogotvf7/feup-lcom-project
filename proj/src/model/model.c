@@ -17,10 +17,11 @@ void update_mouse_state() {
     if (get_byte_index() == 3) {
         //nao se pode meter a desenhar a linha depois de desenhar a nova posiçao do cursor porque vai desenhar por cima
         if (get_mouse_packet()->lb) {
-            draw_frame_pixel(x, y, RED);
+            // draw_frame_pixel(x, y, RED);
+            draw_frame_circle(x, y, 10, RED);
         }
         if (get_mouse_packet()->rb) {
-            //fill_frame(TRANSPARENT);
+            reset_frame();
         }
         updateMouseLocation();
     }

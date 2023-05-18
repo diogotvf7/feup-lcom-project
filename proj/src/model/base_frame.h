@@ -1,5 +1,6 @@
 #pragma once
 #include <lcom/lcf.h>
+
 // #include "sprite.h"
 // #include "controller/mouse/mouse.h"
 // #include "controller/keyboard/keyboard.h"
@@ -19,3 +20,7 @@ void create_frame_buffer(uint16_t width, uint16_t height, uint16_t bytes_per_pix
 
 int draw_frame_pixel(uint16_t x, uint16_t y, uint32_t color);
 
+
+int draw_frame_circle(uint16_t x, uint16_t y, uint16_t radius, uint32_t color);
+
+void reset_frame();
