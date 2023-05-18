@@ -27,7 +27,7 @@ int draw_frame_pixel(uint16_t x, uint16_t y, uint32_t color) {
   int byte_offset = pixel_pos * frame_buffer.bytes_per_pixel;
 
   if (memcpy(
-    &_base_addr[byte_offset], 
+    &frame_buffer.base_addr[byte_offset], 
     &color, 
     (unsigned) frame_buffer.bytes_per_pixel) == NULL)
       return EXIT_FAILURE;

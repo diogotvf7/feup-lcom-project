@@ -32,10 +32,6 @@ int draw_sprite_xpm(Sprite *sprite, int x, int y) {
     uint16_t width = sprite->width;
     uint16_t height = sprite->height;
     uint32_t current_color;
-    if (get_mouse_packet()->lb) {
-        // desenhar no base_frame
-        // vg_draw_pixel(x,y,RED);
-    }
     for(uint16_t h = 0; h < height; h++) {
         for(uint16_t w = 0; w < width; w++) {
             current_color = sprite->colors[w + h*width];

@@ -21,7 +21,6 @@ void update_mouse_state() {
             draw_frame_pixel(x, y, RED);
         }
         updateMouseLocation();
-        printf("x: %d, y: %d\n", x, y);
     }
 }
 
