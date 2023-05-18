@@ -59,7 +59,7 @@ int (start_settings)() {
   if (timer_set_frequency(SEL_TIMER0, 10) != OK)
     return EXIT_FAILURE;
 
-  create_frame_buffer(v_res, h_res, bytes_per_pixel);
+  create_frame_buffer(h_res, v_res, bytes_per_pixel);
 
   return 0;  
 }
