@@ -6,7 +6,9 @@
 #include "controller/graphics_card/graphics_card.h"
 #include "controller/timer/timer.h"
 #include "view/view.h"
+#include "colors.h"
 #include "xpm/mouse.xpm"
+#include "xpm/topBarGameMode.xpm"
 #include "model/base_frame.h"
 
 

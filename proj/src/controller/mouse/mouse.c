@@ -97,3 +97,48 @@ void updateMouseLocation() {
   }
 }
 
+void updateDrawSpecs(uint32_t *color, int *radius){
+
+  if((x >= 20 && x <= 90) && (y >= 25 && y <= 95)){
+    *color = RED;
+  }
+  else if((x >= 130 && x <= 200) && ( y >= 25 && y <= 95)){
+    *color = GREEN;
+  }
+
+  else if((x >= 240 && x <= 310) && ( y >= 25 && y <= 95)){
+    *color = BLUE;
+  }
+
+  else if((x >= 350 && x <= 420) && ( y >= 25 && y <= 95)){
+    *color = ORANGE;
+  }
+
+  else if((x >= 460 && x <= 530) && ( y >= 25 && y <= 95)){
+    *color = YELLOW;
+  }
+
+  else if((x >= 570 && x <= 640) && ( y >= 25 && y <= 95)){
+    *color = PURPLE;
+  }
+
+  else if((x >= 680 && x <= 750) && ( y >= 25 && y <= 95)){
+    *color = BLACK;
+  }
+
+  else if((x >= 790 && x <= 860) && (y >= 25 && y <= 95)){
+    *color = TRANSPARENT;
+  }
+
+  else if((x >= 900 && x <= 970) && (y >= 25 && y <= 95)){
+    *radius = *radius - 5;
+  }
+
+    else if((x >= 1010 && x <= 1080) && (y >= 25 && y <= 95)){
+    *radius = *radius + 5;
+  }
+
+
+}
+
+

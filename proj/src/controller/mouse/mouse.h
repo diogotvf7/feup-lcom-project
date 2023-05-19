@@ -3,6 +3,7 @@
 
 #include <lcom/lcf.h>
 #include "kbc.h"
+#include "model/colors.h"
 #include "i8042.h"
 
 int (get_byte_index)();
@@ -20,5 +21,7 @@ void (mouse_ih)();
 void (parse_mouse_packet)();
 
 void updateMouseLocation();
+
+void updateDrawSpecs(uint32_t *color, int *radius);
 
 #endif /* __MOUSE_H */

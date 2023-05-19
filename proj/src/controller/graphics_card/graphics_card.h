@@ -5,6 +5,7 @@
 #include <lcom/video_gr.h>
 
 #include "model/base_frame.h"
+#include "model/colors.h"
 #include "VBE.h"
 
 void *(map_graphics_memory)(uint16_t mode);

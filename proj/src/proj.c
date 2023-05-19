@@ -56,7 +56,7 @@ int (start_settings)() {
     return EXIT_FAILURE;
   if (mouse_subscribe_int(&irq_set_mouse) != OK)
     return EXIT_FAILURE;
-  if (timer_set_frequency(SEL_TIMER0, 60) != OK)
+  if (timer_set_frequency(SEL_TIMER0, 30) != OK)
     return EXIT_FAILURE;
 
   create_frame_buffer(h_res, v_res, bytes_per_pixel);

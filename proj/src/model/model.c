@@ -1,13 +1,16 @@
 #include "model.h"
 
 Sprite *mouse;
+Sprite *chooseColors;
 int flag = 0, num_bytes = 1;
 uint8_t scancode_arr[2];
 extern int x, y;
 extern frame_buffer_t frame_buffer;
+uint32_t color = RED;
+int radius = 10;
 
 void setup_sprites() {
-    
+    chooseColors = create_sprite_xpm((xpm_map_t) topBarGameMode_xpm);
     mouse = create_sprite_xpm((xpm_map_t) mouse_xpm);
 }
 
@@ -18,7 +21,12 @@ void update_mouse_state() {
         //nao se pode meter a desenhar a linha depois de desenhar a nova posiçao do cursor porque vai desenhar por cima
         if (get_mouse_packet()->lb) {
             // draw_frame_pixel(x, y, RED);
-            draw_frame_circle(x, y, 10, RED);
+            if(y < 150){
+                updateDrawSpecs(&color, &radius);
+            }
+            if(y >= 150){
+                draw_frame_circle(x, y, radius, color);
+            }
         }
         if (get_mouse_packet()->rb) {
             reset_frame();
@@ -53,6 +61,7 @@ void update_keyboard_state() {
 
 void destroy_sprites() {
     destroy_sprite(mouse);
+    destroy_sprite(chooseColors);
 }
 
 

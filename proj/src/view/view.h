@@ -4,6 +4,8 @@
 #include "controller/mouse/mouse.h"
 #include "controller/graphics_card/graphics_card.h"
 #include "model/sprite.h"
+#include "model/colors.h"
+
 
 
 void draw_new_frame();
