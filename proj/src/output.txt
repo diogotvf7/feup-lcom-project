@@ -1,4 +1,2 @@
-
-Breakcode: 0x9c
 Makecode: 0x01
 Breakcode: 0x81

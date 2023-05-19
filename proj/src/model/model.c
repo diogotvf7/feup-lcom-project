@@ -6,6 +6,7 @@ int flag = 0, num_bytes = 1;
 uint8_t scancode_arr[2];
 extern int x, y;
 extern frame_buffer_t frame_buffer;
+extern real_time curr_time;
 uint32_t color = RED;
 int radius = 10;
 
@@ -41,6 +42,10 @@ void update_timer_state() {
         vg_flip_frame();
         copy_base_frame(frame_buffer);
     }
+    else if(get_counter() % 30 == 0){       
+        rtc_init();
+    }
+
     draw_new_frame();
 }
 

@@ -131,7 +131,8 @@ void updateDrawSpecs(uint32_t *color, int *radius){
   }
 
   else if((x >= 900 && x <= 970) && (y >= 25 && y <= 95)){
-    *radius = *radius - 5;
+    if(*radius - 5 < 0) *radius = 1;
+    else *radius = *radius - 5;
   }
 
     else if((x >= 1010 && x <= 1080) && (y >= 25 && y <= 95)){

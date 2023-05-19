@@ -27,3 +27,8 @@ int (util_sys_inb)(int port, uint8_t *value) {
   *value = buffer;
   return EXIT_SUCCESS;
 }
+
+uint8_t to_binary(uint8_t bcd_number) {
+    return ((bcd_number >> 4) * 10) + (bcd_number & 0xF);
+}
+

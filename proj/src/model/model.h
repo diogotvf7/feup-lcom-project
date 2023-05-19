@@ -2,6 +2,7 @@
 #include <lcom/lcf.h>
 #include "sprite.h"
 #include "controller/mouse/mouse.h"
+#include "controller/rtc/rtc.h"
 #include "controller/keyboard/keyboard.h"
 #include "controller/graphics_card/graphics_card.h"
 #include "controller/timer/timer.h"
