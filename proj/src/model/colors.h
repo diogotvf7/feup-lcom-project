@@ -8,4 +8,5 @@
 #define PURPLE 0xa020f0
 #define BLACK 0x000000
 #define TRANSPARENT 0xFFFFFE
+#define WHITE 0XFFFFFF
 

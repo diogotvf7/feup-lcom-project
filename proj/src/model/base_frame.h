@@ -1,5 +1,6 @@
 #pragma once
 #include <lcom/lcf.h>
+#include "colors.h"
 
 // #include "sprite.h"
 // #include "controller/mouse/mouse.h"
