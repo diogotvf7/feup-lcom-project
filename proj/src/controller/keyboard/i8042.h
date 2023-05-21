@@ -48,5 +48,9 @@
 #define NACK 0xFE
 #define ERROR 0xFC
 
+#define S_KEY 31
+#define G_KEY 34
+#define E_KEY 18
+#define Q_KEY 16
 
 #endif

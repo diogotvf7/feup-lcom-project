@@ -5,6 +5,8 @@
 #include "controller/graphics_card/graphics_card.h"
 #include "model/sprite.h"
 #include "model/colors.h"
+#include "model/model.h"
+
 
 
 

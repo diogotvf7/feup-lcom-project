@@ -5,11 +5,24 @@ extern Sprite* chooseColors;
 
 extern int x, y;
 vbe_mode_info_t vmi_p;
-
+extern MenuState menuState;
 
 void draw_new_frame() {
-    draw_sprite_xpm(chooseColors, 0, 0);
+    switch(menuState){
+        case START:
+            draw_initial_menu();
+            break;
+        case GAME:
+            draw_game_menu();
+            break;
+        case END:
+            draw_finish_menu();
+            break;    
+
+    }
     draw_mouse();
+
+
 }
 
 void draw_mouse() {
@@ -23,7 +36,8 @@ void draw_initial_menu() {
 }
 
 void draw_game_menu() {
-
+    draw_sprite_xpm(chooseColors, 0, 0);
+  //  draw_mouse();
 }
 
 void draw_finish_menu() {

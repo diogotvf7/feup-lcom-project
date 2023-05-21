@@ -9,6 +9,8 @@ extern frame_buffer_t frame_buffer;
 extern real_time curr_time;
 uint32_t color = RED;
 int radius = 10;
+SystemState systemState = RUNNING;
+MenuState menuState = START; 
 
 void setup_sprites() {
     chooseColors = create_sprite_xpm((xpm_map_t) topBarGameMode_xpm);
@@ -62,6 +64,25 @@ void update_keyboard_state() {
         num_bytes = 1;
         flag = 0;
     }
+
+    switch(get_scancode()){
+        case Q_KEY:
+            systemState = EXIT;
+            break;
+        case S_KEY:
+            menuState = START;
+            break;
+        case G_KEY:
+            menuState = GAME;
+            break;
+        case E_KEY:
+            menuState = END;
+        default:
+            break;
+    }
+
+
+
 }
 
 void destroy_sprites() {
