@@ -30,14 +30,6 @@ void update_mouse_state() {
     mouse_ih();
     parse_mouse_packet();
     if (get_byte_index() == 3) {
-<<<<<<< HEAD
-        if(menuState == GAME){
-            if (get_mouse_packet()->lb) {
-                if(y < 150){
-                    updateDrawSpecs(&color, &radius);
-                }
-                if(y >= 150){
-=======
         // nao se pode meter a desenhar a linha depois de desenhar a nova posiçao do cursor porque vai desenhar por cima
         if(menuState == GAME){
             if (get_mouse_packet()->lb) {
@@ -46,7 +38,6 @@ void update_mouse_state() {
                     updateDrawSpecs(&color, &radius);
                 }
                 if(y >= 150 && y < 750){
->>>>>>> 574b0aba08819c74c4a910da2c826c86fdf15897
                     draw_frame_circle(x, y, radius, color);
                 }
             }
@@ -54,7 +45,6 @@ void update_mouse_state() {
                 reset_frame();
             }
         }
-<<<<<<< HEAD
 
         if(menuState == START){
             if(get_mouse_packet()->lb){
@@ -68,8 +58,6 @@ void update_mouse_state() {
         }
 
 
-=======
->>>>>>> 574b0aba08819c74c4a910da2c826c86fdf15897
         updateMouseLocation();
     }
 }
@@ -80,7 +68,7 @@ void update_timer_state() {
         vg_flip_frame();
         copy_base_frame(frame_buffer);
     }
-    else if(get_counter() % 30 == 0){       
+    else if(get_counter() % 30 == 0){ 
         rtc_init();
     }
 
