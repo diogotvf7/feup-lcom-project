@@ -70,7 +70,6 @@ void update_timer_state() {
     }
     else if(get_counter() % 30 == 0){ 
         rtc_init();
-        if ()
     }
 
     draw_new_frame();
