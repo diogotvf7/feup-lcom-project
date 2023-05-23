@@ -4,6 +4,7 @@ Sprite *mouse;
 Sprite *chooseColors;
 Sprite* quitButton;
 Sprite* startButton;
+Sprite* zero;
 
 int flag = 0, num_bytes = 1;
 uint8_t scancode_arr[2];
@@ -20,6 +21,8 @@ void setup_sprites() {
     mouse = create_sprite_xpm((xpm_map_t) mouse_xpm);
     quitButton = create_sprite_xpm((xpm_map_t) quitButton_xpm);
     startButton = create_sprite_xpm((xpm_map_t) startButton_xpm);
+    zero = create_sprite_xpm((xpm_map_t) zero_xpm);
+
 }
 
 void update_mouse_state() {

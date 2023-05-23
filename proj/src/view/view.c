@@ -4,6 +4,8 @@ extern Sprite* mouse;
 extern Sprite* chooseColors;
 extern Sprite* quitButton;
 extern Sprite* startButton;
+extern Sprite* zero;
+
 
 extern int x, y;
 vbe_mode_info_t vmi_p;
@@ -40,6 +42,8 @@ void draw_initial_menu() {
 
 void draw_game_menu() {
     draw_sprite_xpm(chooseColors, 0, 0);
+    draw_sprite_xpm(zero, 0,0);
+
 }
 
 void draw_finish_menu() {
