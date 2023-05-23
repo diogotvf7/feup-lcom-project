@@ -4,6 +4,9 @@ static int hook_id = 12;
 static uint8_t mouse_byte;
 static int byte_index = 0;
 static struct packet mouse_packet;
+int x = 5;
+int y = 5;
+
 
 int (get_byte_index)() {
   return byte_index;
@@ -70,3 +73,73 @@ void (parse_mouse_packet)() {
   }
   byte_index++;
 }
+
+
+void updateMouseLocation() {
+
+  if (x + mouse_packet.delta_x < 0 && !mouse_packet.x_ov) {
+    x = 0;
+  }
+  else if (x + mouse_packet.delta_x > 1152 && !mouse_packet.x_ov) {
+    x = 1152;
+  } else if (!mouse_packet.x_ov) {
+    x += mouse_packet.delta_x;
+  }
+
+  if (y - mouse_packet.delta_y < 0 && !mouse_packet.y_ov) {
+    y = 0;
+  }
+  else if (y - mouse_packet.delta_y > 864 && !mouse_packet.y_ov) {
+    y = 864;
+  }
+  else if (!mouse_packet.y_ov) {
+    y -= mouse_packet.delta_y;
+  }
+}
+
+void updateDrawSpecs(uint32_t *color, int *radius){
+
+  if((x >= 20 && x <= 90) && (y >= 25 && y <= 95)){
+    *color = RED;
+  }
+  else if((x >= 130 && x <= 200) && ( y >= 25 && y <= 95)){
+    *color = GREEN;
+  }
+
+  else if((x >= 240 && x <= 310) && ( y >= 25 && y <= 95)){
+    *color = BLUE;
+  }
+
+  else if((x >= 350 && x <= 420) && ( y >= 25 && y <= 95)){
+    *color = ORANGE;
+  }
+
+  else if((x >= 460 && x <= 530) && ( y >= 25 && y <= 95)){
+    *color = YELLOW;
+  }
+
+  else if((x >= 570 && x <= 640) && ( y >= 25 && y <= 95)){
+    *color = PURPLE;
+  }
+
+  else if((x >= 680 && x <= 750) && ( y >= 25 && y <= 95)){
+    *color = BLACK;
+  }
+
+  else if((x >= 790 && x <= 860) && (y >= 25 && y <= 95)){
+    *color = TRANSPARENT;
+  }
+
+  else if((x >= 900 && x <= 970) && (y >= 25 && y <= 95)){
+    if(*radius - 5 < 0) *radius = 1;
+    else *radius = *radius - 5;
+  }
+
+    else if((x >= 1010 && x <= 1080) && (y >= 25 && y <= 95)){
+    *radius = *radius + 5;
+  }
+
+
+}
+
+

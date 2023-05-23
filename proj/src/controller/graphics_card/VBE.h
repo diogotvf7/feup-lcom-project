@@ -26,6 +26,7 @@
 
 #define VBE_RETURN_SUCCESS  0x004F
 
+
 typedef struct {
   uint8_t color_index;
   char symbol;
