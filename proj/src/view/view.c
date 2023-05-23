@@ -39,10 +39,6 @@ void draw_initial_menu() {
 }
 
 void draw_game_menu() {
-<<<<<<< HEAD
-    draw_sprite_xpm(chooseColors, 0, 0);
-
-=======
     if (gameState == DRAW) {
         draw_sprite_xpm(chooseColors, 0, 0);
         draw_bottom_bar(0,750,1152,114, GREY,80,780,900,70);
@@ -50,7 +46,6 @@ void draw_game_menu() {
     else if (gameState == GUESS) draw_bar(0,0,1152,150,GREY);
 
   //  draw_mouse();
->>>>>>> 574b0aba08819c74c4a910da2c826c86fdf15897
 }
 
 void draw_finish_menu() {
