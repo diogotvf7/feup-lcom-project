@@ -74,7 +74,6 @@ void (parse_mouse_packet)() {
   byte_index++;
 }
 
-
 void updateMouseLocation() {
 
   if (x + mouse_packet.delta_x < 0 && !mouse_packet.x_ov) {
@@ -135,7 +134,7 @@ void updateDrawSpecs(uint32_t *color, int *radius){
     else *radius = *radius - 5;
   }
 
-    else if((x >= 1010 && x <= 1080) && (y >= 25 && y <= 95)){
+  else if((x >= 1010 && x <= 1080) && (y >= 25 && y <= 95)){
     *radius = *radius + 5;
   }
 
