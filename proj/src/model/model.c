@@ -7,6 +7,7 @@ uint8_t scancode_arr[2];
 extern int x, y;
 extern frame_buffer_t frame_buffer;
 extern real_time curr_time;
+extern Queue *mouse_packet_queue;
 uint32_t color = RED;
 int radius = 10;
 SystemState systemState = RUNNING;
@@ -34,6 +35,8 @@ void update_mouse_state() {
         if (get_mouse_packet()->rb) {
             reset_frame();
         }
+        packet_queue_push(get_mouse_packet());
+        packet_queue_print();
         updateMouseLocation();
     }
 }
@@ -59,8 +62,8 @@ void update_keyboard_state() {
         num_bytes = 2;
     } else {
         scancode_arr[flag] = get_scancode();
-        if (kbd_print_scancode(!((get_scancode() & SCANCODE_MSB) >> 7), num_bytes, scancode_arr) != OK)
-            return;
+        // if (kbd_print_scancode(!((get_scancode() & SCANCODE_MSB) >> 7), num_bytes, scancode_arr) != OK)
+        //     return;
         num_bytes = 1;
         flag = 0;
     }

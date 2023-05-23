@@ -24,6 +24,8 @@
     "functional": "c",
     "utility": "c",
     "algorithm": "c",
-    "sprite.h": "c"
+    "sprite.h": "c",
+    "kbc.h": "c",
+    "mouse_packet_queue.h": "c"
   },
 }
