@@ -2,6 +2,9 @@
 
 Sprite *mouse;
 Sprite *chooseColors;
+Sprite* quitButton;
+Sprite* startButton;
+
 int flag = 0, num_bytes = 1;
 uint8_t scancode_arr[2];
 extern int x, y;
@@ -15,25 +18,40 @@ MenuState menuState = START;
 void setup_sprites() {
     chooseColors = create_sprite_xpm((xpm_map_t) topBarGameMode_xpm);
     mouse = create_sprite_xpm((xpm_map_t) mouse_xpm);
+    quitButton = create_sprite_xpm((xpm_map_t) quitButton_xpm);
+    startButton = create_sprite_xpm((xpm_map_t) startButton_xpm);
 }
 
 void update_mouse_state() {
     mouse_ih();
     parse_mouse_packet();
     if (get_byte_index() == 3) {
-        //nao se pode meter a desenhar a linha depois de desenhar a nova posiçao do cursor porque vai desenhar por cima
-        if (get_mouse_packet()->lb) {
-            // draw_frame_pixel(x, y, RED);
-            if(y < 150){
-                updateDrawSpecs(&color, &radius);
+        if(menuState == GAME){
+            if (get_mouse_packet()->lb) {
+                if(y < 150){
+                    updateDrawSpecs(&color, &radius);
+                }
+                if(y >= 150){
+                    draw_frame_circle(x, y, radius, color);
+                }
             }
-            if(y >= 150){
-                draw_frame_circle(x, y, radius, color);
+            if (get_mouse_packet()->rb) {
+                reset_frame();
             }
         }
-        if (get_mouse_packet()->rb) {
-            reset_frame();
+
+        if(menuState == START){
+            if(get_mouse_packet()->lb){
+                if(x >= 451 && x <= 711 && y >= 300 && y <= 425){
+                    menuState = GAME;
+                }
+                else if(x >= 451 && x <= 711 && y >= 500 && y <= 625){
+                    systemState = EXIT;
+                }
+            }
         }
+
+
         updateMouseLocation();
     }
 }

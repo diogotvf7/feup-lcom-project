@@ -10,6 +10,8 @@
 #include "colors.h"
 #include "xpm/mouse.xpm"
 #include "xpm/topBarGameMode.xpm"
+#include "xpm/quitButton.xpm"
+#include "xpm/startButton.xpm"
 #include "model/base_frame.h"
 
 

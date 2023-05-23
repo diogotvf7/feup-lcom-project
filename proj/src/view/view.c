@@ -2,6 +2,8 @@
 
 extern Sprite* mouse;
 extern Sprite* chooseColors;
+extern Sprite* quitButton;
+extern Sprite* startButton;
 
 extern int x, y;
 vbe_mode_info_t vmi_p;
@@ -26,18 +28,18 @@ void draw_new_frame() {
 }
 
 void draw_mouse() {
-    //vg_draw_rectangle(0, 0, vmi_p.XResolution, vmi_p.YResolution, 0x00000);
     draw_sprite_xpm(mouse, x, y);
 
 }
 
 void draw_initial_menu() {
-
+    draw_sprite_xpm(startButton, 451, 300);
+    draw_sprite_xpm(quitButton, 451, 500);
+    
 }
 
 void draw_game_menu() {
     draw_sprite_xpm(chooseColors, 0, 0);
-  //  draw_mouse();
 }
 
 void draw_finish_menu() {
