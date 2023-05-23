@@ -17,6 +17,7 @@ message msg;
 extern uint16_t bytes_per_pixel;
 extern uint16_t h_res;
 extern uint16_t v_res;
+extern SystemState systemState;
 
 int(main)(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -61,6 +62,8 @@ int (start_settings)() {
 
   create_frame_buffer(h_res, v_res, bytes_per_pixel);
 
+  
+
   return 0;  
 }
 
@@ -82,7 +85,7 @@ int (proj_main_loop)(int argc, char **argv) {
 
   if (start_settings() != 0) return 1;
 
-  while (get_scancode() != ESC_BREAK) {
+  while ( systemState == RUNNING) {
     if ((r = driver_receive(ANY, &msg, &ipc_status)) != OK) {
       printf("driver_receive failed with: %d", r);
       continue;

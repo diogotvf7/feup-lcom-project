@@ -10,7 +10,8 @@ extern real_time curr_time;
 uint32_t color = RED;
 int radius = 10;
 SystemState systemState = RUNNING;
-MenuState menuState = START; 
+MenuState menuState = START;
+GameState gameState;
 
 void setup_sprites() {
     chooseColors = create_sprite_xpm((xpm_map_t) topBarGameMode_xpm);
@@ -21,18 +22,20 @@ void update_mouse_state() {
     mouse_ih();
     parse_mouse_packet();
     if (get_byte_index() == 3) {
-        //nao se pode meter a desenhar a linha depois de desenhar a nova posiçao do cursor porque vai desenhar por cima
-        if (get_mouse_packet()->lb) {
-            // draw_frame_pixel(x, y, RED);
-            if(y < 150){
-                updateDrawSpecs(&color, &radius);
+        // nao se pode meter a desenhar a linha depois de desenhar a nova posiçao do cursor porque vai desenhar por cima
+        if(menuState == GAME){
+            if (get_mouse_packet()->lb) {
+
+                if(y < 150 && gameState == DRAW){
+                    updateDrawSpecs(&color, &radius);
+                }
+                if(y >= 150 && y < 750){
+                    draw_frame_circle(x, y, radius, color);
+                }
             }
-            if(y >= 150){
-                draw_frame_circle(x, y, radius, color);
+            if (get_mouse_packet()->rb) {
+                reset_frame();
             }
-        }
-        if (get_mouse_packet()->rb) {
-            reset_frame();
         }
         updateMouseLocation();
     }
@@ -71,12 +74,19 @@ void update_keyboard_state() {
             break;
         case S_KEY:
             menuState = START;
+            reset_frame();
             break;
         case G_KEY:
             menuState = GAME;
+            gameState = DRAW;
+            break;
+        case T_KEY:
+            menuState = GAME;
+            gameState = GUESS;
             break;
         case E_KEY:
             menuState = END;
+            break;
         default:
             break;
     }

@@ -24,6 +24,11 @@ typedef enum{
     END
 } MenuState;
 
+typedef enum{
+    DRAW,
+    GUESS
+} GameState;
+
 void update_timer_state();
 void update_keyboard_state();
 void update_mouse_state();
