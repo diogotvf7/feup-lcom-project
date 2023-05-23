@@ -5,12 +5,22 @@ extern Sprite* chooseColors;
 extern Sprite* quitButton;
 extern Sprite* startButton;
 extern Sprite* zero;
+extern Sprite* one;
+extern Sprite* two;
+extern Sprite* three;
+extern Sprite* four;
+extern Sprite* five;
+extern Sprite* six;
+extern Sprite* seven;
+extern Sprite* eight;
+extern Sprite* nine;
 
 
 extern int x, y;
 vbe_mode_info_t vmi_p;
 extern MenuState menuState;
 extern GameState gameState;
+extern int game_counter;
 
 void draw_new_frame() {
     switch(menuState){
@@ -26,7 +36,9 @@ void draw_new_frame() {
 
     }
     draw_mouse();
+
 }
+
 
 void draw_mouse() {
     draw_sprite_xpm(mouse, x, y);
@@ -41,11 +53,12 @@ void draw_initial_menu() {
 void draw_game_menu() {
     if (gameState == DRAW) {
         draw_sprite_xpm(chooseColors, 0, 0);
-        draw_bottom_bar(0,750,1152,114, GREY,80,780,900,70);
         }
     else if (gameState == GUESS) draw_bar(0,0,1152,150,GREY);
+    draw_bottom_bar(0,750,1152,114, GREY,80,780,900,70);
+    draw_game_time(game_counter);
 
-  //  draw_mouse();
+
 }
 
 void draw_finish_menu() {
@@ -90,15 +103,63 @@ int draw_bottom_bar(int x, int y, int width, int height, uint32_t color, int squ
     return 0;
 }
 
-void extractDigits(unsigned int num)
-{
-    int dig;
-    while(num>0)
-    {
-        dig = num%10;
-        // draw xpm according to its number
-        num = num/10;
+int draw_game_time(int num)
+{   
+    int arr[2];
+    int i = 0;
+    int j, r;
+  
+    while (num != 0) {
+  
+        r = num % 10;
+        
+        arr[i] = r;
+        i++;
+
+        num = num / 10;
     }
+    
+    int length = 0;
+    for (j = i - 1; j > -1; j--) {
+        switch (arr[j])
+        {
+        case 0:
+            draw_sprite_xpm(zero,1000 + length * 75,780);
+            break;
+        case 1:
+            draw_sprite_xpm(one,1000 + length * 75,780);
+            break;
+        case 2:
+            draw_sprite_xpm(two,1000 + length * 75,780);
+            break;
+        case 3:
+            draw_sprite_xpm(three,1000 + length * 75,780);
+            break;
+        case 4:
+            draw_sprite_xpm(four,1000 + length * 75,780);
+            break;
+        case 5:
+            draw_sprite_xpm(five,1000 + length * 75,780);
+            break;
+        case 6:
+            draw_sprite_xpm(six,1000 + length * 75,780);
+            break;
+        case 7:
+            draw_sprite_xpm(seven,1000 + length * 75,780);
+            break;
+        case 8:
+            draw_sprite_xpm(eight,1000 + length * 75,780);
+            break;
+        case 9:
+            draw_sprite_xpm(nine,1000 + length * 75,780);
+            break;
+        default:
+            break;
+        }
+        length++;
+
+    }
+    return 0;
 }
 
 

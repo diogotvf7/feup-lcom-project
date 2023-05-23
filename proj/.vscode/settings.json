@@ -5,6 +5,8 @@
         "graphics_card.h": "c",
         "cstdlib": "c",
         "*.xpm": "c",
-        "mouse.h": "c"
+        "mouse.h": "c",
+        "view.h": "c",
+        "timer.h": "c"
     }
 }
