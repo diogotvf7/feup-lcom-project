@@ -17,7 +17,7 @@ message msg;
 extern uint16_t bytes_per_pixel;
 extern uint16_t h_res;
 extern uint16_t v_res;
-extern SystemState systemState ;
+extern SystemState systemState;
 
 int(main)(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -61,6 +61,8 @@ int (start_settings)() {
     return EXIT_FAILURE;
 
   create_frame_buffer(h_res, v_res, bytes_per_pixel);
+
+  
 
   return 0;  
 }

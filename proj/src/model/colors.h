@@ -9,4 +9,5 @@
 #define BLACK 0x000000
 #define TRANSPARENT 0xFFFFFE
 #define WHITE 0XFFFFFF
+#define GREY 0xF6F3F3
 
