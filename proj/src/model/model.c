@@ -5,6 +5,15 @@ Sprite *chooseColors;
 Sprite* quitButton;
 Sprite* startButton;
 Sprite* zero;
+Sprite* one;
+Sprite* two;
+Sprite* three;
+Sprite* four;
+Sprite* five;
+Sprite* six;
+Sprite* seven;
+Sprite* eight;
+Sprite* nine;
 
 int flag = 0, num_bytes = 1;
 uint8_t scancode_arr[2];
@@ -16,6 +25,7 @@ int radius = 10;
 SystemState systemState = RUNNING;
 MenuState menuState = START;
 GameState gameState;
+int game_counter;
 
 void setup_sprites() {
     chooseColors = create_sprite_xpm((xpm_map_t) topBarGameMode_xpm);
@@ -23,7 +33,21 @@ void setup_sprites() {
     quitButton = create_sprite_xpm((xpm_map_t) quitButton_xpm);
     startButton = create_sprite_xpm((xpm_map_t) startButton_xpm);
     zero = create_sprite_xpm((xpm_map_t) zero_xpm);
+    one = create_sprite_xpm((xpm_map_t) one_xpm);
+    two = create_sprite_xpm((xpm_map_t) two_xpm);
+    three = create_sprite_xpm((xpm_map_t) three_xpm);
+    four = create_sprite_xpm((xpm_map_t) four_xpm);
+    five = create_sprite_xpm((xpm_map_t) five_xpm);
+    six = create_sprite_xpm((xpm_map_t) six_xpm);
+    seven = create_sprite_xpm((xpm_map_t) seven_xpm);
+    eight = create_sprite_xpm((xpm_map_t) eight_xpm);
+    nine = create_sprite_xpm((xpm_map_t) nine_xpm);
 
+}
+
+void initGame(){
+    menuState = GAME;
+    game_counter = ROUND_TIME;
 }
 
 void update_mouse_state() {
@@ -49,15 +73,13 @@ void update_mouse_state() {
         if(menuState == START){
             if(get_mouse_packet()->lb){
                 if(x >= 451 && x <= 711 && y >= 300 && y <= 425){
-                    menuState = GAME;
+                    initGame();
                 }
                 else if(x >= 451 && x <= 711 && y >= 500 && y <= 625){
                     systemState = EXIT;
                 }
             }
         }
-
-
         updateMouseLocation();
     }
 }
@@ -68,11 +90,11 @@ void update_timer_state() {
         vg_flip_frame();
         copy_base_frame(frame_buffer);
     }
-    else if(get_counter() % 30 == 0){ 
-        rtc_init();
+    if (get_counter() % 30 == 0 && menuState == GAME){
+        game_counter--;
     }
-
     draw_new_frame();
+
 }
 
 void update_keyboard_state() {
@@ -98,7 +120,7 @@ void update_keyboard_state() {
             reset_frame();
             break;
         case G_KEY:
-            menuState = GAME;
+            initGame();
             gameState = DRAW;
             break;
         case T_KEY:
