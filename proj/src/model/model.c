@@ -47,8 +47,9 @@ void update_timer_state() {
         vg_flip_frame();
         copy_base_frame(frame_buffer);
     }
-    else if(get_counter() % 30 == 0){       
+    else if(get_counter() % 30 == 0){ 
         rtc_init();
+        if ()
     }
 
     draw_new_frame();
