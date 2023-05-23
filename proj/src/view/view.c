@@ -42,7 +42,6 @@ void draw_initial_menu() {
 
 void draw_game_menu() {
     draw_sprite_xpm(chooseColors, 0, 0);
-    draw_sprite_xpm(zero, 0,0);
 
 }
 
