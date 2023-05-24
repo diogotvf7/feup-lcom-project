@@ -2,8 +2,13 @@
 
 #include <lcom/lcf.h>
 
+typedef struct Position {
+  uint16_t x;
+  uint16_t y;
+} Position;
+
 typedef struct Node {
-  struct packet *mouse_packet;
+  struct Position *position;
   struct Node *prev;
 } Node;
 
@@ -17,16 +22,15 @@ int packet_queue_size();
 
 int packet_queue_empty();
 
-struct Node *packet_queue_front();
+struct Position *packet_queue_front();
 
-struct Node *packet_queue_back();
+struct Position *packet_queue_back();
 
-void packet_queue_push(struct packet mouse_packet);
+void packet_queue_push(struct Position *position);
 
 void packet_queue_pop();
 
 void packet_queue_clear();
 
 void packet_queue_print();
-
 

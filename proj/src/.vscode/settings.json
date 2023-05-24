@@ -26,6 +26,8 @@
     "algorithm": "c",
     "sprite.h": "c",
     "kbc.h": "c",
-    "mouse_packet_queue.h": "c"
+    "mouse_packet_queue.h": "c",
+    "colors.h": "c",
+    "global_vars.h": "c"
   },
 }

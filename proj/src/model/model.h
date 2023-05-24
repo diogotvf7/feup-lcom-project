@@ -12,6 +12,7 @@
 #include "xpm/mouse.xpm"
 #include "xpm/topBarGameMode.xpm"
 #include "model/base_frame.h"
+#include "global_vars.h"
 
 
 typedef enum{

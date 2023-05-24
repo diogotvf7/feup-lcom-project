@@ -11,19 +11,19 @@ int packet_queue_empty() {
   return mouse_packet_queue == NULL;
 } 
 
-Node *packet_queue_front() {
+Position *packet_queue_front() {
   if (mouse_packet_queue == NULL) return NULL;
-  return mouse_packet_queue->front;
+  return mouse_packet_queue->front->position;
 }
 
-Node *packet_queue_back() {
+Position *packet_queue_back() {
   if (mouse_packet_queue == NULL) return NULL;
-  return mouse_packet_queue->back;
+  return mouse_packet_queue->back->position;
 }
 
-void packet_queue_push(struct packet *mouse_packet) {
+void packet_queue_push(struct Position *position) {
   Node *n = (Node *)malloc(sizeof(Node));
-  n->mouse_packet = mouse_packet;
+  n->position = position;
   n->prev = NULL;
   if (mouse_packet_queue == NULL) {
     mouse_packet_queue = (Queue *)malloc(sizeof(Queue));
@@ -63,7 +63,8 @@ void packet_queue_print() {
   Node *temp = mouse_packet_queue->front;
   printf("|       |\nv Front v\n_________\n");
   while (temp != NULL) {
-    mouse_print_packet(temp->mouse_packet);
+    // mouse_print_packet(&temp->mouse_packet);
+    printf("X: %d      Y: %d\n", temp->position->x, temp->position->y);
     temp = temp->prev;
   }
   printf("_________\n^ Back  ^\n|       |\n");

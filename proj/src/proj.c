@@ -8,6 +8,7 @@
 #include "model/model.h"
 #include "model/base_frame.h"
 
+#include "global_vars.h"
 #include <lcom/lcf.h>
 #include <lcom/video_gr.h>
 
@@ -56,7 +57,7 @@ int (start_settings)() {
     return EXIT_FAILURE;
   if (mouse_subscribe_int(&irq_set_mouse) != OK)
     return EXIT_FAILURE;
-  if (timer_set_frequency(SEL_TIMER0, 30) != OK)
+  if (timer_set_frequency(SEL_TIMER0, FPS) != OK)
     return EXIT_FAILURE;
 
   create_frame_buffer(h_res, v_res, bytes_per_pixel);
