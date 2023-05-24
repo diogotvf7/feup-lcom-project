@@ -99,7 +99,6 @@ void update_timer_state() {
         game_counter--;
     }
     draw_new_frame();
-
 }
 
 void update_keyboard_state() {

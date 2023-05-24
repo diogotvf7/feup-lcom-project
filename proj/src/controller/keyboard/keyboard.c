@@ -86,4 +86,3 @@ int read_letter(int scancode, int* offset){
   else if (scancode == B_KEY) *offset = 2;
   return 0;
 }
-
