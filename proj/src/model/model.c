@@ -5,8 +5,7 @@ Sprite *chooseColors;
 Sprite* quitButton;
 Sprite* startButton;
 Sprite* numbers;
-Sprite* a;
-Sprite* b;
+Sprite* letters;
 
 int flag = 0, num_bytes = 1;
 uint8_t scancode_arr[2];
@@ -21,14 +20,16 @@ GameState gameState;
 int game_counter;
 int offset;
 
+int word_guess[10] = {-1};
+int number_letters = 0;
+
 void setup_sprites() {
     chooseColors = create_sprite_xpm((xpm_map_t) topBarGameMode_xpm);
     mouse = create_sprite_xpm((xpm_map_t) mouse_xpm);
     quitButton = create_sprite_xpm((xpm_map_t) quitButton_xpm);
     startButton = create_sprite_xpm((xpm_map_t) startButton_xpm);
     numbers = create_sprite_xpm((xpm_map_t) numbers_xpm);
-    a = create_sprite_xpm((xpm_map_t) a_xpm);
-    b = create_sprite_xpm((xpm_map_t) b_xpm);
+    letters = create_sprite_xpm((xpm_map_t) letters_xpm);
 
 }
 
@@ -123,8 +124,7 @@ void update_keyboard_state() {
             menuState = END;
             break;
         default:
-            read_letter(get_scancode(), &offset);
-            //draw_letter(100,800, );
+            read_letter(get_scancode(), word_guess, &number_letters);
             break;
     }
 

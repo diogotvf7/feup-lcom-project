@@ -13,8 +13,7 @@
 #include "xpm/quitButton.xpm"
 #include "xpm/startButton.xpm"
 #include "model/base_frame.h"
-#include "xpm/a.xpm"
-#include "xpm/b.xpm"
+#include "xpm/letters.xpm"
 #include "xpm/numbers.xpm"
 
 
