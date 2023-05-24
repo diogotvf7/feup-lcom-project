@@ -24,6 +24,7 @@
     "functional": "c",
     "utility": "c",
     "algorithm": "c",
-    "sprite.h": "c"
+    "sprite.h": "c",
+    "*.xpm": "c"
   },
 }

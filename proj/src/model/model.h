@@ -13,18 +13,9 @@
 #include "xpm/quitButton.xpm"
 #include "xpm/startButton.xpm"
 #include "model/base_frame.h"
-#include "xpm/0.xpm"
-#include "xpm/1.xpm"
-#include "xpm/2.xpm"
-#include "xpm/9.xpm"
-#include "xpm/3.xpm"
-#include "xpm/4.xpm"
-#include "xpm/8.xpm"
-#include "xpm/5.xpm"
-#include "xpm/7.xpm"
-#include "xpm/6.xpm"
 #include "xpm/a.xpm"
 #include "xpm/b.xpm"
+#include "xpm/numbers.xpm"
 
 
 #define ROUND_TIME 60

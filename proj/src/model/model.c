@@ -4,16 +4,7 @@ Sprite *mouse;
 Sprite *chooseColors;
 Sprite* quitButton;
 Sprite* startButton;
-Sprite* zero;
-Sprite* one;
-Sprite* two;
-Sprite* three;
-Sprite* four;
-Sprite* five;
-Sprite* six;
-Sprite* seven;
-Sprite* eight;
-Sprite* nine;
+Sprite* numbers;
 Sprite* a;
 Sprite* b;
 
@@ -35,16 +26,7 @@ void setup_sprites() {
     mouse = create_sprite_xpm((xpm_map_t) mouse_xpm);
     quitButton = create_sprite_xpm((xpm_map_t) quitButton_xpm);
     startButton = create_sprite_xpm((xpm_map_t) startButton_xpm);
-    zero = create_sprite_xpm((xpm_map_t) zero_xpm);
-    one = create_sprite_xpm((xpm_map_t) one_xpm);
-    two = create_sprite_xpm((xpm_map_t) two_xpm);
-    three = create_sprite_xpm((xpm_map_t) three_xpm);
-    four = create_sprite_xpm((xpm_map_t) four_xpm);
-    five = create_sprite_xpm((xpm_map_t) five_xpm);
-    six = create_sprite_xpm((xpm_map_t) six_xpm);
-    seven = create_sprite_xpm((xpm_map_t) seven_xpm);
-    eight = create_sprite_xpm((xpm_map_t) eight_xpm);
-    nine = create_sprite_xpm((xpm_map_t) nine_xpm);
+    numbers = create_sprite_xpm((xpm_map_t) numbers_xpm);
     a = create_sprite_xpm((xpm_map_t) a_xpm);
     b = create_sprite_xpm((xpm_map_t) b_xpm);
 
@@ -59,7 +41,6 @@ void update_mouse_state() {
     mouse_ih();
     parse_mouse_packet();
     if (get_byte_index() == 3) {
-        // nao se pode meter a desenhar a linha depois de desenhar a nova posiçao do cursor porque vai desenhar por cima
         if(menuState == GAME){
             if (get_mouse_packet()->lb) {
 
@@ -97,6 +78,9 @@ void update_timer_state() {
     }
     if (get_counter() % 30 == 0 && menuState == GAME){
         game_counter--;
+        if (game_counter == 0){
+            menuState = START;
+        }
     }
     draw_new_frame();
 }

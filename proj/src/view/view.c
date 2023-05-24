@@ -4,17 +4,8 @@ extern Sprite* mouse;
 extern Sprite* chooseColors;
 extern Sprite* quitButton;
 extern Sprite* startButton;
-extern Sprite* zero;
-extern Sprite* one;
-extern Sprite* two;
-extern Sprite* three;
-extern Sprite* four;
-extern Sprite* five;
-extern Sprite* six;
-extern Sprite* seven;
-extern Sprite* eight;
-extern Sprite* nine;
-
+extern Sprite* numbers;
+extern uint16_t bytes_per_pixel;
 
 extern int x, y;
 vbe_mode_info_t vmi_p;
@@ -42,18 +33,18 @@ void draw_new_frame() {
 
 
 void draw_mouse() {
-    draw_sprite_xpm(mouse, x, y);
+    draw_sprite_xpm(mouse, x, y, false);
 }
 
 void draw_initial_menu() {
-    draw_sprite_xpm(startButton, 451, 300);
-    draw_sprite_xpm(quitButton, 451, 500);
+    draw_sprite_xpm(startButton, 451, 300, false);
+    draw_sprite_xpm(quitButton, 451, 500, false);
     
 }
 
 void draw_game_menu() {
     if (gameState == DRAW) {
-        draw_sprite_xpm(chooseColors, 0, 0);
+        draw_sprite_xpm(chooseColors, 0, 0, false);
         }
     else if (gameState == GUESS) draw_bar(0,0,1152,150,GREY);
     draw_bottom_bar(0,750,1152,114, GREY,80,780,900,70);
@@ -66,9 +57,11 @@ void draw_finish_menu() {
     
 }
 
-int draw_sprite_xpm(Sprite *sprite, int x, int y) {
-    uint16_t width = sprite->width;
-    uint16_t height = sprite->height;
+int draw_sprite_xpm(Sprite *sprite, int x, int y, bool letter) {
+    uint16_t width;
+    uint16_t height;
+    width = sprite->width;
+    height = sprite->height;
     uint32_t current_color;
     for(uint16_t h = 0; h < height; h++) {
         for(uint16_t w = 0; w < width; w++) {
@@ -80,6 +73,7 @@ int draw_sprite_xpm(Sprite *sprite, int x, int y) {
     }
     return 0;
 }
+
 
 int draw_bar(int x, int y, int width, int height, uint32_t color){
     for (uint16_t h = 0; h < height; h++){
@@ -110,6 +104,26 @@ int draw_letter(int x, int y, int offset){
     return 0;
 }
 
+
+int draw_number(Sprite* sprite, int x, int y, int index){
+    uint16_t width = 70;
+    uint16_t height = 70;
+    uint16_t img_width = sprite->width;
+
+    uint32_t current_color;
+    for(uint16_t h = 0; h < height; h++) {
+        for(uint16_t w = 0; w < width; w++) {
+            current_color = sprite->colors[(70 * index  + w) + (img_width * h)];
+            if(current_color != TRANSPARENT) {
+                vg_draw_pixel(x + w, y + h, current_color);
+            }
+        }
+    }
+    return 0;
+
+    return 0;
+}
+
 int draw_game_time(int num)
 {   
     int arr[2];
@@ -117,52 +131,15 @@ int draw_game_time(int num)
     int j, r;
   
     while (num != 0) {
-  
         r = num % 10;
-        
         arr[i] = r;
         i++;
-
         num = num / 10;
     }
     
     int length = 0;
     for (j = i - 1; j > -1; j--) {
-        switch (arr[j])
-        {
-        case 0:
-            draw_sprite_xpm(zero,1000 + length * 75,780);
-            break;
-        case 1:
-            draw_sprite_xpm(one,1000 + length * 75,780);
-            break;
-        case 2:
-            draw_sprite_xpm(two,1000 + length * 75,780);
-            break;
-        case 3:
-            draw_sprite_xpm(three,1000 + length * 75,780);
-            break;
-        case 4:
-            draw_sprite_xpm(four,1000 + length * 75,780);
-            break;
-        case 5:
-            draw_sprite_xpm(five,1000 + length * 75,780);
-            break;
-        case 6:
-            draw_sprite_xpm(six,1000 + length * 75,780);
-            break;
-        case 7:
-            draw_sprite_xpm(seven,1000 + length * 75,780);
-            break;
-        case 8:
-            draw_sprite_xpm(eight,1000 + length * 75,780);
-            break;
-        case 9:
-            draw_sprite_xpm(nine,1000 + length * 75,780);
-            break;
-        default:
-            break;
-        }
+        draw_number(numbers, 1000 + length * 75, 780, arr[j]);
         length++;
 
     }
