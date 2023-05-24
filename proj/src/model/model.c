@@ -24,12 +24,10 @@ void update_mouse_state() {
     if (get_byte_index() == 3) {
         //nao se pode meter a desenhar a linha depois de desenhar a nova posiçao do cursor porque vai desenhar por cima
         if (get_mouse_packet()->lb) {
-            // draw_frame_pixel(x, y, RED);
             if (y < 150) {
                 updateDrawSpecs(&color, &radius);
             }
             if (y >= 150) {
-                // draw_frame_circle(x, y, radius, color);
                 Position *position = (Position *) malloc(sizeof(Position));
                 position->x = x;
                 position->y = y;
@@ -51,50 +49,20 @@ void update_timer_state() {
         vg_flip_frame();
         copy_base_frame(frame_buffer);
 
-        int queue_size = packet_queue_size();
-        if (queue_size != 0) {
-            // packet_queue_print();
+        for (int i = PACKETS_PER_INTERRUPT; i; i--) {
+            int queue_size = packet_queue_size();
+            if (queue_size == 0) break;
             struct Position *position1 = packet_queue_front();
             packet_queue_pop();
             if (queue_size == 1) {
-                draw_frame_circle(position1, radius, color);
+                // draw_frame_circle(position1, radius, color);
+                break;
             } else {
                 struct Position *position2 = packet_queue_front();
-
                 draw_bresenham_line(position1, position2, color, radius);
-            }    
+            }
         }
-
-        // int queue_size = packet_queue_size();
-        // if (queue_size != 0) {
-        //     printf("__________________________\n");
-        //     printf("STARTING PACKET PROCESSING\n\n");
-        //     printf("Queue size: %d\n", queue_size);
-        //     packet_queue_print();
-        //     printf("\n");
-        //     for (int i = PACKETS_PER_INTERRUPT; i; i--) {
-        //         printf("Interation no. %d\n", i);
-                
-        //         struct Position *position1 = packet_queue_front();
-        //         packet_queue_pop();
-                
-        //         if (queue_size == 1) {
-        //             draw_frame_circle(x, y, radius, color);
-        //             break;
-        //         }
-
-        //         struct Position *position2 = packet_queue_front();
-        //         packet_queue_pop();
-
-        //         draw_bresenham_line(position1, position2, color, radius);
-        //     }
-        //     printf("FINISHED PACKET PROCESSING\n");
-        //     printf("__________________________\n");
-        // }
     }
-    // else if (get_counter() % 30 == 0){       
-    //     rtc_init();
-    // }
 
     draw_new_frame();
 }

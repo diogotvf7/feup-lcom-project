@@ -1,2 +1,2 @@
 #define FPS                           30
-#define PACKETS_PER_INTERRUPT         5
+#define PACKETS_PER_INTERRUPT         10

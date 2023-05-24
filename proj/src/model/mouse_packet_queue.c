@@ -36,7 +36,7 @@ void packet_queue_push(struct Position *position) {
     mouse_packet_queue->back = n;
     mouse_packet_queue->size++;
   }
-  if (mouse_packet_queue->size > 20) 
+  if (mouse_packet_queue->size > 100) 
     packet_queue_pop();    
 }
 
@@ -67,7 +67,7 @@ void packet_queue_print() {
     printf("X: %d      Y: %d\n", temp->position->x, temp->position->y);
     temp = temp->prev;
   }
-  printf("_________\n^ Back  ^\n|       |\n");
+  printf("_________\n^ Back  ^\n|       |\n\n");
 }
 
 

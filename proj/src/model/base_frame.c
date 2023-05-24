@@ -41,49 +41,42 @@ void draw_frame_circle(Position *p, uint16_t thickness, uint32_t color) {
       draw_frame_pixel(p->x + i, p->y + j, color);
     }
   }
-
-  // for (int i = 0; i < x + radius; i++) {
-  //   for (int j = 0; j < y + radius; j++) {
-  //     if ((i - x)*(i - x) + (j - y)*(j - y) <= radius * radius) {
-  //       if (draw_frame_pixel(i, j, color) != OK)
-  //         return EXIT_FAILURE;
-  //     }
-  //   }
-  // }
-  // return EXIT_SUCCESS;
+  free(p);
 }
 
 void draw_bresenham_line(Position *p1, Position *p2, uint32_t color, uint16_t thickness) {
-    int dx = abs(p2->x - p1->x);
-    int dy = abs(p2->y - p1->y);
-    int sx = (p1->x < p2->x) ? 1 : -1;
-    int sy = (p1->y < p2->y) ? 1 : -1;
-    int error = dx - dy;
+  int dx = abs(p2->x - p1->x);
+  int dy = abs(p2->y - p1->y);
+  int sx = (p1->x < p2->x) ? 1 : -1;
+  int sy = (p1->y < p2->y) ? 1 : -1;
+  int error = dx - dy;
 
-    while (1) {
-      // Draw the current point (p1->x, p1->y) and surrounding points
-      for (int i = -thickness/2; i <= thickness/2; i++) {
-        for (int j = -thickness/2; j <= thickness/2; j++) {
-          draw_frame_pixel(p1->x + i, p1->y + j, color);
-        }
-      }
-
-      if (p1->x == p2->x && p1->y == p2->y) {
-        break;
-      }
-
-      int error2 = 2 * error;
-
-      if (error2 > -dy) {
-        error -= dy;
-        p1->x += sx;
-      }
-
-      if (error2 < dx) {
-        error += dx;
-        p1->y += sy;
+  while (1) {
+    // Draw the current point (p1->x, p1->y) and surrounding points
+    for (int i = -thickness/2; i <= thickness/2; i++) {
+      for (int j = -thickness/2; j <= thickness/2; j++) {
+        draw_frame_pixel(p1->x + i, p1->y + j, color);
       }
     }
+
+    if (p1->x == p2->x && p1->y == p2->y) {
+      break;
+    }
+
+    int error2 = 2 * error;
+
+    if (error2 > -dy) {
+      error -= dy;
+      p1->x += sx;
+    }
+
+    if (error2 < dx) {
+      error += dx;
+      p1->y += sy;
+    }
+  }
+  free(p1);
+  free(p2);
 }
 
 
