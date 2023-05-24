@@ -23,6 +23,9 @@
 #include "xpm/5.xpm"
 #include "xpm/7.xpm"
 #include "xpm/6.xpm"
+#include "xpm/a.xpm"
+#include "xpm/b.xpm"
+
 
 #define ROUND_TIME 60
 

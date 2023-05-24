@@ -80,3 +80,10 @@ int (keyboard_restore)() {
 
   return EXIT_SUCCESS;
 }
+
+int read_letter(int scancode, int* offset){
+  if (scancode == A_KEY) *offset = 1;
+  else if (scancode == B_KEY) *offset = 2;
+  return 0;
+}
+
