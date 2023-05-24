@@ -21,6 +21,7 @@ vbe_mode_info_t vmi_p;
 extern MenuState menuState;
 extern GameState gameState;
 extern int game_counter;
+int letter_pos = 0;
 
 void draw_new_frame() {
     switch(menuState){
@@ -100,6 +101,12 @@ int draw_bottom_bar(int x, int y, int width, int height, uint32_t color, int squ
             }
         }
     }
+    return 0;
+}
+
+int draw_letter(int x, int y, int offset){
+   // draw_sprite_xpm(letter, x + letter_pos *  75, y);
+    letter_pos++;
     return 0;
 }
 

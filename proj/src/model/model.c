@@ -14,6 +14,8 @@ Sprite* six;
 Sprite* seven;
 Sprite* eight;
 Sprite* nine;
+Sprite* a;
+Sprite* b;
 
 int flag = 0, num_bytes = 1;
 uint8_t scancode_arr[2];
@@ -26,6 +28,7 @@ SystemState systemState = RUNNING;
 MenuState menuState = START;
 GameState gameState;
 int game_counter;
+int offset;
 
 void setup_sprites() {
     chooseColors = create_sprite_xpm((xpm_map_t) topBarGameMode_xpm);
@@ -42,6 +45,8 @@ void setup_sprites() {
     seven = create_sprite_xpm((xpm_map_t) seven_xpm);
     eight = create_sprite_xpm((xpm_map_t) eight_xpm);
     nine = create_sprite_xpm((xpm_map_t) nine_xpm);
+    a = create_sprite_xpm((xpm_map_t) a_xpm);
+    b = create_sprite_xpm((xpm_map_t) b_xpm);
 
 }
 
@@ -112,28 +117,32 @@ void update_keyboard_state() {
     }
 
     switch(get_scancode()){
-        case Q_KEY:
+        case ZERO_KEY:
             systemState = EXIT;
             break;
-        case S_KEY:
+        case ONE_KEY:
+            if (menuState == START) break;
             menuState = START;
             reset_frame();
             break;
-        case G_KEY:
+        case TWO_KEY:
+            if (menuState == GAME) break;
             initGame();
             gameState = DRAW;
             break;
-        case T_KEY:
-            menuState = GAME;
+        case THREE_KEY:
+            if (menuState == GAME) break;
+            initGame();
             gameState = GUESS;
             break;
-        case E_KEY:
+        case FOUR_KEY:
             menuState = END;
             break;
         default:
+            read_letter(get_scancode(), &offset);
+            //draw_letter(100,800, );
             break;
     }
-
 
 
 }
