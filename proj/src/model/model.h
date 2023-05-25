@@ -40,6 +40,8 @@ typedef enum{
 } GameState;
 
 typedef struct leaderboardValue{
+    uint8_t month;
+    uint8_t day;
     uint8_t hour;
     uint8_t minute;
     uint8_t second;
@@ -52,5 +54,8 @@ void update_mouse_state();
 void setup_sprites();
 void destroy_sprites();
 void updateLeaderboard(leaderboardValue *newValue);
+void loadLeaderboardFromFile(leaderboardValue leaderboard[]);
+void saveLeaderboardToFile(const leaderboardValue leaderboard[]);
+void clearLeaderboardFile();
 /* int compareScores(const void* a, const void* b);
  */

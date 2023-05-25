@@ -65,29 +65,77 @@ void draw_finish_menu() {
         int x_pos = 20;
         int y_pos = 270 + y_gap;
 
-        draw_number(numbers, x_pos, y_pos, leaderboard[i].hour / 10);  
-        x_pos += 60;
-        if(leaderboard[i].hour > 9)
+
+
+        //draw month
+        if(leaderboard[i].month < 9){
+            draw_number(numbers, x_pos, y_pos, leaderboard[i].month % 10);
+            x_pos += 140;
+        } 
+        else{
+            draw_number(numbers, x_pos, y_pos, leaderboard[i].month / 10);
+            x_pos += 70;
+            draw_number(numbers, x_pos, y_pos, leaderboard[i].month % 10);  
+            x_pos += 70;
+        }
+
+        //draw day
+        if(leaderboard[i].day < 9){
+            draw_number(numbers, x_pos, y_pos, leaderboard[i].day % 10);  
+            x_pos += 190;
+        }else{
+            draw_number(numbers, x_pos, y_pos, leaderboard[i].day / 10);  
+            x_pos += 70;
+            draw_number(numbers, x_pos, y_pos, leaderboard[i].day % 10);  
+            x_pos += 120;
+        }
+
+        //draw hour
+        if(leaderboard[i].hour < 9){
+            x_pos += 70;
             draw_number(numbers, x_pos, y_pos, leaderboard[i].hour % 10);  
-        x_pos += 170;
+            x_pos += 70;
+        }else{
+            draw_number(numbers, x_pos, y_pos, leaderboard[i].hour / 10);  
+            x_pos += 70;
+            draw_number(numbers, x_pos, y_pos, leaderboard[i].hour % 10);  
+            x_pos += 70;
+        }
 
-        draw_number(numbers, x_pos, y_pos, leaderboard[i].minute / 10); 
-        x_pos += 60;
-        if(leaderboard[i].minute > 9)
+        //draw minute
+        if(leaderboard[i].minute < 9){
+            x_pos += 70;
             draw_number(numbers, x_pos, y_pos, leaderboard[i].minute % 10);  
-        x_pos += 210;
+            x_pos += 70;
+        }else{
+            draw_number(numbers, x_pos, y_pos, leaderboard[i].minute / 10); 
+            x_pos += 70;
+            draw_number(numbers, x_pos, y_pos, leaderboard[i].minute % 10);  
+            x_pos += 70;
+        }
 
-        draw_number(numbers, x_pos, y_pos, leaderboard[i].second / 10);  
-        x_pos += 60;
-        if(leaderboard[i].second > 9)
+        //draw second
+        if(leaderboard[i].second < 9){
+            x_pos += 70;
             draw_number(numbers, x_pos, y_pos, leaderboard[i].second % 10);  
-        x_pos += 420;
+            x_pos += 200;
+        }else{
+            draw_number(numbers, x_pos, y_pos, leaderboard[i].second / 10);  
+            x_pos += 70;
+            draw_number(numbers, x_pos, y_pos, leaderboard[i].second % 10);  
+            x_pos += 200;
+        }
 
-        draw_number(numbers, x_pos, y_pos, leaderboard[i].score / 10);  
-        x_pos += 60;
-        if(leaderboard[i].score > 9)
+        //draw score
+        if(leaderboard[i].score < 9){
             draw_number(numbers, x_pos, y_pos, leaderboard[i].score % 10);  
-        y_gap += 120;  
+        }else{
+            draw_number(numbers, x_pos, y_pos, leaderboard[i].score / 10);  
+            x_pos += 70;
+            draw_number(numbers, x_pos, y_pos, leaderboard[i].score % 10);  
+        }
+
+        y_gap += 125;  
     }
 }
 
