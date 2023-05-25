@@ -8,7 +8,7 @@ unsigned _size;
 uint8_t *_base_addr;
 
 extern Queue *pos_queue;
-extern Queue *garbage;
+// extern Queue *garbage;
 
 void create_frame_buffer(uint16_t width, uint16_t height, uint16_t bytes_per_pixel) {
   frame_buffer.width = width;
@@ -34,35 +34,35 @@ void draw_frame_pixel(uint16_t x, uint16_t y, uint32_t color) {
       return;
 }
 
-void draw_frame_circle(Position *p, uint16_t thickness, uint32_t color) {
+void draw_frame_circle(Position p, uint16_t thickness, uint32_t color) {
   // printf("\nPosition: %p\n", p);
   // printf("Drawing circle at (%d, %d)\n", p->x, p->y);
   for (int i = -thickness/2; i <= thickness/2; i++) {
     for (int j = -thickness/2; j <= thickness/2; j++) {
-      draw_frame_pixel(p->x + i, p->y + j, color);
+      draw_frame_pixel(p.x + i, p.y + j, color);
     }
   }
-  queue_push(&garbage, p, sizeof(Position));
+  // queue_push(&garbage, p, sizeof(Position));
 }
 
-void draw_bresenham_line(Position *p1, Position *p2, uint32_t color, uint16_t thickness) {
+void draw_bresenham_line(Position p1, Position p2, uint32_t color, uint16_t thickness) {
   // printf("\nPosition 1: %p\n", p1);
   // printf("Position 2: %p\n", p2);
   // printf("Drawing line from (%d, %d) to (%d, %d)\n", p1->x, p1->y, p2->x, p2->y);
-  int dx = abs(p2->x - p1->x);
-  int dy = abs(p2->y - p1->y);
-  int sx = (p1->x < p2->x) ? 1 : -1;
-  int sy = (p1->y < p2->y) ? 1 : -1;
+  int dx = abs(p2.x - p1.x);
+  int dy = abs(p2.y - p1.y);
+  int sx = (p1.x < p2.x) ? 1 : -1;
+  int sy = (p1.y < p2.y) ? 1 : -1;
   int error = dx - dy;
 
   while (1) {
     for (int i = -thickness/2; i <= thickness/2; i++) {
       for (int j = -thickness/2; j <= thickness/2; j++) {
-        draw_frame_pixel(p1->x + i, p1->y + j, color);
+        draw_frame_pixel(p1.x + i, p1.y + j, color);
       }
     }
 
-    if (p1->x == p2->x && p1->y == p2->y) {
+    if (p1.x == p2.x && p1.y == p2.y) {
       break;
     }
 
@@ -70,24 +70,24 @@ void draw_bresenham_line(Position *p1, Position *p2, uint32_t color, uint16_t th
 
     if (error2 > -dy) {
       error -= dy;
-      p1->x += sx;
+      p1.x += sx;
     }
 
     if (error2 < dx) {
       error += dx;
-      p1->y += sy;
+      p1.y += sy;
     }
   }
-  queue_push(&garbage, p1, sizeof(Position));
-  queue_push(&garbage, p2, sizeof(Position));
+  // queue_push(&garbage, p1, sizeof(Position));
+  // queue_push(&garbage, p2, sizeof(Position));
 }
 
 int process_packet(uint32_t color, int radius) {
   // queue_print(&pos_queue);
   int size = queue_size(&pos_queue);
   if (size == 0) return 1;
-  struct Position *position1 = (Position *)queue_front(&pos_queue);
-  printf("Position: {%d, %d}\n", position1->x, position1->y);
+  struct Position position1 = *((Position *)queue_front(&pos_queue));
+  // printf("Position: {%d, %d}\n", position1->x, position1->y);
   // printf("\n_____ Processing _____\n");
   // printf("Position: %p\n", position1);
   if (size == 1) {
@@ -95,8 +95,8 @@ int process_packet(uint32_t color, int radius) {
     return 1;
   } else {
     queue_pop(&pos_queue);
-    struct Position *position2 = (Position *) queue_front(&pos_queue);
-    printf("Position: {%d, %d}\n", position2->x, position2->y);
+    struct Position position2 = *((Position *) queue_front(&pos_queue));
+    // printf("Position: {%d, %d}\n", position2->x, position2->y);
     draw_bresenham_line(position1, position2, color, radius);
   }
   return 0;

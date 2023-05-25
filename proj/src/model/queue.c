@@ -1,7 +1,7 @@
 #include "queue.h"
 
 Queue *pos_queue = NULL;
-Queue *garbage = NULL;
+// Queue *garbage = NULL;
 
 int queue_size(Queue **queue) {
   if (*queue == NULL) return 0;
@@ -48,16 +48,19 @@ void queue_pop(Queue **queue) {
     *queue = NULL;
     return;
   }
+  Node *old_front = (*queue)->front;
   (*queue)->front = (*queue)->front->prev;
+  free(old_front->data);  
+  free(old_front); 
   (*queue)->size--;
 }
 
 void queue_clear(Queue **queue) {
   while (*queue != NULL) {
-    Node *old_front = (*queue)->front;
+    // Node *old_front = (*queue)->front;
     queue_pop(queue);
-    free(old_front->data);  
-    free(old_front); 
+    // free(old_front->data);  
+    // free(old_front); 
   }
 }
 

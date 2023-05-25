@@ -21,7 +21,7 @@ int game_counter;
 int offset;
 
 extern struct Queue *pos_queue;
-extern struct Queue *garbage;
+// extern struct Queue *garbage;
 int word_guess[10] = {-1};
 int number_letters = 0;
 
@@ -65,7 +65,7 @@ void update_mouse_state() {
                                 break;
                         }
                         queue_clear(&pos_queue);
-                        queue_clear(&garbage);
+                        // queue_clear(&garbage);
                     }
                     if (y >= 150) {
                         Position *position = (Position *) malloc(sizeof(Position));
@@ -79,12 +79,12 @@ void update_mouse_state() {
                     }
                 } else {
                     queue_clear(&pos_queue);
-                    queue_clear(&garbage);
+                    // queue_clear(&garbage);
                 }
                 if (get_mouse_packet()->rb) {
                     reset_frame();
                     queue_clear(&pos_queue);
-                    queue_clear(&garbage);
+                    // queue_clear(&garbage);
                 }
                 if(menuState == START){
                 }         
@@ -111,11 +111,13 @@ void update_timer_state() {
             menuState = START;
         }
     }
-    printf("Queue size:     %d\n", queue_size(&garbage));
-    printf("Garbage size:   %d\n", queue_size(&garbage));
+    // printf("Queue size:     %d\n", queue_size(&garbage));
+    // printf("Garbage size:   %d\n", queue_size(&garbage));
     // if (queue_size(&garbage) > QUEUE_LIMIT)
     //     queue_clear(&garbage);
-    
+    // if (queue_size(&pos_queue) > QUEUE_LIMIT)
+    //     queue_clear(&pos_queue);
+
     draw_new_frame();
 
 }
