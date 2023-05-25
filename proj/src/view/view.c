@@ -7,6 +7,8 @@ extern Sprite* startButton;
 extern Sprite* numbers;
 extern Sprite* letters;
 extern uint16_t bytes_per_pixel;
+extern Sprite* leaderboardTable;
+extern struct leaderboardValue leaderboard[5];
 
 extern int x, y;
 vbe_mode_info_t vmi_p;
@@ -35,18 +37,18 @@ void draw_new_frame() {
 
 
 void draw_mouse() {
-    draw_sprite_xpm(mouse, x, y, false);
+    draw_sprite_xpm(mouse, x, y);
 }
 
 void draw_initial_menu() {
-    draw_sprite_xpm(startButton, 451, 300, false);
-    draw_sprite_xpm(quitButton, 451, 500, false);
+    draw_sprite_xpm(startButton, 451, 300);
+    draw_sprite_xpm(quitButton, 451, 500);
     
 }
 
 void draw_game_menu() {
     if (gameState == DRAW) {
-        draw_sprite_xpm(chooseColors, 0, 0, false);
+        draw_sprite_xpm(chooseColors, 0, 0);
         }
     else if (gameState == GUESS) draw_bar(0,0,1152,150,GREY);
     draw_bottom_bar(0,750,1152,114, GREY,80,780,900,70);
@@ -56,10 +58,41 @@ void draw_game_menu() {
 }
 
 void draw_finish_menu() {
-    
+    draw_sprite_xpm(leaderboardTable, 0 , 0);
+    int y_gap = 0;
+
+    for (int i = 0; i < 5; i++) {
+        int x_pos = 20;
+        int y_pos = 270 + y_gap;
+
+        draw_number(numbers, x_pos, y_pos, leaderboard[i].hour / 10);  
+        x_pos += 60;
+        if(leaderboard[i].hour > 9)
+            draw_number(numbers, x_pos, y_pos, leaderboard[i].hour % 10);  
+        x_pos += 170;
+
+        draw_number(numbers, x_pos, y_pos, leaderboard[i].minute / 10); 
+        x_pos += 60;
+        if(leaderboard[i].minute > 9)
+            draw_number(numbers, x_pos, y_pos, leaderboard[i].minute % 10);  
+        x_pos += 210;
+
+        draw_number(numbers, x_pos, y_pos, leaderboard[i].second / 10);  
+        x_pos += 60;
+        if(leaderboard[i].second > 9)
+            draw_number(numbers, x_pos, y_pos, leaderboard[i].second % 10);  
+        x_pos += 420;
+
+        draw_number(numbers, x_pos, y_pos, leaderboard[i].score / 10);  
+        x_pos += 60;
+        if(leaderboard[i].score > 9)
+            draw_number(numbers, x_pos, y_pos, leaderboard[i].score % 10);  
+        y_gap += 120;  
+    }
 }
 
-int draw_sprite_xpm(Sprite *sprite, int x, int y, bool letter) {
+
+int draw_sprite_xpm(Sprite *sprite, int x, int y) {
     uint16_t width;
     uint16_t height;
     width = sprite->width;

@@ -4,6 +4,7 @@ Sprite *mouse;
 Sprite *chooseColors;
 Sprite* quitButton;
 Sprite* startButton;
+Sprite* leaderboardTable;
 Sprite* numbers;
 Sprite* letters;
 
@@ -19,7 +20,7 @@ MenuState menuState = START;
 GameState gameState;
 int game_counter;
 int offset;
-
+struct leaderboardValue leaderboard[5] = {{0,0,0,0}};
 extern struct Queue *pos_queue;
 extern struct Queue *garbage;
 int word_guess[10] = {-1};
@@ -32,7 +33,7 @@ void setup_sprites() {
     startButton = create_sprite_xpm((xpm_map_t) startButton_xpm);
     numbers = create_sprite_xpm((xpm_map_t) numbers_xpm);
     letters = create_sprite_xpm((xpm_map_t) letters_xpm);
-
+    leaderboardTable = create_sprite_xpm((xpm_map_t) leaderboardTable_xpm);
 }
 
 void initGame(){
@@ -40,11 +41,29 @@ void initGame(){
     game_counter = ROUND_TIME;
 }
 
+void updateLeaderboard(leaderboardValue *newValue){
+    int insertIndex = -1;
+
+    for (int i = 0; i < 5; i++) {
+        if (newValue->score > leaderboard[i].score) {
+            insertIndex = i;
+            break;
+        }
+    }
+
+    if (insertIndex >= 0) {
+        for (int i = 4; i > insertIndex; i--) {
+            leaderboard[i] = leaderboard[i - 1];
+        }
+        leaderboard[insertIndex] = *newValue;
+    }
+
+}
+
 void update_mouse_state() {
     mouse_ih();
     parse_mouse_packet();
     if (get_byte_index() == 3) {
-        //nao se pode meter a desenhar a linha depois de desenhar a nova posiçao do cursor porque vai desenhar por cima
         switch (menuState) {
             case START:
                 if(get_mouse_packet()->lb){
@@ -106,6 +125,8 @@ void update_timer_state() {
         if (game_counter == 0){
             menuState = START;
         }
+    }else if(get_counter() % 30 == 0){
+        rtc_init();
     }
     // Se diminuirmos o base frame para nao ocupar a memoria onde fica a barra de cima e a de baixo so precisamos de dar print a barra de cima quando o rato esta por cima dela
     draw_new_frame();
@@ -146,8 +167,27 @@ void update_keyboard_state() {
             gameState = GUESS;
             break;
         case FOUR_KEY:
-            menuState = END;
-            break;
+            {
+                leaderboardValue* newValue = malloc(sizeof(leaderboardValue));
+                if (newValue == NULL) {
+                    printf("Error: Memory allocation failed.\n");
+                    break;
+                }
+                
+                newValue->hour = curr_time.hour;
+                newValue->minute = curr_time.minute;
+                newValue->second = curr_time.second;
+                newValue->score = game_counter;
+                
+                updateLeaderboard(newValue);
+                menuState = END;
+                
+                free(newValue); 
+                menuState = END;
+                reset_frame();
+                break;            
+            }
+           
         default:
             read_letter(get_scancode(), word_guess, &number_letters);
             break;
