@@ -95,15 +95,15 @@ int read_letter(int scancode, int* word_guess, int* number_letters) {
         word_guess[*number_letters] = scancode - Z_KEY + 19;
         (*number_letters)++;}
     }
-    if(scancode == BACKSPACE_KEY && *number_letters != 0){
+    if (scancode == BACKSPACE_KEY && *number_letters != 0){
     (*number_letters)--;
     word_guess[*number_letters] = -1;
-    }else if (scancode == SPACE_KEY) {
+    }
+    else if (scancode == SPACE_KEY) {
       for (int i = 0; i < *number_letters; i++) {
           word_guess[i] = -1;
       }
       *number_letters = 0;
     }
-
     return 0;
 }

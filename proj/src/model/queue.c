@@ -67,7 +67,6 @@ void queue_print(Queue **queue) {
   Node *temp = (*queue)->front;
   printf("|       |\nv Front v\n_________\n");
   while (temp != NULL) {
-    // mouse_print_packet(&temp->mouse_packet);
     printf("X: %d      Y: %d\n", temp->position->x, temp->position->y);
     temp = temp->prev;
   }
