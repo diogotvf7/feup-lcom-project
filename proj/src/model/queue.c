@@ -38,7 +38,7 @@ void queue_push(Queue **queue, Position *position) {
     (*queue)->size++;
   }
   if ((*queue)->size > QUEUE_LIMIT) 
-    queue_pop(queue);  
+    queue_clear(queue);
 }
 
 void queue_pop(Queue **queue) {
@@ -57,6 +57,7 @@ void queue_clear(Queue **queue) {
   while (*queue != NULL) {
     Node *old_front = (*queue)->front;
     queue_pop(queue);
+    free(old_front->position);  
     free(old_front); 
   }
 }

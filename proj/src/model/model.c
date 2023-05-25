@@ -28,6 +28,8 @@ void update_mouse_state() {
         if (get_mouse_packet()->lb) {
             if (y < 150) {
                 updateDrawSpecs(&color, &radius);
+                queue_clear(&pos_queue);
+                queue_clear(&garbage);
             }
             if (y >= 150) {
                 Position *position = (Position *) malloc(sizeof(Position));
@@ -36,11 +38,13 @@ void update_mouse_state() {
                 queue_push(&pos_queue, position);
             }
         } else {
-            queue_clear(&pos_queue); // ???
-            queue_clear(&garbage); // ???
+            queue_clear(&pos_queue);
+            queue_clear(&garbage);
         }
         if (get_mouse_packet()->rb) {
             reset_frame();
+            queue_clear(&pos_queue);
+            queue_clear(&garbage);
         }
         updateMouseLocation();
     }
@@ -66,8 +70,6 @@ void update_timer_state() {
                 struct Position *position2 = queue_front(&pos_queue);
                 draw_bresenham_line(position1, position2, color, radius);
             }
-            printf("pos_queue size: %d\n", queue_size(&pos_queue));
-            printf("garbage size: %d\n", queue_size(&garbage));
         }
     }
     // Se diminuirmos o base frame para nao ocupar a memoria onde fica a barra de cima e a de baixo so precisamos de dar print a barra de cima quando o rato esta por cima dela
