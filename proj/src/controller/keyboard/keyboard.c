@@ -82,16 +82,20 @@ int (keyboard_restore)() {
 }
 
 int read_letter(int scancode, int* word_guess, int* number_letters) {
-    if (scancode == A_KEY) {
-      word_guess[*number_letters] = 0;
+    if (scancode >= Q_KEY && scancode <= P_KEY) {
+      word_guess[*number_letters] = scancode - Q_KEY;
       (*number_letters)++;
     }
-    else if (scancode == B_KEY) {
-      word_guess[*number_letters] = 1;
-      (*number_letters)++;
-    }else if(scancode == BACKSPACE_KEY){
-      (*number_letters)--;
-      word_guess[*number_letters] = -1;
+    else if (scancode >= A_KEY && scancode <= L_KEY) {
+      word_guess[*number_letters] = scancode - A_KEY + 10;
+      (*number_letters)++; 
+    }
+    else if (scancode >= Z_KEY && scancode <= M_KEY) {
+      word_guess[*number_letters] = scancode - Z_KEY + 19;
+      (*number_letters)++;}
+    else if(scancode == BACKSPACE_KEY && *number_letters != 0){
+    (*number_letters)--;
+    word_guess[*number_letters] = -1;
     }else if (scancode == SPACE_KEY) {
       for (int i = 0; i < *number_letters; i++) {
           word_guess[i] = -1;

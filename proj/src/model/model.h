@@ -17,6 +17,7 @@
 #include "global_vars.h"
 #include "xpm/letters.xpm"
 #include "xpm/numbers.xpm"
+#include "xpm/font.xpm"
 
 typedef enum{
     RUNNING, 

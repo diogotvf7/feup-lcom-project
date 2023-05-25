@@ -22,7 +22,7 @@ int offset;
 
 extern struct Queue *pos_queue;
 extern struct Queue *garbage;
-int word_guess[10] = {-1};
+int word_guess[12] = {-1};
 int number_letters = 0;
 
 void setup_sprites() {
@@ -31,8 +31,7 @@ void setup_sprites() {
     quitButton = create_sprite_xpm((xpm_map_t) quitButton_xpm);
     startButton = create_sprite_xpm((xpm_map_t) startButton_xpm);
     numbers = create_sprite_xpm((xpm_map_t) numbers_xpm);
-    letters = create_sprite_xpm((xpm_map_t) letters_xpm);
-
+    letters = create_sprite_xpm((xpm_map_t) font_xpm);
 }
 
 void initGame(){
