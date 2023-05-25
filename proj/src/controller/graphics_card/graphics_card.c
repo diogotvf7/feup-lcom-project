@@ -44,7 +44,7 @@ int (vg_draw_hline)(uint16_t x, uint16_t y, uint16_t len, uint32_t color) {
 
 int (vg_draw_rectangle)(uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint32_t color) {
   for (int i = 0; i < height; i++, y++)
-      vg_draw_hline(x, y, width, color);
+    vg_draw_hline(x, y, width, color);
   return EXIT_SUCCESS;
 }
 
@@ -87,10 +87,8 @@ int (vg_flip_frame) () {
     fprintf(stderr, "vg_flip_frame(): video_mem is NULL\n");
     return EXIT_FAILURE;
   }
-
   reg86_t reg86;
   bzero(&reg86, sizeof reg86);
-  
   reg86.intno = GRAPHICS_INT_NO;
   reg86.ah = VESA_FUNC;
   reg86.al = SET_DISPLAY_START;
@@ -116,10 +114,8 @@ int (vg_flip_frame) () {
 int (copy_base_frame)(frame_buffer_t frame_buffer) {
   if (video_mem == NULL) 
     return EXIT_FAILURE;
-
   if (memcpy(video_mem + page_index * v_res * h_res * bytes_per_pixel, frame_buffer.base_addr, frame_buffer.size) == NULL)
     return EXIT_FAILURE;
-
   return EXIT_SUCCESS;
 }
 

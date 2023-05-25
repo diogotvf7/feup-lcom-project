@@ -25,6 +25,10 @@
     "utility": "c",
     "algorithm": "c",
     "sprite.h": "c",
+    "kbc.h": "c",
+    "queue.h": "c",
+    "colors.h": "c",
+    "global_vars.h": "c",
     "*.xpm": "c"
   },
 }
