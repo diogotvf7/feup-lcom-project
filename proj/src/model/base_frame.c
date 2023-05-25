@@ -7,6 +7,8 @@ uint8_t _bytes_per_pixel;
 unsigned _size;
 uint8_t *_base_addr;
 
+extern Queue *garbage;
+
 void create_frame_buffer(uint16_t width, uint16_t height, uint16_t bytes_per_pixel) {
   frame_buffer.width = width;
   frame_buffer.height = height;
@@ -16,12 +18,10 @@ void create_frame_buffer(uint16_t width, uint16_t height, uint16_t bytes_per_pix
   memset(frame_buffer.base_addr, WHITE, frame_buffer.size);
 }
 
-int draw_frame_pixel(uint16_t x, uint16_t y, uint32_t color) {
-  if (frame_buffer.base_addr == NULL) 
-    return EXIT_FAILURE;
+void draw_frame_pixel(uint16_t x, uint16_t y, uint32_t color) {
+  if (frame_buffer.base_addr == NULL) return;
 
-  if (x >= frame_buffer.width || x < 0 || y >= frame_buffer.height || y < 0)
-    return EXIT_FAILURE;
+  if (x >= frame_buffer.width || x < 0 || y >= frame_buffer.height || y < 0) return;
 
   int pixel_pos = frame_buffer.width * y + x;
   int byte_offset = pixel_pos * frame_buffer.bytes_per_pixel;
@@ -30,9 +30,7 @@ int draw_frame_pixel(uint16_t x, uint16_t y, uint32_t color) {
     &frame_buffer.base_addr[byte_offset], 
     &color, 
     (unsigned) frame_buffer.bytes_per_pixel) == NULL)
-      return EXIT_FAILURE;
-
-  return EXIT_SUCCESS;
+      return;
 }
 
 void draw_frame_circle(Position *p, uint16_t thickness, uint32_t color) {
@@ -41,7 +39,7 @@ void draw_frame_circle(Position *p, uint16_t thickness, uint32_t color) {
       draw_frame_pixel(p->x + i, p->y + j, color);
     }
   }
-  free(p);
+  queue_push(&garbage, p);
 }
 
 void draw_bresenham_line(Position *p1, Position *p2, uint32_t color, uint16_t thickness) {
@@ -75,8 +73,8 @@ void draw_bresenham_line(Position *p1, Position *p2, uint32_t color, uint16_t th
       p1->y += sy;
     }
   }
-  free(p1);
-  free(p2);
+  queue_push(&garbage, p1);
+  queue_push(&garbage, p2);
 }
 
 

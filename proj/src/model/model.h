@@ -5,7 +5,7 @@
 #include "controller/rtc/rtc.h"
 #include "controller/keyboard/keyboard.h"
 #include "controller/graphics_card/graphics_card.h"
-#include "model/mouse_packet_queue.h"
+#include "model/queue.h"
 #include "controller/timer/timer.h"
 #include "view/view.h"
 #include "colors.h"

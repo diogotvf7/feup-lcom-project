@@ -7,11 +7,13 @@ uint8_t scancode_arr[2];
 extern int x, y;
 extern frame_buffer_t frame_buffer;
 extern real_time curr_time;
-extern Queue *mouse_packet_queue;
 uint32_t color = RED;
 int radius = 10;
 SystemState systemState = RUNNING;
 MenuState menuState = START; 
+
+extern struct Queue *pos_queue;
+extern struct Queue *garbage;
 
 void setup_sprites() {
     chooseColors = create_sprite_xpm((xpm_map_t) topBarGameMode_xpm);
@@ -31,10 +33,11 @@ void update_mouse_state() {
                 Position *position = (Position *) malloc(sizeof(Position));
                 position->x = x;
                 position->y = y;
-                packet_queue_push(position);
+                queue_push(&pos_queue, position);
             }
         } else {
-            packet_queue_clear(); // ???
+            queue_clear(&pos_queue); // ???
+            queue_clear(&garbage); // ???
         }
         if (get_mouse_packet()->rb) {
             reset_frame();
@@ -45,25 +48,29 @@ void update_mouse_state() {
 
 void update_timer_state() {
     timer_int_handler();
-    if (get_counter() % 1 == 0) {
-        vg_flip_frame();
-        copy_base_frame(frame_buffer);
+    vg_flip_frame();
+    copy_base_frame(frame_buffer);
 
+    if (get_counter() % 1 == 0) {
         for (int i = PACKETS_PER_INTERRUPT; i; i--) {
-            int queue_size = packet_queue_size();
-            if (queue_size == 0) break;
-            struct Position *position1 = packet_queue_front();
-            packet_queue_pop();
-            if (queue_size == 1) {
-                // draw_frame_circle(position1, radius, color);
+            // queue_print(&pos_queue);
+            int size = queue_size(&pos_queue);
+            if (size == 0) break;
+            struct Position *position1 = queue_front(&pos_queue);
+
+            if (size == 1) {
+                draw_frame_circle(position1, radius, color);
                 break;
             } else {
-                struct Position *position2 = packet_queue_front();
+                queue_pop(&pos_queue);
+                struct Position *position2 = queue_front(&pos_queue);
                 draw_bresenham_line(position1, position2, color, radius);
             }
+            printf("pos_queue size: %d\n", queue_size(&pos_queue));
+            printf("garbage size: %d\n", queue_size(&garbage));
         }
     }
-
+    // Se diminuirmos o base frame para nao ocupar a memoria onde fica a barra de cima e a de baixo so precisamos de dar print a barra de cima quando o rato esta por cima dela
     draw_new_frame();
 }
 
