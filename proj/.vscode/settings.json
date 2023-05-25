@@ -4,6 +4,9 @@
         "model.h": "c",
         "graphics_card.h": "c",
         "cstdlib": "c",
-        "*.xpm": "c"
+        "*.xpm": "c",
+        "mouse.h": "c",
+        "view.h": "c",
+        "timer.h": "c"
     }
 }

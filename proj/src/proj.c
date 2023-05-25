@@ -18,6 +18,7 @@ message msg;
 extern uint16_t bytes_per_pixel;
 extern uint16_t h_res;
 extern uint16_t v_res;
+extern SystemState systemState;
 
 int(main)(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -25,11 +26,11 @@ int(main)(int argc, char *argv[]) {
 
   // enables to log function invocations that are being "wrapped" by LCF
   // [comment this out if you don't want/need it]
-  lcf_trace_calls("/home/lcom/labs/g1/proj/src/trace.txt");
+  lcf_trace_calls("trace.txt");
 
   // enables to save the output of printf function calls on a file
   // [comment this out if you don't want/need it]
-  lcf_log_output("/home/lcom/labs/g1/proj/src/output.txt");
+  lcf_log_output("C:/Users/Daniel Rebelo/uni/lcom/shared/g1/proj/src/output.txt");
 
   // handles control over to LCF
   // [LCF handles command line arguments and invokes the right function]
@@ -62,6 +63,8 @@ int (start_settings)() {
 
   create_frame_buffer(h_res, v_res, bytes_per_pixel);
 
+  
+
   return 0;  
 }
 
@@ -83,7 +86,7 @@ int (proj_main_loop)(int argc, char **argv) {
 
   if (start_settings() != 0) return 1;
 
-  while (get_scancode() != ESC_BREAK) {
+  while (systemState == RUNNING) {
     if ((r = driver_receive(ANY, &msg, &ipc_status)) != OK) {
       printf("driver_receive failed with: %d", r);
       continue;

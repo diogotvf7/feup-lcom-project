@@ -11,9 +11,16 @@
 #include "colors.h"
 #include "xpm/mouse.xpm"
 #include "xpm/topBarGameMode.xpm"
+#include "xpm/quitButton.xpm"
+#include "xpm/startButton.xpm"
 #include "model/base_frame.h"
 #include "global_vars.h"
+#include "xpm/a.xpm"
+#include "xpm/b.xpm"
+#include "xpm/numbers.xpm"
 
+
+#define ROUND_TIME 60
 
 typedef enum{
     RUNNING, 
@@ -25,6 +32,11 @@ typedef enum{
     GAME,
     END
 } MenuState;
+
+typedef enum{
+    DRAW,
+    GUESS
+} GameState;
 
 void update_timer_state();
 void update_keyboard_state();

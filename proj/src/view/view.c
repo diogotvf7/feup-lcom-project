@@ -2,10 +2,17 @@
 
 extern Sprite* mouse;
 extern Sprite* chooseColors;
+extern Sprite* quitButton;
+extern Sprite* startButton;
+extern Sprite* numbers;
+extern uint16_t bytes_per_pixel;
 
 extern int x, y;
 vbe_mode_info_t vmi_p;
 extern MenuState menuState;
+extern GameState gameState;
+extern int game_counter;
+int letter_pos = 0;
 
 void draw_new_frame() {
     switch(menuState){
@@ -22,31 +29,39 @@ void draw_new_frame() {
     }
     draw_mouse();
 
-
 }
 
-void draw_mouse() {
-    //vg_draw_rectangle(0, 0, vmi_p.XResolution, vmi_p.YResolution, 0x00000);
-    draw_sprite_xpm(mouse, x, y);
 
+void draw_mouse() {
+    draw_sprite_xpm(mouse, x, y, false);
 }
 
 void draw_initial_menu() {
-
+    draw_sprite_xpm(startButton, 451, 300, false);
+    draw_sprite_xpm(quitButton, 451, 500, false);
+    
 }
 
 void draw_game_menu() {
-    draw_sprite_xpm(chooseColors, 0, 0);
-  //  draw_mouse();
+    if (gameState == DRAW) {
+        draw_sprite_xpm(chooseColors, 0, 0, false);
+        }
+    else if (gameState == GUESS) draw_bar(0,0,1152,150,GREY);
+    draw_bottom_bar(0,750,1152,114, GREY,80,780,900,70);
+    draw_game_time(game_counter);
+
+
 }
 
 void draw_finish_menu() {
     
 }
 
-int draw_sprite_xpm(Sprite *sprite, int x, int y) {
-    uint16_t width = sprite->width;
-    uint16_t height = sprite->height;
+int draw_sprite_xpm(Sprite *sprite, int x, int y, bool letter) {
+    uint16_t width;
+    uint16_t height;
+    width = sprite->width;
+    height = sprite->height;
     uint32_t current_color;
     for(uint16_t h = 0; h < height; h++) {
         for(uint16_t w = 0; w < width; w++) {
@@ -57,7 +72,79 @@ int draw_sprite_xpm(Sprite *sprite, int x, int y) {
         }
     }
     return 0;
-
 }
+
+
+int draw_bar(int x, int y, int width, int height, uint32_t color){
+    for (uint16_t h = 0; h < height; h++){
+        for (uint16_t w = 0; w < width; w++){
+            vg_draw_pixel(x + w, y + h, color);
+        }
+    }
+    return 0;
+}
+
+int draw_bottom_bar(int x, int y, int width, int height, uint32_t color, int square_vertex_x , int square_vertex_y , int square_width , int square_height){
+    
+    for (uint16_t h = 0; h < height; h++){
+        for (uint16_t w = 0; w < width; w++){
+            // (x+w),(y+h) -> position to draw 
+            if ( (x + w >= square_vertex_x && x + w <= square_vertex_x + square_width) && (y + h >= square_vertex_y && y + h <=  square_vertex_y + square_height)) vg_draw_pixel(x + w, y + h, WHITE);
+            else {
+                vg_draw_pixel(x + w, y + h, color);
+            }
+        }
+    }
+    return 0;
+}
+
+int draw_letter(int x, int y, int offset){
+   // draw_sprite_xpm(letter, x + letter_pos *  75, y);
+    letter_pos++;
+    return 0;
+}
+
+
+int draw_number(Sprite* sprite, int x, int y, int index){
+    uint16_t width = 70;
+    uint16_t height = 70;
+    uint16_t img_width = sprite->width;
+
+    uint32_t current_color;
+    for(uint16_t h = 0; h < height; h++) {
+        for(uint16_t w = 0; w < width; w++) {
+            current_color = sprite->colors[(70 * index  + w) + (img_width * h)];
+            if(current_color != TRANSPARENT) {
+                vg_draw_pixel(x + w, y + h, current_color);
+            }
+        }
+    }
+    return 0;
+
+    return 0;
+}
+
+int draw_game_time(int num)
+{   
+    int arr[2];
+    int i = 0;
+    int j, r;
+  
+    while (num != 0) {
+        r = num % 10;
+        arr[i] = r;
+        i++;
+        num = num / 10;
+    }
+    
+    int length = 0;
+    for (j = i - 1; j > -1; j--) {
+        draw_number(numbers, 1000 + length * 75, 780, arr[j]);
+        length++;
+
+    }
+    return 0;
+}
+
 
 
