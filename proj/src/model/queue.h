@@ -9,9 +9,13 @@ typedef struct Position {
 } Position;
 
 typedef struct Node {
-  struct Position *position;
+  void *data;
+  int remaining;
+  int size;
   struct Node *prev;
 } Node;
+
+
 
 typedef struct Queue {
   int size;
@@ -23,15 +27,15 @@ int queue_size(Queue **queue);
 
 int queue_empty(Queue **queue);
 
-struct Position *queue_front(Queue **queue);
+void *queue_front(Queue **queue);
 
 // struct Position *get_back(Queue **queue);
 
-void queue_push(Queue **queue, Position *position);
+void queue_push(Queue **queue, void *data, int size);
 
 void queue_pop(Queue **queue);
 
 void queue_clear(Queue **queue);
 
-void queue_print(Queue **queue);
+// void queue_print(Queue **queue);
 
