@@ -103,7 +103,7 @@ int draw_bottom_bar(int x, int y, int width, int height, uint32_t color, int squ
 int draw_word(){
     int letter_pos = 0;
     for(int i = 0; i < number_letters; i++){
-        draw_letter(100 + letter_pos * 75, 770, word_guess[i]);
+        draw_letter(80 + letter_pos * 60, 780, word_guess[i]);
         letter_pos++;
     }
 

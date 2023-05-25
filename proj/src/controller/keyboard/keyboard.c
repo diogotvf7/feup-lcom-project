@@ -82,7 +82,7 @@ int (keyboard_restore)() {
 }
 
 int read_letter(int scancode, int* word_guess, int* number_letters) {
-    if (*number_letters < 12){
+    if (*number_letters < 15){
       if (scancode >= Q_KEY && scancode <= P_KEY) {
         word_guess[*number_letters] = scancode - Q_KEY;
         (*number_letters)++;
