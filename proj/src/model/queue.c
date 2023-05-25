@@ -1,7 +1,6 @@
 #include "queue.h"
 
 Queue *pos_queue = NULL;
-// Queue *garbage = NULL;
 
 int queue_size(Queue **queue) {
   if (*queue == NULL) return 0;
@@ -25,7 +24,6 @@ void *queue_front(Queue **queue) {
 void queue_push(Queue **queue, void *data, int size) {  
   Node *n = (Node *)malloc(sizeof(Node));
   n->data = (uint16_t *) data;
-  // printf("------> Pushing: %p\n", data);
   n->remaining = size;
   n->size = size;
   n->prev = NULL;
@@ -57,10 +55,7 @@ void queue_pop(Queue **queue) {
 
 void queue_clear(Queue **queue) {
   while (*queue != NULL) {
-    // Node *old_front = (*queue)->front;
     queue_pop(queue);
-    // free(old_front->data);  
-    // free(old_front); 
   }
 }
 

@@ -21,7 +21,6 @@ int game_counter;
 int offset;
 
 extern struct Queue *pos_queue;
-// extern struct Queue *garbage;
 int word_guess[10] = {-1};
 int number_letters = 0;
 
@@ -44,7 +43,6 @@ void update_mouse_state() {
     mouse_ih();
     parse_mouse_packet();
     if (get_byte_index() == 3) {
-        //nao se pode meter a desenhar a linha depois de desenhar a nova posiçao do cursor porque vai desenhar por cima
         switch (menuState) {
             case START:
                 if(get_mouse_packet()->lb){
@@ -65,26 +63,19 @@ void update_mouse_state() {
                                 break;
                         }
                         queue_clear(&pos_queue);
-                        // queue_clear(&garbage);
                     }
                     if (y >= 150) {
                         Position *position = (Position *) malloc(sizeof(Position));
                         position->x = x;
                         position->y = y;
-                        // printf("\n_____ Sending _____\n");
-                        // printf("Position: %p\n", position);
-                        // printf("x: %d, y: %d\n", x, y);
-                        // printf("p->x: %d, p->y: %d\n", position->x, position->y);
                         queue_push(&pos_queue, position, sizeof(Position));
                     }
                 } else {
                     queue_clear(&pos_queue);
-                    // queue_clear(&garbage);
                 }
                 if (get_mouse_packet()->rb) {
                     reset_frame();
                     queue_clear(&pos_queue);
-                    // queue_clear(&garbage);
                 }
                 if(menuState == START){
                 }         
@@ -111,10 +102,7 @@ void update_timer_state() {
             menuState = START;
         }
     }
-    // printf("Queue size:     %d\n", queue_size(&garbage));
-    // printf("Garbage size:   %d\n", queue_size(&garbage));
-    // if (queue_size(&garbage) > QUEUE_LIMIT)
-    //     queue_clear(&garbage);
+    printf("Queue size:     %d\n", queue_size(&pos_queue));
     // if (queue_size(&pos_queue) > QUEUE_LIMIT)
     //     queue_clear(&pos_queue);
 
