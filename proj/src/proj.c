@@ -8,6 +8,7 @@
 #include "model/model.h"
 #include "model/base_frame.h"
 
+#include "global_vars.h"
 #include <lcom/lcf.h>
 #include <lcom/video_gr.h>
 
@@ -25,11 +26,11 @@ int(main)(int argc, char *argv[]) {
 
   // enables to log function invocations that are being "wrapped" by LCF
   // [comment this out if you don't want/need it]
-  lcf_trace_calls("trace.txt");
+  lcf_trace_calls("/home/lcom/labs/proj/src/trace.txt");
 
   // enables to save the output of printf function calls on a file
   // [comment this out if you don't want/need it]
-  lcf_log_output("C:/Users/Daniel Rebelo/uni/lcom/shared/g1/proj/src/output.txt");
+  lcf_log_output("/home/lcom/labs/proj/src/output.txt");
 
   // handles control over to LCF
   // [LCF handles command line arguments and invokes the right function]
@@ -57,7 +58,7 @@ int (start_settings)() {
     return EXIT_FAILURE;
   if (mouse_subscribe_int(&irq_set_mouse) != OK)
     return EXIT_FAILURE;
-  if (timer_set_frequency(SEL_TIMER0, 30) != OK)
+  if (timer_set_frequency(SEL_TIMER0, FPS) != OK)
     return EXIT_FAILURE;
 
   create_frame_buffer(h_res, v_res, bytes_per_pixel);

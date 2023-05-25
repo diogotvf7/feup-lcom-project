@@ -85,5 +85,7 @@
 #define Y_KEY 21
 #define Z_KEY 44
 #define BACKSPACE_KEY 0x0E
+#define SPACE_KEY 57
+
 
 #endif

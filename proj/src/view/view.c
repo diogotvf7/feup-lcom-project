@@ -5,6 +5,7 @@ extern Sprite* chooseColors;
 extern Sprite* quitButton;
 extern Sprite* startButton;
 extern Sprite* numbers;
+extern Sprite* letters;
 extern uint16_t bytes_per_pixel;
 
 extern int x, y;
@@ -12,7 +13,8 @@ vbe_mode_info_t vmi_p;
 extern MenuState menuState;
 extern GameState gameState;
 extern int game_counter;
-int letter_pos = 0;
+extern int number_letters;
+extern int word_guess[10];
 
 void draw_new_frame() {
     switch(menuState){
@@ -49,7 +51,7 @@ void draw_game_menu() {
     else if (gameState == GUESS) draw_bar(0,0,1152,150,GREY);
     draw_bottom_bar(0,750,1152,114, GREY,80,780,900,70);
     draw_game_time(game_counter);
-
+    draw_word();
 
 }
 
@@ -98,10 +100,33 @@ int draw_bottom_bar(int x, int y, int width, int height, uint32_t color, int squ
     return 0;
 }
 
-int draw_letter(int x, int y, int offset){
-   // draw_sprite_xpm(letter, x + letter_pos *  75, y);
-    letter_pos++;
+int draw_word(){
+    int letter_pos = 0;
+    for(int i = 0; i < number_letters; i++){
+        draw_letter(100 + letter_pos * 75, 770, word_guess[i]);
+        letter_pos++;
+    }
+
     return 0;
+}
+
+int draw_letter(int x, int y, int letter_index){
+
+    uint16_t width = 70;
+    uint16_t height = 70;
+    uint16_t img_width = letters->width;
+
+    uint32_t current_color;
+    for(uint16_t h = 0; h < height; h++) {
+        for(uint16_t w = 0; w < width; w++) {
+            current_color = letters->colors[(70 * letter_index  + w) + (img_width * h)];
+            if(current_color != TRANSPARENT) {
+                vg_draw_pixel(x + w, y + h, current_color);
+            }
+        }
+    }
+    return 0;
+
 }
 
 
@@ -121,7 +146,6 @@ int draw_number(Sprite* sprite, int x, int y, int index){
     }
     return 0;
 
-    return 0;
 }
 
 int draw_game_time(int num)
@@ -139,7 +163,7 @@ int draw_game_time(int num)
     
     int length = 0;
     for (j = i - 1; j > -1; j--) {
-        draw_number(numbers, 1000 + length * 75, 780, arr[j]);
+        draw_number(numbers, 1000 + length * 60, 780, arr[j]);
         length++;
 
     }

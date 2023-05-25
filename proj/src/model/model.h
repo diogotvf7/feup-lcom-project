@@ -5,6 +5,7 @@
 #include "controller/rtc/rtc.h"
 #include "controller/keyboard/keyboard.h"
 #include "controller/graphics_card/graphics_card.h"
+#include "model/queue.h"
 #include "controller/timer/timer.h"
 #include "view/view.h"
 #include "colors.h"
@@ -13,12 +14,9 @@
 #include "xpm/quitButton.xpm"
 #include "xpm/startButton.xpm"
 #include "model/base_frame.h"
-#include "xpm/a.xpm"
-#include "xpm/b.xpm"
+#include "global_vars.h"
+#include "xpm/letters.xpm"
 #include "xpm/numbers.xpm"
-
-
-#define ROUND_TIME 60
 
 typedef enum{
     RUNNING, 
