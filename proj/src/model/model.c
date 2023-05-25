@@ -71,7 +71,11 @@ void update_mouse_state() {
                         Position *position = (Position *) malloc(sizeof(Position));
                         position->x = x;
                         position->y = y;
-                        queue_push(&pos_queue, position);
+                        // printf("\n_____ Sending _____\n");
+                        // printf("Position: %p\n", position);
+                        // printf("x: %d, y: %d\n", x, y);
+                        // printf("p->x: %d, p->y: %d\n", position->x, position->y);
+                        queue_push(&pos_queue, position, sizeof(Position));
                     }
                 } else {
                     queue_clear(&pos_queue);
@@ -107,7 +111,11 @@ void update_timer_state() {
             menuState = START;
         }
     }
-    // Se diminuirmos o base frame para nao ocupar a memoria onde fica a barra de cima e a de baixo so precisamos de dar print a barra de cima quando o rato esta por cima dela
+    printf("Queue size:     %d\n", queue_size(&garbage));
+    printf("Garbage size:   %d\n", queue_size(&garbage));
+    // if (queue_size(&garbage) > QUEUE_LIMIT)
+    //     queue_clear(&garbage);
+    
     draw_new_frame();
 
 }

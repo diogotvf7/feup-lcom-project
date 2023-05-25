@@ -12,9 +12,9 @@ int queue_empty(Queue **queue) {
   return *queue == NULL;
 } 
 
-Position *queue_front(Queue **queue) {
+void *queue_front(Queue **queue) {
   if (*queue == NULL) return NULL;
-  return (*queue)->front->position;
+  return (*queue)->front->data;
 }
 
 // Position *back(Queue **queue) {
@@ -22,9 +22,12 @@ Position *queue_front(Queue **queue) {
 //   return (*queue)->back->position;
 // }
 
-void queue_push(Queue **queue, Position *position) {    
+void queue_push(Queue **queue, void *data, int size) {  
   Node *n = (Node *)malloc(sizeof(Node));
-  n->position = position;
+  n->data = (uint16_t *) data;
+  // printf("------> Pushing: %p\n", data);
+  n->remaining = size;
+  n->size = size;
   n->prev = NULL;
   if (*queue == NULL) {
     *queue = (Queue *)malloc(sizeof(Queue));
@@ -37,8 +40,6 @@ void queue_push(Queue **queue, Position *position) {
     (*queue)->back = n;
     (*queue)->size++;
   }
-  if ((*queue)->size > QUEUE_LIMIT) 
-    queue_clear(queue);
 }
 
 void queue_pop(Queue **queue) {
@@ -47,31 +48,28 @@ void queue_pop(Queue **queue) {
     *queue = NULL;
     return;
   }
-  // Node *old_front = (*queue)->front;
   (*queue)->front = (*queue)->front->prev;
   (*queue)->size--;
-  // free(old_front); 
 }
 
 void queue_clear(Queue **queue) {
   while (*queue != NULL) {
     Node *old_front = (*queue)->front;
     queue_pop(queue);
-    free(old_front->position);  
+    free(old_front->data);  
     free(old_front); 
   }
 }
 
-void queue_print(Queue **queue) {
-  if (*queue == NULL) return;
-  Node *temp = (*queue)->front;
-  printf("|       |\nv Front v\n_________\n");
-  while (temp != NULL) {
-    // mouse_print_packet(&temp->mouse_packet);
-    printf("X: %d      Y: %d\n", temp->position->x, temp->position->y);
-    temp = temp->prev;
-  }
-  printf("_________\n^ Back  ^\n|       |\n\n");
-}
+// void queue_print(Queue **queue) {
+//   if (*queue == NULL) return;
+//   Node *temp = (*queue)->front;
+//   printf("|       |\nv Front v\n_________\n");
+//   while (temp != NULL) {
+//     printf("X: %d      Y: %d\n", temp->data->x, temp->data->y);
+//     temp = temp->prev;
+//   }
+//   printf("_________\n^ Back  ^\n|       |\n\n");
+// }
 
 
