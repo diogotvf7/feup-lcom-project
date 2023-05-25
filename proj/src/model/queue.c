@@ -8,9 +8,9 @@ int queue_size(Queue **queue) {
   return (*queue)->size;
 }
 
-// int empty(Queue **queue) {
-//   return *queue == NULL;
-// } 
+int queue_empty(Queue **queue) {
+  return *queue == NULL;
+} 
 
 Position *queue_front(Queue **queue) {
   if (*queue == NULL) return NULL;

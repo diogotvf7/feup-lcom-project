@@ -21,7 +21,7 @@ typedef struct Queue {
 
 int queue_size(Queue **queue);
 
-// int empty(Queue **queue);
+int queue_empty(Queue **queue);
 
 struct Position *queue_front(Queue **queue);
 

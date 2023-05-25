@@ -7,6 +7,7 @@ uint8_t _bytes_per_pixel;
 unsigned _size;
 uint8_t *_base_addr;
 
+extern Queue *pos_queue;
 extern Queue *garbage;
 
 void create_frame_buffer(uint16_t width, uint16_t height, uint16_t bytes_per_pixel) {
@@ -77,6 +78,22 @@ void draw_bresenham_line(Position *p1, Position *p2, uint32_t color, uint16_t th
   queue_push(&garbage, p2);
 }
 
+int process_packet(uint32_t color, int radius) {
+  // queue_print(&pos_queue);
+  int size = queue_size(&pos_queue);
+  if (size == 0) return 1;
+  struct Position *position1 = queue_front(&pos_queue);
+
+  if (size == 1) {
+    draw_frame_circle(position1, radius, color);
+    return 1;
+  } else {
+    queue_pop(&pos_queue);
+    struct Position *position2 = queue_front(&pos_queue);
+    draw_bresenham_line(position1, position2, color, radius);
+  }
+  return 0;
+}
 
 void reset_frame() {
   memset(frame_buffer.base_addr, WHITE, frame_buffer.size);
