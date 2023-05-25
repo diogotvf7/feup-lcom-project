@@ -81,9 +81,24 @@ int (keyboard_restore)() {
   return EXIT_SUCCESS;
 }
 
-int read_letter(int scancode, int* offset){
-  if (scancode == A_KEY) *offset = 1;
-  else if (scancode == B_KEY) *offset = 2;
-  return 0;
+int read_letter(int scancode, int* word_guess, int* number_letters) {
+    if (scancode == A_KEY) {
+      word_guess[*number_letters] = 0;
+      (*number_letters)++;
+    }
+    else if (scancode == B_KEY) {
+      word_guess[*number_letters] = 1;
+      (*number_letters)++;
+    }else if(scancode == BACKSPACE_KEY){
+      (*number_letters)--;
+      word_guess[*number_letters] = -1;
+    }else if (scancode == SPACE_KEY) {
+      for (int i = 0; i < *number_letters; i++) {
+          word_guess[i] = -1;
+      }
+      *number_letters = 0;
+    }
+
+    return 0;
 }
 

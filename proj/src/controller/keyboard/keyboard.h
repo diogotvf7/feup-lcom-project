@@ -47,6 +47,6 @@ int (keyboard_write)(int port, uint8_t cmd);
 
 int (keyboard_restore)();
 
-int (read_letter)(int scancode, int* offset);
+int read_letter(int scancode, int* word_guess, int* number_letters);
 
 #endif /* __KEYBOARD_H */
