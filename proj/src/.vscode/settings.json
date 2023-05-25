@@ -29,6 +29,8 @@
     "queue.h": "c",
     "colors.h": "c",
     "global_vars.h": "c",
-    "*.xpm": "c"
+    "*.xpm": "c",
+    "cstdio": "c",
+    "model.h": "c"
   },
 }
