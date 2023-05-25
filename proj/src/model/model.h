@@ -15,8 +15,7 @@
 #include "xpm/startButton.xpm"
 #include "model/base_frame.h"
 #include "global_vars.h"
-#include "xpm/a.xpm"
-#include "xpm/b.xpm"
+#include "xpm/letters.xpm"
 #include "xpm/numbers.xpm"
 
 
