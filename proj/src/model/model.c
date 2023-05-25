@@ -4,6 +4,7 @@ Sprite *mouse;
 Sprite *chooseColors;
 Sprite* quitButton;
 Sprite* startButton;
+Sprite* leaderboardTable;
 Sprite* numbers;
 Sprite* letters;
 
@@ -19,7 +20,7 @@ MenuState menuState = START;
 GameState gameState;
 int game_counter;
 int offset;
-
+struct leaderboardValue leaderboard[5];
 extern struct Queue *pos_queue;
 extern struct Queue *garbage;
 int word_guess[12] = {-1};
@@ -32,6 +33,7 @@ void setup_sprites() {
     startButton = create_sprite_xpm((xpm_map_t) startButton_xpm);
     numbers = create_sprite_xpm((xpm_map_t) numbers_xpm);
     letters = create_sprite_xpm((xpm_map_t) font_xpm);
+    leaderboardTable = create_sprite_xpm((xpm_map_t) leaderboardTable_xpm);
 }
 
 void initGame(){
@@ -39,11 +41,29 @@ void initGame(){
     game_counter = ROUND_TIME;
 }
 
+void updateLeaderboard(leaderboardValue *newValue){
+    int insertIndex = -1;
+    printf("The value passed here is: %d\n", newValue->month);
+    for (int i = 0; i < 5; i++) {
+        if (newValue->score > leaderboard[i].score) {
+            insertIndex = i;
+            break;
+        }
+    }
+
+    if (insertIndex >= 0) {
+        for (int i = 4; i > insertIndex; i--) {
+            leaderboard[i] = leaderboard[i - 1];
+        }
+        leaderboard[insertIndex] = *newValue;
+    }
+
+}
+
 void update_mouse_state() {
     mouse_ih();
     parse_mouse_packet();
     if (get_byte_index() == 3) {
-        //nao se pode meter a desenhar a linha depois de desenhar a nova posiçao do cursor porque vai desenhar por cima
         switch (menuState) {
             case START:
                 if(get_mouse_packet()->lb){
@@ -65,27 +85,31 @@ void update_mouse_state() {
                                 break;
                         }
                         queue_clear(&pos_queue);
-                        queue_clear(&garbage);
                     }
                     if (y >= 150) {
                         Position *position = (Position *) malloc(sizeof(Position));
                         position->x = x;
                         position->y = y;
-                        queue_push(&pos_queue, position);
+                        queue_push(&pos_queue, position, sizeof(Position));
                     }
                 } else {
                     queue_clear(&pos_queue);
-                    queue_clear(&garbage);
                 }
                 if (get_mouse_packet()->rb) {
                     reset_frame();
                     queue_clear(&pos_queue);
-                    queue_clear(&garbage);
                 }
             }
                 if(menuState == START){
                 }         
                 break;
+            case END:
+                if(get_mouse_packet()->lb){
+                    if((x > 0 && x <= 70) && (y > 0 && y <= 70)){
+                        clearLeaderboardFile();
+                    }
+                }
+               
             default:
                 break;
         }
@@ -103,13 +127,20 @@ void update_timer_state() {
             break;
     }
     if (get_counter() % 30 == 0 && menuState == GAME){
+        printf("Acutal current month is: %d\n", curr_time.month);
         game_counter--;
         if (game_counter == 0){
             menuState = START;
             reset_frame();
         }
+    }else if(get_counter() % 30 == 0){
+        rtc_init();
+        printf("Acutal current month is: %d\n", curr_time.month);
     }
-    // Se diminuirmos o base frame para nao ocupar a memoria onde fica a barra de cima e a de baixo so precisamos de dar print a barra de cima quando o rato esta por cima dela
+    printf("Queue size:     %d\n", queue_size(&pos_queue));
+    // if (queue_size(&pos_queue) > QUEUE_LIMIT)
+    //     queue_clear(&pos_queue);
+
     draw_new_frame();
 }
 
@@ -133,6 +164,7 @@ void update_keyboard_state() {
             break;
         case ONE_KEY:
             if (menuState == START) break;
+            game_counter = 0;
             menuState = START;
             reset_frame();
             break;
@@ -147,8 +179,33 @@ void update_keyboard_state() {
             gameState = GUESS;
             break;
         case FOUR_KEY:
-            menuState = END;
-            break;
+            {
+                if(menuState == END) break;
+                leaderboardValue* newValue = malloc(sizeof(leaderboardValue));
+                if (newValue == NULL) {
+                    printf("Error: Memory allocation failed.\n");
+                    break;
+                }
+                printf("The month i am passing is : %d\n", curr_time.month);
+
+
+                newValue->month = curr_time.month;
+
+                printf("The value in my newValue is: %d\n", newValue->month);
+                newValue->day = curr_time.day;
+                newValue->hour = curr_time.hour;
+                newValue->minute = curr_time.minute;
+                newValue->second = curr_time.second;
+                newValue->score = game_counter;
+                
+                updateLeaderboard(newValue);                
+                free(newValue); 
+
+                menuState = END;
+                reset_frame();
+                break;            
+            }
+           
         default:
         if (gameState == GUESS) read_letter(get_scancode(), word_guess, &number_letters);
             break;
@@ -160,6 +217,41 @@ void destroy_sprites() {
     destroy_sprite(chooseColors);
 }
 
+void loadLeaderboardFromFile(leaderboardValue leaderboard[]) {
+    FILE *file = fopen("leaderboard.txt", "r");
+    if (file != NULL) {
+        fread(leaderboard, sizeof(leaderboardValue), 5, file);
+        fclose(file);
+    } else {
+        for (int i = 0; i < 5; i++) {
+            leaderboard[i].month = 0;
+            leaderboard[i].day = 0;
+            leaderboard[i].hour = 0;
+            leaderboard[i].minute = 0;
+            leaderboard[i].second = 0;
+            leaderboard[i].score = 0;
+        }
+    }
+}
 
+void saveLeaderboardToFile(const leaderboardValue leaderboard[]) {
+    FILE *file = fopen("leaderboard.txt", "w");
+    if (file != NULL) {
+        fwrite(leaderboard, sizeof(leaderboardValue), 5, file);
+        fclose(file);
+    } else {
+        printf("Error: Couldn't open file for writing leaderboard.\n");
+    }
+}
 
+void clearLeaderboardFile() {
+    for (int i = 0; i < 5; i++) {
+        leaderboard[i].month = 0;
+        leaderboard[i].day = 0;
+        leaderboard[i].hour = 0;
+        leaderboard[i].minute = 0;
+        leaderboard[i].second = 0;
+        leaderboard[i].score = 0;
+    }
+}
 

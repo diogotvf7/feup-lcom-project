@@ -18,6 +18,9 @@
 #include "xpm/letters.xpm"
 #include "xpm/numbers.xpm"
 #include "xpm/font.xpm"
+#include "xpm/leaderboardTable.xpm"
+
+#define ROUND_TIME 60
 
 typedef enum{
     RUNNING, 
@@ -35,9 +38,23 @@ typedef enum{
     GUESS
 } GameState;
 
+typedef struct leaderboardValue{
+    uint8_t month;
+    uint8_t day;
+    uint8_t hour;
+    uint8_t minute;
+    uint8_t second;
+    uint8_t score;
+} leaderboardValue;
+
 void update_timer_state();
 void update_keyboard_state();
 void update_mouse_state();
 void setup_sprites();
 void destroy_sprites();
-
+void updateLeaderboard(leaderboardValue *newValue);
+void loadLeaderboardFromFile(leaderboardValue leaderboard[]);
+void saveLeaderboardToFile(const leaderboardValue leaderboard[]);
+void clearLeaderboardFile();
+/* int compareScores(const void* a, const void* b);
+ */

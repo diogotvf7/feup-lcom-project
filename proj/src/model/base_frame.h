@@ -22,9 +22,9 @@ void create_frame_buffer(uint16_t width, uint16_t height, uint16_t bytes_per_pix
 
 void draw_frame_pixel(uint16_t x, uint16_t y, uint32_t color);
 
-void draw_frame_circle(Position *p, uint16_t thickness, uint32_t color);
+void draw_frame_circle(Position p, uint16_t thickness, uint32_t color);
 
-void draw_bresenham_line(Position *p1, Position *p2, uint32_t color, uint16_t thickness);
+void draw_bresenham_line(Position p1, Position p2, uint32_t color, uint16_t thickness);
 
 int process_packet(uint32_t color, int radius);
 

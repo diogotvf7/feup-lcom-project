@@ -19,6 +19,7 @@ extern uint16_t bytes_per_pixel;
 extern uint16_t h_res;
 extern uint16_t v_res;
 extern SystemState systemState;
+extern struct leaderboardValue leaderboard[5];
 
 int(main)(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -26,11 +27,11 @@ int(main)(int argc, char *argv[]) {
 
   // enables to log function invocations that are being "wrapped" by LCF
   // [comment this out if you don't want/need it]
-  lcf_trace_calls("/home/lcom/labs/proj/src/trace.txt");
+  lcf_trace_calls("/home/lcom/labs/g1/proj/src/trace.txt");
 
   // enables to save the output of printf function calls on a file
   // [comment this out if you don't want/need it]
-  lcf_log_output("/home/lcom/labs/proj/src/output.txt");
+  lcf_log_output("/home/lcom/labs/g1/proj/src/output.txt");
 
   // handles control over to LCF
   // [LCF handles command line arguments and invokes the right function]
@@ -62,7 +63,7 @@ int (start_settings)() {
     return EXIT_FAILURE;
 
   create_frame_buffer(h_res, v_res, bytes_per_pixel);
-
+  loadLeaderboardFromFile(leaderboard);
   
 
   return 0;  
@@ -79,6 +80,8 @@ int (reset_settings)() {
     return EXIT_FAILURE;
   if (vg_exit() != EXIT_SUCCESS)
     return EXIT_FAILURE;
+
+  saveLeaderboardToFile(leaderboard);
   return EXIT_SUCCESS;
 }
 

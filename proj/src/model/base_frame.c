@@ -8,7 +8,6 @@ unsigned _size;
 uint8_t *_base_addr;
 
 extern Queue *pos_queue;
-extern Queue *garbage;
 
 void create_frame_buffer(uint16_t width, uint16_t height, uint16_t bytes_per_pixel) {
   frame_buffer.width = width;
@@ -34,31 +33,29 @@ void draw_frame_pixel(uint16_t x, uint16_t y, uint32_t color) {
       return;
 }
 
-void draw_frame_circle(Position *p, uint16_t thickness, uint32_t color) {
+void draw_frame_circle(Position p, uint16_t thickness, uint32_t color) {
   for (int i = -thickness/2; i <= thickness/2; i++) {
     for (int j = -thickness/2; j <= thickness/2; j++) {
-      draw_frame_pixel(p->x + i, p->y + j, color);
+      draw_frame_pixel(p.x + i, p.y + j, color);
     }
   }
-  queue_push(&garbage, p);
 }
 
-void draw_bresenham_line(Position *p1, Position *p2, uint32_t color, uint16_t thickness) {
-  int dx = abs(p2->x - p1->x);
-  int dy = abs(p2->y - p1->y);
-  int sx = (p1->x < p2->x) ? 1 : -1;
-  int sy = (p1->y < p2->y) ? 1 : -1;
+void draw_bresenham_line(Position p1, Position p2, uint32_t color, uint16_t thickness) {
+  int dx = abs(p2.x - p1.x);
+  int dy = abs(p2.y - p1.y);
+  int sx = (p1.x < p2.x) ? 1 : -1;
+  int sy = (p1.y < p2.y) ? 1 : -1;
   int error = dx - dy;
 
   while (1) {
-    // Draw the current point (p1->x, p1->y) and surrounding points
     for (int i = -thickness/2; i <= thickness/2; i++) {
       for (int j = -thickness/2; j <= thickness/2; j++) {
-        draw_frame_pixel(p1->x + i, p1->y + j, color);
+        draw_frame_pixel(p1.x + i, p1.y + j, color);
       }
     }
 
-    if (p1->x == p2->x && p1->y == p2->y) {
+    if (p1.x == p2.x && p1.y == p2.y) {
       break;
     }
 
@@ -66,30 +63,26 @@ void draw_bresenham_line(Position *p1, Position *p2, uint32_t color, uint16_t th
 
     if (error2 > -dy) {
       error -= dy;
-      p1->x += sx;
+      p1.x += sx;
     }
 
     if (error2 < dx) {
       error += dx;
-      p1->y += sy;
+      p1.y += sy;
     }
   }
-  queue_push(&garbage, p1);
-  queue_push(&garbage, p2);
 }
 
 int process_packet(uint32_t color, int radius) {
-  // queue_print(&pos_queue);
   int size = queue_size(&pos_queue);
   if (size == 0) return 1;
-  struct Position *position1 = queue_front(&pos_queue);
-
+  struct Position position1 = *((Position *)queue_front(&pos_queue));
   if (size == 1) {
     draw_frame_circle(position1, radius, color);
     return 1;
   } else {
     queue_pop(&pos_queue);
-    struct Position *position2 = queue_front(&pos_queue);
+    struct Position position2 = *((Position *) queue_front(&pos_queue));
     draw_bresenham_line(position1, position2, color, radius);
   }
   return 0;
