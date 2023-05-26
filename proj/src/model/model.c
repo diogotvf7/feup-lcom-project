@@ -128,8 +128,6 @@ void update_mouse_state() {
                         clearLeaderboardFile();
                     }
                 }
-<<<<<<< HEAD
-=======
                 break;
             case END:
                 if(get_mouse_packet()->lb){
@@ -138,7 +136,6 @@ void update_mouse_state() {
                     else if(( x >= 793 && x <= 993) && (y >= 481 && y <= 681)) {menuState = START;}
                 }
                
->>>>>>> 6899779b780562312f4a2b1ea7a58b6196509bb4
             default:
                 break;
         }
@@ -154,9 +151,6 @@ void update_timer_state() {
         if (process_packet(color, radius) != 0) break; 
     }
     if (get_counter() % 30 == 0 && menuState == GAME){
-<<<<<<< HEAD
-        game_counter--;
-=======
 
         //tempo de delay onde so conseguimos ver a palavra - o game counter nao diminui aqui
         if(gameState == DRAW_GUESS && delayTime < 6){delayTime++;}
@@ -171,27 +165,15 @@ void update_timer_state() {
         }
 
         //jogo acabou
->>>>>>> 6899779b780562312f4a2b1ea7a58b6196509bb4
         if (game_counter == 0){
             menuState = END;
             reset_frame();
         }
     }
-<<<<<<< HEAD
-    else if(get_counter() % 30 == 0){rtc_init();}
-=======
     //Podemos nao estar no modo de jogo mas o rtc tem sempre de se atualizar
     else if(get_counter() % 30 == 0){
         rtc_init();
     }
-
-
-    //printf("Queue size:     %d\n", queue_size(&pos_queue));
-    // if (queue_size(&pos_queue) > QUEUE_LIMIT)
-    //     queue_clear(&pos_queue);
-    
-
->>>>>>> 6899779b780562312f4a2b1ea7a58b6196509bb4
     draw_new_frame();
 }
 
@@ -232,31 +214,6 @@ void update_keyboard_state() {
             initGame();
             gameState = GUESS;
             break;
-<<<<<<< HEAD
-        case FOUR_KEY:
-            {
-                if(menuState == LEADERBOARD) break;
-                leaderboardValue* newValue = malloc(sizeof(leaderboardValue));
-                if (newValue == NULL) {
-                    printf("Error: Memory allocation failed.\n");
-                    break;
-                }
-                newValue->month = curr_time.month;
-                newValue->day = curr_time.day;
-                newValue->hour = curr_time.hour;
-                newValue->minute = curr_time.minute;
-                newValue->second = curr_time.second;
-                newValue->score = game_counter;
-                
-                updateLeaderboard(newValue);                
-                free(newValue); 
-
-                menuState = LEADERBOARD;
-                reset_frame();
-                break;            
-            }
-           
-=======
 
         //Ver a leaderboard
         case FOUR_KEY:{
@@ -297,7 +254,6 @@ void update_keyboard_state() {
         }
 
         //User escreveu uma letra
->>>>>>> 6899779b780562312f4a2b1ea7a58b6196509bb4
         default:
         if (gameState == GUESS || gameState == DRAW_GUESS) read_letter(get_scancode(), word_guess, &number_letters);
             break;

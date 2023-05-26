@@ -41,14 +41,10 @@ void draw_new_frame() {
             draw_game_menu();
             break;
         case LEADERBOARD:
-<<<<<<< HEAD
             draw_leaderboard();
-=======
-            draw_leaderboard_menu();
             break;
         case END:
             draw_end_menu();
->>>>>>> 6899779b780562312f4a2b1ea7a58b6196509bb4
             break;
     }
     draw_mouse();
@@ -89,17 +85,10 @@ void draw_game_menu() {
         }
     } 
     draw_game_time(game_counter);
-<<<<<<< HEAD
     draw_word();
 }
 
 void draw_leaderboard() {
-=======
-
-}
-
-void draw_leaderboard_menu() {
->>>>>>> 6899779b780562312f4a2b1ea7a58b6196509bb4
     draw_sprite_xpm(leaderboardTable, 0 , 0);
     int y_gap = 0;
 
@@ -107,10 +96,7 @@ void draw_leaderboard_menu() {
         int x_pos = 20;
         int y_pos = 270 + y_gap;
 
-<<<<<<< HEAD
-=======
         //draw month
->>>>>>> 6899779b780562312f4a2b1ea7a58b6196509bb4
         if(leaderboard[i].month < 9){
             draw_number(numbers, x_pos, y_pos, leaderboard[i].month % 10);
             x_pos += 140;
