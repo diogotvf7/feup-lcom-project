@@ -8,6 +8,14 @@ extern Sprite* numbers;
 extern Sprite* letters;
 extern uint16_t bytes_per_pixel;
 extern Sprite* leaderboardTable;
+extern Sprite* playAgainButton;
+extern Sprite* leaderboardButton;
+extern Sprite* initialMenuButton;
+extern Sprite* victory;
+extern Sprite* defeat;
+
+
+
 extern struct leaderboardValue leaderboard[5];
 
 extern int x, y;
@@ -20,6 +28,8 @@ extern int delayTime;
 extern int number_letters;
 extern int word_guess[10];
 
+extern bool gameResult;
+
 extern int word_solution[12];
 extern int word_sol_number_letters;
 
@@ -31,8 +41,11 @@ void draw_new_frame() {
         case GAME:
             draw_game_menu();
             break;
+        case LEADERBOARD:
+            draw_leaderboard_menu();
+            break;
         case END:
-            draw_finish_menu();
+            draw_end_menu();
             break;
     }
     draw_mouse();
@@ -76,15 +89,13 @@ void draw_game_menu() {
 
 }
 
-void draw_finish_menu() {
+void draw_leaderboard_menu() {
     draw_sprite_xpm(leaderboardTable, 0 , 0);
     int y_gap = 0;
 
     for (int i = 0; i < 5; i++) {
         int x_pos = 20;
         int y_pos = 270 + y_gap;
-
-
 
         //draw month
         if(leaderboard[i].month < 9){
@@ -158,6 +169,16 @@ void draw_finish_menu() {
     }
 }
 
+void draw_end_menu(){
+    if(gameResult)
+        draw_sprite_xpm(victory, 337,0);
+    else    
+        draw_sprite_xpm(defeat, 337, 0);
+    
+    draw_sprite_xpm(playAgainButton, 131, 481);
+    draw_sprite_xpm(leaderboardButton, 462, 481);
+    draw_sprite_xpm(initialMenuButton, 793, 481);
+}
 
 int draw_sprite_xpm(Sprite *sprite, int x, int y) {
     uint16_t width;
@@ -175,7 +196,6 @@ int draw_sprite_xpm(Sprite *sprite, int x, int y) {
     }
     return 0;
 }
-
 
 int draw_bar(int x, int y, int width, int height, uint32_t color){
     for (uint16_t h = 0; h < height; h++){
@@ -218,7 +238,6 @@ int draw_word_sol(){
     return 0;
 }
 
-
 int draw_letter(int x, int y, int letter_index){
 
     uint16_t width = 70;
@@ -237,7 +256,6 @@ int draw_letter(int x, int y, int letter_index){
     return 0;
 
 }
-
 
 int draw_number(Sprite* sprite, int x, int y, int index){
     uint16_t width = 70;

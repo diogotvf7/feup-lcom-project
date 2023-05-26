@@ -18,7 +18,13 @@
 #include "xpm/letters.xpm"
 #include "xpm/numbers.xpm"
 #include "xpm/font.xpm"
+#include "xpm/Play_Again.xpm"
+#include "xpm/Quit.xpm"
+#include "xpm/Leaderboard.xpm"
 #include "xpm/leaderboardTable.xpm"
+#include "xpm/Victory.xpm"
+#include "xpm/Defeat.xpm"
+
 
 #define ROUND_TIME 60
 #define MAX_WORD_LENGTH 12
@@ -32,6 +38,7 @@ typedef enum{
 typedef enum{
     START,
     GAME,
+    LEADERBOARD,
     END
 } MenuState;
 
@@ -59,6 +66,7 @@ void updateLeaderboard(leaderboardValue *newValue);
 void loadLeaderboardFromFile(leaderboardValue leaderboard[]);
 void saveLeaderboardToFile(const leaderboardValue leaderboard[]);
 void clearLeaderboardFile();
+void addValueToLeaderboard();
 bool checkResult();
 char* getRandomWord();
 

@@ -7,6 +7,11 @@ Sprite* startButton;
 Sprite* leaderboardTable;
 Sprite* numbers;
 Sprite* letters;
+Sprite* playAgainButton;
+Sprite* leaderboardButton;
+Sprite* victory;
+Sprite* defeat;
+Sprite* initialMenuButton;
 
 int flag = 0, num_bytes = 1;
 uint8_t scancode_arr[2];
@@ -25,7 +30,7 @@ struct leaderboardValue leaderboard[5];
 extern struct Queue *pos_queue;
 extern struct Queue *garbage;
 int delayTime = 0;
-bool gameResult;
+bool gameResult= false;
 
 int word_guess[12] = {-1};
 int number_letters = 0;
@@ -41,6 +46,12 @@ void setup_sprites() {
     numbers = create_sprite_xpm((xpm_map_t) numbers_xpm);
     letters = create_sprite_xpm((xpm_map_t) font_xpm);
     leaderboardTable = create_sprite_xpm((xpm_map_t) leaderboardTable_xpm);
+    playAgainButton = create_sprite_xpm((xpm_map_t) Play_Again_xpm);
+    initialMenuButton = create_sprite_xpm((xpm_map_t) Quit_xpm);
+    leaderboardButton = create_sprite_xpm((xpm_map_t) Leaderboard_xpm);
+    victory = create_sprite_xpm((xpm_map_t) Victory_xpm);
+    defeat = create_sprite_xpm((xpm_map_t) Defeat_xpm);
+
 }
 
 void initGame(){
@@ -83,7 +94,7 @@ void update_mouse_state() {
                 }
                 break;
             case GAME:
-            if (gameState == DRAW){
+            if (gameState == DRAW || gameState == DRAW_GUESS){
                 if (get_mouse_packet()->lb) {
                     if (y < 150) {
                         updateDrawSpecs(&color, &radius);
@@ -107,14 +118,22 @@ void update_mouse_state() {
                     queue_clear(&pos_queue);
                 }
             }
+                //isto e preciso ?
                 if(menuState == START){
                 }         
                 break;
-            case END:
+            case LEADERBOARD:
                 if(get_mouse_packet()->lb){
                     if((x > 0 && x <= 70) && (y > 0 && y <= 70)){
                         clearLeaderboardFile();
                     }
+                }
+                break;
+            case END:
+                if(get_mouse_packet()->lb){
+                    if(( x >= 131 && x <= 331) && (y >= 481 && y <= 681)) {menuState = GAME;}
+                    else if(( x >= 462 && x <= 662) && (y >= 481 && y <= 681)) {menuState = LEADERBOARD;}
+                    else if(( x >= 793 && x <= 993) && (y >= 481 && y <= 681)) {menuState = START;}
                 }
                
             default:
@@ -149,7 +168,7 @@ void update_timer_state() {
 
         //jogo acabou
         if (game_counter == 0){
-            menuState = START;
+            menuState = END;
             reset_frame();
         }
     }
@@ -185,63 +204,67 @@ void update_keyboard_state() {
         case ZERO_KEY:
             systemState = EXIT;
             break;
+
+        //Ecra Inicial
         case ONE_KEY:
             if (menuState == START) break;
-            game_counter = 0;
-            delayTime = 0;
             menuState = START;
             reset_frame();
             break;
+
+        //Modo de jogo multiplayer - desenhar
         case TWO_KEY:
             if (menuState == GAME) break;
-            delayTime = 0;
             initGame();
             gameState = DRAW;
             break;
+
+        //Modo de jogo multiplayer - adivinhar
         case THREE_KEY:
             if (menuState == GAME) break;
-            delayTime = 0;
             initGame();
             gameState = GUESS;
             break;
+
+        //Ver a leaderboard
         case FOUR_KEY:{
-                if(menuState == END) break;
-                delayTime = 0;
-                leaderboardValue* newValue = malloc(sizeof(leaderboardValue));
-                if (newValue == NULL) {
-                    printf("Error: Memory allocation failed.\n");
-                    break;
-                }
+            if(menuState == LEADERBOARD) break;
+        
+            menuState = LEADERBOARD;
+            reset_frame();
+            break;               
+        }
 
-
-                newValue->month = curr_time.month;
-
-                newValue->day = curr_time.day;
-                newValue->hour = curr_time.hour;
-                newValue->minute = curr_time.minute;
-                newValue->second = curr_time.second;
-                newValue->score = game_counter;
-                
-                updateLeaderboard(newValue);                
-                free(newValue); 
-
-                menuState = END;
-                reset_frame();
-                break;            
-            }
+        //Modo de jogo singleplayer
         case FIVE_KEY:{
             if(menuState == GAME) break;
             gameState = DRAW_GUESS;
+            game_counter = 0;
+            delayTime = 0;
             initGame();
+            reset_frame();
             break;
         }
 
-        case ENTER:{
-            gameResult = checkResult();
-            if(gameResult) printf("Jogo ganho :) \n"); else printf("Jogo perdido :(\n");
+        //Ecra que aparece depois de acabar um jogo
+        case SIX_KEY:{
+            if(menuState != GAME) break;
+            menuState = END;
+            reset_frame();
+            break;
         }
 
-           
+        //User verifica se a sua repsosta esta correcta
+        case ENTER:{
+            gameResult = checkResult();
+            if(gameResult) {
+                menuState = END;
+                addValueToLeaderboard();
+            };
+            break;
+        }
+
+        //User escreveu uma letra
         default:
         if (gameState == GUESS || gameState == DRAW_GUESS) read_letter(get_scancode(), word_guess, &number_letters);
             break;
@@ -256,6 +279,11 @@ void destroy_sprites() {
     destroy_sprite(numbers);
     destroy_sprite(letters);
     destroy_sprite(leaderboardTable);
+    destroy_sprite(playAgainButton);
+    destroy_sprite(initialMenuButton);
+    destroy_sprite(leaderboardButton);
+    destroy_sprite(victory);
+    destroy_sprite(defeat);
 }
 
 void loadLeaderboardFromFile(leaderboardValue leaderboard[]) {
@@ -320,21 +348,17 @@ char* getRandomWord() {
     }
     word_sol_number_letters = strlen(line) - 1;
 
-    //  printf("Line number: %d \n Word associated: %s\n Size of word: %d\n\n", random_line_number, line, word_sol_number_letters);
-
     for (uint8_t i = 0; i < strlen(line); i++) {
         int index = to_qwerty[(*(line + i)) - 'a'];
         word_solution[i] = index;
-       // printf("%d - ", word_solution[i]);
     }
-
 
     fclose(file); 
     return line;
 }
 
 bool checkResult(){
-    
+
     if(number_letters == word_sol_number_letters){
         for(int i = 0; i < number_letters; i++){
             if(word_guess[i] != word_solution[i])
@@ -343,5 +367,21 @@ bool checkResult(){
         return true;
     }
     return false;
+}
+
+void addValueToLeaderboard(){
+    leaderboardValue* newValue = malloc(sizeof(leaderboardValue));
+    if (newValue == NULL) {
+        printf("Error: Memory allocation failed.\n");
+    }
+    newValue->month = curr_time.month;
+    newValue->day = curr_time.day;
+    newValue->hour = curr_time.hour;
+    newValue->minute = curr_time.minute;
+    newValue->second = curr_time.second;
+    newValue->score = game_counter;
+    
+    updateLeaderboard(newValue);                
+    free(newValue);
 }
 
