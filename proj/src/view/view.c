@@ -9,7 +9,6 @@ extern Sprite* letters;
 extern uint16_t bytes_per_pixel;
 extern Sprite* leaderboardTable;
 extern struct leaderboardValue leaderboard[5];
-
 extern int x, y;
 vbe_mode_info_t vmi_p;
 extern MenuState menuState;
@@ -26,8 +25,8 @@ void draw_new_frame() {
         case GAME:
             draw_game_menu();
             break;
-        case END:
-            draw_finish_menu();
+        case LEADERBOARD:
+            draw_leaderboard();
             break;
     }
     draw_mouse();
@@ -56,10 +55,9 @@ void draw_game_menu() {
     draw_bottom_bar(0,750,1152,114, GREY,80,780,900,70);
     draw_game_time(game_counter);
     draw_word();
-
 }
 
-void draw_finish_menu() {
+void draw_leaderboard() {
     draw_sprite_xpm(leaderboardTable, 0 , 0);
     int y_gap = 0;
 
@@ -67,9 +65,6 @@ void draw_finish_menu() {
         int x_pos = 20;
         int y_pos = 270 + y_gap;
 
-
-
-        //draw month
         if(leaderboard[i].month < 9){
             draw_number(numbers, x_pos, y_pos, leaderboard[i].month % 10);
             x_pos += 140;
@@ -209,9 +204,7 @@ int draw_letter(int x, int y, int letter_index){
         }
     }
     return 0;
-
 }
-
 
 int draw_number(Sprite* sprite, int x, int y, int index){
     uint16_t width = 70;
@@ -228,7 +221,6 @@ int draw_number(Sprite* sprite, int x, int y, int index){
         }
     }
     return 0;
-
 }
 
 int draw_game_time(int num)

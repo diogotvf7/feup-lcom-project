@@ -30,7 +30,7 @@ typedef enum{
 typedef enum{
     START,
     GAME,
-    END
+    LEADERBOARD
 } MenuState;
 
 typedef enum{
@@ -56,5 +56,3 @@ void updateLeaderboard(leaderboardValue *newValue);
 void loadLeaderboardFromFile(leaderboardValue leaderboard[]);
 void saveLeaderboardToFile(const leaderboardValue leaderboard[]);
 void clearLeaderboardFile();
-/* int compareScores(const void* a, const void* b);
- */

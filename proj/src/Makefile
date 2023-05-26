@@ -16,7 +16,7 @@ SRCS = proj.c utils.c keyboard.c kbc.c graphics_card.c timer.c mouse.c model.c v
 
 # additional compilation flags
 # "-Wall -Wextra -Werror -I . -std=c11 -Wno-unused-parameter" are already set
-CFLAGS += -pedantic
+CFLAGS += -pedantic -D __LCOM_OPTIMIZED__
 
 # list of library dependencies (for Lab 4, only LCF library)
 DPADD += ${LIBLCF}

@@ -43,7 +43,6 @@ void initGame(){
 
 void updateLeaderboard(leaderboardValue *newValue){
     int insertIndex = -1;
-    printf("The value passed here is: %d\n", newValue->month);
     for (int i = 0; i < 5; i++) {
         if (newValue->score > leaderboard[i].score) {
             insertIndex = i;
@@ -103,17 +102,15 @@ void update_mouse_state() {
                 if(menuState == START){
                 }         
                 break;
-            case END:
+            case LEADERBOARD:
                 if(get_mouse_packet()->lb){
                     if((x > 0 && x <= 70) && (y > 0 && y <= 70)){
                         clearLeaderboardFile();
                     }
                 }
-               
             default:
                 break;
         }
-
         updateMouseLocation();   
     }
 }
@@ -123,24 +120,16 @@ void update_timer_state() {
     vg_flip_frame();
     copy_base_frame(frame_buffer);
     for (int i = PACKETS_PER_INTERRUPT; i; i--) {
-        if (process_packet(color, radius) != 0)
-            break;
+        if (process_packet(color, radius) != 0) break; 
     }
     if (get_counter() % 30 == 0 && menuState == GAME){
-        printf("Acutal current month is: %d\n", curr_time.month);
         game_counter--;
         if (game_counter == 0){
             menuState = START;
             reset_frame();
         }
-    }else if(get_counter() % 30 == 0){
-        rtc_init();
-        printf("Acutal current month is: %d\n", curr_time.month);
     }
-    printf("Queue size:     %d\n", queue_size(&pos_queue));
-    // if (queue_size(&pos_queue) > QUEUE_LIMIT)
-    //     queue_clear(&pos_queue);
-
+    else if(get_counter() % 30 == 0){rtc_init();}
     draw_new_frame();
 }
 
@@ -152,8 +141,6 @@ void update_keyboard_state() {
         num_bytes = 2;
     } else {
         scancode_arr[flag] = get_scancode();
-        // if (kbd_print_scancode(!((get_scancode() & SCANCODE_MSB) >> 7), num_bytes, scancode_arr) != OK)
-        //     return;
         num_bytes = 1;
         flag = 0;
     }
@@ -180,18 +167,13 @@ void update_keyboard_state() {
             break;
         case FOUR_KEY:
             {
-                if(menuState == END) break;
+                if(menuState == LEADERBOARD) break;
                 leaderboardValue* newValue = malloc(sizeof(leaderboardValue));
                 if (newValue == NULL) {
                     printf("Error: Memory allocation failed.\n");
                     break;
                 }
-                printf("The month i am passing is : %d\n", curr_time.month);
-
-
                 newValue->month = curr_time.month;
-
-                printf("The value in my newValue is: %d\n", newValue->month);
                 newValue->day = curr_time.day;
                 newValue->hour = curr_time.hour;
                 newValue->minute = curr_time.minute;
@@ -201,7 +183,7 @@ void update_keyboard_state() {
                 updateLeaderboard(newValue);                
                 free(newValue); 
 
-                menuState = END;
+                menuState = LEADERBOARD;
                 reset_frame();
                 break;            
             }
