@@ -38,6 +38,7 @@ void queue_push(Queue **queue, void *data, int size) {
     (*queue)->back = n;
     (*queue)->size++;
   }
+  printf("%d", (*queue)->size);
 }
 
 void queue_pop(Queue **queue) {

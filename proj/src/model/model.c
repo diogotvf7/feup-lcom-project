@@ -94,30 +94,30 @@ void update_mouse_state() {
                 }
                 break;
             case GAME:
-            if (gameState == DRAW || gameState == DRAW_GUESS){
-                if (get_mouse_packet()->lb) {
-                    if (y < 150) {
-                        updateDrawSpecs(&color, &radius);
-                        while (!queue_empty(&pos_queue)) {
-                            if (process_packet(color, radius) != 0)
-                                break;
+                if (gameState == DRAW || gameState == DRAW_GUESS){
+                    if (get_mouse_packet()->lb) {
+                        if (y < 150) {
+                            updateDrawSpecs(&color, &radius);
+                            while (!queue_empty(&pos_queue)) {
+                                if (process_packet(color, radius) != 0)
+                                    break;
+                            }
+                            queue_clear(&pos_queue);
                         }
+                        if (y >= 150) {
+                            Position *position = (Position *) malloc(sizeof(Position));
+                            position->x = x;
+                            position->y = y;
+                            queue_push(&pos_queue, position, sizeof(Position));
+                        }
+                    } else {
                         queue_clear(&pos_queue);
                     }
-                    if (y >= 150) {
-                        Position *position = (Position *) malloc(sizeof(Position));
-                        position->x = x;
-                        position->y = y;
-                        queue_push(&pos_queue, position, sizeof(Position));
+                    if (get_mouse_packet()->rb) {
+                        reset_frame();
+                        queue_clear(&pos_queue);
                     }
-                } else {
-                    queue_clear(&pos_queue);
                 }
-                if (get_mouse_packet()->rb) {
-                    reset_frame();
-                    queue_clear(&pos_queue);
-                }
-            }
                 //isto e preciso ?
                 if(menuState == START){
                 }         
@@ -314,7 +314,7 @@ void clearLeaderboardFile() {
 }
 
 char* getRandomWord() {
-    FILE* file = fopen("/home/lcom/labs/g1/proj/src/model/test.txt", "r");
+    FILE* file = fopen("test.txt", "r");
     
     if (file == NULL) {
         printf("Error opening file: \n" );
@@ -340,6 +340,7 @@ char* getRandomWord() {
 
     for (uint8_t i = 0; i < strlen(line); i++) {
         int index = to_qwerty[(*(line + i)) - 'a'];
+        printf("%d", index);
         word_solution[i] = index;
     }
 

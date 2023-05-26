@@ -38,7 +38,8 @@ typedef enum{
 typedef enum{
     START,
     GAME,
-    LEADERBOARD
+    LEADERBOARD,
+    END
 } MenuState;
 
 typedef enum{
