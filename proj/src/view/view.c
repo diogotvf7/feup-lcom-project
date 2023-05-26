@@ -15,8 +15,12 @@ vbe_mode_info_t vmi_p;
 extern MenuState menuState;
 extern GameState gameState;
 extern int game_counter;
+
 extern int number_letters;
 extern int word_guess[10];
+
+extern int word_solution[12];
+extern int word_sol_number_letters;
 
 void draw_new_frame() {
     switch(menuState){
@@ -46,16 +50,18 @@ void draw_initial_menu() {
 }
 
 void draw_game_menu() {
+    draw_bottom_bar(0,750,1152,114, GREY,80,780,900,70);
+
     if (gameState == DRAW) {
         draw_sprite_xpm(chooseColors, 0, 0);
-        }
+        draw_word_sol();
+    }
+
     else if (gameState == GUESS){ 
         draw_bar(0,0,1152,150,GREY);
-        
+        draw_word();    
     }
-    draw_bottom_bar(0,750,1152,114, GREY,80,780,900,70);
     draw_game_time(game_counter);
-    draw_word();
 
 }
 
@@ -189,9 +195,18 @@ int draw_word(){
         draw_letter(80 + letter_pos * 60, 780, word_guess[i]);
         letter_pos++;
     }
-
     return 0;
 }
+
+int draw_word_sol(){
+    int letter_pos = 0;
+    for(int i = 0; i < word_sol_number_letters; i++){
+        draw_letter(80 + letter_pos * 60, 780, word_solution[i]);
+        letter_pos++;
+    }
+    return 0;
+}
+
 
 int draw_letter(int x, int y, int letter_index){
 

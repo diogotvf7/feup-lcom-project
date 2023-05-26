@@ -21,8 +21,8 @@
 #include "xpm/leaderboardTable.xpm"
 
 #define ROUND_TIME 60
-#define MAX_WORD_LENGTH 10
-#define MAX_WORDS 50
+#define MAX_WORD_LENGTH 12
+#define MAX_LINE_LENGTH 50
 
 typedef enum{
     RUNNING, 
@@ -37,7 +37,7 @@ typedef enum{
 
 typedef enum{
     DRAW,
-    GUESS
+    GUESS,
 } GameState;
 
 typedef struct leaderboardValue{

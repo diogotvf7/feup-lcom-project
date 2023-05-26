@@ -10,6 +10,7 @@ Sprite* letters;
 
 int flag = 0, num_bytes = 1;
 uint8_t scancode_arr[2];
+int to_qwerty[26] = {10,23,21,12,2,13,14,15,7,16,17,18,25,24,8,9,0,3,11,4,6,22,1,20,5,19};
 extern int x, y;
 extern frame_buffer_t frame_buffer;
 extern real_time curr_time;
@@ -23,8 +24,12 @@ int offset;
 struct leaderboardValue leaderboard[5];
 extern struct Queue *pos_queue;
 extern struct Queue *garbage;
+
 int word_guess[12] = {-1};
 int number_letters = 0;
+
+int word_solution[12] = {-1};
+int word_sol_number_letters;
 
 void setup_sprites() {
     chooseColors = create_sprite_xpm((xpm_map_t) topBarGameMode_xpm);
@@ -39,11 +44,11 @@ void setup_sprites() {
 void initGame(){
     menuState = GAME;
     game_counter = ROUND_TIME;
+    getRandomWord();
 }
 
 void updateLeaderboard(leaderboardValue *newValue){
     int insertIndex = -1;
-    printf("The value passed here is: %d\n", newValue->month);
     for (int i = 0; i < 5; i++) {
         if (newValue->score > leaderboard[i].score) {
             insertIndex = i;
@@ -133,9 +138,8 @@ void update_timer_state() {
             reset_frame();
         }
     }else if(get_counter() % 30 == 0){
-        char* word = getRandomWord();
-        printf("%s", word);
         rtc_init();
+       // getRandomWord();
     }
     //printf("Queue size:     %d\n", queue_size(&pos_queue));
     // if (queue_size(&pos_queue) > QUEUE_LIMIT)
@@ -187,12 +191,10 @@ void update_keyboard_state() {
                     printf("Error: Memory allocation failed.\n");
                     break;
                 }
-                printf("The month i am passing is : %d\n", curr_time.month);
 
 
                 newValue->month = curr_time.month;
 
-                printf("The value in my newValue is: %d\n", newValue->month);
                 newValue->day = curr_time.day;
                 newValue->hour = curr_time.hour;
                 newValue->minute = curr_time.minute;
@@ -257,27 +259,38 @@ void clearLeaderboardFile() {
 }
 
 char* getRandomWord() {
-    char words[MAX_WORDS][MAX_WORD_LENGTH + 1];
-    int count = 0;
-
-    FILE* file = fopen("words.txt", "r");
+    FILE* file = fopen("/home/lcom/labs/proj/src/model/test.txt", "r");
     if (file == NULL) {
-        printf("Error opening file.\n");
+        printf("Error opening file: \n" );
         return NULL;
     }
+    
+    int random_line_number = (rand() % 49);    
+    char* line = malloc(MAX_WORD_LENGTH * sizeof(char));
+    if (line == NULL) {
+        printf("Error allocating memory: \n");
+        fclose(file);
+        return NULL;
+    }
+    for (int i = 0; i < random_line_number; i++) {
+        if (fgets(line, MAX_WORD_LENGTH, file) == NULL) {
+            printf("Error reading file: \n");
+            fclose(file);
+            free(line); 
+            return NULL;
+        }
+    }
+    word_sol_number_letters = strlen(line) - 1;
 
-    char line[MAX_WORD_LENGTH + 1];
-    while (fgets(line, sizeof(line), file) != NULL && count < MAX_WORDS) {
-        line[strcspn(line, "\n")] = '\0';  
-        strncpy(words[count], line, MAX_WORD_LENGTH);
-        count++;
+      printf("Line number: %d \n Word associated: %s\n Size of word: %d\n\n", random_line_number, line, word_sol_number_letters);
+
+    for (uint8_t i = 0; i < strlen(line); i++) {
+        int index = to_qwerty[(*(line + i)) - 'a'];
+        word_solution[i] = index;
+        printf("%d - ", word_solution[i]);
     }
 
-    fclose(file);
 
-    srand(time(NULL));
-
-    int randomIndex = rand() % count;
-
-    return strdup(words[randomIndex]);
+    fclose(file); 
+    return line;
 }
