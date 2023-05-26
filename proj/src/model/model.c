@@ -325,7 +325,8 @@ void clearLeaderboardFile() {
 }
 
 char* getRandomWord() {
-    FILE* file = fopen("/home/lcom/labs/proj/src/model/test.txt", "r");
+    FILE* file = fopen("/home/lcom/labs/g1/proj/src/model/test.txt", "r");
+    
     if (file == NULL) {
         printf("Error opening file: \n" );
         return NULL;
