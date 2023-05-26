@@ -38,6 +38,7 @@ typedef enum{
 typedef enum{
     DRAW,
     GUESS,
+    DRAW_GUESS,
 } GameState;
 
 typedef struct leaderboardValue{
@@ -58,5 +59,6 @@ void updateLeaderboard(leaderboardValue *newValue);
 void loadLeaderboardFromFile(leaderboardValue leaderboard[]);
 void saveLeaderboardToFile(const leaderboardValue leaderboard[]);
 void clearLeaderboardFile();
+bool checkResult();
 char* getRandomWord();
 

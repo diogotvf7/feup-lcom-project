@@ -1,71 +1,22 @@
-Line number: 43 
- Word associated: mosquito
-
- Size of word: 8
-
-25 - 8 - 11 - 0 - 6 - 7 - 4 - 8 - 135201040 - Line number: 23 
- Word associated: sailboat
-
- Size of word: 8
-
-11 - 10 - 7 - 18 - 23 - 8 - 10 - 4 - 135201040 - Line number: 44 
- Word associated: snowball
-
- Size of word: 8
-
-11 - 24 - 8 - 1 - 23 - 10 - 18 - 18 - 135201040 - Line number: 21 
- Word associated: dragonfly
-
- Size of word: 9
-
-12 - 3 - 10 - 14 - 8 - 24 - 13 - 18 - 5 - 135201040 - Line number: 31 
- Word associated: baseball
-
- Size of word: 8
-
-23 - 10 - 11 - 2 - 23 - 10 - 18 - 18 - 135201040 - Line number: 18 
- Word associated: moonlight
-
- Size of word: 9
-
-25 - 8 - 8 - 24 - 18 - 7 - 14 - 15 - 4 - 135201040 - Line number: 17 
- Word associated: lighthouse
-
- Size of word: 10
-
-18 - 7 - 14 - 15 - 4 - 15 - 8 - 6 - 11 - 2 - 135201040 - Line number: 5 
- Word associated: rainbow
-
- Size of word: 7
-
-3 - 10 - 7 - 24 - 23 - 8 - 1 - 135201040 - Line number: 15 
- Word associated: hotdog
-
- Size of word: 6
-
-15 - 8 - 4 - 12 - 8 - 14 - 135201040 - Line number: 43 
- Word associated: mosquito
-
- Size of word: 8
-
-25 - 8 - 11 - 0 - 6 - 7 - 4 - 8 - 135201040 - Line number: 47 
- Word associated: toaster
-
- Size of word: 7
-
-4 - 8 - 10 - 11 - 4 - 2 - 3 - 135201040 - Line number: 17 
- Word associated: lighthouse
-
- Size of word: 10
-
-18 - 7 - 14 - 15 - 4 - 15 - 8 - 6 - 11 - 2 - 135201040 - Line number: 46 
- Word associated: mushroom
-
- Size of word: 8
-
-25 - 6 - 11 - 15 - 3 - 8 - 8 - 25 - 135201040 - Line number: 45 
- Word associated: cucumber
-
- Size of word: 8
-
-21 - 6 - 21 - 6 - 25 - 23 - 2 - 3 - 135201040 - 
+1
+8
+Jogo perdido :(
+8
+8
+2
+2
+18
+18
+2
+2
+9
+9
+15
+15
+10
+10
+24
+24
+4
+4
+Jogo ganho :) 

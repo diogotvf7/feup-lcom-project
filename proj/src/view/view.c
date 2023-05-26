@@ -16,6 +16,7 @@ extern MenuState menuState;
 extern GameState gameState;
 extern int game_counter;
 
+extern int delayTime;
 extern int number_letters;
 extern int word_guess[10];
 
@@ -61,6 +62,16 @@ void draw_game_menu() {
         draw_bar(0,0,1152,150,GREY);
         draw_word();    
     }
+
+    else if(gameState == DRAW_GUESS){
+        draw_sprite_xpm(chooseColors, 0, 0);
+
+        if(delayTime <= 5)
+            draw_word_sol();
+        else{
+            draw_word();
+        }
+    } 
     draw_game_time(game_counter);
 
 }

@@ -24,6 +24,8 @@ int offset;
 struct leaderboardValue leaderboard[5];
 extern struct Queue *pos_queue;
 extern struct Queue *garbage;
+int delayTime = 0;
+bool gameResult;
 
 int word_guess[12] = {-1};
 int number_letters = 0;
@@ -132,15 +134,31 @@ void update_timer_state() {
             break;
     }
     if (get_counter() % 30 == 0 && menuState == GAME){
-        game_counter--;
+
+        //tempo de delay onde so conseguimos ver a palavra - o game counter nao diminui aqui
+        if(gameState == DRAW_GUESS && delayTime < 6){delayTime++;}
+        else{
+            game_counter--;
+        }
+
+        //Acabou os 5 segundos para ver a imagem, podemos começar a escrever - limpamos tudo aquilo que o user possa ter carregado para o word_guess
+        if(delayTime == 5){
+            for(int i = 0; i < 12 ; i++){word_guess[i] = -1;}
+            number_letters = 0;
+        }
+
+        //jogo acabou
         if (game_counter == 0){
             menuState = START;
             reset_frame();
         }
-    }else if(get_counter() % 30 == 0){
-        rtc_init();
-       // getRandomWord();
     }
+    //Podemos nao estar no modo de jogo mas o rtc tem sempre de se atualizar
+    else if(get_counter() % 30 == 0){
+        rtc_init();
+    }
+
+
     //printf("Queue size:     %d\n", queue_size(&pos_queue));
     // if (queue_size(&pos_queue) > QUEUE_LIMIT)
     //     queue_clear(&pos_queue);
@@ -170,22 +188,25 @@ void update_keyboard_state() {
         case ONE_KEY:
             if (menuState == START) break;
             game_counter = 0;
+            delayTime = 0;
             menuState = START;
             reset_frame();
             break;
         case TWO_KEY:
             if (menuState == GAME) break;
+            delayTime = 0;
             initGame();
             gameState = DRAW;
             break;
         case THREE_KEY:
             if (menuState == GAME) break;
+            delayTime = 0;
             initGame();
             gameState = GUESS;
             break;
-        case FOUR_KEY:
-            {
+        case FOUR_KEY:{
                 if(menuState == END) break;
+                delayTime = 0;
                 leaderboardValue* newValue = malloc(sizeof(leaderboardValue));
                 if (newValue == NULL) {
                     printf("Error: Memory allocation failed.\n");
@@ -208,9 +229,21 @@ void update_keyboard_state() {
                 reset_frame();
                 break;            
             }
+        case FIVE_KEY:{
+            if(menuState == GAME) break;
+            gameState = DRAW_GUESS;
+            initGame();
+            break;
+        }
+
+        case ENTER:{
+            gameResult = checkResult();
+            if(gameResult) printf("Jogo ganho :) \n"); else printf("Jogo perdido :(\n");
+        }
+
            
         default:
-        if (gameState == GUESS) read_letter(get_scancode(), word_guess, &number_letters);
+        if (gameState == GUESS || gameState == DRAW_GUESS) read_letter(get_scancode(), word_guess, &number_letters);
             break;
     }
 }
@@ -218,6 +251,11 @@ void update_keyboard_state() {
 void destroy_sprites() {
     destroy_sprite(mouse);
     destroy_sprite(chooseColors);
+    destroy_sprite(quitButton);
+    destroy_sprite(startButton);
+    destroy_sprite(numbers);
+    destroy_sprite(letters);
+    destroy_sprite(leaderboardTable);
 }
 
 void loadLeaderboardFromFile(leaderboardValue leaderboard[]) {
@@ -282,15 +320,28 @@ char* getRandomWord() {
     }
     word_sol_number_letters = strlen(line) - 1;
 
-      printf("Line number: %d \n Word associated: %s\n Size of word: %d\n\n", random_line_number, line, word_sol_number_letters);
+    //  printf("Line number: %d \n Word associated: %s\n Size of word: %d\n\n", random_line_number, line, word_sol_number_letters);
 
     for (uint8_t i = 0; i < strlen(line); i++) {
         int index = to_qwerty[(*(line + i)) - 'a'];
         word_solution[i] = index;
-        printf("%d - ", word_solution[i]);
+       // printf("%d - ", word_solution[i]);
     }
 
 
     fclose(file); 
     return line;
 }
+
+bool checkResult(){
+    
+    if(number_letters == word_sol_number_letters){
+        for(int i = 0; i < number_letters; i++){
+            if(word_guess[i] != word_solution[i])
+                return false;
+        }
+        return true;
+    }
+    return false;
+}
+
