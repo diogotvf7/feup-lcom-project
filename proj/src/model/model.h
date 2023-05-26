@@ -17,9 +17,8 @@
 #include "global_vars.h"
 #include "xpm/letters.xpm"
 #include "xpm/numbers.xpm"
+#include "xpm/font.xpm"
 #include "xpm/leaderboardTable.xpm"
-
-
 
 #define ROUND_TIME 60
 

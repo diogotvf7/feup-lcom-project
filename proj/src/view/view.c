@@ -28,8 +28,7 @@ void draw_new_frame() {
             break;
         case END:
             draw_finish_menu();
-            break;    
-
+            break;
     }
     draw_mouse();
 
@@ -50,7 +49,10 @@ void draw_game_menu() {
     if (gameState == DRAW) {
         draw_sprite_xpm(chooseColors, 0, 0);
         }
-    else if (gameState == GUESS) draw_bar(0,0,1152,150,GREY);
+    else if (gameState == GUESS){ 
+        draw_bar(0,0,1152,150,GREY);
+        
+    }
     draw_bottom_bar(0,750,1152,114, GREY,80,780,900,70);
     draw_game_time(game_counter);
     draw_word();
@@ -184,7 +186,7 @@ int draw_bottom_bar(int x, int y, int width, int height, uint32_t color, int squ
 int draw_word(){
     int letter_pos = 0;
     for(int i = 0; i < number_letters; i++){
-        draw_letter(100 + letter_pos * 75, 770, word_guess[i]);
+        draw_letter(80 + letter_pos * 60, 780, word_guess[i]);
         letter_pos++;
     }
 
@@ -244,9 +246,8 @@ int draw_game_time(int num)
     
     int length = 0;
     for (j = i - 1; j > -1; j--) {
-        draw_number(numbers, 1000 + length * 75, 780, arr[j]);
+        draw_number(numbers, 1000 + length * 60, 780, arr[j]);
         length++;
-
     }
     return 0;
 }

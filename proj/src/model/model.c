@@ -22,7 +22,8 @@ int game_counter;
 int offset;
 struct leaderboardValue leaderboard[5];
 extern struct Queue *pos_queue;
-int word_guess[10] = {-1};
+extern struct Queue *garbage;
+int word_guess[12] = {-1};
 int number_letters = 0;
 
 void setup_sprites() {
@@ -31,7 +32,7 @@ void setup_sprites() {
     quitButton = create_sprite_xpm((xpm_map_t) quitButton_xpm);
     startButton = create_sprite_xpm((xpm_map_t) startButton_xpm);
     numbers = create_sprite_xpm((xpm_map_t) numbers_xpm);
-    letters = create_sprite_xpm((xpm_map_t) letters_xpm);
+    letters = create_sprite_xpm((xpm_map_t) font_xpm);
     leaderboardTable = create_sprite_xpm((xpm_map_t) leaderboardTable_xpm);
 }
 
@@ -75,6 +76,7 @@ void update_mouse_state() {
                 }
                 break;
             case GAME:
+            if (gameState == DRAW){
                 if (get_mouse_packet()->lb) {
                     if (y < 150) {
                         updateDrawSpecs(&color, &radius);
@@ -97,6 +99,7 @@ void update_mouse_state() {
                     reset_frame();
                     queue_clear(&pos_queue);
                 }
+            }
                 if(menuState == START){
                 }         
                 break;
@@ -128,6 +131,7 @@ void update_timer_state() {
         game_counter--;
         if (game_counter == 0){
             menuState = START;
+            reset_frame();
         }
     }else if(get_counter() % 30 == 0){
         rtc_init();
@@ -138,7 +142,6 @@ void update_timer_state() {
     //     queue_clear(&pos_queue);
 
     draw_new_frame();
-
 }
 
 void update_keyboard_state() {
@@ -204,11 +207,9 @@ void update_keyboard_state() {
             }
            
         default:
-            read_letter(get_scancode(), word_guess, &number_letters);
+        if (gameState == GUESS) read_letter(get_scancode(), word_guess, &number_letters);
             break;
     }
-
-
 }
 
 void destroy_sprites() {
