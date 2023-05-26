@@ -149,7 +149,7 @@ int draw_sprite_xpm(Sprite *sprite, int x, int y) {
     for(uint16_t h = 0; h < height; h++) {
         for(uint16_t w = 0; w < width; w++) {
             current_color = sprite->colors[w + h*width];
-            if(current_color != TRANSPARENT) {
+            if (current_color != TRANSPARENT) {
                 vg_draw_pixel(x + w, y + h, current_color);
             }
         }
