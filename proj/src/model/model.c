@@ -127,19 +127,20 @@ void update_timer_state() {
             break;
     }
     if (get_counter() % 30 == 0 && menuState == GAME){
-        printf("Acutal current month is: %d\n", curr_time.month);
         game_counter--;
         if (game_counter == 0){
             menuState = START;
             reset_frame();
         }
     }else if(get_counter() % 30 == 0){
+        char* word = getRandomWord();
+        printf("%s", word);
         rtc_init();
-        printf("Acutal current month is: %d\n", curr_time.month);
     }
-    printf("Queue size:     %d\n", queue_size(&pos_queue));
+    //printf("Queue size:     %d\n", queue_size(&pos_queue));
     // if (queue_size(&pos_queue) > QUEUE_LIMIT)
     //     queue_clear(&pos_queue);
+    
 
     draw_new_frame();
 }
@@ -255,3 +256,28 @@ void clearLeaderboardFile() {
     }
 }
 
+char* getRandomWord() {
+    char words[MAX_WORDS][MAX_WORD_LENGTH + 1];
+    int count = 0;
+
+    FILE* file = fopen("words.txt", "r");
+    if (file == NULL) {
+        printf("Error opening file.\n");
+        return NULL;
+    }
+
+    char line[MAX_WORD_LENGTH + 1];
+    while (fgets(line, sizeof(line), file) != NULL && count < MAX_WORDS) {
+        line[strcspn(line, "\n")] = '\0';  
+        strncpy(words[count], line, MAX_WORD_LENGTH);
+        count++;
+    }
+
+    fclose(file);
+
+    srand(time(NULL));
+
+    int randomIndex = rand() % count;
+
+    return strdup(words[randomIndex]);
+}

@@ -21,6 +21,8 @@
 #include "xpm/leaderboardTable.xpm"
 
 #define ROUND_TIME 60
+#define MAX_WORD_LENGTH 10
+#define MAX_WORDS 50
 
 typedef enum{
     RUNNING, 
@@ -56,5 +58,5 @@ void updateLeaderboard(leaderboardValue *newValue);
 void loadLeaderboardFromFile(leaderboardValue leaderboard[]);
 void saveLeaderboardToFile(const leaderboardValue leaderboard[]);
 void clearLeaderboardFile();
-/* int compareScores(const void* a, const void* b);
- */
+char* getRandomWord();
+
