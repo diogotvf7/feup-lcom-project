@@ -23,6 +23,9 @@
 #include "xpm/Quit.xpm"
 #include "xpm/Leaderboard.xpm"
 #include "xpm/leaderboardTable.xpm"
+#include "xpm/leaderboardButtonInitialPage.xpm"
+#include "xpm/coopGuessButton.xpm"
+#include "xpm/coopDrawButton.xpm"
 #include "xpm/Victory.xpm"
 #include "xpm/Defeat.xpm"
 
@@ -70,4 +73,6 @@ void clearLeaderboardFile();
 void addValueToLeaderboard();
 bool checkResult();
 char* getRandomWord();
+void updateStateMouseClick();
+void updateStateKeyboardClick();
 
