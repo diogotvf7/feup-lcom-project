@@ -18,9 +18,17 @@
 #include "xpm/letters.xpm"
 #include "xpm/numbers.xpm"
 #include "xpm/font.xpm"
+#include "xpm/Play_Again.xpm"
+#include "xpm/Quit.xpm"
+#include "xpm/Leaderboard.xpm"
 #include "xpm/leaderboardTable.xpm"
+#include "xpm/Victory.xpm"
+#include "xpm/Defeat.xpm"
+
 
 #define ROUND_TIME 60
+#define MAX_WORD_LENGTH 12
+#define MAX_LINE_LENGTH 50
 
 typedef enum{
     RUNNING, 
@@ -30,12 +38,14 @@ typedef enum{
 typedef enum{
     START,
     GAME,
+    LEADERBOARD,
     END
 } MenuState;
 
 typedef enum{
     DRAW,
-    GUESS
+    GUESS,
+    DRAW_GUESS,
 } GameState;
 
 typedef struct leaderboardValue{
@@ -56,5 +66,7 @@ void updateLeaderboard(leaderboardValue *newValue);
 void loadLeaderboardFromFile(leaderboardValue leaderboard[]);
 void saveLeaderboardToFile(const leaderboardValue leaderboard[]);
 void clearLeaderboardFile();
-/* int compareScores(const void* a, const void* b);
- */
+void addValueToLeaderboard();
+bool checkResult();
+char* getRandomWord();
+
