@@ -26,7 +26,6 @@
 #include "xpm/Defeat.xpm"
 
 
-#define ROUND_TIME 60
 #define MAX_WORD_LENGTH 12
 #define MAX_LINE_LENGTH 50
 

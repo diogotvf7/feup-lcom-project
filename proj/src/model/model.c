@@ -57,7 +57,18 @@ void setup_sprites() {
 void initGame(){
     menuState = GAME;
     game_counter = ROUND_TIME;
+    reset_frame();
+    queue_clear(&pos_queue);
+    for (int i = 0; i < 12; i++) {
+        if (word_guess[i] != -1) word_guess[i] = -1;
+    }
+    for (int i = 0; i < 12; i++) {
+        if (word_solution[i] != -1) word_solution[i] = -1;
+    }
+    number_letters = 0;
+    word_sol_number_letters = 0;
     getRandomWord();
+    
 }
 
 void updateLeaderboard(leaderboardValue *newValue){
@@ -131,10 +142,11 @@ void update_mouse_state() {
                 break;
             case END:
                 if(get_mouse_packet()->lb){
-                    if(( x >= 131 && x <= 331) && (y >= 481 && y <= 681)) {menuState = GAME;}
+                    if(( x >= 131 && x <= 331) && (y >= 481 && y <= 681)) {initGame();}
                     else if(( x >= 462 && x <= 662) && (y >= 481 && y <= 681)) {menuState = LEADERBOARD;}
                     else if(( x >= 793 && x <= 993) && (y >= 481 && y <= 681)) {menuState = START;}
                 }
+                break;
                
             default:
                 break;
@@ -248,6 +260,7 @@ void update_keyboard_state() {
             gameResult = checkResult();
             if(gameResult) {
                 menuState = END;
+                reset_frame();
                 addValueToLeaderboard();
             };
             break;
