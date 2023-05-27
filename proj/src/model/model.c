@@ -314,14 +314,14 @@ void clearLeaderboardFile() {
 }
 
 char* getRandomWord() {
-    FILE* file = fopen("test.txt", "r");
-    
+
+    FILE* file = fopen("/home/lcom/labs/g1/proj/src/model/test.txt", "r");
     if (file == NULL) {
         printf("Error opening file: \n" );
         return NULL;
     }
     
-    int random_line_number = (rand() % 49);    
+    int random_line_number = (rand() % 49);
     char* line = malloc(MAX_WORD_LENGTH * sizeof(char));
     if (line == NULL) {
         printf("Error allocating memory: \n");
@@ -336,11 +336,12 @@ char* getRandomWord() {
             return NULL;
         }
     }
-    word_sol_number_letters = strlen(line) - 1;
-
     for (uint8_t i = 0; i < strlen(line); i++) {
+        if (*(line + i) == '\n' || *(line + i) == '\r' || *(line + i) == ' ') {
+            break;
+        }
+        word_sol_number_letters++;
         int index = to_qwerty[(*(line + i)) - 'a'];
-        printf("%d", index);
         word_solution[i] = index;
     }
 

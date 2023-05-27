@@ -59,7 +59,6 @@ void draw_mouse() {
 void draw_initial_menu() {
     draw_sprite_xpm(startButton, 451, 300);
     draw_sprite_xpm(quitButton, 451, 500);
-    
 }
 
 void draw_game_menu() {
