@@ -1,0 +1,22 @@
+lcr: 00000011
+DLAB:           0
+BREAK:          0
+PARITY:         0
+STOP:           0
+BITS P CHAR:    3
+____________________________
+lcr: 00001111
+DLAB:           0
+BREAK:          0
+PARITY:         1
+STOP:           1
+BITS P CHAR:    3
+LEZZZZ GOoOOooOoOOoooOOOOoOO
+INSIDE UART IH!
+11001100
+INterrupt peding
+CHAR_TIMEOUT
+DE UART IH!
+11000010
+INterrupt peding
+TRANSMITTER_EMPTY_INT

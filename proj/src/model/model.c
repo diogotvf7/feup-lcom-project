@@ -133,7 +133,6 @@ void update_timer_state() {
         rtc_init();
         printf("Acutal current month is: %d\n", curr_time.month);
     }
-    printf("Queue size:     %d\n", queue_size(&pos_queue));
     // if (queue_size(&pos_queue) > QUEUE_LIMIT)
     //     queue_clear(&pos_queue);
 
