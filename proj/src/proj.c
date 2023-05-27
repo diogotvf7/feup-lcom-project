@@ -5,6 +5,7 @@
 #include "controller/timer/timer.h"
 #include "controller/keyboard/keyboard.h"
 #include "controller/mouse/mouse.h"
+#include "serial_port.h"
 #include "model/model.h"
 #include "model/base_frame.h"
 
@@ -12,7 +13,7 @@
 #include <lcom/lcf.h>
 #include <lcom/video_gr.h>
 
-uint8_t irq_set_timer, irq_set_keyboard;
+uint8_t irq_set_timer, irq_set_keyboard, irq_set_serial_port;
 int irq_set_mouse,  ipc_status, r;
 message msg;
 extern uint16_t bytes_per_pixel;
@@ -61,6 +62,8 @@ int (start_settings)() {
     return EXIT_FAILURE;
   if (timer_set_frequency(SEL_TIMER0, FPS) != OK)
     return EXIT_FAILURE;
+  if (sp_subscribe_int(&irq_set_serial_port) != OK)
+    return EXIT_FAILURE;
 
   create_frame_buffer(h_res, v_res, bytes_per_pixel);
   loadLeaderboardFromFile(leaderboard);
@@ -76,6 +79,8 @@ int (reset_settings)() {
     return EXIT_FAILURE;
   if (mouse_unsubscribe_int(&irq_set_mouse) != OK)
     return EXIT_FAILURE;  
+  if (sp_unsubscribe_int() != OK) 
+    return EXIT_FAILURE;
   if (set_data_reporting(FALSE) != OK) 
     return EXIT_FAILURE;
   if (vg_exit() != EXIT_SUCCESS)
@@ -104,6 +109,9 @@ int (proj_main_loop)(int argc, char **argv) {
         } 
         if (msg.m_notify.interrupts & irq_set_keyboard) {
           update_keyboard_state();
+        }
+        if (msg.m_notify.interrupts & irq_set_serial_port) {
+          update_serial_port_state();
         }
           break;
         default:

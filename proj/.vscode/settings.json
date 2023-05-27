@@ -8,6 +8,8 @@
         "mouse.h": "c",
         "view.h": "c",
         "timer.h": "c",
-        "colors.h": "c"
+        "colors.h": "c",
+        "utils.h": "c",
+        "keyboard.h": "c"
     }
 }

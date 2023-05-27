@@ -29,6 +29,7 @@ int offset;
 struct leaderboardValue leaderboard[5];
 extern struct Queue *pos_queue;
 extern struct Queue *garbage;
+extern uint8_t read_data;
 int delayTime = 0;
 bool gameResult= false;
 
@@ -57,17 +58,17 @@ void setup_sprites() {
 void initGame(){
     menuState = GAME;
     game_counter = ROUND_TIME;
-    reset_frame();
-    queue_clear(&pos_queue);
-    for (int i = 0; i < 12; i++) {
-        if (word_guess[i] != -1) word_guess[i] = -1;
-    }
-    for (int i = 0; i < 12; i++) {
-        if (word_solution[i] != -1) word_solution[i] = -1;
-    }
-    number_letters = 0;
-    word_sol_number_letters = 0;
-    getRandomWord();
+    // reset_frame();
+    // queue_clear(&pos_queue);
+    // for (int i = 0; i < 12; i++) {
+    //     if (word_guess[i] != -1) word_guess[i] = -1;
+    // }
+    // for (int i = 0; i < 12; i++) {
+    //     if (word_solution[i] != -1) word_solution[i] = -1;
+    // }
+    // number_letters = 0;
+    // word_sol_number_letters = 0;
+    // getRandomWord();
     
 }
 
@@ -142,7 +143,7 @@ void update_mouse_state() {
                 break;
             case END:
                 if(get_mouse_packet()->lb){
-                    if(( x >= 131 && x <= 331) && (y >= 481 && y <= 681)) {initGame();}
+                    if(( x >= 131 && x <= 331) && (y >= 481 && y <= 681)) {menuState = GAME;}
                     else if(( x >= 462 && x <= 662) && (y >= 481 && y <= 681)) {menuState = LEADERBOARD;}
                     else if(( x >= 793 && x <= 993) && (y >= 481 && y <= 681)) {menuState = START;}
                 }
@@ -195,7 +196,8 @@ void update_keyboard_state() {
         scancode_arr[0] = get_scancode();
         flag = 1;
         num_bytes = 2;
-    } else {
+    } 
+    else {
         scancode_arr[flag] = get_scancode();
         num_bytes = 1;
         flag = 0;
@@ -217,6 +219,7 @@ void update_keyboard_state() {
         case TWO_KEY:
             if (menuState == GAME) break;
             initGame();
+            sp_init();
             gameState = DRAW;
             break;
 
@@ -271,6 +274,11 @@ void update_keyboard_state() {
         if (gameState == GUESS || gameState == DRAW_GUESS) read_letter(get_scancode(), word_guess, &number_letters);
             break;
     }
+}
+
+void update_serial_port_state() {
+    sp_read_data();
+    updateScreenSP();
 }
 
 void destroy_sprites() {
@@ -388,5 +396,12 @@ void addValueToLeaderboard(){
     
     updateLeaderboard(newValue);                
     free(newValue);
+}
+
+updateScreenSP(){
+    unsigned int ser_state;
+    ser_state = sp_check_connection();
+    if (!ser_state) break;
+    state =  
 }
 
