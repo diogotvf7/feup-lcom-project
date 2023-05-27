@@ -12,6 +12,10 @@ Sprite* leaderboardButton;
 Sprite* victory;
 Sprite* defeat;
 Sprite* initialMenuButton;
+Sprite* ldbdButtonInitialPage;
+Sprite* coopGuessButton;
+Sprite* coopDrawButton;
+
 
 int flag = 0, num_bytes = 1;
 uint8_t scancode_arr[2];
@@ -51,6 +55,9 @@ void setup_sprites() {
     leaderboardButton = create_sprite_xpm((xpm_map_t) Leaderboard_xpm);
     victory = create_sprite_xpm((xpm_map_t) Victory_xpm);
     defeat = create_sprite_xpm((xpm_map_t) Defeat_xpm);
+    ldbdButtonInitialPage = create_sprite_xpm((xpm_map_t) leaderboardButtonInitialPage_xpm);
+    coopGuessButton = create_sprite_xpm((xpm_map_t) coopGuessButton_xpm);
+    coopDrawButton = create_sprite_xpm((xpm_map_t) coopDrawButton_xpm);
 
 }
 
@@ -58,6 +65,8 @@ void initGame(){
     menuState = GAME;
     game_counter = ROUND_TIME;
     getRandomWord();
+    delayTime = 0;
+    gameResult = false;
 }
 
 void updateLeaderboard(leaderboardValue *newValue){
@@ -85,12 +94,7 @@ void update_mouse_state() {
         switch (menuState) {
             case START:
                 if(get_mouse_packet()->lb){
-                    if(x >= 451 && x <= 711 && y >= 300 && y <= 425){
-                        initGame();
-                    }
-                    else if(x >= 451 && x <= 711 && y >= 500 && y <= 625){
-                        systemState = EXIT;
-                    }
+                    updateStateMouseClick();
                 }
                 break;
             case GAME:
@@ -131,7 +135,7 @@ void update_mouse_state() {
                 break;
             case END:
                 if(get_mouse_packet()->lb){
-                    if(( x >= 131 && x <= 331) && (y >= 481 && y <= 681)) {menuState = GAME;}
+                    if(( x >= 131 && x <= 331) && (y >= 481 && y <= 681)) {menuState = GAME; initGame();}
                     else if(( x >= 462 && x <= 662) && (y >= 481 && y <= 681)) {menuState = LEADERBOARD;}
                     else if(( x >= 793 && x <= 993) && (y >= 481 && y <= 681)) {menuState = START;}
                 }
@@ -200,75 +204,7 @@ void update_keyboard_state() {
         flag = 0;
     }
 
-    switch(get_scancode()){
-        case ZERO_KEY:
-            systemState = EXIT;
-            break;
-
-        //Ecra Inicial
-        case ONE_KEY:
-            if (menuState == START) break;
-            menuState = START;
-            reset_frame();
-            break;
-
-        //Modo de jogo multiplayer - desenhar
-        case TWO_KEY:
-            if (menuState == GAME) break;
-            initGame();
-            gameState = DRAW;
-            break;
-
-        //Modo de jogo multiplayer - adivinhar
-        case THREE_KEY:
-            if (menuState == GAME) break;
-            initGame();
-            gameState = GUESS;
-            break;
-
-        //Ver a leaderboard
-        case FOUR_KEY:{
-            if(menuState == LEADERBOARD) break;
-        
-            menuState = LEADERBOARD;
-            reset_frame();
-            break;               
-        }
-
-        //Modo de jogo singleplayer
-        case FIVE_KEY:{
-            if(menuState == GAME) break;
-            gameState = DRAW_GUESS;
-            game_counter = 0;
-            delayTime = 0;
-            initGame();
-            reset_frame();
-            break;
-        }
-
-        //Ecra que aparece depois de acabar um jogo
-        case SIX_KEY:{
-            if(menuState != GAME) break;
-            menuState = END;
-            reset_frame();
-            break;
-        }
-
-        //User verifica se a sua repsosta esta correcta
-        case ENTER:{
-            gameResult = checkResult();
-            if(gameResult) {
-                menuState = END;
-                addValueToLeaderboard();
-            };
-            break;
-        }
-
-        //User escreveu uma letra
-        default:
-        if (gameState == GUESS || gameState == DRAW_GUESS) read_letter(get_scancode(), word_guess, &number_letters);
-            break;
-    }
+    updateStateKeyboardClick();
 }
 
 void destroy_sprites() {
@@ -384,5 +320,100 @@ void addValueToLeaderboard(){
     
     updateLeaderboard(newValue);                
     free(newValue);
+}
+
+void updateStateMouseClick(){
+    //single player
+    if(x >= 100 && x <= 370 && y >= 300 && y <= 425){
+        initGame();
+        gameState = DRAW_GUESS;
+    }
+    //coop draw
+    else if(x >= 450 && x <= 710 && y >= 300 && y <= 425){
+        initGame();
+        gameState = DRAW;
+    }
+    else if(x >= 800 && x <= 1060 && y >= 300 && y <= 425){
+        initGame();
+        gameState = GUESS;
+    }
+    else if(x >= 250 && x <= 510 && y >= 500 && y <= 625){
+        menuState = LEADERBOARD;
+    }
+    else if(x >= 600 && x <= 860 && y >= 500 && y <= 625){
+        systemState = EXIT;
+    }
+}
+
+void updateStateKeyboardClick(){
+        switch(get_scancode()){
+        case ZERO_KEY:
+            systemState = EXIT;
+            break;
+
+        //Ecra Inicial
+        case ONE_KEY:
+            if (menuState == START) break;
+            menuState = START;
+            reset_frame();
+            break;
+
+        //Modo de jogo multiplayer - desenhar
+        case TWO_KEY:
+            if (menuState == GAME) break;
+            initGame();
+            gameState = DRAW;
+            break;
+
+        //Modo de jogo multiplayer - adivinhar
+        case THREE_KEY:
+            if (menuState == GAME) break;
+            initGame();
+            gameState = GUESS;
+            break;
+
+        //Ver a leaderboard
+        case FOUR_KEY:{
+            if(menuState == LEADERBOARD) break;
+        
+            menuState = LEADERBOARD;
+            reset_frame();
+            break;               
+        }
+
+        //Modo de jogo singleplayer
+        case FIVE_KEY:{
+            if(menuState == GAME) break;
+            gameState = DRAW_GUESS;
+            game_counter = 0;
+            delayTime = 0;
+            initGame();
+            reset_frame();
+            break;
+        }
+
+        //Ecra que aparece depois de acabar um jogo
+        case SIX_KEY:{
+            if(menuState != GAME) break;
+            menuState = END;
+            reset_frame();
+            break;
+        }
+
+        //User verifica se a sua repsosta esta correcta
+        case ENTER:{
+            gameResult = checkResult();
+            if(gameResult) {
+                menuState = END;
+                addValueToLeaderboard();
+            };
+            break;
+        }
+
+        //User escreveu uma letra
+        default:
+        if (gameState == GUESS || gameState == DRAW_GUESS) read_letter(get_scancode(), word_guess, &number_letters);
+            break;
+    }
 }
 

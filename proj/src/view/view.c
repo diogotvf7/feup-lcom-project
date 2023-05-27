@@ -13,7 +13,9 @@ extern Sprite* leaderboardButton;
 extern Sprite* initialMenuButton;
 extern Sprite* victory;
 extern Sprite* defeat;
-
+extern Sprite* ldbdButtonInitialPage;
+extern Sprite* coopGuessButton;
+extern Sprite* coopDrawButton;
 
 
 extern struct leaderboardValue leaderboard[5];
@@ -58,8 +60,11 @@ void draw_mouse() {
 }
 
 void draw_initial_menu() {
-    draw_sprite_xpm(startButton, 451, 300);
-    draw_sprite_xpm(quitButton, 451, 500);
+    draw_sprite_xpm(startButton, 100, 300);
+    draw_sprite_xpm(coopDrawButton, 450, 300);
+    draw_sprite_xpm(coopGuessButton,800, 300);
+    draw_sprite_xpm(ldbdButtonInitialPage, 250, 500);
+    draw_sprite_xpm(quitButton, 600, 500);
     
 }
 
