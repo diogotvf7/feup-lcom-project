@@ -10,12 +10,8 @@ typedef struct Position {
 
 typedef struct Node {
   void *data;
-  int remaining;
-  int size;
   struct Node *prev;
 } Node;
-
-
 
 typedef struct Queue {
   int size;
@@ -31,7 +27,7 @@ void *queue_front(Queue **queue);
 
 // struct Position *get_back(Queue **queue);
 
-void queue_push(Queue **queue, void *data, int size);
+void queue_push(Queue **queue, void *data);
 
 void queue_pop(Queue **queue);
 

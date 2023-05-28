@@ -88,7 +88,7 @@ void update_mouse_state() {
                         Position *position = (Position *) malloc(sizeof(Position));
                         position->x = x;
                         position->y = y;
-                        queue_push(&pos_queue, position, sizeof(Position));
+                        queue_push(&pos_queue, position);
                     }
                 } else {
                     queue_clear(&pos_queue);

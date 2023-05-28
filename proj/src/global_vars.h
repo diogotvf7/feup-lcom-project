@@ -1,8 +1,8 @@
 #define FPS                           30
-#define PAcKETS_PER_INTERRUPT         10
+#define PACKETS_PER_INTERRUPT         10
 #define QUEUE_LIMIT                   20
 #define XMIT_TRIES                    5
-#define RcVR_TRIES                    5
+#define RCVR_TRIES                    5
 #define UART_cOOLDOWN                 15
 
 // ESC    |  1       |  2     |  3      |  4     |  5     |  6     |  7     |  8     |  9       |  0     |  ?     |  «       |  BACK    |  INS

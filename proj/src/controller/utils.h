@@ -16,4 +16,8 @@ int (util_sys_inb)(int port, uint8_t *value);
 
 uint8_t to_binary(uint8_t bcd_number);
 
+void printBits(size_t const size, void const * const ptr);
+
+void append_char(char *s, char c, int *size);
+
 #endif
