@@ -68,9 +68,11 @@ void setup_sprites() {
 void initGame(){
     menuState = GAME;
     game_counter = ROUND_TIME;
-    for (int i = 0; i < 12; i++) {
+    for (int i = 0; i < 12; i++) 
+        word_guess[i] = -1;
+    number_letters = 0;
+    for (int i = 0; i < 12; i++)
         word_solution[i] = -1;
-    }
     word_sol_number_letters = 0;
     getRandomWord();
     delayTime = 0;
@@ -143,9 +145,14 @@ void update_mouse_state() {
                 break;
             case END:
                 if(get_mouse_packet()->lb){
-                    if(( x >= 131 && x <= 331) && (y >= 481 && y <= 681)) {menuState = GAME; initGame();}
-                    else if(( x >= 462 && x <= 662) && (y >= 481 && y <= 681)) {menuState = LEADERBOARD;}
-                    else if(( x >= 793 && x <= 993) && (y >= 481 && y <= 681)) {menuState = START;}
+                    if (( x >= 131 && x <= 331) && (y >= 481 && y <= 681)) {
+                        if (gameState == DRAW || gameState == GUESS)
+                            send_uart_byte(PLAY_AGAIN);
+                        menuState = GAME; 
+                        initGame();
+                    }
+                    else if (( x >= 462 && x <= 662) && (y >= 481 && y <= 681)) {menuState = LEADERBOARD;}
+                    else if (( x >= 793 && x <= 993) && (y >= 481 && y <= 681)) {menuState = START;}
                 }
                
             default:
@@ -171,17 +178,6 @@ void update_timer_state() {
         }
     } else if (menuState == GAME) {
         if (gameState == DRAW) {
-
-            // /*           DELETE */
-            // printf("\nword_guess[]: ");
-            // for (int i = 0; i < number_letters; i++) 
-            //     printf(" %d ", word_guess[i]);
-            // printf("\nword_solution[]: ");
-            // for (int i = 0; i < word_sol_number_letters; i++) 
-            //     printf(" %d ", word_solution[i]);
-            // printf("\n");
-            // /*           DELETE */
-
             while (!queue_empty(&rcvr_fifo)) {
                 uint8_t *byte = queue_front(&rcvr_fifo);
                 if (*byte == END_OF_PACKET) {
@@ -192,9 +188,6 @@ void update_timer_state() {
                         send_uart_byte(UART_ACK);
                         reset_frame();
                     } else send_uart_byte(UART_NACK);
-                    for (int i = 0; i < number_letters; i++)
-                        word_guess[i] = -1;
-                    number_letters = 0;
                 }
                 word_guess[number_letters] = *byte;
                 number_letters++;
@@ -216,7 +209,15 @@ void update_timer_state() {
                 queue_pop(&rcvr_fifo);
             }
         }
-
+    } else if (menuState == END) {
+        if (!queue_empty(&rcvr_fifo)) {
+            uint8_t *byte = queue_front(&rcvr_fifo);
+            if (*byte == PLAY_AGAIN) {
+                menuState = GAME;
+                initGame();
+            }
+            queue_pop(&rcvr_fifo);
+        }
     }
     copy_base_frame(frame_buffer);
     for (int i = PACKETS_PER_INTERRUPT; i; i--) {

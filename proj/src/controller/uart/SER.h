@@ -100,3 +100,5 @@
 #define UART_ACK                0x22
 #define UART_NACK               0x23
 #define END_OF_PACKET           0x24
+#define PLAY_AGAIN              0x25
+
