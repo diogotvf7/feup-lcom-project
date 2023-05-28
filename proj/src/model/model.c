@@ -47,6 +47,9 @@ int game_title_size = 0;
 int word_solution[12] = {-1};
 int word_sol_number_letters = 0;
 
+int text[12] = {-1};
+int text_size = 0;
+
 void setup_sprites() {
     chooseColors = create_sprite_xpm((xpm_map_t) topBarGameMode_xpm);
     mouse = create_sprite_xpm((xpm_map_t) mouse_xpm);
@@ -61,8 +64,6 @@ void setup_sprites() {
     victory = create_sprite_xpm((xpm_map_t) Victory_xpm);
     defeat = create_sprite_xpm((xpm_map_t) Defeat_xpm);
     ldbdButtonInitialPage = create_sprite_xpm((xpm_map_t) leaderboardButtonInitialPage_xpm);
-    coopGuessButton = create_sprite_xpm((xpm_map_t) coopGuessButton_xpm);
-    coopDrawButton = create_sprite_xpm((xpm_map_t) coopDrawButton_xpm);
     dealer = create_sprite_xpm((xpm_map_t) dealer_xpm);
 
 }
@@ -112,7 +113,7 @@ void update_mouse_state() {
                 }
                 break;
             case GAME:
-                if (gameState == DRAW || gameState == DRAW_GUESS){
+                if (gameState == SINGLEPLAYER){
                     if (get_mouse_packet()->lb) {
                         if (y < 150) {
                             updateDrawSpecs(&color, &radius);
@@ -135,10 +136,7 @@ void update_mouse_state() {
                         reset_frame();
                         queue_clear(&pos_queue);
                     }
-                }
-                //isto e preciso ?
-                if(menuState == START){
-                }         
+                } 
                 break;
             case LEADERBOARD:
                 if(get_mouse_packet()->lb){
@@ -172,7 +170,7 @@ void update_timer_state() {
     if (get_counter() % 30 == 0 && menuState == GAME){
 
         //tempo de delay onde so conseguimos ver a palavra - o game counter nao diminui aqui
-        if(gameState == DRAW_GUESS && delayTime < 6){delayTime++;}
+        if(gameState == SINGLEPLAYER && delayTime < 6){delayTime++;}
         else{
             game_counter--;
         }
@@ -225,6 +223,7 @@ void destroy_sprites() {
     destroy_sprite(leaderboardButton);
     destroy_sprite(victory);
     destroy_sprite(defeat);
+    destroy_sprite(dealer);
 }
 
 void loadLeaderboardFromFile(leaderboardValue leaderboard[]) {
@@ -343,23 +342,15 @@ void addValueToLeaderboard(){
 
 void updateStateMouseClick(){
     //single player
-    if(x >= 100 && x <= 370 && y >= 300 && y <= 425){
+    if(x >= 400 && x <= 670 && y >= 200 && y <= 325){
         initGame();
-        gameState = DRAW_GUESS;
+        gameState = SINGLEPLAYER;
     }
     //coop draw
-    else if(x >= 450 && x <= 710 && y >= 300 && y <= 425){
-        initGame();
-        gameState = DRAW;
-    }
-    else if(x >= 800 && x <= 1060 && y >= 300 && y <= 425){
-        initGame();
-        gameState = GUESS;
-    }
-    else if(x >= 250 && x <= 510 && y >= 500 && y <= 625){
+    else if(x >= 400 && x <= 670 && y >= 350 && y <= 475){
         menuState = LEADERBOARD;
     }
-    else if(x >= 600 && x <= 860 && y >= 500 && y <= 625){
+    else if(x >= 400 && x <= 670 && y >= 500 && y <= 625){
         systemState = EXIT;
     }
 }
@@ -377,19 +368,14 @@ void updateStateKeyboardClick(){
             reset_frame();
             break;
 
-        //Modo de jogo multiplayer - desenhar
-        case TWO_KEY:
-            if (menuState == GAME) break;
-            printf("multiplayer mode\n");
+        //Modo de jogo singleplayer
+        case TWO_KEY:{
+            if(menuState == GAME) break;
+            gameState = SINGLEPLAYER;
             initGame();
+            reset_frame();
             break;
-
-        //Modo de jogo multiplayer - adivinhar
-        case THREE_KEY:
-            if (menuState == GAME) break;
-            initGame();
-            gameState = GUESS;
-            break;
+        }
 
         //Ver a leaderboard
         case FOUR_KEY:{
@@ -399,16 +385,6 @@ void updateStateKeyboardClick(){
             break;               
         }
 
-        //Modo de jogo singleplayer
-        case FIVE_KEY:{
-            if(menuState == GAME) break;
-            gameState = DRAW_GUESS;
-            game_counter = 0;
-            delayTime = 0;
-            initGame();
-            reset_frame();
-            break;
-        }
 
         //User verifica se a sua repsosta esta correcta
         case ENTER:{
@@ -423,7 +399,7 @@ void updateStateKeyboardClick(){
         
         //User escreveu uma letra
         default:
-        if (gameState == GUESS || gameState == DRAW_GUESS) read_letter(get_scancode(), word_guess, &number_letters);
+        if ((gameState == SINGLEPLAYER) && delayTime > 5) read_letter(get_scancode(), word_guess, &number_letters);
             break;
     }
 }
