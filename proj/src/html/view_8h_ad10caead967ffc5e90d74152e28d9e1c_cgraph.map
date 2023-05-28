@@ -1,0 +1,4 @@
+<map id="draw_bar" name="draw_bar">
+<area shape="rect" id="node1" title="Draws a bar on the screen with the specified dimensions and color." alt="" coords="5,5,88,32"/>
+<area shape="rect" id="node2" href="$graphics__card_8c.html#a08c498ffeb0a3962e3b7711b57397741" title="Draws a pixel at the specified coordinates with the given color." alt="" coords="136,5,251,32"/>
+</map>

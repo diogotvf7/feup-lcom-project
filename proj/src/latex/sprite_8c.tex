@@ -1,0 +1,53 @@
+\hypertarget{sprite_8c}{}\doxysection{model/sprite.c File Reference}
+\label{sprite_8c}\index{model/sprite.c@{model/sprite.c}}
+{\ttfamily \#include \char`\"{}sprite.\+h\char`\"{}}\newline
+Include dependency graph for sprite.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=166pt]{sprite_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structSprite}{Sprite}} $\ast$ \mbox{\hyperlink{sprite_8c_a632aa689a0339b3558dadac05df9e5da}{create\+\_\+sprite\+\_\+xpm}} (xpm\+\_\+map\+\_\+t sprite)
+\begin{DoxyCompactList}\small\item\em Creates a sprite from an XPM map. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sprite_8c_a607cfeb4f019a84c346eb3bce9da0420}{destroy\+\_\+sprite}} (\mbox{\hyperlink{structSprite}{Sprite}} $\ast$sprite)
+\begin{DoxyCompactList}\small\item\em Destroys a sprite, freeing its memory. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{sprite_8c_a632aa689a0339b3558dadac05df9e5da}\label{sprite_8c_a632aa689a0339b3558dadac05df9e5da}} 
+\index{sprite.c@{sprite.c}!create\_sprite\_xpm@{create\_sprite\_xpm}}
+\index{create\_sprite\_xpm@{create\_sprite\_xpm}!sprite.c@{sprite.c}}
+\doxysubsubsection{\texorpdfstring{create\_sprite\_xpm()}{create\_sprite\_xpm()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSprite}{Sprite}}$\ast$ create\+\_\+sprite\+\_\+xpm (\begin{DoxyParamCaption}\item[{xpm\+\_\+map\+\_\+t}]{sprite }\end{DoxyParamCaption})}
+
+
+
+Creates a sprite from an XPM map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sprite} & The XPM map representing the sprite. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the created sprite, or NULL on failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{sprite_8c_a607cfeb4f019a84c346eb3bce9da0420}\label{sprite_8c_a607cfeb4f019a84c346eb3bce9da0420}} 
+\index{sprite.c@{sprite.c}!destroy\_sprite@{destroy\_sprite}}
+\index{destroy\_sprite@{destroy\_sprite}!sprite.c@{sprite.c}}
+\doxysubsubsection{\texorpdfstring{destroy\_sprite()}{destroy\_sprite()}}
+{\footnotesize\ttfamily void destroy\+\_\+sprite (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structSprite}{Sprite}} $\ast$}]{sprite }\end{DoxyParamCaption})}
+
+
+
+Destroys a sprite, freeing its memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sprite} & The sprite to destroy. \\
+\hline
+\end{DoxyParams}

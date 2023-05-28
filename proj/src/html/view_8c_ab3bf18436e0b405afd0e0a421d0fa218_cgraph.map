@@ -1,0 +1,5 @@
+<map id="draw_game_time" name="draw_game_time">
+<area shape="rect" id="node1" title="Draws the game time on the screen." alt="" coords="5,5,140,32"/>
+<area shape="rect" id="node2" href="$view_8c.html#a58e061d468ef13a6a2099c9b31a3590a" title="Draws a number on the screen at the specified coordinates using a sprite and index." alt="" coords="188,5,299,32"/>
+<area shape="rect" id="node3" href="$graphics__card_8c.html#a08c498ffeb0a3962e3b7711b57397741" title="Draws a pixel at the specified coordinates with the given color." alt="" coords="347,5,461,32"/>
+</map>

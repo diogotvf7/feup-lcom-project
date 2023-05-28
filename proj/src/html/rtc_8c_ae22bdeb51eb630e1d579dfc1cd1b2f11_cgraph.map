@@ -1,0 +1,8 @@
+<map id="rtc_update_time" name="rtc_update_time">
+<area shape="rect" id="node1" title="Updates the time values (year, month, day, hour, minute, second) from the RTC." alt="" coords="5,81,133,108"/>
+<area shape="rect" id="node2" href="$rtc_8c.html#ae1b1b1cc88f89eae300cdeef578da474" title="Checks if the RTC is using binary format." alt="" coords="201,5,283,32"/>
+<area shape="rect" id="node3" href="$rtc_8c.html#aa911f1e40016efcd03231661c8271a3f" title="Reads the output of the RTC." alt="" coords="351,56,475,83"/>
+<area shape="rect" id="node5" href="$rtc_8c.html#a47d5762e49eb390b04a09fc319c4e047" title="Checks if the RTC is updating." alt="" coords="181,107,303,133"/>
+<area shape="rect" id="node6" href="$utils_8c.html#a891509fed13e0cac396e9c401f887d72" title="Converts a BCD number to binary." alt="" coords="201,157,283,184"/>
+<area shape="rect" id="node4" href="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4" title="Reads a byte from the specified port." alt="" coords="523,56,621,83"/>
+</map>

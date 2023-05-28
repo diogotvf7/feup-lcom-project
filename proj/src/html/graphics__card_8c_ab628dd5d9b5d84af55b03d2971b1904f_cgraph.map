@@ -1,0 +1,9 @@
+<map id="direct_color" name="direct_color">
+<area shape="rect" id="node1" title="Creates a color using the provided RGB values." alt="" coords="5,56,104,83"/>
+<area shape="rect" id="node2" href="$graphics__card_8c.html#a9b183c9606e8f83f412f5b54cbc233d8" title="Retrieves the blue component of a color using the provided parameters." alt="" coords="156,5,207,32"/>
+<area shape="rect" id="node4" href="$graphics__card_8c.html#a2baf3bea0558e6396436442b8e3e9239" title="Retrieves the green component of a color using the provided parameters." alt="" coords="152,56,211,83"/>
+<area shape="rect" id="node6" href="$graphics__card_8c.html#a73b4544ba1b30d7787f49148a17bfbaf" title="Retrieves the red component of a color using the provided parameters." alt="" coords="160,107,203,133"/>
+<area shape="rect" id="node3" href="$graphics__card_8c.html#a312cd6e40169f4e4eab8257cb7e1013d" title="Retrieves the blue component of a color." alt="" coords="263,5,373,32"/>
+<area shape="rect" id="node5" href="$graphics__card_8c.html#ad6547babc8cb953b7e3039abc11b6ad8" title="Retrieves the green component of a color." alt="" coords="259,56,377,83"/>
+<area shape="rect" id="node7" href="$graphics__card_8c.html#a952913443faeb45949fde9d019abe78d" title="Retrieves the red component of a color." alt="" coords="267,107,369,133"/>
+</map>

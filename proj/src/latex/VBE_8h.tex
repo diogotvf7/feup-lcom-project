@@ -1,0 +1,124 @@
+\hypertarget{VBE_8h}{}\doxysection{controller/graphics\+\_\+card/\+VBE.h File Reference}
+\label{VBE_8h}\index{controller/graphics\_card/VBE.h@{controller/graphics\_card/VBE.h}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+Include dependency graph for VBE.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=187pt]{VBE_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{VBE_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structcolor__symbol}{color\+\_\+symbol}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{VBE_8h_af5269b9c4b24306bb65723de91e4f506}{COLOR\+\_\+\+SIZE\+\_\+\+MASK}}(n)~BIT(n) -\/ 1
+\item 
+\#define \mbox{\hyperlink{VBE_8h_a3c5534f1b82a41503ed50950a513ecb8}{GRAPHICS\+\_\+\+INT\+\_\+\+NO}}~0x10
+\item 
+\#define \mbox{\hyperlink{VBE_8h_a8edfc0ad727a6165e3a3a02a633aebce}{VESA\+\_\+\+FUNC}}~0x4F
+\item 
+\#define \mbox{\hyperlink{VBE_8h_a4622785e65c121befe1e03d7ee868876}{BIOS\+\_\+\+FUNC}}~0x00
+\item 
+\#define \mbox{\hyperlink{VBE_8h_a3619b0248f4577bc3cfc99d68cc75c96}{SET\+\_\+\+GRAPHICS\+\_\+\+MODE}}~0x02
+\item 
+\#define \mbox{\hyperlink{VBE_8h_a1b009a03ad01194e81e0d70c4de837ff}{SET\+\_\+\+DISPLAY\+\_\+\+START}}~0x07
+\item 
+\#define \mbox{\hyperlink{VBE_8h_a9c9c26c8bb3b278eae999fe1c82e4a8a}{INDEXED\+\_\+\+COLOR\+\_\+\+MODE}}~0x105
+\item 
+\#define \mbox{\hyperlink{VBE_8h_ab208dc4bc0e43eff7f62a8841dcf6cb5}{VBE\+\_\+\+MODE}}~0x14C
+\item 
+\#define \mbox{\hyperlink{VBE_8h_a5bf5a899a1cf2023f14213085e18163b}{DIRECT\+\_\+\+COLOR\+\_\+\+MODE}}~0x06
+\item 
+\#define \mbox{\hyperlink{VBE_8h_a70d61783d5bde238f01adea01f7c6f1c}{PACKED\+\_\+\+PIXEL\+\_\+\+MODE}}~0x04
+\item 
+\#define \mbox{\hyperlink{VBE_8h_a50a1643aa09a3502459f1c06657600e1}{LINEAR\+\_\+\+MODE}}~BIT(14)
+\item 
+\#define \mbox{\hyperlink{VBE_8h_a65390f0efe29cedeb9ce82b79ce1d714}{VBE\+\_\+\+RETURN\+\_\+\+SUCCESS}}~0x004F
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{VBE_8h_a4622785e65c121befe1e03d7ee868876}\label{VBE_8h_a4622785e65c121befe1e03d7ee868876}} 
+\index{VBE.h@{VBE.h}!BIOS\_FUNC@{BIOS\_FUNC}}
+\index{BIOS\_FUNC@{BIOS\_FUNC}!VBE.h@{VBE.h}}
+\doxysubsubsection{\texorpdfstring{BIOS\_FUNC}{BIOS\_FUNC}}
+{\footnotesize\ttfamily \#define BIOS\+\_\+\+FUNC~0x00}
+
+\mbox{\Hypertarget{VBE_8h_af5269b9c4b24306bb65723de91e4f506}\label{VBE_8h_af5269b9c4b24306bb65723de91e4f506}} 
+\index{VBE.h@{VBE.h}!COLOR\_SIZE\_MASK@{COLOR\_SIZE\_MASK}}
+\index{COLOR\_SIZE\_MASK@{COLOR\_SIZE\_MASK}!VBE.h@{VBE.h}}
+\doxysubsubsection{\texorpdfstring{COLOR\_SIZE\_MASK}{COLOR\_SIZE\_MASK}}
+{\footnotesize\ttfamily \#define COLOR\+\_\+\+SIZE\+\_\+\+MASK(\begin{DoxyParamCaption}\item[{}]{n }\end{DoxyParamCaption})~BIT(n) -\/ 1}
+
+\mbox{\Hypertarget{VBE_8h_a5bf5a899a1cf2023f14213085e18163b}\label{VBE_8h_a5bf5a899a1cf2023f14213085e18163b}} 
+\index{VBE.h@{VBE.h}!DIRECT\_COLOR\_MODE@{DIRECT\_COLOR\_MODE}}
+\index{DIRECT\_COLOR\_MODE@{DIRECT\_COLOR\_MODE}!VBE.h@{VBE.h}}
+\doxysubsubsection{\texorpdfstring{DIRECT\_COLOR\_MODE}{DIRECT\_COLOR\_MODE}}
+{\footnotesize\ttfamily \#define DIRECT\+\_\+\+COLOR\+\_\+\+MODE~0x06}
+
+\mbox{\Hypertarget{VBE_8h_a3c5534f1b82a41503ed50950a513ecb8}\label{VBE_8h_a3c5534f1b82a41503ed50950a513ecb8}} 
+\index{VBE.h@{VBE.h}!GRAPHICS\_INT\_NO@{GRAPHICS\_INT\_NO}}
+\index{GRAPHICS\_INT\_NO@{GRAPHICS\_INT\_NO}!VBE.h@{VBE.h}}
+\doxysubsubsection{\texorpdfstring{GRAPHICS\_INT\_NO}{GRAPHICS\_INT\_NO}}
+{\footnotesize\ttfamily \#define GRAPHICS\+\_\+\+INT\+\_\+\+NO~0x10}
+
+\mbox{\Hypertarget{VBE_8h_a9c9c26c8bb3b278eae999fe1c82e4a8a}\label{VBE_8h_a9c9c26c8bb3b278eae999fe1c82e4a8a}} 
+\index{VBE.h@{VBE.h}!INDEXED\_COLOR\_MODE@{INDEXED\_COLOR\_MODE}}
+\index{INDEXED\_COLOR\_MODE@{INDEXED\_COLOR\_MODE}!VBE.h@{VBE.h}}
+\doxysubsubsection{\texorpdfstring{INDEXED\_COLOR\_MODE}{INDEXED\_COLOR\_MODE}}
+{\footnotesize\ttfamily \#define INDEXED\+\_\+\+COLOR\+\_\+\+MODE~0x105}
+
+\mbox{\Hypertarget{VBE_8h_a50a1643aa09a3502459f1c06657600e1}\label{VBE_8h_a50a1643aa09a3502459f1c06657600e1}} 
+\index{VBE.h@{VBE.h}!LINEAR\_MODE@{LINEAR\_MODE}}
+\index{LINEAR\_MODE@{LINEAR\_MODE}!VBE.h@{VBE.h}}
+\doxysubsubsection{\texorpdfstring{LINEAR\_MODE}{LINEAR\_MODE}}
+{\footnotesize\ttfamily \#define LINEAR\+\_\+\+MODE~BIT(14)}
+
+\mbox{\Hypertarget{VBE_8h_a70d61783d5bde238f01adea01f7c6f1c}\label{VBE_8h_a70d61783d5bde238f01adea01f7c6f1c}} 
+\index{VBE.h@{VBE.h}!PACKED\_PIXEL\_MODE@{PACKED\_PIXEL\_MODE}}
+\index{PACKED\_PIXEL\_MODE@{PACKED\_PIXEL\_MODE}!VBE.h@{VBE.h}}
+\doxysubsubsection{\texorpdfstring{PACKED\_PIXEL\_MODE}{PACKED\_PIXEL\_MODE}}
+{\footnotesize\ttfamily \#define PACKED\+\_\+\+PIXEL\+\_\+\+MODE~0x04}
+
+\mbox{\Hypertarget{VBE_8h_a1b009a03ad01194e81e0d70c4de837ff}\label{VBE_8h_a1b009a03ad01194e81e0d70c4de837ff}} 
+\index{VBE.h@{VBE.h}!SET\_DISPLAY\_START@{SET\_DISPLAY\_START}}
+\index{SET\_DISPLAY\_START@{SET\_DISPLAY\_START}!VBE.h@{VBE.h}}
+\doxysubsubsection{\texorpdfstring{SET\_DISPLAY\_START}{SET\_DISPLAY\_START}}
+{\footnotesize\ttfamily \#define SET\+\_\+\+DISPLAY\+\_\+\+START~0x07}
+
+\mbox{\Hypertarget{VBE_8h_a3619b0248f4577bc3cfc99d68cc75c96}\label{VBE_8h_a3619b0248f4577bc3cfc99d68cc75c96}} 
+\index{VBE.h@{VBE.h}!SET\_GRAPHICS\_MODE@{SET\_GRAPHICS\_MODE}}
+\index{SET\_GRAPHICS\_MODE@{SET\_GRAPHICS\_MODE}!VBE.h@{VBE.h}}
+\doxysubsubsection{\texorpdfstring{SET\_GRAPHICS\_MODE}{SET\_GRAPHICS\_MODE}}
+{\footnotesize\ttfamily \#define SET\+\_\+\+GRAPHICS\+\_\+\+MODE~0x02}
+
+\mbox{\Hypertarget{VBE_8h_ab208dc4bc0e43eff7f62a8841dcf6cb5}\label{VBE_8h_ab208dc4bc0e43eff7f62a8841dcf6cb5}} 
+\index{VBE.h@{VBE.h}!VBE\_MODE@{VBE\_MODE}}
+\index{VBE\_MODE@{VBE\_MODE}!VBE.h@{VBE.h}}
+\doxysubsubsection{\texorpdfstring{VBE\_MODE}{VBE\_MODE}}
+{\footnotesize\ttfamily \#define VBE\+\_\+\+MODE~0x14C}
+
+\mbox{\Hypertarget{VBE_8h_a65390f0efe29cedeb9ce82b79ce1d714}\label{VBE_8h_a65390f0efe29cedeb9ce82b79ce1d714}} 
+\index{VBE.h@{VBE.h}!VBE\_RETURN\_SUCCESS@{VBE\_RETURN\_SUCCESS}}
+\index{VBE\_RETURN\_SUCCESS@{VBE\_RETURN\_SUCCESS}!VBE.h@{VBE.h}}
+\doxysubsubsection{\texorpdfstring{VBE\_RETURN\_SUCCESS}{VBE\_RETURN\_SUCCESS}}
+{\footnotesize\ttfamily \#define VBE\+\_\+\+RETURN\+\_\+\+SUCCESS~0x004F}
+
+\mbox{\Hypertarget{VBE_8h_a8edfc0ad727a6165e3a3a02a633aebce}\label{VBE_8h_a8edfc0ad727a6165e3a3a02a633aebce}} 
+\index{VBE.h@{VBE.h}!VESA\_FUNC@{VESA\_FUNC}}
+\index{VESA\_FUNC@{VESA\_FUNC}!VBE.h@{VBE.h}}
+\doxysubsubsection{\texorpdfstring{VESA\_FUNC}{VESA\_FUNC}}
+{\footnotesize\ttfamily \#define VESA\+\_\+\+FUNC~0x4F}
+

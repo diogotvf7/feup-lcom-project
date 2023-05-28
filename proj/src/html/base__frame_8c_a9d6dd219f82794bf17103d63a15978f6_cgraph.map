@@ -1,0 +1,4 @@
+<map id="draw_frame_circle" name="draw_frame_circle">
+<area shape="rect" id="node1" title="Draws a circle with the specified position, thickness, and color in the frame buffer." alt="" coords="5,5,148,32"/>
+<area shape="rect" id="node2" href="$base__frame_8c.html#abd6b092940e72f501885017f6c18febd" title="Draws a pixel with the specified color at the given coordinates in the frame buffer." alt="" coords="196,5,335,32"/>
+</map>

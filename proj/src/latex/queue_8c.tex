@@ -1,0 +1,153 @@
+\hypertarget{queue_8c}{}\doxysection{model/queue.c File Reference}
+\label{queue_8c}\index{model/queue.c@{model/queue.c}}
+{\ttfamily \#include \char`\"{}queue.\+h\char`\"{}}\newline
+Include dependency graph for queue.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=244pt]{queue_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{queue_8c_afbf36f2936d224adc3a32b0f6444e240}{queue\+\_\+size}} (\mbox{\hyperlink{structQueue}{Queue}} $\ast$$\ast$queue)
+\begin{DoxyCompactList}\small\item\em Get the size of the queue. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{queue_8c_a85a67096df58b6a7eb887ebc5e5b99a3}{queue\+\_\+empty}} (\mbox{\hyperlink{structQueue}{Queue}} $\ast$$\ast$queue)
+\begin{DoxyCompactList}\small\item\em Check if the queue is empty. \end{DoxyCompactList}\item 
+void $\ast$ \mbox{\hyperlink{queue_8c_ae5deb426b6bdc798397e6ea5a5dbba21}{queue\+\_\+front}} (\mbox{\hyperlink{structQueue}{Queue}} $\ast$$\ast$queue)
+\begin{DoxyCompactList}\small\item\em Get the data at the front of the queue. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{queue_8c_a483dbb1b59b28273124c15e85f3d78a9}{queue\+\_\+push}} (\mbox{\hyperlink{structQueue}{Queue}} $\ast$$\ast$queue, void $\ast$data, int size)
+\begin{DoxyCompactList}\small\item\em Push data into the queue. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{queue_8c_a3c40fc97d1bbe72d200d5a8af0667da0}{queue\+\_\+pop}} (\mbox{\hyperlink{structQueue}{Queue}} $\ast$$\ast$queue)
+\begin{DoxyCompactList}\small\item\em Pop the front element from the queue. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{queue_8c_af7636a66c1fc3bd7df7bcaaa8bfea879}{queue\+\_\+clear}} (\mbox{\hyperlink{structQueue}{Queue}} $\ast$$\ast$queue)
+\begin{DoxyCompactList}\small\item\em Clear the queue, removing all elements. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structQueue}{Queue}} $\ast$ \mbox{\hyperlink{queue_8c_abfba47cf03c816b3edc710dbfd9794d1}{pos\+\_\+queue}} = NULL
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{queue_8c_af7636a66c1fc3bd7df7bcaaa8bfea879}\label{queue_8c_af7636a66c1fc3bd7df7bcaaa8bfea879}} 
+\index{queue.c@{queue.c}!queue\_clear@{queue\_clear}}
+\index{queue\_clear@{queue\_clear}!queue.c@{queue.c}}
+\doxysubsubsection{\texorpdfstring{queue\_clear()}{queue\_clear()}}
+{\footnotesize\ttfamily void queue\+\_\+clear (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structQueue}{Queue}} $\ast$$\ast$}]{queue }\end{DoxyParamCaption})}
+
+
+
+Clear the queue, removing all elements. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em queue} & The pointer to the queue. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=262pt]{queue_8c_af7636a66c1fc3bd7df7bcaaa8bfea879_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{queue_8c_a85a67096df58b6a7eb887ebc5e5b99a3}\label{queue_8c_a85a67096df58b6a7eb887ebc5e5b99a3}} 
+\index{queue.c@{queue.c}!queue\_empty@{queue\_empty}}
+\index{queue\_empty@{queue\_empty}!queue.c@{queue.c}}
+\doxysubsubsection{\texorpdfstring{queue\_empty()}{queue\_empty()}}
+{\footnotesize\ttfamily int queue\+\_\+empty (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structQueue}{Queue}} $\ast$$\ast$}]{queue }\end{DoxyParamCaption})}
+
+
+
+Check if the queue is empty. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em queue} & The pointer to the queue. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if the queue is empty, 0 otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{queue_8c_ae5deb426b6bdc798397e6ea5a5dbba21}\label{queue_8c_ae5deb426b6bdc798397e6ea5a5dbba21}} 
+\index{queue.c@{queue.c}!queue\_front@{queue\_front}}
+\index{queue\_front@{queue\_front}!queue.c@{queue.c}}
+\doxysubsubsection{\texorpdfstring{queue\_front()}{queue\_front()}}
+{\footnotesize\ttfamily void$\ast$ queue\+\_\+front (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structQueue}{Queue}} $\ast$$\ast$}]{queue }\end{DoxyParamCaption})}
+
+
+
+Get the data at the front of the queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em queue} & The pointer to the queue. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the data at the front of the queue, or NULL if the queue is empty. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{queue_8c_a3c40fc97d1bbe72d200d5a8af0667da0}\label{queue_8c_a3c40fc97d1bbe72d200d5a8af0667da0}} 
+\index{queue.c@{queue.c}!queue\_pop@{queue\_pop}}
+\index{queue\_pop@{queue\_pop}!queue.c@{queue.c}}
+\doxysubsubsection{\texorpdfstring{queue\_pop()}{queue\_pop()}}
+{\footnotesize\ttfamily void queue\+\_\+pop (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structQueue}{Queue}} $\ast$$\ast$}]{queue }\end{DoxyParamCaption})}
+
+
+
+Pop the front element from the queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em queue} & The pointer to the queue. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{queue_8c_a483dbb1b59b28273124c15e85f3d78a9}\label{queue_8c_a483dbb1b59b28273124c15e85f3d78a9}} 
+\index{queue.c@{queue.c}!queue\_push@{queue\_push}}
+\index{queue\_push@{queue\_push}!queue.c@{queue.c}}
+\doxysubsubsection{\texorpdfstring{queue\_push()}{queue\_push()}}
+{\footnotesize\ttfamily void queue\+\_\+push (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structQueue}{Queue}} $\ast$$\ast$}]{queue,  }\item[{void $\ast$}]{data,  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+Push data into the queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em queue} & The pointer to the queue. \\
+\hline
+{\em data} & The pointer to the data to be pushed into the queue. \\
+\hline
+{\em size} & The size of the data. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{queue_8c_afbf36f2936d224adc3a32b0f6444e240}\label{queue_8c_afbf36f2936d224adc3a32b0f6444e240}} 
+\index{queue.c@{queue.c}!queue\_size@{queue\_size}}
+\index{queue\_size@{queue\_size}!queue.c@{queue.c}}
+\doxysubsubsection{\texorpdfstring{queue\_size()}{queue\_size()}}
+{\footnotesize\ttfamily int queue\+\_\+size (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structQueue}{Queue}} $\ast$$\ast$}]{queue }\end{DoxyParamCaption})}
+
+
+
+Get the size of the queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em queue} & The pointer to the queue. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The size of the queue. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{queue_8c_abfba47cf03c816b3edc710dbfd9794d1}\label{queue_8c_abfba47cf03c816b3edc710dbfd9794d1}} 
+\index{queue.c@{queue.c}!pos\_queue@{pos\_queue}}
+\index{pos\_queue@{pos\_queue}!queue.c@{queue.c}}
+\doxysubsubsection{\texorpdfstring{pos\_queue}{pos\_queue}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structQueue}{Queue}}$\ast$ pos\+\_\+queue = NULL}
+

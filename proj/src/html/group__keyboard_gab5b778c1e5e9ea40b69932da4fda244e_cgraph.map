@@ -1,0 +1,4 @@
+<map id="read_keyboard_status" name="read_keyboard_status">
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,171,32"/>
+<area shape="rect" id="node2" href="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4" title="Reads a byte from the specified port." alt="" coords="219,5,317,32"/>
+</map>

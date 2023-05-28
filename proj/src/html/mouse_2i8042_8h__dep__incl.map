@@ -1,0 +1,12 @@
+<map id="controller/mouse/i8042.h" name="controller/mouse/i8042.h">
+<area shape="rect" id="node1" title=" " alt="" coords="143,5,327,32"/>
+<area shape="rect" id="node2" href="$kbc_8h.html" title=" " alt="" coords="88,80,259,107"/>
+<area shape="rect" id="node4" href="$mouse_8h.html" title=" " alt="" coords="200,155,392,181"/>
+<area shape="rect" id="node3" href="$kbc_8c.html" title=" " alt="" coords="5,155,176,181"/>
+<area shape="rect" id="node5" href="$mouse_8c.html" title=" " alt="" coords="19,229,210,256"/>
+<area shape="rect" id="node6" href="$model_8h.html" title=" " alt="" coords="285,229,405,256"/>
+<area shape="rect" id="node8" href="$proj_8c.html" title=" " alt="" coords="193,304,252,331"/>
+<area shape="rect" id="node9" href="$view_8h.html" title=" " alt="" coords="420,304,519,331"/>
+<area shape="rect" id="node7" href="$model_8c.html" title=" " alt="" coords="277,304,395,331"/>
+<area shape="rect" id="node10" href="$view_8c.html" title=" " alt="" coords="420,379,519,405"/>
+</map>

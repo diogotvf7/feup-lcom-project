@@ -1,0 +1,17 @@
+<map id="draw_new_frame" name="draw_new_frame">
+<area shape="rect" id="node1" title="Draws a new frame on the screen." alt="" coords="5,107,140,133"/>
+<area shape="rect" id="node2" href="$view_8c.html#aa72c0c9d88ccd3fde2b5893fbe236b83" title="Draws the end menu on the screen." alt="" coords="195,107,324,133"/>
+<area shape="rect" id="node5" href="$view_8c.html#a0a9f56467341cbe24bd981d4b9960fdd" title="Draws the game menu on the screen." alt="" coords="188,157,331,184"/>
+<area shape="rect" id="node12" href="$view_8c.html#a2e293823f22abda1c98f45d8035282d8" title="Draws the initial menu on the screen." alt="" coords="188,233,331,260"/>
+<area shape="rect" id="node14" href="$view_8c.html#adc37ea95d6b131697311029bc38d65ea" title="Draws the leaderboard on the screen." alt="" coords="190,5,329,32"/>
+<area shape="rect" id="node15" href="$view_8c.html#a42f4903ab89aff9e3ee0206c52cf710a" title="Draws the mouse cursor on the screen." alt="" coords="207,56,312,83"/>
+<area shape="rect" id="node3" href="$view_8c.html#a6db4230a0003a09515d78b790d8ec52d" title="Draws a sprite on the screen at the specified coordinates." alt="" coords="383,56,517,83"/>
+<area shape="rect" id="node4" href="$graphics__card_8c.html#a08c498ffeb0a3962e3b7711b57397741" title="Draws a pixel at the specified coordinates with the given color." alt="" coords="753,157,868,184"/>
+<area shape="rect" id="node6" href="$view_8c.html#ad10caead967ffc5e90d74152e28d9e1c" title="Draws a bar on the screen with the specified dimensions and color." alt="" coords="596,157,679,184"/>
+<area shape="rect" id="node7" href="$view_8c.html#aef8638ecb12b4ebdcfa0d7dae437129f" title="Draws a bottom bar on the screen with the specified dimensions, color, and square parameters." alt="" coords="569,208,705,235"/>
+<area shape="rect" id="node8" href="$view_8c.html#ab3bf18436e0b405afd0e0a421d0fa218" title="Draws the game time on the screen." alt="" coords="383,107,517,133"/>
+<area shape="rect" id="node10" href="$view_8c.html#a8961a3bca654ba4b82e25d500e72e51a" title="Draws a word on the screen at the specified coordinates with the given color." alt="" coords="403,259,497,285"/>
+<area shape="rect" id="node9" href="$view_8c.html#a58e061d468ef13a6a2099c9b31a3590a" title="Draws a number on the screen at the specified coordinates using a sprite and index." alt="" coords="582,107,693,133"/>
+<area shape="rect" id="node11" href="$view_8c.html#ada858fadee2450139d229f064b30f17b" title="Draws a letter on the screen at the specified coordinates with the given color." alt="" coords="589,259,685,285"/>
+<area shape="rect" id="node13" href="$model_8c.html#a664447168b53c1bf003924014760b4ef" title="Converts a string to QWERTY format." alt="" coords="379,309,521,336"/>
+</map>

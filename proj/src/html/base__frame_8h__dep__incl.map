@@ -1,0 +1,11 @@
+<map id="model/base_frame.h" name="model/base_frame.h">
+<area shape="rect" id="node1" title=" " alt="" coords="371,5,527,32"/>
+<area shape="rect" id="node2" href="$graphics__card_8h.html" title=" " alt="" coords="283,80,446,121"/>
+<area shape="rect" id="node4" href="$model_8h.html" title=" " alt="" coords="89,177,209,203"/>
+<area shape="rect" id="node6" href="$proj_8c.html" title=" " alt="" coords="454,259,513,285"/>
+<area shape="rect" id="node9" href="$base__frame_8c.html" title=" " alt="" coords="571,87,726,114"/>
+<area shape="rect" id="node3" href="$graphics__card_8c.html" title=" " alt="" coords="283,169,446,211"/>
+<area shape="rect" id="node7" href="$view_8h.html" title=" " alt="" coords="149,259,247,285"/>
+<area shape="rect" id="node5" href="$model_8c.html" title=" " alt="" coords="5,259,124,285"/>
+<area shape="rect" id="node8" href="$view_8c.html" title=" " alt="" coords="149,333,247,360"/>
+</map>

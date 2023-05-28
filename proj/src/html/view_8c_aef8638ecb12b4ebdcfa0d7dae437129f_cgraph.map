@@ -1,0 +1,4 @@
+<map id="draw_bottom_bar" name="draw_bottom_bar">
+<area shape="rect" id="node1" title="Draws a bottom bar on the screen with the specified dimensions, color, and square parameters." alt="" coords="5,5,141,32"/>
+<area shape="rect" id="node2" href="$graphics__card_8c.html#a08c498ffeb0a3962e3b7711b57397741" title="Draws a pixel at the specified coordinates with the given color." alt="" coords="189,5,304,32"/>
+</map>
