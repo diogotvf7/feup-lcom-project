@@ -7,6 +7,11 @@
         "*.xpm": "c",
         "mouse.h": "c",
         "view.h": "c",
-        "timer.h": "c"
+        "timer.h": "c",
+        "colors.h": "c",
+        "utils.h": "c",
+        "keyboard.h": "c",
+        "stdint.h": "c",
+        "base_frame.h": "c"
     }
 }

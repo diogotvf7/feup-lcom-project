@@ -19,7 +19,7 @@ moonlight
 scissors
 seashell
 dragonfly
-ice cream
+cat
 sailboat
 tornado
 giraffe

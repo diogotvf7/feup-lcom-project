@@ -88,7 +88,6 @@ int (reset_settings)() {
 int (proj_main_loop)(int argc, char **argv) {
 
   if (start_settings() != 0) return 1;
-
   while (systemState == RUNNING) {
     if ((r = driver_receive(ANY, &msg, &ipc_status)) != OK) {
       printf("driver_receive failed with: %d", r);
