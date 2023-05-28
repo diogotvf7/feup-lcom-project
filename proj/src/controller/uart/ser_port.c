@@ -102,28 +102,20 @@ void uart_ih()
 {
   uint8_t iir, byte;
   util_sys_inb(COM1 + SER_IIR, &iir);
-  // printBits(sizeof iir, &iir);
   if(!(iir & INTERRUPT_PENDING)) {
-    printf("WARNING: Interrupt pending");
     switch(iir & INTERRUPT_ORIGIN_MASK) {
       case MODEM_STATUS_INT:
-        printf("   MODEM_STATUS_INT\n");
         break;
       case TRANSMITTER_EMPTY_INT:
-        printf("   TRANSMITTER_EMPTY_INT\n");
         break;
       case CHAR_TIMEOUT:
       case RECEIVED_DATA_INT:
-        printf("   Receiving data...\n");
         while (receive_uart_byte(&byte));
-
-        util_sys_inb(COM1 + SER_IIR, &iir);
+        // util_sys_inb(COM1 + SER_IIR, &iir);
         break;
       case LINE_STATUS_INT:
-        printf("   LINE_STATUS_INT\n");
         break;
       default:
-        printf("   UART_IH: Invalid interrupt origin\n");
         break;
     }
   }
@@ -148,7 +140,6 @@ int send_uart_byte(uint8_t byte)
 int send_uart_bytes(uint8_t *bytes, uint32_t size) 
 {
   for (uint32_t i = 0; i < size; i++) {
-    printf("Sending byte: %d\n", bytes[i]);
     if (send_uart_byte(bytes[i]) != OK) {
       printf("UART: Error sending bytes\n");
       return !OK;
@@ -163,7 +154,6 @@ int receive_uart_byte(uint8_t *byte)
   if (get_uart_lsr(&lsr) != OK) return !OK;
   if (lsr & RECEIVER_DATA) {
     if (util_sys_inb(COM1 + SER_RBR, byte) != OK) return !OK;
-    printf("Received byte: %d\n", *byte);
     queue_push(&rcvr_fifo, byte, sizeof(uint8_t));
 
     return OK;

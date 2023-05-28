@@ -228,11 +228,6 @@ void update_timer_state() {
         if (process_packet(color, radius) != 0)
             break;
     }
-    if (get_counter() % 60 == 0){
-        uint8_t iir;
-        util_sys_inb(COM1 + SER_IIR, &iir);
-        printBits(sizeof iir, &iir);
-    }
     if (get_counter() % 30 == 0 && menuState == GAME){
 
         //tempo de delay onde so conseguimos ver a palavra - o game counter nao diminui aqui
