@@ -1,0 +1,6 @@
+<map id="keyboard_restore" name="keyboard_restore">
+<area shape="rect" id="node1" title="Restores the keyboard&#39;s default settings." alt="" coords="5,31,140,57"/>
+<area shape="rect" id="node2" href="$keyboard_8c.html#a21f1d7c5b4716be3907005e854ababd0" title="Writes a command to the keyboard controller." alt="" coords="188,5,311,32"/>
+<area shape="rect" id="node4" href="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4" title="Reads a byte from the specified port." alt="" coords="572,31,671,57"/>
+<area shape="rect" id="node3" href="$keyboard_8c.html#ab5b778c1e5e9ea40b69932da4fda244e" title="Reads the keyboard status." alt="" coords="359,5,524,32"/>
+</map>

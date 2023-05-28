@@ -1,0 +1,6 @@
+<map id="mouse_ih" name="mouse_ih">
+<area shape="rect" id="node1" title="Mouse interrupt handler." alt="" coords="5,31,91,57"/>
+<area shape="rect" id="node2" href="$kbc_8c.html#a89bb4f28926b1437d023deda57a7e350" title="Reads the output buffer of the mouse." alt="" coords="139,31,284,57"/>
+<area shape="rect" id="node3" href="$kbc_8c.html#a05ba0954260bbefa9d8abb7715d5c252" title="Reads the mouse status." alt="" coords="332,5,481,32"/>
+<area shape="rect" id="node4" href="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4" title="Reads a byte from the specified port." alt="" coords="529,31,628,57"/>
+</map>

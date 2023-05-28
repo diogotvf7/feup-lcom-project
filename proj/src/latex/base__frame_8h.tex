@@ -1,0 +1,171 @@
+\hypertarget{base__frame_8h}{}\doxysection{model/base\+\_\+frame.h File Reference}
+\label{base__frame_8h}\index{model/base\_frame.h@{model/base\_frame.h}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}model/queue.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}colors.\+h\char`\"{}}\newline
+Include dependency graph for base\+\_\+frame.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=303pt]{base__frame_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{base__frame_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structframe__buffer__t}{frame\+\_\+buffer\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Structure representing a frame buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{base__frame_8h_ab00d8022c641562da3becc117fb15bbc}{create\+\_\+frame\+\_\+buffer}} (uint16\+\_\+t width, uint16\+\_\+t height, uint16\+\_\+t \mbox{\hyperlink{view_8c_a273db53582b308a7fd6d6448e10f018f}{bytes\+\_\+per\+\_\+pixel}})
+\begin{DoxyCompactList}\small\item\em Creates a frame buffer with the specified width, height, and bytes per pixel. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{base__frame_8h_abd6b092940e72f501885017f6c18febd}{draw\+\_\+frame\+\_\+pixel}} (uint16\+\_\+t \mbox{\hyperlink{view_8c_a6150e0515f7202e2fb518f7206ed97dc}{x}}, uint16\+\_\+t \mbox{\hyperlink{view_8c_a0a2f84ed7838f07779ae24c5a9086d33}{y}}, uint32\+\_\+t \mbox{\hyperlink{model_8c_a66b2ef8398a8bbb0f5816f22a7b138da}{color}})
+\begin{DoxyCompactList}\small\item\em Draws a pixel with the specified color at the given coordinates in the frame buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{base__frame_8h_a9d6dd219f82794bf17103d63a15978f6}{draw\+\_\+frame\+\_\+circle}} (\mbox{\hyperlink{structPosition}{Position}} p, uint16\+\_\+t thickness, uint32\+\_\+t \mbox{\hyperlink{model_8c_a66b2ef8398a8bbb0f5816f22a7b138da}{color}})
+\begin{DoxyCompactList}\small\item\em Draws a circle with the specified position, thickness, and color in the frame buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{base__frame_8h_a22d65fbf80bd282c6b4ec1765c1ea180}{draw\+\_\+bresenham\+\_\+line}} (\mbox{\hyperlink{structPosition}{Position}} p1, \mbox{\hyperlink{structPosition}{Position}} p2, uint32\+\_\+t \mbox{\hyperlink{model_8c_a66b2ef8398a8bbb0f5816f22a7b138da}{color}}, uint16\+\_\+t thickness)
+\begin{DoxyCompactList}\small\item\em Draws a line using Bresenham\textquotesingle{}s algorithm with the specified positions, color, and thickness in the frame buffer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{base__frame_8h_a1e165abcb00cf1ab25eb043ae85ab8f8}{process\+\_\+packet}} (uint32\+\_\+t \mbox{\hyperlink{model_8c_a66b2ef8398a8bbb0f5816f22a7b138da}{color}}, int \mbox{\hyperlink{model_8c_a395279899207ce7f17adf9fdb8ee97ee}{radius}})
+\begin{DoxyCompactList}\small\item\em Processes a packet with the specified color and radius. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{base__frame_8h_a0ca68dd8848dc3ffa75fcf6c6dc7d168}{reset\+\_\+frame}} ()
+\begin{DoxyCompactList}\small\item\em Resets the frame buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{base__frame_8h_ab00d8022c641562da3becc117fb15bbc}\label{base__frame_8h_ab00d8022c641562da3becc117fb15bbc}} 
+\index{base\_frame.h@{base\_frame.h}!create\_frame\_buffer@{create\_frame\_buffer}}
+\index{create\_frame\_buffer@{create\_frame\_buffer}!base\_frame.h@{base\_frame.h}}
+\doxysubsubsection{\texorpdfstring{create\_frame\_buffer()}{create\_frame\_buffer()}}
+{\footnotesize\ttfamily void create\+\_\+frame\+\_\+buffer (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{width,  }\item[{uint16\+\_\+t}]{height,  }\item[{uint16\+\_\+t}]{bytes\+\_\+per\+\_\+pixel }\end{DoxyParamCaption})}
+
+
+
+Creates a frame buffer with the specified width, height, and bytes per pixel. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & The width of the frame buffer. \\
+\hline
+{\em height} & The height of the frame buffer. \\
+\hline
+{\em bytes\+\_\+per\+\_\+pixel} & The number of bytes per pixel. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{base__frame_8h_a22d65fbf80bd282c6b4ec1765c1ea180}\label{base__frame_8h_a22d65fbf80bd282c6b4ec1765c1ea180}} 
+\index{base\_frame.h@{base\_frame.h}!draw\_bresenham\_line@{draw\_bresenham\_line}}
+\index{draw\_bresenham\_line@{draw\_bresenham\_line}!base\_frame.h@{base\_frame.h}}
+\doxysubsubsection{\texorpdfstring{draw\_bresenham\_line()}{draw\_bresenham\_line()}}
+{\footnotesize\ttfamily void draw\+\_\+bresenham\+\_\+line (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structPosition}{Position}}}]{p1,  }\item[{\mbox{\hyperlink{structPosition}{Position}}}]{p2,  }\item[{uint32\+\_\+t}]{color,  }\item[{uint16\+\_\+t}]{thickness }\end{DoxyParamCaption})}
+
+
+
+Draws a line using Bresenham\textquotesingle{}s algorithm with the specified positions, color, and thickness in the frame buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p1} & The starting position of the line. \\
+\hline
+{\em p2} & The ending position of the line. \\
+\hline
+{\em color} & The color of the line. \\
+\hline
+{\em thickness} & The thickness of the line. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{base__frame_8h_a22d65fbf80bd282c6b4ec1765c1ea180_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{base__frame_8h_a9d6dd219f82794bf17103d63a15978f6}\label{base__frame_8h_a9d6dd219f82794bf17103d63a15978f6}} 
+\index{base\_frame.h@{base\_frame.h}!draw\_frame\_circle@{draw\_frame\_circle}}
+\index{draw\_frame\_circle@{draw\_frame\_circle}!base\_frame.h@{base\_frame.h}}
+\doxysubsubsection{\texorpdfstring{draw\_frame\_circle()}{draw\_frame\_circle()}}
+{\footnotesize\ttfamily void draw\+\_\+frame\+\_\+circle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structPosition}{Position}}}]{p,  }\item[{uint16\+\_\+t}]{thickness,  }\item[{uint32\+\_\+t}]{color }\end{DoxyParamCaption})}
+
+
+
+Draws a circle with the specified position, thickness, and color in the frame buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & The position of the center of the circle. \\
+\hline
+{\em thickness} & The thickness of the circle. \\
+\hline
+{\em color} & The color of the circle. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=327pt]{base__frame_8h_a9d6dd219f82794bf17103d63a15978f6_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{base__frame_8h_abd6b092940e72f501885017f6c18febd}\label{base__frame_8h_abd6b092940e72f501885017f6c18febd}} 
+\index{base\_frame.h@{base\_frame.h}!draw\_frame\_pixel@{draw\_frame\_pixel}}
+\index{draw\_frame\_pixel@{draw\_frame\_pixel}!base\_frame.h@{base\_frame.h}}
+\doxysubsubsection{\texorpdfstring{draw\_frame\_pixel()}{draw\_frame\_pixel()}}
+{\footnotesize\ttfamily void draw\+\_\+frame\+\_\+pixel (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y,  }\item[{uint32\+\_\+t}]{color }\end{DoxyParamCaption})}
+
+
+
+Draws a pixel with the specified color at the given coordinates in the frame buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the pixel. \\
+\hline
+{\em y} & The y-\/coordinate of the pixel. \\
+\hline
+{\em color} & The color of the pixel. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{base__frame_8h_a1e165abcb00cf1ab25eb043ae85ab8f8}\label{base__frame_8h_a1e165abcb00cf1ab25eb043ae85ab8f8}} 
+\index{base\_frame.h@{base\_frame.h}!process\_packet@{process\_packet}}
+\index{process\_packet@{process\_packet}!base\_frame.h@{base\_frame.h}}
+\doxysubsubsection{\texorpdfstring{process\_packet()}{process\_packet()}}
+{\footnotesize\ttfamily int process\+\_\+packet (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{color,  }\item[{int}]{radius }\end{DoxyParamCaption})}
+
+
+
+Processes a packet with the specified color and radius. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & The color of the packet. \\
+\hline
+{\em radius} & The radius of the packet. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The result of the packet processing. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{base__frame_8h_a1e165abcb00cf1ab25eb043ae85ab8f8_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{base__frame_8h_a0ca68dd8848dc3ffa75fcf6c6dc7d168}\label{base__frame_8h_a0ca68dd8848dc3ffa75fcf6c6dc7d168}} 
+\index{base\_frame.h@{base\_frame.h}!reset\_frame@{reset\_frame}}
+\index{reset\_frame@{reset\_frame}!base\_frame.h@{base\_frame.h}}
+\doxysubsubsection{\texorpdfstring{reset\_frame()}{reset\_frame()}}
+{\footnotesize\ttfamily void reset\+\_\+frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Resets the frame buffer. 
+

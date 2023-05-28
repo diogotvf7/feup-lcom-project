@@ -12,6 +12,25 @@
 #include <lcom/lcf.h>
 #include <lcom/video_gr.h>
 
+/**
+ * @file proj.c
+ *
+ * \dot
+ * digraph MyFiles {
+ *   // Graph directives and node/edge definitions
+
+ *   // Example graph attributes for layout
+ *   rankdir=TB;
+ *   splines=polyline; // Use curved edges
+ *   nodesep=10; // Adjust the distance between nodes
+ *   ranksep=0.5; // Adjust the distance between ranks
+ *   node [shape=rectangle]; // Set node shape
+ *   edge [color=blue]; // Set edge color
+ * }
+ * \enddot
+ */
+
+
 uint8_t irq_set_timer, irq_set_keyboard;
 int irq_set_mouse,  ipc_status, r;
 message msg;

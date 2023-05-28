@@ -1,0 +1,8 @@
+<map id="draw_initial_menu" name="draw_initial_menu">
+<area shape="rect" id="node1" title="Draws the initial menu on the screen." alt="" coords="5,56,148,83"/>
+<area shape="rect" id="node2" href="$model_8c.html#a664447168b53c1bf003924014760b4ef" title="Converts a string to QWERTY format." alt="" coords="196,5,339,32"/>
+<area shape="rect" id="node3" href="$view_8c.html#a6db4230a0003a09515d78b790d8ec52d" title="Draws a sprite on the screen at the specified coordinates." alt="" coords="387,56,521,83"/>
+<area shape="rect" id="node5" href="$view_8c.html#a8961a3bca654ba4b82e25d500e72e51a" title="Draws a word on the screen at the specified coordinates with the given color." alt="" coords="221,107,314,133"/>
+<area shape="rect" id="node4" href="$graphics__card_8c.html#a08c498ffeb0a3962e3b7711b57397741" title="Draws a pixel at the specified coordinates with the given color." alt="" coords="569,81,684,108"/>
+<area shape="rect" id="node6" href="$view_8c.html#ada858fadee2450139d229f064b30f17b" title="Draws a letter on the screen at the specified coordinates with the given color." alt="" coords="406,107,502,133"/>
+</map>

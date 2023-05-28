@@ -1,0 +1,490 @@
+\hypertarget{graphics__card_8h}{}\doxysection{controller/graphics\+\_\+card/graphics\+\_\+card.h File Reference}
+\label{graphics__card_8h}\index{controller/graphics\_card/graphics\_card.h@{controller/graphics\_card/graphics\_card.h}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$lcom/video\+\_\+gr.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}model/base\+\_\+frame.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}model/colors.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}VBE.\+h\char`\"{}}\newline
+Include dependency graph for graphics\+\_\+card.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{graphics__card_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{graphics__card_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void $\ast$() \mbox{\hyperlink{graphics__card_8h_a148912ad9f432117e0478e7c07d41e5c}{map\+\_\+graphics\+\_\+memory}} (uint16\+\_\+t mode)
+\begin{DoxyCompactList}\small\item\em Maps graphics memory for the specified video mode. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{graphics__card_8h_ab95b427277e3b2cefdd6c0f5249f0416}{vg\+\_\+flip\+\_\+frame}} ()
+\begin{DoxyCompactList}\small\item\em Flips the frame buffer to display the newly drawn frame. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{graphics__card_8h_a75333ed25b62bdbe6d7dd51445a15721}{copy\+\_\+base\+\_\+frame}} (\mbox{\hyperlink{structframe__buffer__t}{frame\+\_\+buffer\+\_\+t}} \mbox{\hyperlink{model_8c_a759e7825b70e7520a026615c171bbea6}{frame\+\_\+buffer}})
+\begin{DoxyCompactList}\small\item\em Copies the base frame buffer to the specified frame buffer. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{graphics__card_8h_a08c498ffeb0a3962e3b7711b57397741}{vg\+\_\+draw\+\_\+pixel}} (uint16\+\_\+t \mbox{\hyperlink{view_8c_a6150e0515f7202e2fb518f7206ed97dc}{x}}, uint16\+\_\+t \mbox{\hyperlink{view_8c_a0a2f84ed7838f07779ae24c5a9086d33}{y}}, uint32\+\_\+t \mbox{\hyperlink{model_8c_a66b2ef8398a8bbb0f5816f22a7b138da}{color}})
+\begin{DoxyCompactList}\small\item\em Draws a pixel at the specified coordinates with the given color. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{graphics__card_8h_a5e5b25bd525250f61f40b9e9f212d5e6}{vg\+\_\+draw\+\_\+hline}} (uint16\+\_\+t \mbox{\hyperlink{view_8c_a6150e0515f7202e2fb518f7206ed97dc}{x}}, uint16\+\_\+t \mbox{\hyperlink{view_8c_a0a2f84ed7838f07779ae24c5a9086d33}{y}}, uint16\+\_\+t len, uint32\+\_\+t \mbox{\hyperlink{model_8c_a66b2ef8398a8bbb0f5816f22a7b138da}{color}})
+\begin{DoxyCompactList}\small\item\em Draws a horizontal line starting from the specified coordinates with the given length and color. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{graphics__card_8h_a99d2da2559e11200c6b40c469e9977ec}{vg\+\_\+draw\+\_\+rectangle}} (uint16\+\_\+t \mbox{\hyperlink{view_8c_a6150e0515f7202e2fb518f7206ed97dc}{x}}, uint16\+\_\+t \mbox{\hyperlink{view_8c_a0a2f84ed7838f07779ae24c5a9086d33}{y}}, uint16\+\_\+t width, uint16\+\_\+t height, uint32\+\_\+t \mbox{\hyperlink{model_8c_a66b2ef8398a8bbb0f5816f22a7b138da}{color}})
+\begin{DoxyCompactList}\small\item\em Draws a rectangle with the specified position, size, and color. \end{DoxyCompactList}\item 
+void $\ast$() \mbox{\hyperlink{graphics__card_8h_aa6c1ff5024cd4d15e476bce487584daa}{vg\+\_\+init}} (uint16\+\_\+t mode)
+\begin{DoxyCompactList}\small\item\em Initializes the video graphics mode. \end{DoxyCompactList}\item 
+uint32\+\_\+t() \mbox{\hyperlink{graphics__card_8h_a73b4544ba1b30d7787f49148a17bfbaf}{red}} (unsigned \mbox{\hyperlink{view_8c_a0a2f84ed7838f07779ae24c5a9086d33}{y}}, uint32\+\_\+t first, uint8\+\_\+t step)
+\begin{DoxyCompactList}\small\item\em Retrieves the red component of a color using the provided parameters. \end{DoxyCompactList}\item 
+uint32\+\_\+t() \mbox{\hyperlink{graphics__card_8h_a2baf3bea0558e6396436442b8e3e9239}{green}} (unsigned \mbox{\hyperlink{view_8c_a6150e0515f7202e2fb518f7206ed97dc}{x}}, uint32\+\_\+t first, uint8\+\_\+t step)
+\begin{DoxyCompactList}\small\item\em Retrieves the green component of a color using the provided parameters. \end{DoxyCompactList}\item 
+uint32\+\_\+t() \mbox{\hyperlink{graphics__card_8h_a9b183c9606e8f83f412f5b54cbc233d8}{blue}} (unsigned \mbox{\hyperlink{view_8c_a6150e0515f7202e2fb518f7206ed97dc}{x}}, unsigned \mbox{\hyperlink{view_8c_a0a2f84ed7838f07779ae24c5a9086d33}{y}}, uint32\+\_\+t first, uint8\+\_\+t step)
+\begin{DoxyCompactList}\small\item\em Retrieves the blue component of a color using the provided parameters. \end{DoxyCompactList}\item 
+uint32\+\_\+t() \mbox{\hyperlink{graphics__card_8h_a952913443faeb45949fde9d019abe78d}{get\+\_\+red\+\_\+bits}} (uint32\+\_\+t \mbox{\hyperlink{model_8c_a66b2ef8398a8bbb0f5816f22a7b138da}{color}})
+\begin{DoxyCompactList}\small\item\em Retrieves the red component of a color. \end{DoxyCompactList}\item 
+uint32\+\_\+t() \mbox{\hyperlink{graphics__card_8h_ad6547babc8cb953b7e3039abc11b6ad8}{get\+\_\+green\+\_\+bits}} (uint32\+\_\+t \mbox{\hyperlink{model_8c_a66b2ef8398a8bbb0f5816f22a7b138da}{color}})
+\begin{DoxyCompactList}\small\item\em Retrieves the green component of a color. \end{DoxyCompactList}\item 
+uint32\+\_\+t() \mbox{\hyperlink{graphics__card_8h_a312cd6e40169f4e4eab8257cb7e1013d}{get\+\_\+blue\+\_\+bits}} (uint32\+\_\+t \mbox{\hyperlink{model_8c_a66b2ef8398a8bbb0f5816f22a7b138da}{color}})
+\begin{DoxyCompactList}\small\item\em Retrieves the blue component of a color. \end{DoxyCompactList}\item 
+uint32\+\_\+t() \mbox{\hyperlink{graphics__card_8h_af3431106861ec2b32b8e5cd18d7b5235}{index\+\_\+color}} (uint32\+\_\+t first, uint8\+\_\+t step, uint8\+\_\+t no\+\_\+rectangles, uint8\+\_\+t row, uint8\+\_\+t col)
+\begin{DoxyCompactList}\small\item\em Computes the color of a pixel based on a pattern of rectangles. \end{DoxyCompactList}\item 
+uint32\+\_\+t() \mbox{\hyperlink{graphics__card_8h_ab628dd5d9b5d84af55b03d2971b1904f}{direct\+\_\+color}} (uint32\+\_\+t \mbox{\hyperlink{graphics__card_8h_a73b4544ba1b30d7787f49148a17bfbaf}{red}}, uint32\+\_\+t \mbox{\hyperlink{graphics__card_8h_a2baf3bea0558e6396436442b8e3e9239}{green}}, uint32\+\_\+t \mbox{\hyperlink{graphics__card_8h_a9b183c9606e8f83f412f5b54cbc233d8}{blue}})
+\begin{DoxyCompactList}\small\item\em Creates a color using the provided RGB values. \end{DoxyCompactList}\item 
+uint8\+\_\+t() \mbox{\hyperlink{graphics__card_8h_acf3fee3f3e39bdd58e0aaa8b020b73ec}{get\+\_\+xpm\+\_\+width}} (xpm\+\_\+map\+\_\+t xpm)
+\begin{DoxyCompactList}\small\item\em Retrieves the width of an XPM image. \end{DoxyCompactList}\item 
+uint8\+\_\+t() \mbox{\hyperlink{graphics__card_8h_a78ca374be408a71d017f532d9a3e3f3e}{get\+\_\+xpm\+\_\+height}} (xpm\+\_\+map\+\_\+t xpm)
+\begin{DoxyCompactList}\small\item\em Retrieves the height of an XPM image. \end{DoxyCompactList}\item 
+uint8\+\_\+t() \mbox{\hyperlink{graphics__card_8h_afcd06a73b8a26d4e7acf9b0f0537c644}{get\+\_\+xpm\+\_\+colors\+\_\+no}} (xpm\+\_\+map\+\_\+t xpm)
+\begin{DoxyCompactList}\small\item\em Retrieves the number of colors in an XPM image. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structcolor__symbol}{color\+\_\+symbol}} $\ast$() \mbox{\hyperlink{graphics__card_8h_af3b03370c908d222ad1bb7c350d81dd9}{get\+\_\+xpm\+\_\+colors}} (xpm\+\_\+map\+\_\+t xpm, uint8\+\_\+t colors\+\_\+no)
+\begin{DoxyCompactList}\small\item\em Retrieves the color symbol array of an XPM image. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{graphics__card_8h_a9b183c9606e8f83f412f5b54cbc233d8}\label{graphics__card_8h_a9b183c9606e8f83f412f5b54cbc233d8}} 
+\index{graphics\_card.h@{graphics\_card.h}!blue@{blue}}
+\index{blue@{blue}!graphics\_card.h@{graphics\_card.h}}
+\doxysubsubsection{\texorpdfstring{blue()}{blue()}}
+{\footnotesize\ttfamily uint32\+\_\+t() blue (\begin{DoxyParamCaption}\item[{unsigned}]{x,  }\item[{unsigned}]{y,  }\item[{uint32\+\_\+t}]{first,  }\item[{uint8\+\_\+t}]{step }\end{DoxyParamCaption})}
+
+
+
+Retrieves the blue component of a color using the provided parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate. \\
+\hline
+{\em y} & The y-\/coordinate. \\
+\hline
+{\em first} & The first color component value. \\
+\hline
+{\em step} & The color component step value.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The blue component of the color. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=236pt]{graphics__card_8h_a9b183c9606e8f83f412f5b54cbc233d8_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{graphics__card_8h_a75333ed25b62bdbe6d7dd51445a15721}\label{graphics__card_8h_a75333ed25b62bdbe6d7dd51445a15721}} 
+\index{graphics\_card.h@{graphics\_card.h}!copy\_base\_frame@{copy\_base\_frame}}
+\index{copy\_base\_frame@{copy\_base\_frame}!graphics\_card.h@{graphics\_card.h}}
+\doxysubsubsection{\texorpdfstring{copy\_base\_frame()}{copy\_base\_frame()}}
+{\footnotesize\ttfamily int() copy\+\_\+base\+\_\+frame (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structframe__buffer__t}{frame\+\_\+buffer\+\_\+t}}}]{frame\+\_\+buffer }\end{DoxyParamCaption})}
+
+
+
+Copies the base frame buffer to the specified frame buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em frame\+\_\+buffer} & The frame buffer to copy the base frame to.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{graphics__card_8h_ab628dd5d9b5d84af55b03d2971b1904f}\label{graphics__card_8h_ab628dd5d9b5d84af55b03d2971b1904f}} 
+\index{graphics\_card.h@{graphics\_card.h}!direct\_color@{direct\_color}}
+\index{direct\_color@{direct\_color}!graphics\_card.h@{graphics\_card.h}}
+\doxysubsubsection{\texorpdfstring{direct\_color()}{direct\_color()}}
+{\footnotesize\ttfamily uint32\+\_\+t() direct\+\_\+color (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{red,  }\item[{uint32\+\_\+t}]{green,  }\item[{uint32\+\_\+t}]{blue }\end{DoxyParamCaption})}
+
+
+
+Creates a color using the provided RGB values. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em red} & The red component value. \\
+\hline
+{\em green} & The green component value. \\
+\hline
+{\em blue} & The blue component value.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The created color. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{graphics__card_8h_ab628dd5d9b5d84af55b03d2971b1904f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{graphics__card_8h_a312cd6e40169f4e4eab8257cb7e1013d}\label{graphics__card_8h_a312cd6e40169f4e4eab8257cb7e1013d}} 
+\index{graphics\_card.h@{graphics\_card.h}!get\_blue\_bits@{get\_blue\_bits}}
+\index{get\_blue\_bits@{get\_blue\_bits}!graphics\_card.h@{graphics\_card.h}}
+\doxysubsubsection{\texorpdfstring{get\_blue\_bits()}{get\_blue\_bits()}}
+{\footnotesize\ttfamily uint32\+\_\+t() get\+\_\+blue\+\_\+bits (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{color }\end{DoxyParamCaption})}
+
+
+
+Retrieves the blue component of a color. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & The color.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The blue component of the color. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{graphics__card_8h_ad6547babc8cb953b7e3039abc11b6ad8}\label{graphics__card_8h_ad6547babc8cb953b7e3039abc11b6ad8}} 
+\index{graphics\_card.h@{graphics\_card.h}!get\_green\_bits@{get\_green\_bits}}
+\index{get\_green\_bits@{get\_green\_bits}!graphics\_card.h@{graphics\_card.h}}
+\doxysubsubsection{\texorpdfstring{get\_green\_bits()}{get\_green\_bits()}}
+{\footnotesize\ttfamily uint32\+\_\+t() get\+\_\+green\+\_\+bits (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{color }\end{DoxyParamCaption})}
+
+
+
+Retrieves the green component of a color. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & The color.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The green component of the color. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{graphics__card_8h_a952913443faeb45949fde9d019abe78d}\label{graphics__card_8h_a952913443faeb45949fde9d019abe78d}} 
+\index{graphics\_card.h@{graphics\_card.h}!get\_red\_bits@{get\_red\_bits}}
+\index{get\_red\_bits@{get\_red\_bits}!graphics\_card.h@{graphics\_card.h}}
+\doxysubsubsection{\texorpdfstring{get\_red\_bits()}{get\_red\_bits()}}
+{\footnotesize\ttfamily uint32\+\_\+t() get\+\_\+red\+\_\+bits (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{color }\end{DoxyParamCaption})}
+
+
+
+Retrieves the red component of a color. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & The color.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The red component of the color. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{graphics__card_8h_af3b03370c908d222ad1bb7c350d81dd9}\label{graphics__card_8h_af3b03370c908d222ad1bb7c350d81dd9}} 
+\index{graphics\_card.h@{graphics\_card.h}!get\_xpm\_colors@{get\_xpm\_colors}}
+\index{get\_xpm\_colors@{get\_xpm\_colors}!graphics\_card.h@{graphics\_card.h}}
+\doxysubsubsection{\texorpdfstring{get\_xpm\_colors()}{get\_xpm\_colors()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structcolor__symbol}{color\+\_\+symbol}}$\ast$() get\+\_\+xpm\+\_\+colors (\begin{DoxyParamCaption}\item[{xpm\+\_\+map\+\_\+t}]{xpm,  }\item[{uint8\+\_\+t}]{colors\+\_\+no }\end{DoxyParamCaption})}
+
+
+
+Retrieves the color symbol array of an XPM image. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em xpm} & The XPM image. \\
+\hline
+{\em colors\+\_\+no} & The number of colors in the XPM image.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The color symbol array of the XPM image. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{graphics__card_8h_afcd06a73b8a26d4e7acf9b0f0537c644}\label{graphics__card_8h_afcd06a73b8a26d4e7acf9b0f0537c644}} 
+\index{graphics\_card.h@{graphics\_card.h}!get\_xpm\_colors\_no@{get\_xpm\_colors\_no}}
+\index{get\_xpm\_colors\_no@{get\_xpm\_colors\_no}!graphics\_card.h@{graphics\_card.h}}
+\doxysubsubsection{\texorpdfstring{get\_xpm\_colors\_no()}{get\_xpm\_colors\_no()}}
+{\footnotesize\ttfamily uint8\+\_\+t() get\+\_\+xpm\+\_\+colors\+\_\+no (\begin{DoxyParamCaption}\item[{xpm\+\_\+map\+\_\+t}]{xpm }\end{DoxyParamCaption})}
+
+
+
+Retrieves the number of colors in an XPM image. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em xpm} & The XPM image.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of colors in the XPM image. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{graphics__card_8h_a78ca374be408a71d017f532d9a3e3f3e}\label{graphics__card_8h_a78ca374be408a71d017f532d9a3e3f3e}} 
+\index{graphics\_card.h@{graphics\_card.h}!get\_xpm\_height@{get\_xpm\_height}}
+\index{get\_xpm\_height@{get\_xpm\_height}!graphics\_card.h@{graphics\_card.h}}
+\doxysubsubsection{\texorpdfstring{get\_xpm\_height()}{get\_xpm\_height()}}
+{\footnotesize\ttfamily uint8\+\_\+t() get\+\_\+xpm\+\_\+height (\begin{DoxyParamCaption}\item[{xpm\+\_\+map\+\_\+t}]{xpm }\end{DoxyParamCaption})}
+
+
+
+Retrieves the height of an XPM image. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em xpm} & The XPM image.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The height of the XPM image. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{graphics__card_8h_acf3fee3f3e39bdd58e0aaa8b020b73ec}\label{graphics__card_8h_acf3fee3f3e39bdd58e0aaa8b020b73ec}} 
+\index{graphics\_card.h@{graphics\_card.h}!get\_xpm\_width@{get\_xpm\_width}}
+\index{get\_xpm\_width@{get\_xpm\_width}!graphics\_card.h@{graphics\_card.h}}
+\doxysubsubsection{\texorpdfstring{get\_xpm\_width()}{get\_xpm\_width()}}
+{\footnotesize\ttfamily uint8\+\_\+t() get\+\_\+xpm\+\_\+width (\begin{DoxyParamCaption}\item[{xpm\+\_\+map\+\_\+t}]{xpm }\end{DoxyParamCaption})}
+
+
+
+Retrieves the width of an XPM image. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em xpm} & The XPM image.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The width of the XPM image. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{graphics__card_8h_a2baf3bea0558e6396436442b8e3e9239}\label{graphics__card_8h_a2baf3bea0558e6396436442b8e3e9239}} 
+\index{graphics\_card.h@{graphics\_card.h}!green@{green}}
+\index{green@{green}!graphics\_card.h@{graphics\_card.h}}
+\doxysubsubsection{\texorpdfstring{green()}{green()}}
+{\footnotesize\ttfamily uint32\+\_\+t() green (\begin{DoxyParamCaption}\item[{unsigned}]{x,  }\item[{uint32\+\_\+t}]{first,  }\item[{uint8\+\_\+t}]{step }\end{DoxyParamCaption})}
+
+
+
+Retrieves the green component of a color using the provided parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate. \\
+\hline
+{\em first} & The first color component value. \\
+\hline
+{\em step} & The color component step value.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The green component of the color. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=249pt]{graphics__card_8h_a2baf3bea0558e6396436442b8e3e9239_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{graphics__card_8h_af3431106861ec2b32b8e5cd18d7b5235}\label{graphics__card_8h_af3431106861ec2b32b8e5cd18d7b5235}} 
+\index{graphics\_card.h@{graphics\_card.h}!index\_color@{index\_color}}
+\index{index\_color@{index\_color}!graphics\_card.h@{graphics\_card.h}}
+\doxysubsubsection{\texorpdfstring{index\_color()}{index\_color()}}
+{\footnotesize\ttfamily uint32\+\_\+t() index\+\_\+color (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{first,  }\item[{uint8\+\_\+t}]{step,  }\item[{uint8\+\_\+t}]{no\+\_\+rectangles,  }\item[{uint8\+\_\+t}]{row,  }\item[{uint8\+\_\+t}]{col }\end{DoxyParamCaption})}
+
+
+
+Computes the color of a pixel based on a pattern of rectangles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em first} & The first color component value. \\
+\hline
+{\em step} & The color component step value. \\
+\hline
+{\em no\+\_\+rectangles} & The number of rectangles. \\
+\hline
+{\em row} & The row index of the rectangle. \\
+\hline
+{\em col} & The column index of the rectangle.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The computed color of the pixel. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{graphics__card_8h_a148912ad9f432117e0478e7c07d41e5c}\label{graphics__card_8h_a148912ad9f432117e0478e7c07d41e5c}} 
+\index{graphics\_card.h@{graphics\_card.h}!map\_graphics\_memory@{map\_graphics\_memory}}
+\index{map\_graphics\_memory@{map\_graphics\_memory}!graphics\_card.h@{graphics\_card.h}}
+\doxysubsubsection{\texorpdfstring{map\_graphics\_memory()}{map\_graphics\_memory()}}
+{\footnotesize\ttfamily void$\ast$() map\+\_\+graphics\+\_\+memory (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{mode }\end{DoxyParamCaption})}
+
+
+
+Maps graphics memory for the specified video mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & The video mode to map the graphics memory for.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the mapped graphics memory. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{graphics__card_8h_a73b4544ba1b30d7787f49148a17bfbaf}\label{graphics__card_8h_a73b4544ba1b30d7787f49148a17bfbaf}} 
+\index{graphics\_card.h@{graphics\_card.h}!red@{red}}
+\index{red@{red}!graphics\_card.h@{graphics\_card.h}}
+\doxysubsubsection{\texorpdfstring{red()}{red()}}
+{\footnotesize\ttfamily uint32\+\_\+t() red (\begin{DoxyParamCaption}\item[{unsigned}]{y,  }\item[{uint32\+\_\+t}]{first,  }\item[{uint8\+\_\+t}]{step }\end{DoxyParamCaption})}
+
+
+
+Retrieves the red component of a color using the provided parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em y} & The y-\/coordinate. \\
+\hline
+{\em first} & The first color component value. \\
+\hline
+{\em step} & The color component step value.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The red component of the color. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{graphics__card_8h_a73b4544ba1b30d7787f49148a17bfbaf_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{graphics__card_8h_a5e5b25bd525250f61f40b9e9f212d5e6}\label{graphics__card_8h_a5e5b25bd525250f61f40b9e9f212d5e6}} 
+\index{graphics\_card.h@{graphics\_card.h}!vg\_draw\_hline@{vg\_draw\_hline}}
+\index{vg\_draw\_hline@{vg\_draw\_hline}!graphics\_card.h@{graphics\_card.h}}
+\doxysubsubsection{\texorpdfstring{vg\_draw\_hline()}{vg\_draw\_hline()}}
+{\footnotesize\ttfamily int() vg\+\_\+draw\+\_\+hline (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y,  }\item[{uint16\+\_\+t}]{len,  }\item[{uint32\+\_\+t}]{color }\end{DoxyParamCaption})}
+
+
+
+Draws a horizontal line starting from the specified coordinates with the given length and color. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The starting x-\/coordinate of the line. \\
+\hline
+{\em y} & The y-\/coordinate of the line. \\
+\hline
+{\em len} & The length of the line. \\
+\hline
+{\em color} & The color of the line.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=289pt]{graphics__card_8h_a5e5b25bd525250f61f40b9e9f212d5e6_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{graphics__card_8h_a08c498ffeb0a3962e3b7711b57397741}\label{graphics__card_8h_a08c498ffeb0a3962e3b7711b57397741}} 
+\index{graphics\_card.h@{graphics\_card.h}!vg\_draw\_pixel@{vg\_draw\_pixel}}
+\index{vg\_draw\_pixel@{vg\_draw\_pixel}!graphics\_card.h@{graphics\_card.h}}
+\doxysubsubsection{\texorpdfstring{vg\_draw\_pixel()}{vg\_draw\_pixel()}}
+{\footnotesize\ttfamily int() vg\+\_\+draw\+\_\+pixel (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y,  }\item[{uint32\+\_\+t}]{color }\end{DoxyParamCaption})}
+
+
+
+Draws a pixel at the specified coordinates with the given color. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the pixel. \\
+\hline
+{\em y} & The y-\/coordinate of the pixel. \\
+\hline
+{\em color} & The color of the pixel.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{graphics__card_8h_a99d2da2559e11200c6b40c469e9977ec}\label{graphics__card_8h_a99d2da2559e11200c6b40c469e9977ec}} 
+\index{graphics\_card.h@{graphics\_card.h}!vg\_draw\_rectangle@{vg\_draw\_rectangle}}
+\index{vg\_draw\_rectangle@{vg\_draw\_rectangle}!graphics\_card.h@{graphics\_card.h}}
+\doxysubsubsection{\texorpdfstring{vg\_draw\_rectangle()}{vg\_draw\_rectangle()}}
+{\footnotesize\ttfamily int() vg\+\_\+draw\+\_\+rectangle (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y,  }\item[{uint16\+\_\+t}]{width,  }\item[{uint16\+\_\+t}]{height,  }\item[{uint32\+\_\+t}]{color }\end{DoxyParamCaption})}
+
+
+
+Draws a rectangle with the specified position, size, and color. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the top-\/left corner of the rectangle. \\
+\hline
+{\em y} & The y-\/coordinate of the top-\/left corner of the rectangle. \\
+\hline
+{\em width} & The width of the rectangle. \\
+\hline
+{\em height} & The height of the rectangle. \\
+\hline
+{\em color} & The color of the rectangle.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{graphics__card_8h_a99d2da2559e11200c6b40c469e9977ec_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{graphics__card_8h_ab95b427277e3b2cefdd6c0f5249f0416}\label{graphics__card_8h_ab95b427277e3b2cefdd6c0f5249f0416}} 
+\index{graphics\_card.h@{graphics\_card.h}!vg\_flip\_frame@{vg\_flip\_frame}}
+\index{vg\_flip\_frame@{vg\_flip\_frame}!graphics\_card.h@{graphics\_card.h}}
+\doxysubsubsection{\texorpdfstring{vg\_flip\_frame()}{vg\_flip\_frame()}}
+{\footnotesize\ttfamily int() vg\+\_\+flip\+\_\+frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Flips the frame buffer to display the newly drawn frame. 
+
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{graphics__card_8h_aa6c1ff5024cd4d15e476bce487584daa}\label{graphics__card_8h_aa6c1ff5024cd4d15e476bce487584daa}} 
+\index{graphics\_card.h@{graphics\_card.h}!vg\_init@{vg\_init}}
+\index{vg\_init@{vg\_init}!graphics\_card.h@{graphics\_card.h}}
+\doxysubsubsection{\texorpdfstring{vg\_init()}{vg\_init()}}
+{\footnotesize\ttfamily void$\ast$() vg\+\_\+init (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{mode }\end{DoxyParamCaption})}
+
+
+
+Initializes the video graphics mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & The video mode to initialize.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the initialized video graphics mode. 
+\end{DoxyReturn}

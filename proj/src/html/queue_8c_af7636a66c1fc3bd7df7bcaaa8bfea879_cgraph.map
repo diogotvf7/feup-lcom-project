@@ -1,0 +1,4 @@
+<map id="queue_clear" name="queue_clear">
+<area shape="rect" id="node1" title="Clear the queue, removing all elements." alt="" coords="5,5,107,32"/>
+<area shape="rect" id="node2" href="$queue_8c.html#a3c40fc97d1bbe72d200d5a8af0667da0" title="Pop the front element from the queue." alt="" coords="155,5,248,32"/>
+</map>

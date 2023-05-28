@@ -1,0 +1,10 @@
+<map id="controller/graphics_card/graphics_card.h" name="controller/graphics_card/graphics_card.h">
+<area shape="rect" id="node1" title=" " alt="" coords="104,5,267,47"/>
+<area shape="rect" id="node2" title=" " alt="" coords="206,244,291,271"/>
+<area shape="rect" id="node3" title=" " alt="" coords="23,95,148,121"/>
+<area shape="rect" id="node4" href="$base__frame_8h.html" title=" " alt="" coords="274,95,430,121"/>
+<area shape="rect" id="node7" href="$colors_8h.html" title=" " alt="" coords="224,169,297,196"/>
+<area shape="rect" id="node8" href="$VBE_8h.html" title=" " alt="" coords="22,169,82,196"/>
+<area shape="rect" id="node5" href="$queue_8h.html" title=" " alt="" coords="373,169,492,196"/>
+<area shape="rect" id="node6" href="$global__vars_8h.html" title=" " alt="" coords="378,244,487,271"/>
+</map>

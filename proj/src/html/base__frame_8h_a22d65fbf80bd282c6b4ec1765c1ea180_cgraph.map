@@ -1,0 +1,4 @@
+<map id="draw_bresenham_line" name="draw_bresenham_line">
+<area shape="rect" id="node1" title="Draws a line using Bresenham&#39;s algorithm with the specified positions, color, and thickness in the fr..." alt="" coords="5,5,171,32"/>
+<area shape="rect" id="node2" href="$base__frame_8c.html#abd6b092940e72f501885017f6c18febd" title="Draws a pixel with the specified color at the given coordinates in the frame buffer." alt="" coords="219,5,357,32"/>
+</map>

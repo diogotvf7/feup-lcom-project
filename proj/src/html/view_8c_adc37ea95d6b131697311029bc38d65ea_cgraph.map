@@ -1,0 +1,6 @@
+<map id="draw_leaderboard" name="draw_leaderboard">
+<area shape="rect" id="node1" title="Draws the leaderboard on the screen." alt="" coords="5,31,144,57"/>
+<area shape="rect" id="node2" href="$view_8c.html#a58e061d468ef13a6a2099c9b31a3590a" title="Draws a number on the screen at the specified coordinates using a sprite and index." alt="" coords="204,5,315,32"/>
+<area shape="rect" id="node4" href="$view_8c.html#a6db4230a0003a09515d78b790d8ec52d" title="Draws a sprite on the screen at the specified coordinates." alt="" coords="192,56,327,83"/>
+<area shape="rect" id="node3" href="$graphics__card_8c.html#a08c498ffeb0a3962e3b7711b57397741" title="Draws a pixel at the specified coordinates with the given color." alt="" coords="375,31,489,57"/>
+</map>

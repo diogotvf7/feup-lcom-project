@@ -1,0 +1,14 @@
+<map id="model/colors.h" name="model/colors.h">
+<area shape="rect" id="node1" title=" " alt="" coords="188,5,306,32"/>
+<area shape="rect" id="node2" href="$graphics__card_8h.html" title=" " alt="" coords="47,155,210,196"/>
+<area shape="rect" id="node4" href="$model_8h.html" title=" " alt="" coords="236,251,356,278"/>
+<area shape="rect" id="node7" href="$view_8h.html" title=" " alt="" coords="131,333,230,360"/>
+<area shape="rect" id="node9" href="$mouse_8h.html" title=" " alt="" coords="514,162,706,189"/>
+<area shape="rect" id="node11" href="$base__frame_8h.html" title=" " alt="" coords="285,80,441,107"/>
+<area shape="rect" id="node3" href="$graphics__card_8c.html" title=" " alt="" coords="50,244,212,285"/>
+<area shape="rect" id="node6" href="$proj_8c.html" title=" " alt="" coords="440,333,499,360"/>
+<area shape="rect" id="node5" href="$model_8c.html" title=" " alt="" coords="254,333,373,360"/>
+<area shape="rect" id="node8" href="$view_8c.html" title=" " alt="" coords="131,408,230,435"/>
+<area shape="rect" id="node10" href="$mouse_8c.html" title=" " alt="" coords="533,251,724,278"/>
+<area shape="rect" id="node12" href="$base__frame_8c.html" title=" " alt="" coords="335,162,490,189"/>
+</map>

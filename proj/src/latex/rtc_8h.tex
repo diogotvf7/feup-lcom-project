@@ -1,0 +1,283 @@
+\hypertarget{rtc_8h}{}\doxysection{controller/rtc/rtc.h File Reference}
+\label{rtc_8h}\index{controller/rtc/rtc.h@{controller/rtc/rtc.h}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../utils.\+h\char`\"{}}\newline
+Include dependency graph for rtc.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{rtc_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=323pt]{rtc_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structreal__time}{real\+\_\+time}}
+\begin{DoxyCompactList}\small\item\em Structure representing the real-\/time values (year, month, day, hour, minute, second). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{rtc_8h_a910ac5f2c1b4016e433f9832358a1816}{IRQ\+\_\+\+RTC}}~8
+\item 
+\#define \mbox{\hyperlink{rtc_8h_ac261047d18c2505db97b38b7b157f1fd}{REGISTER\+\_\+\+COUNTING}}~11
+\item 
+\#define \mbox{\hyperlink{rtc_8h_ab196fcf51422609f91fb441a245a2965}{IS\+\_\+\+BINARY}}~BIT(2)
+\item 
+\#define \mbox{\hyperlink{rtc_8h_ae07bc1582ec2a0d53dd74350b5a19c5e}{UPDATING}}~BIT(7)
+\item 
+\#define \mbox{\hyperlink{rtc_8h_aef57692d80a04636cd333c18d4dcf2d0}{REG\+\_\+\+INPUT}}~0x70
+\item 
+\#define \mbox{\hyperlink{rtc_8h_a2cb2bb355c8ce0c0fa50b7bc60db2ffa}{REG\+\_\+\+OUTPUT}}~0x71
+\item 
+\#define \mbox{\hyperlink{rtc_8h_a79c0bb250ad248af29b370b20dd1fb29}{REGISTER\+\_\+\+UPDATING}}~10
+\item 
+\#define \mbox{\hyperlink{rtc_8h_a48fcf4f2eeef6769d588168d4ac2ab0e}{SECONDS}}~0
+\item 
+\#define \mbox{\hyperlink{rtc_8h_a84be9dcfa5a172ee83121620d15c8e29}{MINUTES}}~2
+\item 
+\#define \mbox{\hyperlink{rtc_8h_a212d0f839f6f7ca43ccde311f93d5892}{HOURS}}~4
+\item 
+\#define \mbox{\hyperlink{rtc_8h_a509a01c55cbe47386fe24602b7c7fda1}{DAY}}~7
+\item 
+\#define \mbox{\hyperlink{rtc_8h_a3729d06495d9713592f79f3122c9e677}{MONTH}}~8
+\item 
+\#define \mbox{\hyperlink{rtc_8h_a5871356500f559add06ea81d60331b1b}{YEAR}}~9
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{rtc_8h_abb4fa397a4a71ad09e3b0df51f40dbe8}{rtc\+\_\+init}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the RTC (Real-\/\+Time Clock). \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{rtc_8h_abd8de825e876e8ef94c64ac616f68a11}{rtc\+\_\+subscribe\+\_\+int}} ()
+\begin{DoxyCompactList}\small\item\em Subscribes to RTC interrupts. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{rtc_8h_ab8f17bf5280c908c8b199a90fefcc758}{rtc\+\_\+unsubscribe\+\_\+int}} ()
+\begin{DoxyCompactList}\small\item\em Unsubscribes from RTC interrupts. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{rtc_8h_ae1b1b1cc88f89eae300cdeef578da474}{is\+\_\+binary}} ()
+\begin{DoxyCompactList}\small\item\em Checks if the RTC is using binary format. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{rtc_8h_aa911f1e40016efcd03231661c8271a3f}{read\+\_\+rtc\+\_\+output}} (uint8\+\_\+t command, uint8\+\_\+t $\ast$output)
+\begin{DoxyCompactList}\small\item\em Reads the output of the RTC. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{rtc_8h_a47d5762e49eb390b04a09fc319c4e047}{rtc\+\_\+is\+\_\+updating}} ()
+\begin{DoxyCompactList}\small\item\em Checks if the RTC is updating. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{rtc_8h_ae22bdeb51eb630e1d579dfc1cd1b2f11}{rtc\+\_\+update\+\_\+time}} ()
+\begin{DoxyCompactList}\small\item\em Updates the time values (year, month, day, hour, minute, second) from the RTC. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{rtc_8h_a509a01c55cbe47386fe24602b7c7fda1}\label{rtc_8h_a509a01c55cbe47386fe24602b7c7fda1}} 
+\index{rtc.h@{rtc.h}!DAY@{DAY}}
+\index{DAY@{DAY}!rtc.h@{rtc.h}}
+\doxysubsubsection{\texorpdfstring{DAY}{DAY}}
+{\footnotesize\ttfamily \#define DAY~7}
+
+\mbox{\Hypertarget{rtc_8h_a212d0f839f6f7ca43ccde311f93d5892}\label{rtc_8h_a212d0f839f6f7ca43ccde311f93d5892}} 
+\index{rtc.h@{rtc.h}!HOURS@{HOURS}}
+\index{HOURS@{HOURS}!rtc.h@{rtc.h}}
+\doxysubsubsection{\texorpdfstring{HOURS}{HOURS}}
+{\footnotesize\ttfamily \#define HOURS~4}
+
+\mbox{\Hypertarget{rtc_8h_a910ac5f2c1b4016e433f9832358a1816}\label{rtc_8h_a910ac5f2c1b4016e433f9832358a1816}} 
+\index{rtc.h@{rtc.h}!IRQ\_RTC@{IRQ\_RTC}}
+\index{IRQ\_RTC@{IRQ\_RTC}!rtc.h@{rtc.h}}
+\doxysubsubsection{\texorpdfstring{IRQ\_RTC}{IRQ\_RTC}}
+{\footnotesize\ttfamily \#define IRQ\+\_\+\+RTC~8}
+
+\mbox{\Hypertarget{rtc_8h_ab196fcf51422609f91fb441a245a2965}\label{rtc_8h_ab196fcf51422609f91fb441a245a2965}} 
+\index{rtc.h@{rtc.h}!IS\_BINARY@{IS\_BINARY}}
+\index{IS\_BINARY@{IS\_BINARY}!rtc.h@{rtc.h}}
+\doxysubsubsection{\texorpdfstring{IS\_BINARY}{IS\_BINARY}}
+{\footnotesize\ttfamily \#define IS\+\_\+\+BINARY~BIT(2)}
+
+\mbox{\Hypertarget{rtc_8h_a84be9dcfa5a172ee83121620d15c8e29}\label{rtc_8h_a84be9dcfa5a172ee83121620d15c8e29}} 
+\index{rtc.h@{rtc.h}!MINUTES@{MINUTES}}
+\index{MINUTES@{MINUTES}!rtc.h@{rtc.h}}
+\doxysubsubsection{\texorpdfstring{MINUTES}{MINUTES}}
+{\footnotesize\ttfamily \#define MINUTES~2}
+
+\mbox{\Hypertarget{rtc_8h_a3729d06495d9713592f79f3122c9e677}\label{rtc_8h_a3729d06495d9713592f79f3122c9e677}} 
+\index{rtc.h@{rtc.h}!MONTH@{MONTH}}
+\index{MONTH@{MONTH}!rtc.h@{rtc.h}}
+\doxysubsubsection{\texorpdfstring{MONTH}{MONTH}}
+{\footnotesize\ttfamily \#define MONTH~8}
+
+\mbox{\Hypertarget{rtc_8h_aef57692d80a04636cd333c18d4dcf2d0}\label{rtc_8h_aef57692d80a04636cd333c18d4dcf2d0}} 
+\index{rtc.h@{rtc.h}!REG\_INPUT@{REG\_INPUT}}
+\index{REG\_INPUT@{REG\_INPUT}!rtc.h@{rtc.h}}
+\doxysubsubsection{\texorpdfstring{REG\_INPUT}{REG\_INPUT}}
+{\footnotesize\ttfamily \#define REG\+\_\+\+INPUT~0x70}
+
+\mbox{\Hypertarget{rtc_8h_a2cb2bb355c8ce0c0fa50b7bc60db2ffa}\label{rtc_8h_a2cb2bb355c8ce0c0fa50b7bc60db2ffa}} 
+\index{rtc.h@{rtc.h}!REG\_OUTPUT@{REG\_OUTPUT}}
+\index{REG\_OUTPUT@{REG\_OUTPUT}!rtc.h@{rtc.h}}
+\doxysubsubsection{\texorpdfstring{REG\_OUTPUT}{REG\_OUTPUT}}
+{\footnotesize\ttfamily \#define REG\+\_\+\+OUTPUT~0x71}
+
+\mbox{\Hypertarget{rtc_8h_ac261047d18c2505db97b38b7b157f1fd}\label{rtc_8h_ac261047d18c2505db97b38b7b157f1fd}} 
+\index{rtc.h@{rtc.h}!REGISTER\_COUNTING@{REGISTER\_COUNTING}}
+\index{REGISTER\_COUNTING@{REGISTER\_COUNTING}!rtc.h@{rtc.h}}
+\doxysubsubsection{\texorpdfstring{REGISTER\_COUNTING}{REGISTER\_COUNTING}}
+{\footnotesize\ttfamily \#define REGISTER\+\_\+\+COUNTING~11}
+
+\mbox{\Hypertarget{rtc_8h_a79c0bb250ad248af29b370b20dd1fb29}\label{rtc_8h_a79c0bb250ad248af29b370b20dd1fb29}} 
+\index{rtc.h@{rtc.h}!REGISTER\_UPDATING@{REGISTER\_UPDATING}}
+\index{REGISTER\_UPDATING@{REGISTER\_UPDATING}!rtc.h@{rtc.h}}
+\doxysubsubsection{\texorpdfstring{REGISTER\_UPDATING}{REGISTER\_UPDATING}}
+{\footnotesize\ttfamily \#define REGISTER\+\_\+\+UPDATING~10}
+
+\mbox{\Hypertarget{rtc_8h_a48fcf4f2eeef6769d588168d4ac2ab0e}\label{rtc_8h_a48fcf4f2eeef6769d588168d4ac2ab0e}} 
+\index{rtc.h@{rtc.h}!SECONDS@{SECONDS}}
+\index{SECONDS@{SECONDS}!rtc.h@{rtc.h}}
+\doxysubsubsection{\texorpdfstring{SECONDS}{SECONDS}}
+{\footnotesize\ttfamily \#define SECONDS~0}
+
+\mbox{\Hypertarget{rtc_8h_ae07bc1582ec2a0d53dd74350b5a19c5e}\label{rtc_8h_ae07bc1582ec2a0d53dd74350b5a19c5e}} 
+\index{rtc.h@{rtc.h}!UPDATING@{UPDATING}}
+\index{UPDATING@{UPDATING}!rtc.h@{rtc.h}}
+\doxysubsubsection{\texorpdfstring{UPDATING}{UPDATING}}
+{\footnotesize\ttfamily \#define UPDATING~BIT(7)}
+
+\mbox{\Hypertarget{rtc_8h_a5871356500f559add06ea81d60331b1b}\label{rtc_8h_a5871356500f559add06ea81d60331b1b}} 
+\index{rtc.h@{rtc.h}!YEAR@{YEAR}}
+\index{YEAR@{YEAR}!rtc.h@{rtc.h}}
+\doxysubsubsection{\texorpdfstring{YEAR}{YEAR}}
+{\footnotesize\ttfamily \#define YEAR~9}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{rtc_8h_ae1b1b1cc88f89eae300cdeef578da474}\label{rtc_8h_ae1b1b1cc88f89eae300cdeef578da474}} 
+\index{rtc.h@{rtc.h}!is\_binary@{is\_binary}}
+\index{is\_binary@{is\_binary}!rtc.h@{rtc.h}}
+\doxysubsubsection{\texorpdfstring{is\_binary()}{is\_binary()}}
+{\footnotesize\ttfamily int is\+\_\+binary (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks if the RTC is using binary format. 
+
+\begin{DoxyReturn}{Returns}
+1 if binary format is used, 0 otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8h_ae1b1b1cc88f89eae300cdeef578da474_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{rtc_8h_aa911f1e40016efcd03231661c8271a3f}\label{rtc_8h_aa911f1e40016efcd03231661c8271a3f}} 
+\index{rtc.h@{rtc.h}!read\_rtc\_output@{read\_rtc\_output}}
+\index{read\_rtc\_output@{read\_rtc\_output}!rtc.h@{rtc.h}}
+\doxysubsubsection{\texorpdfstring{read\_rtc\_output()}{read\_rtc\_output()}}
+{\footnotesize\ttfamily int read\+\_\+rtc\+\_\+output (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{command,  }\item[{uint8\+\_\+t $\ast$}]{output }\end{DoxyParamCaption})}
+
+
+
+Reads the output of the RTC. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em command} & The command to send to the RTC. \\
+\hline
+{\em output} & Pointer to store the output value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=283pt]{rtc_8h_aa911f1e40016efcd03231661c8271a3f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{rtc_8h_abb4fa397a4a71ad09e3b0df51f40dbe8}\label{rtc_8h_abb4fa397a4a71ad09e3b0df51f40dbe8}} 
+\index{rtc.h@{rtc.h}!rtc\_init@{rtc\_init}}
+\index{rtc\_init@{rtc\_init}!rtc.h@{rtc.h}}
+\doxysubsubsection{\texorpdfstring{rtc\_init()}{rtc\_init()}}
+{\footnotesize\ttfamily void rtc\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initializes the RTC (Real-\/\+Time Clock). 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8h_abb4fa397a4a71ad09e3b0df51f40dbe8_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{rtc_8h_a47d5762e49eb390b04a09fc319c4e047}\label{rtc_8h_a47d5762e49eb390b04a09fc319c4e047}} 
+\index{rtc.h@{rtc.h}!rtc\_is\_updating@{rtc\_is\_updating}}
+\index{rtc\_is\_updating@{rtc\_is\_updating}!rtc.h@{rtc.h}}
+\doxysubsubsection{\texorpdfstring{rtc\_is\_updating()}{rtc\_is\_updating()}}
+{\footnotesize\ttfamily int rtc\+\_\+is\+\_\+updating (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks if the RTC is updating. 
+
+\begin{DoxyReturn}{Returns}
+1 if the RTC is updating, 0 otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8h_a47d5762e49eb390b04a09fc319c4e047_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{rtc_8h_abd8de825e876e8ef94c64ac616f68a11}\label{rtc_8h_abd8de825e876e8ef94c64ac616f68a11}} 
+\index{rtc.h@{rtc.h}!rtc\_subscribe\_int@{rtc\_subscribe\_int}}
+\index{rtc\_subscribe\_int@{rtc\_subscribe\_int}!rtc.h@{rtc.h}}
+\doxysubsubsection{\texorpdfstring{rtc\_subscribe\_int()}{rtc\_subscribe\_int()}}
+{\footnotesize\ttfamily int rtc\+\_\+subscribe\+\_\+int (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Subscribes to RTC interrupts. 
+
+\begin{DoxyReturn}{Returns}
+Bitmask of the RTC\textquotesingle{}s IRQ line. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{rtc_8h_ab8f17bf5280c908c8b199a90fefcc758}\label{rtc_8h_ab8f17bf5280c908c8b199a90fefcc758}} 
+\index{rtc.h@{rtc.h}!rtc\_unsubscribe\_int@{rtc\_unsubscribe\_int}}
+\index{rtc\_unsubscribe\_int@{rtc\_unsubscribe\_int}!rtc.h@{rtc.h}}
+\doxysubsubsection{\texorpdfstring{rtc\_unsubscribe\_int()}{rtc\_unsubscribe\_int()}}
+{\footnotesize\ttfamily int rtc\+\_\+unsubscribe\+\_\+int (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Unsubscribes from RTC interrupts. 
+
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{rtc_8h_ae22bdeb51eb630e1d579dfc1cd1b2f11}\label{rtc_8h_ae22bdeb51eb630e1d579dfc1cd1b2f11}} 
+\index{rtc.h@{rtc.h}!rtc\_update\_time@{rtc\_update\_time}}
+\index{rtc\_update\_time@{rtc\_update\_time}!rtc.h@{rtc.h}}
+\doxysubsubsection{\texorpdfstring{rtc\_update\_time()}{rtc\_update\_time()}}
+{\footnotesize\ttfamily int rtc\+\_\+update\+\_\+time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Updates the time values (year, month, day, hour, minute, second) from the RTC. 
+
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8h_ae22bdeb51eb630e1d579dfc1cd1b2f11_cgraph}
+\end{center}
+\end{figure}

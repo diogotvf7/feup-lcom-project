@@ -1,0 +1,379 @@
+\hypertarget{view_8h}{}\doxysection{view/view.h File Reference}
+\label{view_8h}\index{view/view.h@{view/view.h}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}controller/mouse/mouse.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}controller/graphics\+\_\+card/graphics\+\_\+card.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}model/sprite.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}model/colors.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}model/model.\+h\char`\"{}}\newline
+Include dependency graph for view.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{view_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=304pt]{view_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{view_8h_a8fe6fe827e29e6b0cb98cda00dc38355}{draw\+\_\+new\+\_\+frame}} ()
+\begin{DoxyCompactList}\small\item\em Draws a new frame on the screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{view_8h_a42f4903ab89aff9e3ee0206c52cf710a}{draw\+\_\+mouse}} ()
+\begin{DoxyCompactList}\small\item\em Draws the mouse cursor on the screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{view_8h_a2e293823f22abda1c98f45d8035282d8}{draw\+\_\+initial\+\_\+menu}} ()
+\begin{DoxyCompactList}\small\item\em Draws the initial menu on the screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{view_8h_a0a9f56467341cbe24bd981d4b9960fdd}{draw\+\_\+game\+\_\+menu}} ()
+\begin{DoxyCompactList}\small\item\em Draws the game menu on the screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{view_8h_adc37ea95d6b131697311029bc38d65ea}{draw\+\_\+leaderboard}} ()
+\begin{DoxyCompactList}\small\item\em Draws the leaderboard on the screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{view_8h_aa72c0c9d88ccd3fde2b5893fbe236b83}{draw\+\_\+end\+\_\+menu}} ()
+\begin{DoxyCompactList}\small\item\em Draws the end menu on the screen. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{view_8h_a6db4230a0003a09515d78b790d8ec52d}{draw\+\_\+sprite\+\_\+xpm}} (\mbox{\hyperlink{structSprite}{Sprite}} $\ast$sprite, int \mbox{\hyperlink{view_8c_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int \mbox{\hyperlink{view_8c_a0a2f84ed7838f07779ae24c5a9086d33}{y}})
+\begin{DoxyCompactList}\small\item\em Draws a sprite on the screen at the specified coordinates. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{view_8h_ad10caead967ffc5e90d74152e28d9e1c}{draw\+\_\+bar}} (int \mbox{\hyperlink{view_8c_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int \mbox{\hyperlink{view_8c_a0a2f84ed7838f07779ae24c5a9086d33}{y}}, int width, int height, uint32\+\_\+t \mbox{\hyperlink{model_8c_a66b2ef8398a8bbb0f5816f22a7b138da}{color}})
+\begin{DoxyCompactList}\small\item\em Draws a bar on the screen with the specified dimensions and color. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{view_8h_aef8638ecb12b4ebdcfa0d7dae437129f}{draw\+\_\+bottom\+\_\+bar}} (int \mbox{\hyperlink{view_8c_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int \mbox{\hyperlink{view_8c_a0a2f84ed7838f07779ae24c5a9086d33}{y}}, int width, int height, uint32\+\_\+t \mbox{\hyperlink{model_8c_a66b2ef8398a8bbb0f5816f22a7b138da}{color}}, int square\+\_\+vertex\+\_\+x, int square\+\_\+vertex\+\_\+y, int square\+\_\+width, int square\+\_\+height)
+\begin{DoxyCompactList}\small\item\em Draws a bottom bar on the screen with the specified dimensions, color, and square parameters. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{view_8h_ab3bf18436e0b405afd0e0a421d0fa218}{draw\+\_\+game\+\_\+time}} (int num)
+\begin{DoxyCompactList}\small\item\em Draws the game time on the screen. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{view_8h_ada858fadee2450139d229f064b30f17b}{draw\+\_\+letter}} (int \mbox{\hyperlink{view_8c_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int \mbox{\hyperlink{view_8c_a0a2f84ed7838f07779ae24c5a9086d33}{y}}, int letter\+\_\+index, uint32\+\_\+t \mbox{\hyperlink{model_8c_a66b2ef8398a8bbb0f5816f22a7b138da}{color}})
+\begin{DoxyCompactList}\small\item\em Draws a letter on the screen at the specified coordinates with the given color. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{view_8h_a58e061d468ef13a6a2099c9b31a3590a}{draw\+\_\+number}} (\mbox{\hyperlink{structSprite}{Sprite}} $\ast$sprite, int \mbox{\hyperlink{view_8c_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int \mbox{\hyperlink{view_8c_a0a2f84ed7838f07779ae24c5a9086d33}{y}}, int index)
+\begin{DoxyCompactList}\small\item\em Draws a number on the screen at the specified coordinates using a sprite and index. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{view_8h_a8961a3bca654ba4b82e25d500e72e51a}{draw\+\_\+word}} (int word\mbox{[}$\,$\mbox{]}, int word\+\_\+size, int \mbox{\hyperlink{view_8c_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int \mbox{\hyperlink{view_8c_a0a2f84ed7838f07779ae24c5a9086d33}{y}}, uint32\+\_\+t \mbox{\hyperlink{model_8c_a66b2ef8398a8bbb0f5816f22a7b138da}{color}})
+\begin{DoxyCompactList}\small\item\em Draws a word on the screen at the specified coordinates with the given color. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{view_8h_ad10caead967ffc5e90d74152e28d9e1c}\label{view_8h_ad10caead967ffc5e90d74152e28d9e1c}} 
+\index{view.h@{view.h}!draw\_bar@{draw\_bar}}
+\index{draw\_bar@{draw\_bar}!view.h@{view.h}}
+\doxysubsubsection{\texorpdfstring{draw\_bar()}{draw\_bar()}}
+{\footnotesize\ttfamily int draw\+\_\+bar (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{width,  }\item[{int}]{height,  }\item[{uint32\+\_\+t}]{color }\end{DoxyParamCaption})}
+
+
+
+Draws a bar on the screen with the specified dimensions and color. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the bar\textquotesingle{}s position. \\
+\hline
+{\em y} & The y-\/coordinate of the bar\textquotesingle{}s position. \\
+\hline
+{\em width} & The width of the bar. \\
+\hline
+{\em height} & The height of the bar. \\
+\hline
+{\em color} & The color of the bar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero on failure. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=264pt]{view_8h_ad10caead967ffc5e90d74152e28d9e1c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{view_8h_aef8638ecb12b4ebdcfa0d7dae437129f}\label{view_8h_aef8638ecb12b4ebdcfa0d7dae437129f}} 
+\index{view.h@{view.h}!draw\_bottom\_bar@{draw\_bottom\_bar}}
+\index{draw\_bottom\_bar@{draw\_bottom\_bar}!view.h@{view.h}}
+\doxysubsubsection{\texorpdfstring{draw\_bottom\_bar()}{draw\_bottom\_bar()}}
+{\footnotesize\ttfamily int draw\+\_\+bottom\+\_\+bar (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{width,  }\item[{int}]{height,  }\item[{uint32\+\_\+t}]{color,  }\item[{int}]{square\+\_\+vertex\+\_\+x,  }\item[{int}]{square\+\_\+vertex\+\_\+y,  }\item[{int}]{square\+\_\+width,  }\item[{int}]{square\+\_\+height }\end{DoxyParamCaption})}
+
+
+
+Draws a bottom bar on the screen with the specified dimensions, color, and square parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the bottom bar\textquotesingle{}s position. \\
+\hline
+{\em y} & The y-\/coordinate of the bottom bar\textquotesingle{}s position. \\
+\hline
+{\em width} & The width of the bottom bar. \\
+\hline
+{\em height} & The height of the bottom bar. \\
+\hline
+{\em color} & The color of the bottom bar. \\
+\hline
+{\em square\+\_\+vertex\+\_\+x} & The x-\/coordinate of the square\textquotesingle{}s vertex within the bottom bar. \\
+\hline
+{\em square\+\_\+vertex\+\_\+y} & The y-\/coordinate of the square\textquotesingle{}s vertex within the bottom bar. \\
+\hline
+{\em square\+\_\+width} & The width of the square. \\
+\hline
+{\em square\+\_\+height} & The height of the square. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero on failure. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=304pt]{view_8h_aef8638ecb12b4ebdcfa0d7dae437129f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{view_8h_aa72c0c9d88ccd3fde2b5893fbe236b83}\label{view_8h_aa72c0c9d88ccd3fde2b5893fbe236b83}} 
+\index{view.h@{view.h}!draw\_end\_menu@{draw\_end\_menu}}
+\index{draw\_end\_menu@{draw\_end\_menu}!view.h@{view.h}}
+\doxysubsubsection{\texorpdfstring{draw\_end\_menu()}{draw\_end\_menu()}}
+{\footnotesize\ttfamily void draw\+\_\+end\+\_\+menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Draws the end menu on the screen. 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{view_8h_aa72c0c9d88ccd3fde2b5893fbe236b83_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{view_8h_a0a9f56467341cbe24bd981d4b9960fdd}\label{view_8h_a0a9f56467341cbe24bd981d4b9960fdd}} 
+\index{view.h@{view.h}!draw\_game\_menu@{draw\_game\_menu}}
+\index{draw\_game\_menu@{draw\_game\_menu}!view.h@{view.h}}
+\doxysubsubsection{\texorpdfstring{draw\_game\_menu()}{draw\_game\_menu()}}
+{\footnotesize\ttfamily void draw\+\_\+game\+\_\+menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Draws the game menu on the screen. 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{view_8h_a0a9f56467341cbe24bd981d4b9960fdd_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{view_8h_ab3bf18436e0b405afd0e0a421d0fa218}\label{view_8h_ab3bf18436e0b405afd0e0a421d0fa218}} 
+\index{view.h@{view.h}!draw\_game\_time@{draw\_game\_time}}
+\index{draw\_game\_time@{draw\_game\_time}!view.h@{view.h}}
+\doxysubsubsection{\texorpdfstring{draw\_game\_time()}{draw\_game\_time()}}
+{\footnotesize\ttfamily int draw\+\_\+game\+\_\+time (\begin{DoxyParamCaption}\item[{int}]{num }\end{DoxyParamCaption})}
+
+
+
+Draws the game time on the screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em num} & The game time to be displayed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero on failure. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{view_8h_ab3bf18436e0b405afd0e0a421d0fa218_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{view_8h_a2e293823f22abda1c98f45d8035282d8}\label{view_8h_a2e293823f22abda1c98f45d8035282d8}} 
+\index{view.h@{view.h}!draw\_initial\_menu@{draw\_initial\_menu}}
+\index{draw\_initial\_menu@{draw\_initial\_menu}!view.h@{view.h}}
+\doxysubsubsection{\texorpdfstring{draw\_initial\_menu()}{draw\_initial\_menu()}}
+{\footnotesize\ttfamily void draw\+\_\+initial\+\_\+menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Draws the initial menu on the screen. 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{view_8h_a2e293823f22abda1c98f45d8035282d8_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{view_8h_adc37ea95d6b131697311029bc38d65ea}\label{view_8h_adc37ea95d6b131697311029bc38d65ea}} 
+\index{view.h@{view.h}!draw\_leaderboard@{draw\_leaderboard}}
+\index{draw\_leaderboard@{draw\_leaderboard}!view.h@{view.h}}
+\doxysubsubsection{\texorpdfstring{draw\_leaderboard()}{draw\_leaderboard()}}
+{\footnotesize\ttfamily void draw\+\_\+leaderboard (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Draws the leaderboard on the screen. 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{view_8h_adc37ea95d6b131697311029bc38d65ea_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{view_8h_ada858fadee2450139d229f064b30f17b}\label{view_8h_ada858fadee2450139d229f064b30f17b}} 
+\index{view.h@{view.h}!draw\_letter@{draw\_letter}}
+\index{draw\_letter@{draw\_letter}!view.h@{view.h}}
+\doxysubsubsection{\texorpdfstring{draw\_letter()}{draw\_letter()}}
+{\footnotesize\ttfamily int draw\+\_\+letter (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{letter\+\_\+index,  }\item[{uint32\+\_\+t}]{color }\end{DoxyParamCaption})}
+
+
+
+Draws a letter on the screen at the specified coordinates with the given color. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the letter\textquotesingle{}s position. \\
+\hline
+{\em y} & The y-\/coordinate of the letter\textquotesingle{}s position. \\
+\hline
+{\em letter\+\_\+index} & The index of the letter. \\
+\hline
+{\em color} & The color of the letter. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero on failure. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=274pt]{view_8h_ada858fadee2450139d229f064b30f17b_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{view_8h_a42f4903ab89aff9e3ee0206c52cf710a}\label{view_8h_a42f4903ab89aff9e3ee0206c52cf710a}} 
+\index{view.h@{view.h}!draw\_mouse@{draw\_mouse}}
+\index{draw\_mouse@{draw\_mouse}!view.h@{view.h}}
+\doxysubsubsection{\texorpdfstring{draw\_mouse()}{draw\_mouse()}}
+{\footnotesize\ttfamily void draw\+\_\+mouse (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Draws the mouse cursor on the screen. 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{view_8h_a42f4903ab89aff9e3ee0206c52cf710a_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{view_8h_a8fe6fe827e29e6b0cb98cda00dc38355}\label{view_8h_a8fe6fe827e29e6b0cb98cda00dc38355}} 
+\index{view.h@{view.h}!draw\_new\_frame@{draw\_new\_frame}}
+\index{draw\_new\_frame@{draw\_new\_frame}!view.h@{view.h}}
+\doxysubsubsection{\texorpdfstring{draw\_new\_frame()}{draw\_new\_frame()}}
+{\footnotesize\ttfamily void draw\+\_\+new\+\_\+frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Draws a new frame on the screen. 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{view_8h_a8fe6fe827e29e6b0cb98cda00dc38355_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{view_8h_a58e061d468ef13a6a2099c9b31a3590a}\label{view_8h_a58e061d468ef13a6a2099c9b31a3590a}} 
+\index{view.h@{view.h}!draw\_number@{draw\_number}}
+\index{draw\_number@{draw\_number}!view.h@{view.h}}
+\doxysubsubsection{\texorpdfstring{draw\_number()}{draw\_number()}}
+{\footnotesize\ttfamily int draw\+\_\+number (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structSprite}{Sprite}} $\ast$}]{sprite,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+Draws a number on the screen at the specified coordinates using a sprite and index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sprite} & The sprite containing the number images. \\
+\hline
+{\em x} & The x-\/coordinate of the number\textquotesingle{}s position. \\
+\hline
+{\em y} & The y-\/coordinate of the number\textquotesingle{}s position. \\
+\hline
+{\em index} & The index of the number to be displayed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero on failure. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=285pt]{view_8h_a58e061d468ef13a6a2099c9b31a3590a_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{view_8h_a6db4230a0003a09515d78b790d8ec52d}\label{view_8h_a6db4230a0003a09515d78b790d8ec52d}} 
+\index{view.h@{view.h}!draw\_sprite\_xpm@{draw\_sprite\_xpm}}
+\index{draw\_sprite\_xpm@{draw\_sprite\_xpm}!view.h@{view.h}}
+\doxysubsubsection{\texorpdfstring{draw\_sprite\_xpm()}{draw\_sprite\_xpm()}}
+{\footnotesize\ttfamily int draw\+\_\+sprite\+\_\+xpm (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structSprite}{Sprite}} $\ast$}]{sprite,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Draws a sprite on the screen at the specified coordinates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sprite} & The sprite to draw. \\
+\hline
+{\em x} & The x-\/coordinate of the sprite\textquotesingle{}s position. \\
+\hline
+{\em y} & The y-\/coordinate of the sprite\textquotesingle{}s position. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero on failure. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=303pt]{view_8h_a6db4230a0003a09515d78b790d8ec52d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{view_8h_a8961a3bca654ba4b82e25d500e72e51a}\label{view_8h_a8961a3bca654ba4b82e25d500e72e51a}} 
+\index{view.h@{view.h}!draw\_word@{draw\_word}}
+\index{draw\_word@{draw\_word}!view.h@{view.h}}
+\doxysubsubsection{\texorpdfstring{draw\_word()}{draw\_word()}}
+{\footnotesize\ttfamily int draw\+\_\+word (\begin{DoxyParamCaption}\item[{int}]{word\mbox{[}$\,$\mbox{]},  }\item[{int}]{word\+\_\+size,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{uint32\+\_\+t}]{color }\end{DoxyParamCaption})}
+
+
+
+Draws a word on the screen at the specified coordinates with the given color. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em word} & An array of integers representing the word. \\
+\hline
+{\em word\+\_\+size} & The size of the word array. \\
+\hline
+{\em x} & The x-\/coordinate of the word\textquotesingle{}s position. \\
+\hline
+{\em y} & The y-\/coordinate of the word\textquotesingle{}s position. \\
+\hline
+{\em color} & The color of the word. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero on failure. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{view_8h_a8961a3bca654ba4b82e25d500e72e51a_cgraph}
+\end{center}
+\end{figure}

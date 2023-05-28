@@ -1,0 +1,5 @@
+<map id="draw_word" name="draw_word">
+<area shape="rect" id="node1" title="Draws a word on the screen at the specified coordinates with the given color." alt="" coords="5,5,99,32"/>
+<area shape="rect" id="node2" href="$view_8c.html#ada858fadee2450139d229f064b30f17b" title="Draws a letter on the screen at the specified coordinates with the given color." alt="" coords="147,5,243,32"/>
+<area shape="rect" id="node3" href="$graphics__card_8c.html#a08c498ffeb0a3962e3b7711b57397741" title="Draws a pixel at the specified coordinates with the given color." alt="" coords="291,5,405,32"/>
+</map>

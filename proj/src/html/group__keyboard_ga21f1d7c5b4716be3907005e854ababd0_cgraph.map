@@ -1,0 +1,5 @@
+<map id="keyboard_write" name="keyboard_write">
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,128,32"/>
+<area shape="rect" id="node2" href="$group__keyboard.html#gab5b778c1e5e9ea40b69932da4fda244e" title=" " alt="" coords="176,5,341,32"/>
+<area shape="rect" id="node3" href="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4" title="Reads a byte from the specified port." alt="" coords="389,5,488,32"/>
+</map>

@@ -1,0 +1,180 @@
+\hypertarget{mouse_8h}{}\doxysection{controller/mouse/mouse.h File Reference}
+\label{mouse_8h}\index{controller/mouse/mouse.h@{controller/mouse/mouse.h}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}kbc.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}model/colors.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}i8042.\+h\char`\"{}}\newline
+Include dependency graph for mouse.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=319pt]{mouse_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mouse_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int() \mbox{\hyperlink{mouse_8h_adee0fb0108f63963e68ed970d0dc6232}{get\+\_\+byte\+\_\+index}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the byte index. \end{DoxyCompactList}\item 
+struct packet $\ast$() \mbox{\hyperlink{mouse_8h_adda4f2e1a4411b3f99eb0b2b2d9a129c}{get\+\_\+mouse\+\_\+packet}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the mouse packet. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{mouse_8h_a314c3d6d09fa5668c948fde6037b5882}{mouse\+\_\+subscribe\+\_\+int}} (int $\ast$bit\+\_\+no)
+\begin{DoxyCompactList}\small\item\em Subscribes to mouse interrupts. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{mouse_8h_a3ecf823d80520009ae5e0d76ae40a3c3}{mouse\+\_\+unsubscribe\+\_\+int}} ()
+\begin{DoxyCompactList}\small\item\em Unsubscribes from mouse interrupts. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{mouse_8h_a3e5f6aef5542c6a30bdf74bcddeb3f1d}{set\+\_\+data\+\_\+reporting}} (bool enable)
+\begin{DoxyCompactList}\small\item\em Enables or disables data reporting from the mouse. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{mouse_8h_a210374b50462acdedab00df64d5cea3c}{mouse\+\_\+ih}} ()
+\begin{DoxyCompactList}\small\item\em Mouse interrupt handler. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{mouse_8h_ab3fb94ea1cb0f0bf5f865cdd4a12a77f}{parse\+\_\+mouse\+\_\+packet}} ()
+\begin{DoxyCompactList}\small\item\em Parses the mouse packet. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{mouse_8h_a3dc118b68fd6b09e1a673f7e273e0dab}{update\+Mouse\+Location}} ()
+\begin{DoxyCompactList}\small\item\em Updates the mouse location. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{mouse_8h_ab10fe5827fe8302ce31822697442fe5c}{update\+Draw\+Specs}} (uint32\+\_\+t $\ast$\mbox{\hyperlink{model_8c_a66b2ef8398a8bbb0f5816f22a7b138da}{color}}, int $\ast$\mbox{\hyperlink{model_8c_a395279899207ce7f17adf9fdb8ee97ee}{radius}})
+\begin{DoxyCompactList}\small\item\em Updates the drawing specifications (color and radius) for the mouse. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{mouse_8h_adee0fb0108f63963e68ed970d0dc6232}\label{mouse_8h_adee0fb0108f63963e68ed970d0dc6232}} 
+\index{mouse.h@{mouse.h}!get\_byte\_index@{get\_byte\_index}}
+\index{get\_byte\_index@{get\_byte\_index}!mouse.h@{mouse.h}}
+\doxysubsubsection{\texorpdfstring{get\_byte\_index()}{get\_byte\_index()}}
+{\footnotesize\ttfamily int() get\+\_\+byte\+\_\+index (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieves the byte index. 
+
+\begin{DoxyReturn}{Returns}
+The byte index. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{mouse_8h_adda4f2e1a4411b3f99eb0b2b2d9a129c}\label{mouse_8h_adda4f2e1a4411b3f99eb0b2b2d9a129c}} 
+\index{mouse.h@{mouse.h}!get\_mouse\_packet@{get\_mouse\_packet}}
+\index{get\_mouse\_packet@{get\_mouse\_packet}!mouse.h@{mouse.h}}
+\doxysubsubsection{\texorpdfstring{get\_mouse\_packet()}{get\_mouse\_packet()}}
+{\footnotesize\ttfamily struct packet$\ast$() get\+\_\+mouse\+\_\+packet (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieves the mouse packet. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the mouse packet. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{mouse_8h_a210374b50462acdedab00df64d5cea3c}\label{mouse_8h_a210374b50462acdedab00df64d5cea3c}} 
+\index{mouse.h@{mouse.h}!mouse\_ih@{mouse\_ih}}
+\index{mouse\_ih@{mouse\_ih}!mouse.h@{mouse.h}}
+\doxysubsubsection{\texorpdfstring{mouse\_ih()}{mouse\_ih()}}
+{\footnotesize\ttfamily void() mouse\+\_\+ih (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Mouse interrupt handler. 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mouse_8h_a210374b50462acdedab00df64d5cea3c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mouse_8h_a314c3d6d09fa5668c948fde6037b5882}\label{mouse_8h_a314c3d6d09fa5668c948fde6037b5882}} 
+\index{mouse.h@{mouse.h}!mouse\_subscribe\_int@{mouse\_subscribe\_int}}
+\index{mouse\_subscribe\_int@{mouse\_subscribe\_int}!mouse.h@{mouse.h}}
+\doxysubsubsection{\texorpdfstring{mouse\_subscribe\_int()}{mouse\_subscribe\_int()}}
+{\footnotesize\ttfamily int() mouse\+\_\+subscribe\+\_\+int (\begin{DoxyParamCaption}\item[{int $\ast$}]{bit\+\_\+no }\end{DoxyParamCaption})}
+
+
+
+Subscribes to mouse interrupts. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bit\+\_\+no} & Pointer to store the bit number associated with the mouse interrupts. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{mouse_8h_a3ecf823d80520009ae5e0d76ae40a3c3}\label{mouse_8h_a3ecf823d80520009ae5e0d76ae40a3c3}} 
+\index{mouse.h@{mouse.h}!mouse\_unsubscribe\_int@{mouse\_unsubscribe\_int}}
+\index{mouse\_unsubscribe\_int@{mouse\_unsubscribe\_int}!mouse.h@{mouse.h}}
+\doxysubsubsection{\texorpdfstring{mouse\_unsubscribe\_int()}{mouse\_unsubscribe\_int()}}
+{\footnotesize\ttfamily int() mouse\+\_\+unsubscribe\+\_\+int (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Unsubscribes from mouse interrupts. 
+
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{mouse_8h_ab3fb94ea1cb0f0bf5f865cdd4a12a77f}\label{mouse_8h_ab3fb94ea1cb0f0bf5f865cdd4a12a77f}} 
+\index{mouse.h@{mouse.h}!parse\_mouse\_packet@{parse\_mouse\_packet}}
+\index{parse\_mouse\_packet@{parse\_mouse\_packet}!mouse.h@{mouse.h}}
+\doxysubsubsection{\texorpdfstring{parse\_mouse\_packet()}{parse\_mouse\_packet()}}
+{\footnotesize\ttfamily void() parse\+\_\+mouse\+\_\+packet (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Parses the mouse packet. 
+
+\mbox{\Hypertarget{mouse_8h_a3e5f6aef5542c6a30bdf74bcddeb3f1d}\label{mouse_8h_a3e5f6aef5542c6a30bdf74bcddeb3f1d}} 
+\index{mouse.h@{mouse.h}!set\_data\_reporting@{set\_data\_reporting}}
+\index{set\_data\_reporting@{set\_data\_reporting}!mouse.h@{mouse.h}}
+\doxysubsubsection{\texorpdfstring{set\_data\_reporting()}{set\_data\_reporting()}}
+{\footnotesize\ttfamily int() set\+\_\+data\+\_\+reporting (\begin{DoxyParamCaption}\item[{bool}]{enable }\end{DoxyParamCaption})}
+
+
+
+Enables or disables data reporting from the mouse. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em enable} & Set to true to enable data reporting, false to disable. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mouse_8h_a3e5f6aef5542c6a30bdf74bcddeb3f1d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mouse_8h_ab10fe5827fe8302ce31822697442fe5c}\label{mouse_8h_ab10fe5827fe8302ce31822697442fe5c}} 
+\index{mouse.h@{mouse.h}!updateDrawSpecs@{updateDrawSpecs}}
+\index{updateDrawSpecs@{updateDrawSpecs}!mouse.h@{mouse.h}}
+\doxysubsubsection{\texorpdfstring{updateDrawSpecs()}{updateDrawSpecs()}}
+{\footnotesize\ttfamily void update\+Draw\+Specs (\begin{DoxyParamCaption}\item[{uint32\+\_\+t $\ast$}]{color,  }\item[{int $\ast$}]{radius }\end{DoxyParamCaption})}
+
+
+
+Updates the drawing specifications (color and radius) for the mouse. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & Pointer to the color value. \\
+\hline
+{\em radius} & Pointer to the radius value. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{mouse_8h_a3dc118b68fd6b09e1a673f7e273e0dab}\label{mouse_8h_a3dc118b68fd6b09e1a673f7e273e0dab}} 
+\index{mouse.h@{mouse.h}!updateMouseLocation@{updateMouseLocation}}
+\index{updateMouseLocation@{updateMouseLocation}!mouse.h@{mouse.h}}
+\doxysubsubsection{\texorpdfstring{updateMouseLocation()}{updateMouseLocation()}}
+{\footnotesize\ttfamily void update\+Mouse\+Location (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Updates the mouse location. 
+
