@@ -5,7 +5,6 @@
 #include "controller/timer/timer.h"
 #include "controller/keyboard/keyboard.h"
 #include "controller/mouse/mouse.h"
-#include "serial_port.h"
 #include "model/model.h"
 #include "model/base_frame.h"
 

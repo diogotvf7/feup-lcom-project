@@ -34,6 +34,9 @@ extern bool gameResult;
 extern int word_solution[12];
 extern int word_sol_number_letters;
 
+extern int game_title[18];
+extern int game_title_size;
+
 void draw_new_frame() {
     switch(menuState){
         case START:
@@ -59,6 +62,12 @@ void draw_mouse() {
 }
 
 void draw_initial_menu() {
+    game_title_size = 0;
+    for (int i = 0; i < 18; i++) {
+        game_title[i] = -1;
+    }
+    convert_to_qwerty("paint with friends", game_title, &game_title_size);
+    draw_word(game_title, game_title_size, 50, 50, GOLD);
     draw_sprite_xpm(startButton, 100, 300);
     draw_sprite_xpm(coopDrawButton, 450, 300);
     draw_sprite_xpm(coopGuessButton,800, 300);
@@ -68,29 +77,29 @@ void draw_initial_menu() {
 }
 
 void draw_game_menu() {
-    draw_bottom_bar(0,750,1152,114, GREY,80,780,900,70);
+    draw_bottom_bar(0,750,1152,114, GOLD,80,780,900,70);
 
     if (gameState == DRAW) {
         draw_sprite_xpm(chooseColors, 0, 0);
-        draw_word_sol();
+        //draw_word_sol();
     }
 
     else if (gameState == GUESS){ 
-        draw_bar(0,0,1152,150,GREY);
-        draw_word();    
+        draw_bar(0,0,1152,150,GOLD);
+        draw_word(word_guess, number_letters, -1, -1, BLACK);    
     }
 
     else if(gameState == DRAW_GUESS){
         draw_sprite_xpm(chooseColors, 0, 0);
 
         if(delayTime <= 5)
-            draw_word_sol();
+            draw_word(word_solution,word_sol_number_letters, -1, -1, BLACK);
         else{
-            draw_word();
+            draw_word(word_guess, number_letters, -1, -1, BLACK);
         }
     } 
     draw_game_time(game_counter);
-    draw_word();
+    draw_word(word_guess, number_letters, -1, -1, BLACK);
 }
 
 void draw_leaderboard() {
@@ -224,25 +233,29 @@ int draw_bottom_bar(int x, int y, int width, int height, uint32_t color, int squ
     return 0;
 }
 
-int draw_word(){
+int draw_word(int word[], int word_size, int x, int y, uint32_t color){
     int letter_pos = 0;
-    for(int i = 0; i < number_letters; i++){
-        draw_letter(80 + letter_pos * 60, 780, word_guess[i]);
+    for(int i = 0; i < word_size; i++){
+        if(word[i] == 26){letter_pos++; continue;}
+        if (x != -1 && y != -1) draw_letter(x + letter_pos * 60, y, word[i], color);
+        else{
+            draw_letter(80 + letter_pos * 60, 780, word[i], color);
+        }
         letter_pos++;
     }
     return 0;
 }
 
-int draw_word_sol(){
-    int letter_pos = 0;
-    for(int i = 0; i < word_sol_number_letters; i++){
-        draw_letter(80 + letter_pos * 60, 780, word_solution[i]);
-        letter_pos++;
-    }
-    return 0;
-}
+// int draw_word_sol(){
+//     int letter_pos = 0;
+//     for(int i = 0; i < word_sol_number_letters; i++){
+//         draw_letter(80 + letter_pos * 60, 780, word_solution[i]);
+//         letter_pos++;
+//     }
+//     return 0;
+// }
 
-int draw_letter(int x, int y, int letter_index){
+int draw_letter(int x, int y, int letter_index, uint32_t color){
 
     uint16_t width = 70;
     uint16_t height = 70;
@@ -253,6 +266,7 @@ int draw_letter(int x, int y, int letter_index){
         for(uint16_t w = 0; w < width; w++) {
             current_color = letters->colors[(70 * letter_index  + w) + (img_width * h)];
             if(current_color != TRANSPARENT) {
+                current_color = color == BLACK ? current_color : color;
                 vg_draw_pixel(x + w, y + h, current_color);
             }
         }

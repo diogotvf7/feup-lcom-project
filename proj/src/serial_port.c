@@ -1,4 +1,3 @@
-#include <lcom/utils.h>
 #include "serial_port.h"
 
 int sp_hook_id = 7;
@@ -7,12 +6,12 @@ bool other_ready = false;
 
 
 int (sp_init)(){
-    if (sys_outb(COM1_PORT + 1, SER_INT_PENDING) != 0) {
+    if (sys_outb(COM1_PORT + SER_IER, SER_INT_PENDING) != 0) {
         printf("Could not write to IER\n");
         return 1;
     }
-    while (!ser_read_data());
-    ser_txmit_data(SP_INIT);
+    while (!sp_read_data())
+    sp_txmit_data(SP_INIT);
     return 0;
 }
 
@@ -56,7 +55,7 @@ int (sp_read_data)(){
         printf("Data received: %d\n", read_data);
         // handle messages
 
-        ser_read_status(&st);
+        sp_read_status(&st);
     }
     return 0;
 }

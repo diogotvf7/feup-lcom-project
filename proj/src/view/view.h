@@ -18,10 +18,10 @@ int draw_sprite_xpm(Sprite *sprite, int x, int y);
 int draw_bar(int x, int y, int width, int height, uint32_t color);
 int draw_bottom_bar(int x, int y, int width, int height, uint32_t color, int square_vertex_x , int square_vertex_y , int square_width , int square_height);
 int draw_game_time(int num);
-int draw_letter(int x, int y, int letter_index);
+int draw_letter(int x, int y, int letter_index, uint32_t color);
 int draw_number(Sprite* sprite, int x, int y, int index);
-int draw_word();
-int draw_word_sol();
+int draw_word(int word[], int word_size, int x, int y, uint32_t color);
+//int draw_word_sol();
 
 
 

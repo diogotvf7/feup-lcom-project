@@ -9,13 +9,15 @@
 #include "model/queue.h"
 #include "controller/timer/timer.h"
 #include "view/view.h"
+#include "model/base_frame.h"
+#include "global_vars.h"
 #include "colors.h"
+
+/*    importing xpms   */
 #include "xpm/mouse.xpm"
 #include "xpm/topBarGameMode.xpm"
 #include "xpm/quitButton.xpm"
 #include "xpm/startButton.xpm"
-#include "model/base_frame.h"
-#include "global_vars.h"
 #include "xpm/letters.xpm"
 #include "xpm/numbers.xpm"
 #include "xpm/font.xpm"
@@ -28,7 +30,6 @@
 #include "xpm/coopDrawButton.xpm"
 #include "xpm/Victory.xpm"
 #include "xpm/Defeat.xpm"
-
 
 #define MAX_WORD_LENGTH 12
 #define MAX_LINE_LENGTH 50
@@ -75,4 +76,6 @@ bool checkResult();
 char* getRandomWord();
 void updateStateMouseClick();
 void updateStateKeyboardClick();
+int updateScreenSP();
+int convert_to_qwerty(char* str, int word[], int* word_size);
 

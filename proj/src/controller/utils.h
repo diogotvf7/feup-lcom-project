@@ -2,9 +2,7 @@
 #define __UTILS_H
 
 #include <lcom/lcf.h>
-
 #include <stdint.h>
-
 
 uint8_t(util_get_n_byte)(uint32_t val, int n);
 

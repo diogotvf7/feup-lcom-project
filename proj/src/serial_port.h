@@ -1,13 +1,13 @@
-#include <lcom/lcf.h>
-#include <stdint.h>
+#ifndef __SP_H
+#define __SP_H
+
 #include <stdbool.h>
-#include "src/controller/utils.h"
+#include "controller/utils.h"
+#include <lcom/utils.h>
 
-#define COM1_IRQ 4
-#define COM1_PORT 0x3F8
 
-#define BIT(n) (1<<(n))
-
+#define COM1_IRQ                 4
+#define COM1_PORT                0x3F8
 
 #define SP_INIT 2
 
@@ -47,4 +47,5 @@ int (sp_read_data)();
 int (sp_txmit_data)(uint8_t data);
 
 int (sp_check_connection)();
- 
+
+#endif /* __SP_H */

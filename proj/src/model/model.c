@@ -19,7 +19,7 @@ Sprite* coopDrawButton;
 
 int flag = 0, num_bytes = 1;
 uint8_t scancode_arr[2];
-int to_qwerty[26] = {10,23,21,12,2,13,14,15,7,16,17,18,25,24,8,9,0,3,11,4,6,22,1,20,5,19};
+int to_qwerty[27] = {10,23,21,12,2,13,14,15,7,16,17,18,25,24,8,9,0,3,11,4,6,22,1,20,5,19};
 extern int x, y;
 extern frame_buffer_t frame_buffer;
 extern real_time curr_time;
@@ -40,8 +40,11 @@ bool gameResult= false;
 int word_guess[12] = {-1};
 int number_letters = 0;
 
+int game_title[18] = {-1};
+int game_title_size = 0;
+
 int word_solution[12] = {-1};
-int word_sol_number_letters;
+int word_sol_number_letters = 0;
 
 void setup_sprites() {
     chooseColors = create_sprite_xpm((xpm_map_t) topBarGameMode_xpm);
@@ -65,6 +68,14 @@ void setup_sprites() {
 void initGame(){
     menuState = GAME;
     game_counter = ROUND_TIME;
+    for (int i = 0; i < 12; i++) {
+        word_guess[i] = -1;
+    }
+    number_letters = 0;
+    for (int i = 0; i < 12; i++) {
+        word_solution[i] = -1;
+    }
+    word_sol_number_letters = 0;
     getRandomWord();
     delayTime = 0;
     gameResult = false;
@@ -199,11 +210,6 @@ void update_keyboard_state() {
     updateStateKeyboardClick();
 }
 
-void update_serial_port_state() {
-    sp_read_data();
-    updateScreenSP();
-}
-
 void destroy_sprites() {
     destroy_sprite(mouse);
     destroy_sprite(chooseColors);
@@ -280,17 +286,27 @@ char* getRandomWord() {
             return NULL;
         }
     }
-    for (uint8_t i = 0; i < strlen(line); i++) {
-        if (*(line + i) == '\n' || *(line + i) == '\r' || *(line + i) == ' ') {
-            break;
-        }
-        word_sol_number_letters++;
-        int index = to_qwerty[(*(line + i)) - 'a'];
-        word_solution[i] = index;
-    }
-
+    
+    convert_to_qwerty(line,word_solution,&word_sol_number_letters);
     fclose(file); 
     return line;
+}
+
+int convert_to_qwerty(char* str, int word[], int* word_size){
+    for (uint8_t i = 0; i < strlen(str); i++) {
+        if (*(str + i) == '\n' || *(str + i) == '\r') {
+            break;
+        }
+        (*word_size)++;
+        if (*(str + i) == ' ') {
+            word[i] = 26;
+            continue;
+        }
+        int index = to_qwerty[(*(str + i)) - 'a'];
+        if (index > 27) return 1;
+        word[i] = index;
+    }
+    return 0;
 }
 
 bool checkResult(){
@@ -321,10 +337,15 @@ void addValueToLeaderboard(){
     free(newValue);
 }
 
-updateScreenSP(){
+void update_serial_port_state() {
+    //sp_read_data();
+    //updateScreenSP();
+}
+
+int updateScreenSP(){
     unsigned int ser_state;
     ser_state = sp_check_connection();
-    if (!ser_state) break;
+    if (!ser_state) return 1;
     return 0;  
 }
 
@@ -367,8 +388,13 @@ void updateStateKeyboardClick(){
         //Modo de jogo multiplayer - desenhar
         case TWO_KEY:
             if (menuState == GAME) break;
+            printf("multiplayer mode\n");
             initGame();
-            gameState = DRAW;
+            sp_init();
+            unsigned int sp_state = sp_check_connection();
+            printf("sp_state: %d\n", sp_state);
+            if (!sp_state) break;
+            gameState = GUESS;
             break;
 
         //Modo de jogo multiplayer - adivinhar
@@ -410,6 +436,7 @@ void updateStateKeyboardClick(){
         case ENTER:{
             gameResult = checkResult();
             if(gameResult) {
+                reset_frame();
                 menuState = END;
                 addValueToLeaderboard();
             };
