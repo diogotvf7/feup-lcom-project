@@ -1,72 +1,57 @@
-11000100
-WARNING: Interrupt pending   Receiving data...
-   Received byte: a11000100
-WARNING: Interrupt pending   Receiving data...
-   Received byte: a
- FAILED :( trying again!
- FAILED :( trying again!
- FAILED :( trying again!
- FAILED :( trying again!
- FAILED :( trying again!
-Stopped trying to receive byte
-uart interrupt
-11000100
-WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
-uart interrupt
 11000010
 WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
 uart interrupt
-11000010
-WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
-uart interrupt
-11000010
-WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
-uart interrupt
-11000010
-WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
-uart interrupt
-AILED :( trying again!
- FAILED :( trying again!
- FAILED :( trying again!
-Stopped trying to receive byte
+11000100
+WARNING: Interrupt pending   Receiving data...
+   ReceiMessage sent: 
+Message sent: 
+Message sent: 
+Message sent: 
+Message sent: 
+Message sent: 
+Message sent: 
+Message sent: 
+000100
+WARNING: Interrupt pending   Receiving data...
+   Received byte: h
 uart interrupt
 11000100
 WARNING: Interrupt pending   Receiving data...
-   Received byte: a
- FAILED :( trying again!
- FAILED :( trying again!
- FAILED :( trying again!
- FAILED :( trying again!
- FAILED :( trying again!
-Stopped trying to receive byte
+   Received byte: u
 uart interrupt
 11000100
 WARNING: Interrupt pending   Receiving data...
-   Received byte: a
- FAILED :( trying again!
- FAILED :( trying again!
- FAILED :( trying again!
- FAILED :( trying again!
- FAILED :( trying again!
-Stopped trying to receive byte
+   Received byte: i
 uart interrupt
 11000100
 WARNING: Interrupt pending   Receiving data...
-   Received byte: ?
- FAILED :( trying again!
- FAILED :( trying again!
- FAILED :( trying again!
- FAILED :( trying again!
- FAILED :( trying again!
-Stopped trying to receive byte
+   Received byte: u
 uart interrupt
 11000100
 WARNING: Interrupt pending   Receiving data...
-   Received byte: 0
- FAILED :( trying again!
- FAILED :( trying again!
- FAILED :( trying again!
- FAILED :( trying again!
- FAILED :( trying again!
-Stopped trying to receive byte
+   Received byte: y
+uart interrupt
+11000100
+WARNING: Interrupt pending   Receiving data...
+   Received byte: i
+uart interrupt
+11000100
+WARNING: Interrupt pending   Receiving data...
+   Received byte: u
+uart interrupt
+11000100
+WARNING: Interrupt pending   Receiving data...
+   Received byte: u
+uart interrupt
+11000100
+WARNING: Interrupt pending   Receiving data...
+   Received byte: h
+uart interrupt
+11000100
+WARNING: Interrupt pending   Receiving data...
+   Received byte: u
+uart interrupt
+11000100
+WARNING: Interrupt pending   Receiving data...
+   Received byte: h
 uart interrupt

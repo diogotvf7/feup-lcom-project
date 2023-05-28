@@ -34,6 +34,12 @@
 #define MAX_WORD_LENGTH 12
 #define MAX_LINE_LENGTH 50
 
+typedef enum {
+    DRAWER,
+    GUESSER,
+    SINGLE
+} PlayerRole;
+
 typedef enum{
     RUNNING, 
     EXIT,

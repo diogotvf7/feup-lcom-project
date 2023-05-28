@@ -2,8 +2,8 @@
 
 int hook_id = 4;
 static uint8_t iir;
-static Queue *xmit_fifo = NULL;
-static Queue *rcvr_fifo = NULL;
+Queue *xmit_fifo = NULL;
+Queue *rcvr_fifo = NULL;
 
 int config_uart() 
 {
@@ -117,9 +117,8 @@ void uart_ih()
       case CHAR_TIMEOUT:
       case RECEIVED_DATA_INT:
         printf("   Receiving data...\n");
-        while (receive_uart_byte(&byte) == OK) {
-          printf("   Received byte: %c\n", byte);
-        }
+        receive_uart_byte(&byte);
+        printf("   Received byte: %c\n", byte);
         break;
       case LINE_STATUS_INT:
         printf("   LINE_STATUS_INT\n");
@@ -145,39 +144,35 @@ void uart_ih()
 
 int send_uart_byte(uint8_t byte) 
 {
-  uint8_t attempts_left = XMIT_TRIES;
-  while (attempts_left--) {
-    uint8_t lsr;
-    if (get_uart_lsr(&lsr)) return !OK;
-    // if (queue_empty(&xmit_fifo) &&  lsr & TRANSMITTER_EMPTY)
-    if (queue_empty(&xmit_fifo) && !(lsr & (OVERRUN_ERR | PARITY_ERR | FRAME_ERR | FIFO_ERROR)))
-      return sys_outb(COM1 + SER_THR, byte);
-    else
-      queue_push(&xmit_fifo, &byte);
-    printf(" FAILED :( trying again!\n");
+  uint8_t lsr;
+  if (get_uart_lsr(&lsr)) return !OK;
+  // if (queue_empty(&xmit_fifo) &&  lsr & TRANSMITTER_EMPTY)
+  if (queue_empty(&xmit_fifo) && !(lsr & (OVERRUN_ERR | PARITY_ERR | FRAME_ERR | FIFO_ERROR)))
+    return sys_outb(COM1 + SER_THR, byte);
+  else {
+    queue_push(&xmit_fifo, &byte, sizeof(uint8_t));
+    return OK;
   }
-  printf("Stopped trying to send byte\n");
   return !OK;
 }
 
 int receive_uart_byte(uint8_t *byte) 
 {
-  uint8_t attempts_left = RCVR_TRIES;
-  while (attempts_left--) {
-    uint8_t lsr;
-    if (get_uart_lsr(&lsr) != OK) return !OK;
-    // if (lsr & RECEIVER_DATA) {
-    //   return util_sys_inb(COM1 + SER_RBR, byte);
-    // }    
-    if (lsr & RECEIVER_DATA) {
-      if (util_sys_inb(COM1 + SER_RBR, byte) != OK) return !OK;
-      queue_push(&rcvr_fifo, byte);
-      return OK;
-    }
-    printf(" FAILED :( trying again!\n");
+  uint8_t lsr;
+  if (get_uart_lsr(&lsr) != OK) return !OK;
+  if (lsr & RECEIVER_DATA) {
+    if (util_sys_inb(COM1 + SER_RBR, byte) != OK) return !OK;
+    queue_push(&rcvr_fifo, byte, sizeof(uint8_t));
+    return OK;
   }
-  printf("Stopped trying to receive byte\n");
   return !OK;
 }
 
-
+int send_start_msg() {
+  return send_uart_byte(START_GAME);
+  // uint8_t byte;
+  // if (send_uart_byte(START_GAME) != OK) return !OK;
+  // if (receive_uart_byte(&byte) != OK) return !OK;
+  // if (byte != ACK) return !OK;
+  // return OK;
+}

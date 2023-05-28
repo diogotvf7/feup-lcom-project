@@ -37,6 +37,8 @@ int send_uart_byte(uint8_t byte);
 
 int receive_uart_byte(uint8_t *byte);
 
+int send_start_msg();
+
 /* tenso daqui para baixo */
 
 // int uart_send_byte(uint8_t byte);

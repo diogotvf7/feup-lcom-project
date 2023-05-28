@@ -92,3 +92,10 @@
 #define RCVR_TRIGGER_8          BIT(7)
 #define RCVR_TRIGGER_14         (BIT(6) | BIT(7))
 
+// -------------------------------------------------------------------------------------
+// UART Messages
+
+#define START_GAME              0x5
+#define END_GAME                0x4
+#define UART_ACK                0x1
+

@@ -21,9 +21,13 @@ void *queue_front(Queue **queue) {
 //   return (*queue)->back->position;
 // }
 
-void queue_push(Queue **queue, void *data) {  
+void queue_push(Queue **queue, void *data, size_t size) {  
   Node *n = (Node *)malloc(sizeof(Node));
-  n->data = (uint16_t *) data;
+  // n->data = (uint16_t *) data;
+
+  n->data = malloc(size);
+  memcpy(n->data, data, size);
+  // n->data = data;
   n->prev = NULL;
   if (*queue == NULL) {
     *queue = (Queue *)malloc(sizeof(Queue));

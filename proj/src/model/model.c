@@ -48,7 +48,12 @@ const char keyMap[] = { '\0',
 };
 char buffer[21] = "";
 int buffer_size = 0;
+
+// extern Queue *xmit_fifo;
+extern Queue *rcvr_fifo;
+
 /*               DANGER                  */
+
 int word_solution[12] = {-1};
 int word_sol_number_letters;
 
@@ -71,7 +76,7 @@ void setup_sprites() {
 
 }
 
-void initGame(){
+void initGame() {
     menuState = GAME;
     game_counter = ROUND_TIME;
     getRandomWord();
@@ -108,30 +113,30 @@ void update_mouse_state() {
                 }
                 break;
             case GAME:
-            if (gameState == DRAW || gameState == DRAW_GUESS){
-                if (get_mouse_packet()->lb) {
-                    if (y < 150) {
-                        updateDrawSpecs(&color, &radius);
-                        while (!queue_empty(&pos_queue)) {
-                            if (process_packet(color, radius) != 0)
-                                break;
+                if (gameState == DRAW || gameState == DRAW_GUESS){
+                    if (get_mouse_packet()->lb) {
+                        if (y < 150) {
+                            updateDrawSpecs(&color, &radius);
+                            while (!queue_empty(&pos_queue)) {
+                                if (process_packet(color, radius) != 0)
+                                    break;
+                            }
+                            queue_clear(&pos_queue);
                         }
+                        if (y >= 150) {
+                            Position *position = (Position *) malloc(sizeof(Position));
+                            position->x = x;
+                            position->y = y;
+                            queue_push(&pos_queue, position, sizeof(Position));
+                        }
+                    } else {
                         queue_clear(&pos_queue);
                     }
-                    if (y >= 150) {
-                        Position *position = (Position *) malloc(sizeof(Position));
-                        position->x = x;
-                        position->y = y;
-                        queue_push(&pos_queue, position);
+                    if (get_mouse_packet()->rb) {
+                        reset_frame();
+                        queue_clear(&pos_queue);
                     }
-                } else {
-                    queue_clear(&pos_queue);
                 }
-                if (get_mouse_packet()->rb) {
-                    reset_frame();
-                    queue_clear(&pos_queue);
-                }
-            }
                 //isto e preciso ?
                 if(menuState == START){
                 }         
@@ -161,12 +166,27 @@ void update_mouse_state() {
 void update_timer_state() {
     timer_int_handler();
     vg_flip_frame();
+    
+    if (menuState == START) {
+        if (!queue_empty(&rcvr_fifo)) {
+            printf("Starting as guesser!\n");
+            uint8_t *byte = queue_front(&rcvr_fifo);
+            printf("Byte: %d      START_GAME: %d\n", *byte, START_GAME);
+            // printf("Byte: %x\n", *byte);
+            if (*byte == START_GAME) {
+                gameState = GUESS;
+                initGame();
+            }
+            queue_pop(&rcvr_fifo);
+        }
+    }
     copy_base_frame(frame_buffer);
     for (int i = PACKETS_PER_INTERRUPT; i; i--) {
         if (process_packet(color, radius) != 0)
             break;
     }
     if (get_counter() % 30 == 0 && menuState == GAME){
+
 
         //tempo de delay onde so conseguimos ver a palavra - o game counter nao diminui aqui
         if(gameState == DRAW_GUESS && delayTime < 6){delayTime++;}
@@ -196,7 +216,7 @@ void update_timer_state() {
     // if (queue_size(&pos_queue) > QUEUE_LIMIT)
     //     queue_clear(&pos_queue);
     
-
+    // printf("RCVR SIZE: %d\n", queue_size(&rcvr_fifo));
     draw_new_frame();
 }
 
@@ -356,7 +376,7 @@ void addValueToLeaderboard(){
     free(newValue);
 }
 
-void updateStateMouseClick(){
+void updateStateMouseClick() {
     //single player
     if(x >= 100 && x <= 370 && y >= 300 && y <= 425){
         initGame();
@@ -364,6 +384,8 @@ void updateStateMouseClick(){
     }
     //coop draw
     else if(x >= 450 && x <= 710 && y >= 300 && y <= 425){
+        send_start_msg();
+        send_uart_byte(START_GAME);
         initGame();
         gameState = DRAW;
     }

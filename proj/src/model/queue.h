@@ -27,7 +27,7 @@ void *queue_front(Queue **queue);
 
 // struct Position *get_back(Queue **queue);
 
-void queue_push(Queue **queue, void *data);
+void queue_push(Queue **queue, void *data, size_t size);
 
 void queue_pop(Queue **queue);
 
