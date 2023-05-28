@@ -154,7 +154,9 @@ int send_uart_byte(uint8_t byte)
       return sys_outb(COM1 + SER_THR, byte);
     else
       queue_push(&xmit_fifo, &byte);
+    printf(" FAILED :( trying again!\n");
   }
+  printf("Stopped trying to send byte\n");
   return !OK;
 }
 
@@ -172,7 +174,9 @@ int receive_uart_byte(uint8_t *byte)
       queue_push(&rcvr_fifo, byte);
       return OK;
     }
+    printf(" FAILED :( trying again!\n");
   }
+  printf("Stopped trying to receive byte\n");
   return !OK;
 }
 

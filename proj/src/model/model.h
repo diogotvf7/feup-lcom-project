@@ -5,6 +5,7 @@
 #include "controller/rtc/rtc.h"
 #include "controller/keyboard/keyboard.h"
 #include "controller/graphics_card/graphics_card.h"
+#include "controller/uart/ser_port.h"
 #include "model/queue.h"
 #include "controller/timer/timer.h"
 #include "view/view.h"
@@ -51,6 +52,7 @@ typedef struct leaderboardValue{
 void update_timer_state();
 void update_keyboard_state();
 void update_mouse_state();
+void update_uart_state();
 void setup_sprites();
 void destroy_sprites();
 void updateLeaderboard(leaderboardValue *newValue);

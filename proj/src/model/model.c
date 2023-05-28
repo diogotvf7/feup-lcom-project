@@ -25,6 +25,17 @@ extern struct Queue *pos_queue;
 int word_guess[10] = {-1};
 int number_letters = 0;
 
+/*               DANGER                  */
+const char keyMap[] = { '\0',
+  '\0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '?', '\0', '\b',
+  '\t', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '+', '\'', '\n',
+  '\0', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', '\0', '\0', '\0', '\0', '~',
+  'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '-', '\0', '\0', '\0', ' ' 
+};
+char buffer[21] = "";
+int buffer_size = 0;
+/*               DANGER                  */
+
 void setup_sprites() {
     chooseColors = create_sprite_xpm((xpm_map_t) topBarGameMode_xpm);
     mouse = create_sprite_xpm((xpm_map_t) mouse_xpm);
@@ -124,15 +135,16 @@ void update_timer_state() {
             break;
     }
     if (get_counter() % 30 == 0 && menuState == GAME){
-        printf("Acutal current month is: %d\n", curr_time.month);
+        // printf("Acutal current month is: %d\n", curr_time.month);
         game_counter--;
         if (game_counter == 0){
             menuState = START;
         }
-    }else if(get_counter() % 30 == 0){
-        rtc_init();
-        printf("Acutal current month is: %d\n", curr_time.month);
     }
+    // else if(get_counter() % 30 == 0){
+    //     rtc_init();
+    //     printf("Acutal current month is: %d\n", curr_time.month);
+    // }
     // if (queue_size(&pos_queue) > QUEUE_LIMIT)
     //     queue_clear(&pos_queue);
 
@@ -150,6 +162,26 @@ void update_keyboard_state() {
         scancode_arr[flag] = get_scancode();
         // if (kbd_print_scancode(!((get_scancode() & SCANCODE_MSB) >> 7), num_bytes, scancode_arr) != OK)
         //     return;
+        if (!(scancode_arr[flag] & BREAK_BIT)) 
+        {
+            char c = keyMap[scancode_arr[flag]];
+            if (c == '\n') {
+                printf("Message sent: %s\n", buffer);
+                // uart_send_string(buffer);
+                *buffer = '\0';
+                buffer_size = 0;
+            } else if (c == '\b') {
+                if (buffer_size > 0) {
+                buffer[buffer_size-1] = '\0';
+                buffer_size--;
+                }
+            } else if (buffer_size < 20) {
+                // printf("char: %c\n", c);
+                // append_char(buffer, c, &buffer_size);
+                send_uart_byte(c);
+            }
+            // printf("Message: %s\n", buffer);
+        }
         num_bytes = 1;
         flag = 0;
     }
@@ -208,6 +240,10 @@ void update_keyboard_state() {
     }
 
 
+}
+
+void update_uart_state() {
+    uart_ih();
 }
 
 void destroy_sprites() {

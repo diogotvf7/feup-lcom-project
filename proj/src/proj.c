@@ -5,6 +5,7 @@
 #include "controller/timer/timer.h"
 #include "controller/keyboard/keyboard.h"
 #include "controller/mouse/mouse.h"
+#include "controller/uart/ser_port.h"
 #include "model/model.h"
 #include "model/base_frame.h"
 
@@ -12,8 +13,8 @@
 #include <lcom/lcf.h>
 #include <lcom/video_gr.h>
 
-uint8_t irq_set_timer, irq_set_keyboard;
-int irq_set_mouse,  ipc_status, r;
+uint8_t irq_set_timer, irq_set_keyboard, irq_set_uart;
+int irq_set_mouse, ipc_status, r;
 message msg;
 extern uint16_t bytes_per_pixel;
 extern uint16_t h_res;
@@ -50,6 +51,7 @@ int (start_settings)() {
     return EXIT_FAILURE;
 
   setup_sprites();
+  config_uart();
 
   if (set_data_reporting(TRUE) != OK) 
     return EXIT_FAILURE;
@@ -60,6 +62,8 @@ int (start_settings)() {
   if (mouse_subscribe_int(&irq_set_mouse) != OK)
     return EXIT_FAILURE;
   if (timer_set_frequency(SEL_TIMER0, FPS) != OK)
+    return EXIT_FAILURE;
+  if (subscribe_uart_int(&irq_set_uart) != OK)
     return EXIT_FAILURE;
 
   create_frame_buffer(h_res, v_res, bytes_per_pixel);
@@ -98,12 +102,19 @@ int (proj_main_loop)(int argc, char **argv) {
       case HARDWARE:
         if (msg.m_notify.interrupts & irq_set_mouse) {
           update_mouse_state();
+          // printf("mouse interrupt\n");
         }
         if (msg.m_notify.interrupts & irq_set_timer) {
           update_timer_state();
+          // printf("timer interrupt\n");
         } 
         if (msg.m_notify.interrupts & irq_set_keyboard) {
           update_keyboard_state();
+          // printf("keyboard interrupt\n");
+        }
+        if (msg.m_notify.interrupts & irq_set_uart) {
+          update_uart_state();
+          printf("uart interrupt\n");
         }
           break;
         default:
