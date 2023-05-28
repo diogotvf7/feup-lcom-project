@@ -1,7 +1,7 @@
 <map id="start_settings" name="start_settings">
 <area shape="rect" id="node1" title=" " alt="" coords="5,208,116,235"/>
 <area shape="rect" id="node2" href="$base__frame_8c.html#ab00d8022c641562da3becc117fb15bbc" title="Creates a frame buffer with the specified width, height, and bytes per pixel." alt="" coords="180,5,335,32"/>
-<area shape="rect" id="node3" href="$group__keyboard.html#ga178b1db0b319dccad2840cc3fd273132" title="Subscribes and enables KBD 1 interrupts." alt="" coords="170,56,345,83"/>
+<area shape="rect" id="node3" href="$keyboard_8c.html#a178b1db0b319dccad2840cc3fd273132" title="Subscribes to keyboard interrupts." alt="" coords="170,56,345,83"/>
 <area shape="rect" id="node4" href="$model_8c.html#aadcc26083caf604e98eeedac891f65ff" title="Loads the leaderboard values from a file." alt="" coords="164,107,351,133"/>
 <area shape="rect" id="node5" href="$mouse_8c.html#a314c3d6d09fa5668c948fde6037b5882" title="Subscribes to mouse interrupts." alt="" coords="178,157,337,184"/>
 <area shape="rect" id="node6" href="$mouse_8c.html#a3e5f6aef5542c6a30bdf74bcddeb3f1d" title="Enables or disables data reporting from the mouse." alt="" coords="185,208,329,235"/>
