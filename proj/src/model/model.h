@@ -52,13 +52,8 @@ typedef enum {
     END /**< The end game menu state. */
 } MenuState;
 
-/**
- * @brief Enumeration representing the game state.
- */
-typedef enum {
-    DRAW, /**< The draw state. */
-    GUESS, /**< The guess state. */
-    DRAW_GUESS /**< The draw-guess state. */
+typedef enum{
+    SINGLEPLAYER,
 } GameState;
 
 /**

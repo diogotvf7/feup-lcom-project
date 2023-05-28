@@ -119,4 +119,3 @@ int draw_number(Sprite* sprite, int x, int y, int index);
 int draw_word(int word[], int word_size, int x, int y, uint32_t color);
 
 
-
