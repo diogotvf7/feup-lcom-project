@@ -5,7 +5,6 @@
 #include "controller/rtc/rtc.h"
 #include "controller/keyboard/keyboard.h"
 #include "controller/graphics_card/graphics_card.h"
-#include "../serial_port.h"
 #include "model/queue.h"
 #include "controller/timer/timer.h"
 #include "view/view.h"
@@ -30,6 +29,7 @@
 #include "xpm/coopDrawButton.xpm"
 #include "xpm/Victory.xpm"
 #include "xpm/Defeat.xpm"
+#include "xpm/dealer.xpm"
 
 #define MAX_WORD_LENGTH 12
 #define MAX_LINE_LENGTH 50
@@ -64,7 +64,6 @@ typedef struct leaderboardValue{
 void update_timer_state();
 void update_keyboard_state();
 void update_mouse_state();
-void update_serial_port_state();
 void setup_sprites();
 void destroy_sprites();
 void updateLeaderboard(leaderboardValue *newValue);
@@ -76,6 +75,5 @@ bool checkResult();
 char* getRandomWord();
 void updateStateMouseClick();
 void updateStateKeyboardClick();
-int updateScreenSP();
 int convert_to_qwerty(char* str, int word[], int* word_size);
 

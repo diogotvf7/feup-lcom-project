@@ -15,6 +15,7 @@ Sprite* initialMenuButton;
 Sprite* ldbdButtonInitialPage;
 Sprite* coopGuessButton;
 Sprite* coopDrawButton;
+Sprite* dealer;
 
 
 int flag = 0, num_bytes = 1;
@@ -62,6 +63,7 @@ void setup_sprites() {
     ldbdButtonInitialPage = create_sprite_xpm((xpm_map_t) leaderboardButtonInitialPage_xpm);
     coopGuessButton = create_sprite_xpm((xpm_map_t) coopGuessButton_xpm);
     coopDrawButton = create_sprite_xpm((xpm_map_t) coopDrawButton_xpm);
+    dealer = create_sprite_xpm((xpm_map_t) dealer_xpm);
 
 }
 
@@ -337,17 +339,7 @@ void addValueToLeaderboard(){
     free(newValue);
 }
 
-void update_serial_port_state() {
-    //sp_read_data();
-    //updateScreenSP();
-}
 
-int updateScreenSP(){
-    unsigned int ser_state;
-    ser_state = sp_check_connection();
-    if (!ser_state) return 1;
-    return 0;  
-}
 
 void updateStateMouseClick(){
     //single player
@@ -390,11 +382,6 @@ void updateStateKeyboardClick(){
             if (menuState == GAME) break;
             printf("multiplayer mode\n");
             initGame();
-            sp_init();
-            unsigned int sp_state = sp_check_connection();
-            printf("sp_state: %d\n", sp_state);
-            if (!sp_state) break;
-            gameState = GUESS;
             break;
 
         //Modo de jogo multiplayer - adivinhar
@@ -407,7 +394,6 @@ void updateStateKeyboardClick(){
         //Ver a leaderboard
         case FOUR_KEY:{
             if(menuState == LEADERBOARD) break;
-        
             menuState = LEADERBOARD;
             reset_frame();
             break;               
@@ -424,14 +410,6 @@ void updateStateKeyboardClick(){
             break;
         }
 
-        //Ecra que aparece depois de acabar um jogo
-        case SIX_KEY:{
-            if(menuState != GAME) break;
-            menuState = END;
-            reset_frame();
-            break;
-        }
-
         //User verifica se a sua repsosta esta correcta
         case ENTER:{
             gameResult = checkResult();
@@ -442,7 +420,7 @@ void updateStateKeyboardClick(){
             };
             break;
         }
-
+        
         //User escreveu uma letra
         default:
         if (gameState == GUESS || gameState == DRAW_GUESS) read_letter(get_scancode(), word_guess, &number_letters);

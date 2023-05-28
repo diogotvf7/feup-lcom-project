@@ -21,7 +21,6 @@ int draw_game_time(int num);
 int draw_letter(int x, int y, int letter_index, uint32_t color);
 int draw_number(Sprite* sprite, int x, int y, int index);
 int draw_word(int word[], int word_size, int x, int y, uint32_t color);
-//int draw_word_sol();
 
 
 

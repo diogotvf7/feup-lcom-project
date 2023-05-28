@@ -16,6 +16,7 @@ extern Sprite* defeat;
 extern Sprite* ldbdButtonInitialPage;
 extern Sprite* coopGuessButton;
 extern Sprite* coopDrawButton;
+extern Sprite* dealer;
 
 
 extern struct leaderboardValue leaderboard[5];
@@ -73,6 +74,7 @@ void draw_initial_menu() {
     draw_sprite_xpm(coopGuessButton,800, 300);
     draw_sprite_xpm(ldbdButtonInitialPage, 250, 500);
     draw_sprite_xpm(quitButton, 600, 500);
+    draw_sprite_xpm(dealer,700,500);
     
 }
 
@@ -81,7 +83,6 @@ void draw_game_menu() {
 
     if (gameState == DRAW) {
         draw_sprite_xpm(chooseColors, 0, 0);
-        //draw_word_sol();
     }
 
     else if (gameState == GUESS){ 
