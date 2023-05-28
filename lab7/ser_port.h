@@ -34,19 +34,25 @@ int set_uart_freq(uint16_t freq);
 
 void uart_ih();
 
-int uart_send_byte(uint8_t byte);
+int send_uart_byte(uint8_t byte);
 
-int uart_receive_byte(uint8_t *byte);
+int receive_uart_byte(uint8_t *byte);
 
-int uart_send_string(char *string);
+/* tenso daqui para baixo */
 
-int uart_receive_string(char *string);
+// int uart_send_byte(uint8_t byte);
 
-int uart_get_conf(unsigned long *bits, unsigned long *stop, long *parity, unsigned long *rate);
+// int uart_receive_byte(uint8_t *byte);
 
-int uart_poll();
+// int uart_send_string(char *string);
 
-int uart_int();
+// int uart_receive_string(char *string);
 
-int uart_fifo();
+// int uart_get_conf(unsigned long *bits, unsigned long *stop, long *parity, unsigned long *rate);
+
+// int uart_poll();
+
+// int uart_int();
+
+// int uart_fifo();
 

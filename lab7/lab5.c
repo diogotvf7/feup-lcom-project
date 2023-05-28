@@ -108,7 +108,7 @@ int(video_test_init)(uint16_t mode, uint8_t delay) {
                 char c = keyMap[scancode_arr[flag]];
                 if (c == '\n') {
                   printf("Message sent: %s\n", buffer);
-                  uart_send_string(buffer);
+                  // uart_send_string(buffer);
                   *buffer = '\0';
                   buffer_size = 0;
                 } else if (c == '\b') {
@@ -118,7 +118,8 @@ int(video_test_init)(uint16_t mode, uint8_t delay) {
                   }
                 } else if (buffer_size < 20) {
                   // printf("char: %c\n", c);
-                  append_char(buffer, c, &buffer_size);
+                  // append_char(buffer, c, &buffer_size);
+                  send_uart_byte(c);
                 }
                 // printf("Message: %s\n", buffer);
               }
@@ -126,7 +127,6 @@ int(video_test_init)(uint16_t mode, uint8_t delay) {
             } 
           }
           if (msg.m_notify.interrupts & irq_set_uart) {
-            printf("LEZZZZ GOoOOooOoOOoooOOOOoOO\n");
             uart_ih();
           }
           break;

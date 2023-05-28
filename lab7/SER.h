@@ -53,7 +53,7 @@
 #define FRAME_ERR           BIT(3)                      // 1 -> Frame error
 #define BREAK_INTERRUPT     BIT(4)                      // 1 -> THR is empty
 #define TRANSMITTER_EMPTY   BIT(5)                      // 1 -> Transmitter is empty
-#define FIFO_ERROR          BIT(6)                      // 1 -> FIFO error
+#define FIFO_ERROR          BIT(7)                      // 1 -> FIFO error
 
 // -------------------------------------------------------------------------------------
 // UART Interrupt Enable Register

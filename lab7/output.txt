@@ -11,12 +11,220 @@ BREAK:          0
 PARITY:         1
 STOP:           1
 BITS P CHAR:    3
-LEZZZZ GOoOOooOoOOoooOOOOoOO
-INSIDE UART IH!
-11001100
-INterrupt peding
-CHAR_TIMEOUT
-DE UART IH!
 11000010
-INterrupt peding
-TRANSMITTER_EMPTY_INT
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_   R11000010
+WARNING: InterruWARNING: I   TRANSMITTER_E   Receiv11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+data...
+   Received byte: m
+11000100
+WARNING: Interrupt pending   Receiving data...
+   Received byte: m
+11000100
+WARNING: Interrupt pending   Receiving data...
+   Received byte: m
+11000100
+WARNING: Interrupt pending   Receiving data...
+   Received byte: m
+11000100
+WARNING: Interrupt pending   Receiving data...
+   Received byte: m
+11000100
+WARNING: Interrupt pending   Receiving data...
+   Received byte: m
+11000100
+WARNING: Interrupt pending   Receiving data...
+   Received byte: m
+11000100
+WARNING: Interrupt pending   Receiving data...
+   Received byte: m
+11000100
+WARNING: Interrupt pending   Receiving data...
+   Received byte: m
+11000100
+WARNING: Interrupt pending   Receiving data...
+   Received byte: m
+11000100
+WARNING: Interrupt pending   Receiving data...
+   Received byte: m
+11000100
+WARNING: Interrupt pending   Receiving data...
+   Received byte: m
+11000100
+WARNING: Interrupt pending   Receiving data...
+   Received byte: m
+11000100
+WARNING: Interrupt pending   Receiving data...
+   Received byte: m
+11000100
+WARNING: Interrupt pending   Receiving data...
+   Received byte: m
+11000100
+WARNING: Interrupt pending   Receiving data...
+   Received byte: m
+11000100
+WARNING: Interrupt pending   Receiving data...
+   Received byte: m
+11000100
+WARNING: Interrupt pending   Receiving data...
+   Received byte: m

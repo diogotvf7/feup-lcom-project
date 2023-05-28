@@ -11,7 +11,7 @@ int config_uart()
 
   lcr = BITS_PER_CHAR(8) | STOP_BITS_2 | ODD_PARITY;
   ier = ENABLE_RECEIVED_DATA_INT | ENABLE_TRANSMITTER_EMPTY_INT | ENABLE_RECEIVER_LINE_INT;
-  fcr = ENABLE_FIFO | CLEAR_RCVR_FIFO | CLEAR_XMIT_FIFO | RCVR_TRIGGER_8;
+  fcr = ENABLE_FIFO | CLEAR_RCVR_FIFO | CLEAR_XMIT_FIFO | RCVR_TRIGGER_1;
 
   if (set_uart_lcr(lcr) != OK) return !OK;      // SEND LCR CONFIG
 
@@ -96,47 +96,36 @@ int set_uart_freq(uint16_t freq)
   util_get_MSB(freq, &msb);
   if (sys_outb(COM1 + SER_DLL, lsb) || sys_outb(COM1 + SER_DLM, msb))
     return !OK;
-  // uint8_t shit = BIT(0) | BIT(1) | BIT(2)  | BIT(3)  | BIT(4)  | BIT(5) | BIT(6);
-  // lcr &= ; // unset DLAB
   return OK;
 }
 
 void uart_ih() 
 {
-  printf("INSIDE UART IH!\n");
   uint8_t byte;
 
   util_sys_inb(COM1 + SER_IIR, &iir);
   printBits(sizeof iir, &iir);
   if(!(iir & INTERRUPT_PENDING)) {
-    printf("INterrupt peding\n");
+    printf("WARNING: Interrupt pending");
     switch(iir & INTERRUPT_ORIGIN_MASK) {
       case MODEM_STATUS_INT:
-        printf("MODEM_STATUS_INT\n");
+        printf("   MODEM_STATUS_INT\n");
         break;
       case TRANSMITTER_EMPTY_INT:
-        printf("TRANSMITTER_EMPTY_INT\n");
-        while (!queue_empty(&xmit_fifo)) {
-          if (uart_send_byte(*((uint8_t *)queue_front(&xmit_fifo))) != OK)
-            break;
-          queue_pop(&xmit_fifo);
-        }
+        printf("   TRANSMITTER_EMPTY_INT\n");
         break;
       case CHAR_TIMEOUT:
-        printf("CHAR_TIMEOUT\n");
-        while (uart_receive_byte(&byte))
-          queue_push(&rcvr_fifo, &byte, sizeof byte);
-        break;
       case RECEIVED_DATA_INT:
-        printf("RECEIVED_DATA_INT\n");
-        while (uart_receive_byte(&byte))
-          queue_push(&rcvr_fifo, &byte, sizeof byte);
+        printf("   Receiving data...\n");
+        while (receive_uart_byte(&byte) == OK) {
+          printf("   Received byte: %c\n", byte);
+        }
         break;
       case LINE_STATUS_INT:
-        printf("LINE_STATUS_INT\n");
+        printf("   LINE_STATUS_INT\n");
         break;
       default:
-        printf("UART_IH: Invalid interrupt origin\n");
+        printf("   UART_IH: Invalid interrupt origin\n");
         break;
     }
   }
@@ -154,70 +143,37 @@ void uart_ih()
   // }
 }
 
-int uart_send_byte(uint8_t byte) {
-  uint8_t lsr, attempts_left = XMIT_TRIES;
+int send_uart_byte(uint8_t byte) 
+{
+  uint8_t attempts_left = XMIT_TRIES;
   while (attempts_left--) {
-    get_uart_lsr(&lsr);
-    if (lsr & TRANSMITTER_EMPTY) {
-      printf("Sending byte: %x\n", byte);
+    uint8_t lsr;
+    if (get_uart_lsr(&lsr)) return !OK;
+    // if (queue_empty(&xmit_fifo) &&  lsr & TRANSMITTER_EMPTY)
+    if (queue_empty(&xmit_fifo) && !(lsr & (OVERRUN_ERR | PARITY_ERR | FRAME_ERR | FIFO_ERROR)))
       return sys_outb(COM1 + SER_THR, byte);
-    }
-    micro_delay(UART_COOLDOWN);
+    else
+      queue_push(&xmit_fifo, &byte);
   }
   return !OK;
 }
 
-int uart_receive_byte(uint8_t *byte) {
-
-  uint8_t lsr, attempts_left = RCVR_TRIES;
-
+int receive_uart_byte(uint8_t *byte) 
+{
+  uint8_t attempts_left = RCVR_TRIES;
   while (attempts_left--) {
-    get_uart_lsr(&lsr);
+    uint8_t lsr;
+    if (get_uart_lsr(&lsr) != OK) return !OK;
+    // if (lsr & RECEIVER_DATA) {
+    //   return util_sys_inb(COM1 + SER_RBR, byte);
+    // }    
     if (lsr & RECEIVER_DATA) {
-      if (lsr & (PARITY_ERROR | FRAME_ERR | OVERRUN_ERR))
-        continue;
-      return util_sys_inb(COM1 + SER_RBR, byte);
+      if (util_sys_inb(COM1 + SER_RBR, byte) != OK) return !OK;
+      queue_push(&rcvr_fifo, byte);
+      return OK;
     }
-    micro_delay(UART_COOLDOWN);
   }
   return !OK;
 }
 
-int uart_send_string(char *string) {
-  printf("Sending string: %s\n", string);
-  while (*string) {
-    if (uart_send_byte(*string) != OK)
-      return !OK;
-    string++;
-  }
-  return OK;
-}
-
-int uart_receive_string(char *string) {
-  uint8_t byte;
-  while (1) {
-    if (queue_empty(&rcvr_fifo)) {
-      if (uart_receive_byte(&byte) != OK)
-        return !OK;
-      queue_push(&rcvr_fifo, &byte, sizeof byte);
-    }
-    if (queue_empty(&rcvr_fifo))
-      continue;
-    queue_pop(&rcvr_fifo);
-    if (byte == '\n')
-      break;
-    *string = byte;
-    string++;
-  }
-  *string = 0;
-  return OK;
-}
-
-int uart_get_conf(unsigned long *bits, unsigned long *stop, long *parity, unsigned long *rate);
-
-int uart_poll();
-
-int uart_int();
-
-int uart_fifo();
 
