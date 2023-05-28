@@ -8,6 +8,16 @@ extern Sprite* numbers;
 extern Sprite* letters;
 extern uint16_t bytes_per_pixel;
 extern Sprite* leaderboardTable;
+extern Sprite* playAgainButton;
+extern Sprite* leaderboardButton;
+extern Sprite* initialMenuButton;
+extern Sprite* victory;
+extern Sprite* defeat;
+extern Sprite* ldbdButtonInitialPage;
+extern Sprite* coopGuessButton;
+extern Sprite* coopDrawButton;
+
+
 extern struct leaderboardValue leaderboard[5];
 
 extern int x, y;
@@ -15,8 +25,15 @@ vbe_mode_info_t vmi_p;
 extern MenuState menuState;
 extern GameState gameState;
 extern int game_counter;
+
+extern int delayTime;
 extern int number_letters;
 extern int word_guess[10];
+
+extern bool gameResult;
+
+extern int word_solution[12];
+extern int word_sol_number_letters;
 
 void draw_new_frame() {
     switch(menuState){
@@ -26,10 +43,12 @@ void draw_new_frame() {
         case GAME:
             draw_game_menu();
             break;
+        case LEADERBOARD:
+            draw_leaderboard_menu();
+            break;
         case END:
-            draw_finish_menu();
-            break;    
-
+            draw_end_menu();
+            break;
     }
     draw_mouse();
 
@@ -41,31 +60,47 @@ void draw_mouse() {
 }
 
 void draw_initial_menu() {
-    draw_sprite_xpm(startButton, 451, 300);
-    draw_sprite_xpm(quitButton, 451, 500);
+    draw_sprite_xpm(startButton, 100, 300);
+    draw_sprite_xpm(coopDrawButton, 450, 300);
+    draw_sprite_xpm(coopGuessButton,800, 300);
+    draw_sprite_xpm(ldbdButtonInitialPage, 250, 500);
+    draw_sprite_xpm(quitButton, 600, 500);
     
 }
 
 void draw_game_menu() {
+    draw_bottom_bar(0,750,1152,114, GREY,80,780,900,70);
+
     if (gameState == DRAW) {
         draw_sprite_xpm(chooseColors, 0, 0);
+        draw_word_sol();
+    }
+
+    else if (gameState == GUESS){ 
+        draw_bar(0,0,1152,150,GREY);
+        draw_word();    
+    }
+
+    else if(gameState == DRAW_GUESS){
+        draw_sprite_xpm(chooseColors, 0, 0);
+
+        if(delayTime <= 5)
+            draw_word_sol();
+        else{
+            draw_word();
         }
-    else if (gameState == GUESS) draw_bar(0,0,1152,150,GREY);
-    draw_bottom_bar(0,750,1152,114, GREY,80,780,900,70);
+    } 
     draw_game_time(game_counter);
-    draw_word();
 
 }
 
-void draw_finish_menu() {
+void draw_leaderboard_menu() {
     draw_sprite_xpm(leaderboardTable, 0 , 0);
     int y_gap = 0;
 
     for (int i = 0; i < 5; i++) {
         int x_pos = 20;
         int y_pos = 270 + y_gap;
-
-
 
         //draw month
         if(leaderboard[i].month < 9){
@@ -139,6 +174,16 @@ void draw_finish_menu() {
     }
 }
 
+void draw_end_menu(){
+    if(gameResult)
+        draw_sprite_xpm(victory, 337,0);
+    else    
+        draw_sprite_xpm(defeat, 337, 0);
+    
+    draw_sprite_xpm(playAgainButton, 131, 481);
+    draw_sprite_xpm(leaderboardButton, 462, 481);
+    draw_sprite_xpm(initialMenuButton, 793, 481);
+}
 
 int draw_sprite_xpm(Sprite *sprite, int x, int y) {
     uint16_t width;
@@ -156,7 +201,6 @@ int draw_sprite_xpm(Sprite *sprite, int x, int y) {
     }
     return 0;
 }
-
 
 int draw_bar(int x, int y, int width, int height, uint32_t color){
     for (uint16_t h = 0; h < height; h++){
@@ -184,10 +228,18 @@ int draw_bottom_bar(int x, int y, int width, int height, uint32_t color, int squ
 int draw_word(){
     int letter_pos = 0;
     for(int i = 0; i < number_letters; i++){
-        draw_letter(100 + letter_pos * 75, 770, word_guess[i]);
+        draw_letter(80 + letter_pos * 60, 780, word_guess[i]);
         letter_pos++;
     }
+    return 0;
+}
 
+int draw_word_sol(){
+    int letter_pos = 0;
+    for(int i = 0; i < word_sol_number_letters; i++){
+        draw_letter(80 + letter_pos * 60, 780, word_solution[i]);
+        letter_pos++;
+    }
     return 0;
 }
 
@@ -209,7 +261,6 @@ int draw_letter(int x, int y, int letter_index){
     return 0;
 
 }
-
 
 int draw_number(Sprite* sprite, int x, int y, int index){
     uint16_t width = 70;
@@ -244,9 +295,8 @@ int draw_game_time(int num)
     
     int length = 0;
     for (j = i - 1; j > -1; j--) {
-        draw_number(numbers, 1000 + length * 75, 780, arr[j]);
+        draw_number(numbers, 1000 + length * 60, 780, arr[j]);
         length++;
-
     }
     return 0;
 }

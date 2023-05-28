@@ -84,6 +84,7 @@
 #define X_KEY 45
 #define Y_KEY 21
 #define Z_KEY 44
+#define ENTER 28
 #define BACKSPACE_KEY 0x0E
 #define SPACE_KEY 57
 

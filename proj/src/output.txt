@@ -1,0 +1,72 @@
+11000100
+WARNING: Interrupt pending   Receiving data...
+   Received byte: a11000100
+WARNING: Interrupt pending   Receiving data...
+   Received byte: a
+ FAILED :( trying again!
+ FAILED :( trying again!
+ FAILED :( trying again!
+ FAILED :( trying again!
+ FAILED :( trying again!
+Stopped trying to receive byte
+uart interrupt
+11000100
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+uart interrupt
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+uart interrupt
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+uart interrupt
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+uart interrupt
+11000010
+WARNING: Interrupt pending   TRANSMITTER_EMPTY_INT
+uart interrupt
+AILED :( trying again!
+ FAILED :( trying again!
+ FAILED :( trying again!
+Stopped trying to receive byte
+uart interrupt
+11000100
+WARNING: Interrupt pending   Receiving data...
+   Received byte: a
+ FAILED :( trying again!
+ FAILED :( trying again!
+ FAILED :( trying again!
+ FAILED :( trying again!
+ FAILED :( trying again!
+Stopped trying to receive byte
+uart interrupt
+11000100
+WARNING: Interrupt pending   Receiving data...
+   Received byte: a
+ FAILED :( trying again!
+ FAILED :( trying again!
+ FAILED :( trying again!
+ FAILED :( trying again!
+ FAILED :( trying again!
+Stopped trying to receive byte
+uart interrupt
+11000100
+WARNING: Interrupt pending   Receiving data...
+   Received byte: ?
+ FAILED :( trying again!
+ FAILED :( trying again!
+ FAILED :( trying again!
+ FAILED :( trying again!
+ FAILED :( trying again!
+Stopped trying to receive byte
+uart interrupt
+11000100
+WARNING: Interrupt pending   Receiving data...
+   Received byte: 0
+ FAILED :( trying again!
+ FAILED :( trying again!
+ FAILED :( trying again!
+ FAILED :( trying again!
+ FAILED :( trying again!
+Stopped trying to receive byte
+uart interrupt
