@@ -19,7 +19,7 @@ Sprite* coopDrawButton;
 
 int flag = 0, num_bytes = 1;
 uint8_t scancode_arr[2];
-int to_qwerty[26] = {10,23,21,12,2,13,14,15,7,16,17,18,25,24,8,9,0,3,11,4,6,22,1,20,5,19};
+uint8_t to_qwerty[26] = {10,23,21,12,2,13,14,15,7,16,17,18,25,24,8,9,0,3,11,4,6,22,1,20,5,19};
 extern int x, y;
 extern frame_buffer_t frame_buffer;
 extern real_time curr_time;
@@ -36,25 +36,14 @@ extern struct Queue *garbage;
 int delayTime = 0;
 bool gameResult= false;
 
-int word_guess[12] = {-1};
+uint8_t word_guess[12] = {-1};
 int number_letters = 0;
 
-/*               DANGER                  */
-const char keyMap[] = { '\0',
-  '\0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '?', '\0', '\b',
-  '\t', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '+', '\'', '\n',
-  '\0', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', '\0', '\0', '\0', '\0', '~',
-  'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '-', '\0', '\0', '\0', ' ' 
-};
-char buffer[21] = "";
-int buffer_size = 0;
-
-// extern Queue *xmit_fifo;
+extern Queue *xmit_fifo;
 extern Queue *rcvr_fifo;
 
-/*               DANGER                  */
 
-int word_solution[12] = {-1};
+uint8_t word_solution[12] = {-1};
 int word_sol_number_letters;
 
 void setup_sprites() {
@@ -76,9 +65,13 @@ void setup_sprites() {
 
 }
 
-void initGame() {
+void initGame(){
     menuState = GAME;
     game_counter = ROUND_TIME;
+    for (int i = 0; i < 12; i++) {
+        word_solution[i] = -1;
+    }
+    word_sol_number_letters = 0;
     getRandomWord();
     delayTime = 0;
     gameResult = false;
@@ -166,27 +159,76 @@ void update_mouse_state() {
 void update_timer_state() {
     timer_int_handler();
     vg_flip_frame();
-    
+
     if (menuState == START) {
         if (!queue_empty(&rcvr_fifo)) {
-            printf("Starting as guesser!\n");
             uint8_t *byte = queue_front(&rcvr_fifo);
-            printf("Byte: %d      START_GAME: %d\n", *byte, START_GAME);
-            // printf("Byte: %x\n", *byte);
             if (*byte == START_GAME) {
                 gameState = GUESS;
                 initGame();
             }
             queue_pop(&rcvr_fifo);
         }
+    } else if (menuState == GAME) {
+        if (gameState == DRAW) {
+
+            // /*           DELETE */
+            // printf("\nword_guess[]: ");
+            // for (int i = 0; i < number_letters; i++) 
+            //     printf(" %d ", word_guess[i]);
+            // printf("\nword_solution[]: ");
+            // for (int i = 0; i < word_sol_number_letters; i++) 
+            //     printf(" %d ", word_solution[i]);
+            // printf("\n");
+            // /*           DELETE */
+
+            while (!queue_empty(&rcvr_fifo)) {
+                uint8_t *byte = queue_front(&rcvr_fifo);
+                if (*byte == END_OF_PACKET) {
+                    gameResult = checkResult();
+                    if (gameResult) {
+                        menuState = END;
+                        addValueToLeaderboard();
+                        send_uart_byte(UART_ACK);
+                        reset_frame();
+                    } else send_uart_byte(UART_NACK);
+                    for (int i = 0; i < number_letters; i++)
+                        word_guess[i] = -1;
+                    number_letters = 0;
+                }
+                word_guess[number_letters] = *byte;
+                number_letters++;
+                queue_pop(&rcvr_fifo);
+            }    
+        }
+        else if (gameState == GUESS) {
+            printf("\n\n\n\n\n\n\nGuesser received a byte!\n\n\n\n\n\n\n");
+            while (!queue_empty(&rcvr_fifo)) {
+                uint8_t *byte = queue_front(&rcvr_fifo);
+                if (*byte == UART_ACK) {
+                    menuState = END;
+                    gameResult = TRUE;
+                } else if (*byte == UART_NACK) {
+                    for (int i = 0; i < number_letters; i++)
+                        word_guess[i] = -1;
+                    number_letters = 0;
+                }
+                queue_pop(&rcvr_fifo);
+            }
+        }
+
     }
     copy_base_frame(frame_buffer);
     for (int i = PACKETS_PER_INTERRUPT; i; i--) {
         if (process_packet(color, radius) != 0)
             break;
     }
+    if (get_counter() % 60 == 0){
+        uint8_t iir;
+        util_sys_inb(COM1 + SER_IIR, &iir);
+        printBits(sizeof iir, &iir);
+    }
     if (get_counter() % 30 == 0 && menuState == GAME){
-
 
         //tempo de delay onde so conseguimos ver a palavra - o game counter nao diminui aqui
         if(gameState == DRAW_GUESS && delayTime < 6){delayTime++;}
@@ -206,7 +248,9 @@ void update_timer_state() {
             reset_frame();
         }
     }
-    //Podemos nao estar no modo de jogo mas o rtc tem sempre de se atualizar
+
+
+    // Podemos nao estar no modo de jogo mas o rtc tem sempre de se atualizar
     // else if(get_counter() % 30 == 0){
     //     rtc_init();
     // }
@@ -228,32 +272,9 @@ void update_keyboard_state() {
         num_bytes = 2;
     } else {
         scancode_arr[flag] = get_scancode();
-        // if (kbd_print_scancode(!((get_scancode() & SCANCODE_MSB) >> 7), num_bytes, scancode_arr) != OK)
-        //     return;
-        if (!(scancode_arr[flag] & BREAK_BIT)) 
-        {
-            char c = keyMap[scancode_arr[flag]];
-            if (c == '\n') {
-                printf("Message sent: %s\n", buffer);
-                // uart_send_string(buffer);
-                *buffer = '\0';
-                buffer_size = 0;
-            } else if (c == '\b') {
-                if (buffer_size > 0) {
-                buffer[buffer_size-1] = '\0';
-                buffer_size--;
-                }
-            } else if (buffer_size < 20) {
-                // printf("char: %c\n", c);
-                // append_char(buffer, c, &buffer_size);
-                send_uart_byte(c);
-            }
-            // printf("Message: %s\n", buffer);
-        }
         num_bytes = 1;
         flag = 0;
     }
-
     updateStateKeyboardClick();
 }
 
@@ -365,6 +386,7 @@ void addValueToLeaderboard(){
     if (newValue == NULL) {
         printf("Error: Memory allocation failed.\n");
     }
+    rtc_init();
     newValue->month = curr_time.month;
     newValue->day = curr_time.day;
     newValue->hour = curr_time.hour;
@@ -385,7 +407,6 @@ void updateStateMouseClick() {
     //coop draw
     else if(x >= 450 && x <= 710 && y >= 300 && y <= 425){
         send_start_msg();
-        send_uart_byte(START_GAME);
         initGame();
         gameState = DRAW;
     }
@@ -458,12 +479,21 @@ void updateStateKeyboardClick(){
 
         //User verifica se a sua repsosta esta correcta
         case ENTER:{
-            gameResult = checkResult();
-            if(gameResult) {
-                menuState = END;
-                addValueToLeaderboard();
-            };
-            break;
+            if (gameState == DRAW_GUESS) {
+                gameResult = checkResult();
+                if(gameResult) {
+                    menuState = END;
+                    addValueToLeaderboard();
+                };
+                break;
+            } else if (gameState == GUESS) {
+                printf("Starting to send word to other player (%d letters)\n", number_letters);
+                send_uart_bytes(word_guess, number_letters);
+                uint8_t end_of_packet = END_OF_PACKET;
+                printf("Sending end of packet (%d)\n", end_of_packet);
+                send_uart_byte(end_of_packet);
+                break;
+            }
         }
 
         //User escreveu uma letra

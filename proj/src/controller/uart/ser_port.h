@@ -35,25 +35,11 @@ void uart_ih();
 
 int send_uart_byte(uint8_t byte);
 
+int send_uart_bytes(uint8_t *bytes, uint32_t size);
+
 int receive_uart_byte(uint8_t *byte);
 
 int send_start_msg();
 
-/* tenso daqui para baixo */
 
-// int uart_send_byte(uint8_t byte);
-
-// int uart_receive_byte(uint8_t *byte);
-
-// int uart_send_string(char *string);
-
-// int uart_receive_string(char *string);
-
-// int uart_get_conf(unsigned long *bits, unsigned long *stop, long *parity, unsigned long *rate);
-
-// int uart_poll();
-
-// int uart_int();
-
-// int uart_fifo();
 

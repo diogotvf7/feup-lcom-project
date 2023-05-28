@@ -28,11 +28,11 @@ extern int game_counter;
 
 extern int delayTime;
 extern int number_letters;
-extern int word_guess[10];
+extern uint8_t word_guess[10];
 
 extern bool gameResult;
 
-extern int word_solution[12];
+extern uint8_t word_solution[12];
 extern int word_sol_number_letters;
 
 void draw_new_frame() {
@@ -243,7 +243,7 @@ int draw_word_sol(){
     return 0;
 }
 
-int draw_letter(int x, int y, int letter_index){
+int draw_letter(int x, int y, uint8_t letter_index){
 
     uint16_t width = 70;
     uint16_t height = 70;

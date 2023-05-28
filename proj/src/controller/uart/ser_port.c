@@ -1,7 +1,6 @@
 #include "ser_port.h"
 
 int hook_id = 4;
-static uint8_t iir;
 Queue *xmit_fifo = NULL;
 Queue *rcvr_fifo = NULL;
 
@@ -9,9 +8,9 @@ int config_uart()
 {
   uint8_t lcr = 0, ier = 0, fcr = 0;
 
-  lcr = BITS_PER_CHAR(8) | STOP_BITS_2 | ODD_PARITY;
+  lcr = BITS_PER_CHAR(8) | NO_PARITY;
   ier = ENABLE_RECEIVED_DATA_INT | ENABLE_TRANSMITTER_EMPTY_INT | ENABLE_RECEIVER_LINE_INT;
-  fcr = ENABLE_FIFO | CLEAR_RCVR_FIFO | CLEAR_XMIT_FIFO | RCVR_TRIGGER_1;
+  fcr = ENABLE_FIFO | CLEAR_RCVR_FIFO | CLEAR_XMIT_FIFO | RCVR_TRIGGER_8;
 
   if (set_uart_lcr(lcr) != OK) return !OK;      // SEND LCR CONFIG
 
@@ -101,10 +100,9 @@ int set_uart_freq(uint16_t freq)
 
 void uart_ih() 
 {
-  uint8_t byte;
-
+  uint8_t iir, byte;
   util_sys_inb(COM1 + SER_IIR, &iir);
-  printBits(sizeof iir, &iir);
+  // printBits(sizeof iir, &iir);
   if(!(iir & INTERRUPT_PENDING)) {
     printf("WARNING: Interrupt pending");
     switch(iir & INTERRUPT_ORIGIN_MASK) {
@@ -117,8 +115,9 @@ void uart_ih()
       case CHAR_TIMEOUT:
       case RECEIVED_DATA_INT:
         printf("   Receiving data...\n");
-        receive_uart_byte(&byte);
-        printf("   Received byte: %c\n", byte);
+        while (receive_uart_byte(&byte));
+
+        util_sys_inb(COM1 + SER_IIR, &iir);
         break;
       case LINE_STATUS_INT:
         printf("   LINE_STATUS_INT\n");
@@ -128,32 +127,34 @@ void uart_ih()
         break;
     }
   }
-  // VER SLIDES 29/33
-  // while( lsr & SER_RX_RDY ) { // Read all characters in FIFO
-  //   ... // check errors
-  //   sys_inb(ser_port + SER_DATA, &c);
-  //   ... // "process" character read
-  //   sys_inb(ser_port + SER_LSR, &lsr);
-  // }
-  // void ser_ih() { // serial port IH
-  //   ...
-  //   while( !queue_is_full(qptr) && (lsr & SER_RX_RDY)) {
-  //   ...
-  // }
 }
 
 int send_uart_byte(uint8_t byte) 
 {
   uint8_t lsr;
   if (get_uart_lsr(&lsr)) return !OK;
-  // if (queue_empty(&xmit_fifo) &&  lsr & TRANSMITTER_EMPTY)
-  if (queue_empty(&xmit_fifo) && !(lsr & (OVERRUN_ERR | PARITY_ERR | FRAME_ERR | FIFO_ERROR)))
-    return sys_outb(COM1 + SER_THR, byte);
-  else {
-    queue_push(&xmit_fifo, &byte, sizeof(uint8_t));
-    return OK;
+  if (lsr & (OVERRUN_ERR | PARITY_ERR | FRAME_ERR | FIFO_ERROR)) {
+    printf("UART: Error sending byte\n");
+    return !OK;
   }
-  return !OK;
+  // if (queue_empty(&xmit_fifo))
+  if (queue_empty(&xmit_fifo) &&  (lsr & TRANSMITTER_EMPTY)) {
+    return sys_outb(COM1 + SER_THR, byte);
+  }
+  queue_push(&xmit_fifo, &byte, sizeof(uint8_t));
+  return OK;
+}
+
+int send_uart_bytes(uint8_t *bytes, uint32_t size) 
+{
+  for (uint32_t i = 0; i < size; i++) {
+    printf("Sending byte: %d\n", bytes[i]);
+    if (send_uart_byte(bytes[i]) != OK) {
+      printf("UART: Error sending bytes\n");
+      return !OK;
+    }
+  }
+  return OK;
 }
 
 int receive_uart_byte(uint8_t *byte) 
@@ -162,7 +163,9 @@ int receive_uart_byte(uint8_t *byte)
   if (get_uart_lsr(&lsr) != OK) return !OK;
   if (lsr & RECEIVER_DATA) {
     if (util_sys_inb(COM1 + SER_RBR, byte) != OK) return !OK;
+    printf("Received byte: %d\n", *byte);
     queue_push(&rcvr_fifo, byte, sizeof(uint8_t));
+
     return OK;
   }
   return !OK;
@@ -170,9 +173,4 @@ int receive_uart_byte(uint8_t *byte)
 
 int send_start_msg() {
   return send_uart_byte(START_GAME);
-  // uint8_t byte;
-  // if (send_uart_byte(START_GAME) != OK) return !OK;
-  // if (receive_uart_byte(&byte) != OK) return !OK;
-  // if (byte != ACK) return !OK;
-  // return OK;
 }

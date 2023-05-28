@@ -95,7 +95,8 @@
 // -------------------------------------------------------------------------------------
 // UART Messages
 
-#define START_GAME              0x5
-#define END_GAME                0x4
-#define UART_ACK                0x1
-
+#define START_GAME              0x20
+#define END_GAME                0x21
+#define UART_ACK                0x22
+#define UART_NACK               0x23
+#define END_OF_PACKET           0x24
