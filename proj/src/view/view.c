@@ -14,10 +14,8 @@ extern Sprite* initialMenuButton;
 extern Sprite* victory;
 extern Sprite* defeat;
 extern Sprite* ldbdButtonInitialPage;
-extern Sprite* coopGuessButton;
 extern Sprite* coopDrawButton;
 extern Sprite* dealer;
-
 
 extern struct leaderboardValue leaderboard[5];
 extern int x, y;
@@ -38,6 +36,9 @@ extern int word_sol_number_letters;
 extern int game_title[18];
 extern int game_title_size;
 
+extern int text[12];
+extern int text_size;
+
 void draw_new_frame() {
     switch(menuState){
         case START:
@@ -54,9 +55,7 @@ void draw_new_frame() {
             break;
     }
     draw_mouse();
-
 }
-
 
 void draw_mouse() {
     draw_sprite_xpm(mouse, x, y);
@@ -69,38 +68,51 @@ void draw_initial_menu() {
     }
     convert_to_qwerty("paint with friends", game_title, &game_title_size);
     draw_word(game_title, game_title_size, 50, 50, GOLD);
-    draw_sprite_xpm(startButton, 100, 300);
-    draw_sprite_xpm(coopDrawButton, 450, 300);
-    draw_sprite_xpm(coopGuessButton,800, 300);
-    draw_sprite_xpm(ldbdButtonInitialPage, 250, 500);
-    draw_sprite_xpm(quitButton, 600, 500);
-    draw_sprite_xpm(dealer,700,500);
-    
+    draw_sprite_xpm(startButton, 400, 200);
+    draw_sprite_xpm(ldbdButtonInitialPage, 400, 350);
+    draw_sprite_xpm(quitButton, 400, 500);
+    draw_sprite_xpm(dealer,700,500);    
 }
 
 void draw_game_menu() {
     draw_bottom_bar(0,750,1152,114, GOLD,80,780,900,70);
 
-    if (gameState == DRAW) {
+    if(gameState == SINGLEPLAYER){
         draw_sprite_xpm(chooseColors, 0, 0);
-    }
-
-    else if (gameState == GUESS){ 
-        draw_bar(0,0,1152,150,GOLD);
-        draw_word(word_guess, number_letters, -1, -1, BLACK);    
-    }
-
-    else if(gameState == DRAW_GUESS){
-        draw_sprite_xpm(chooseColors, 0, 0);
-
         if(delayTime <= 5)
             draw_word(word_solution,word_sol_number_letters, -1, -1, BLACK);
-        else{
-            draw_word(word_guess, number_letters, -1, -1, BLACK);
-        }
-    } 
+    }
+
     draw_game_time(game_counter);
     draw_word(word_guess, number_letters, -1, -1, BLACK);
+}
+
+void draw_end_menu(){
+
+    if(gameResult){
+        draw_sprite_xpm(victory, 337,0);
+        text_size = 0;
+        for (int i = 0; i < 18; i++) {
+            text[i] = -1;
+        }
+        convert_to_qwerty("the word was", text, &text_size);
+        draw_word(text, text_size, 0,400, BLACK);
+        draw_word(word_solution,word_sol_number_letters, 300,500, GREEN);
+    }
+    else{
+        draw_sprite_xpm(defeat, 337, 0);
+         text_size = 0;
+        for (int i = 0; i < 18; i++) {
+            text[i] = -1;
+        }
+        convert_to_qwerty("the word was", text, &text_size);
+        draw_word(text, text_size, 0,400, BLACK);
+        draw_word(word_solution,word_sol_number_letters, 300,500, RED);
+    }
+    
+    draw_sprite_xpm(playAgainButton, 131, 600);
+    draw_sprite_xpm(leaderboardButton, 462, 600);
+    draw_sprite_xpm(initialMenuButton, 793, 600);
 }
 
 void draw_leaderboard() {
@@ -183,16 +195,6 @@ void draw_leaderboard() {
     }
 }
 
-void draw_end_menu(){
-    if(gameResult)
-        draw_sprite_xpm(victory, 337,0);
-    else    
-        draw_sprite_xpm(defeat, 337, 0);
-    
-    draw_sprite_xpm(playAgainButton, 131, 481);
-    draw_sprite_xpm(leaderboardButton, 462, 481);
-    draw_sprite_xpm(initialMenuButton, 793, 481);
-}
 
 int draw_sprite_xpm(Sprite *sprite, int x, int y) {
     uint16_t width;
@@ -247,14 +249,7 @@ int draw_word(int word[], int word_size, int x, int y, uint32_t color){
     return 0;
 }
 
-// int draw_word_sol(){
-//     int letter_pos = 0;
-//     for(int i = 0; i < word_sol_number_letters; i++){
-//         draw_letter(80 + letter_pos * 60, 780, word_solution[i]);
-//         letter_pos++;
-//     }
-//     return 0;
-// }
+
 
 int draw_letter(int x, int y, int letter_index, uint32_t color){
 

@@ -47,9 +47,7 @@ typedef enum{
 } MenuState;
 
 typedef enum{
-    DRAW,
-    GUESS,
-    DRAW_GUESS,
+    SINGLEPLAYER,
 } GameState;
 
 typedef struct leaderboardValue{

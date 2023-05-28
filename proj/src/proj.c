@@ -41,7 +41,6 @@ int(main)(int argc, char *argv[]) {
   // LCF clean up tasks
   // [must be the last statement before return]
   lcf_cleanup();
-
   return 0;
 }
 
@@ -64,8 +63,6 @@ int (start_settings)() {
 
   create_frame_buffer(h_res, v_res, bytes_per_pixel);
   loadLeaderboardFromFile(leaderboard);
-  
-
   return 0;  
 }
 
