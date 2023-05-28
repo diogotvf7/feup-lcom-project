@@ -307,6 +307,3 @@ int draw_game_time(int num)
     }
     return 0;
 }
-
-
-
