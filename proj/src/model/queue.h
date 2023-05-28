@@ -25,13 +25,10 @@ int queue_empty(Queue **queue);
 
 void *queue_front(Queue **queue);
 
-// struct Position *get_back(Queue **queue);
-
 void queue_push(Queue **queue, void *data, size_t size);
 
 void queue_pop(Queue **queue);
 
 void queue_clear(Queue **queue);
 
-// void queue_print(Queue **queue);
 

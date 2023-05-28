@@ -62,7 +62,6 @@ void setup_sprites() {
     ldbdButtonInitialPage = create_sprite_xpm((xpm_map_t) leaderboardButtonInitialPage_xpm);
     coopGuessButton = create_sprite_xpm((xpm_map_t) coopGuessButton_xpm);
     coopDrawButton = create_sprite_xpm((xpm_map_t) coopDrawButton_xpm);
-
 }
 
 void initGame(){
@@ -152,7 +151,11 @@ void update_mouse_state() {
                         initGame();
                     }
                     else if (( x >= 462 && x <= 662) && (y >= 481 && y <= 681)) {menuState = LEADERBOARD;}
-                    else if (( x >= 793 && x <= 993) && (y >= 481 && y <= 681)) {menuState = START;}
+                    else if (( x >= 793 && x <= 993) && (y >= 481 && y <= 681)) {
+                        if (gameState == DRAW || gameState == GUESS)
+                            send_uart_byte(END_GAME);
+                        menuState = START;
+                    }
                 }
                
             default:
@@ -195,7 +198,6 @@ void update_timer_state() {
             }    
         }
         else if (gameState == GUESS) {
-            printf("\n\n\n\n\n\n\nGuesser received a byte!\n\n\n\n\n\n\n");
             while (!queue_empty(&rcvr_fifo)) {
                 uint8_t *byte = queue_front(&rcvr_fifo);
                 if (*byte == UART_ACK) {
@@ -215,6 +217,8 @@ void update_timer_state() {
             if (*byte == PLAY_AGAIN) {
                 menuState = GAME;
                 initGame();
+            } else if (*byte == END_GAME) {
+                menuState = START;
             }
             queue_pop(&rcvr_fifo);
         }
@@ -250,18 +254,6 @@ void update_timer_state() {
         }
     }
 
-
-    // Podemos nao estar no modo de jogo mas o rtc tem sempre de se atualizar
-    // else if(get_counter() % 30 == 0){
-    //     rtc_init();
-    // }
-
-
-    //printf("Queue size:     %d\n", queue_size(&pos_queue));
-    // if (queue_size(&pos_queue) > QUEUE_LIMIT)
-    //     queue_clear(&pos_queue);
-    
-    // printf("RCVR SIZE: %d\n", queue_size(&rcvr_fifo));
     draw_new_frame();
 }
 
@@ -488,10 +480,8 @@ void updateStateKeyboardClick(){
                 };
                 break;
             } else if (gameState == GUESS) {
-                printf("Starting to send word to other player (%d letters)\n", number_letters);
                 send_uart_bytes(word_guess, number_letters);
                 uint8_t end_of_packet = END_OF_PACKET;
-                printf("Sending end of packet (%d)\n", end_of_packet);
                 send_uart_byte(end_of_packet);
                 break;
             }
