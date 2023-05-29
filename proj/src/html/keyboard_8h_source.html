@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Paint with friends: controller/keyboard/keyboard.h Source File</title>
+<title>LCOM_PROJ: controller/keyboard/keyboard.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Paint with friends
+   <div id="projectname">LCOM_PROJ
    </div>
   </td>
  </tr>
@@ -69,45 +69,33 @@ $(function() {
 <div class="title">keyboard.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="keyboard_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __KEYBOARD_H</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __KEYBOARD_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define __KEYBOARD_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;lcom/lcf.h&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;../utils.h&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="mouse_2i8042_8h.html">i8042.h</a>&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;i8042.h&quot;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;uint8_t (<a class="code" href="keyboard_8h.html#afdfb6322f4a75773b745fc6cc6c20d27">get_scancode</a>)();</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;uint8_t (get_scancode)();</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;int (<a class="code" href="keyboard_8h.html#a178b1db0b319dccad2840cc3fd273132">keyboard_subscribe_int</a>)(uint8_t *bit_no);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;int (keyboard_subscribe_int)(uint8_t *bit_no);</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;int (<a class="code" href="keyboard_8h.html#a32cc4de66854f8a7bd909e7aa8b901ed">keyboard_unsubscribe_int</a>)();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;int (keyboard_unsubscribe_int)();</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;void (<a class="code" href="keyboard_8h.html#aea970a154161a35f6894898a092ed70a">kbc_ih</a>)();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;void (kbc_ih)();</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;int (<a class="code" href="keyboard_8h.html#ab5b778c1e5e9ea40b69932da4fda244e">read_keyboard_status</a>)(uint8_t *st);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;int (read_keyboard_status)(uint8_t *st);</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;int (<a class="code" href="keyboard_8h.html#acab4f5cf18da1c098fba9b09cba9fa78">read_kbc_scancode</a>)(uint8_t st, uint8_t *scancode);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;int (read_kbc_scancode)(uint8_t st, uint8_t *scancode);</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;int (<a class="code" href="keyboard_8h.html#a21f1d7c5b4716be3907005e854ababd0">keyboard_write</a>)(<span class="keywordtype">int</span> port, uint8_t cmd);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;int (keyboard_write)(<span class="keywordtype">int</span> port, uint8_t cmd);</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;int (<a class="code" href="keyboard_8h.html#a58017421d19bb2004825d339ebb600fa">keyboard_restore</a>)();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;int (keyboard_restore)();</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;int (<a class="code" href="keyboard_8h.html#a29728e2952c75933284e8865898b7509">read_letter</a>)(<span class="keywordtype">int</span> scancode, <span class="keywordtype">int</span> *<a class="code" href="model_8c.html#a8d2973c6573cafce9839e395a9f18434">word_guess</a>, <span class="keywordtype">int</span> *<a class="code" href="model_8c.html#ad2879855edd36728d48d68e1b5d0c1f3">number_letters</a>);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keywordtype">int</span> read_letter(<span class="keywordtype">int</span> scancode, uint8_t *word_guess, <span class="keywordtype">int</span>* number_letters);</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __KEYBOARD_H */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="akeyboard_8h_html_a178b1db0b319dccad2840cc3fd273132"><div class="ttname"><a href="keyboard_8h.html#a178b1db0b319dccad2840cc3fd273132">keyboard_subscribe_int</a></div><div class="ttdeci">int() keyboard_subscribe_int(uint8_t *bit_no)</div><div class="ttdoc">Subscribes to keyboard interrupts.</div><div class="ttdef"><b>Definition:</b> keyboard.c:9</div></div>
-<div class="ttc" id="akeyboard_8h_html_a21f1d7c5b4716be3907005e854ababd0"><div class="ttname"><a href="keyboard_8h.html#a21f1d7c5b4716be3907005e854ababd0">keyboard_write</a></div><div class="ttdeci">int() keyboard_write(int port, uint8_t cmd)</div><div class="ttdoc">Writes a command to the keyboard controller.</div><div class="ttdef"><b>Definition:</b> keyboard.c:62</div></div>
-<div class="ttc" id="akeyboard_8h_html_a29728e2952c75933284e8865898b7509"><div class="ttname"><a href="keyboard_8h.html#a29728e2952c75933284e8865898b7509">read_letter</a></div><div class="ttdeci">int() read_letter(int scancode, int *word_guess, int *number_letters)</div><div class="ttdoc">Reads the letter corresponding to the scancode.</div><div class="ttdef"><b>Definition:</b> keyboard.c:84</div></div>
-<div class="ttc" id="akeyboard_8h_html_a32cc4de66854f8a7bd909e7aa8b901ed"><div class="ttname"><a href="keyboard_8h.html#a32cc4de66854f8a7bd909e7aa8b901ed">keyboard_unsubscribe_int</a></div><div class="ttdeci">int() keyboard_unsubscribe_int()</div><div class="ttdoc">Unsubscribes from keyboard interrupts.</div><div class="ttdef"><b>Definition:</b> keyboard.c:16</div></div>
-<div class="ttc" id="akeyboard_8h_html_a58017421d19bb2004825d339ebb600fa"><div class="ttname"><a href="keyboard_8h.html#a58017421d19bb2004825d339ebb600fa">keyboard_restore</a></div><div class="ttdeci">int() keyboard_restore()</div><div class="ttdoc">Restores the keyboard's default settings.</div><div class="ttdef"><b>Definition:</b> keyboard.c:71</div></div>
-<div class="ttc" id="akeyboard_8h_html_ab5b778c1e5e9ea40b69932da4fda244e"><div class="ttname"><a href="keyboard_8h.html#ab5b778c1e5e9ea40b69932da4fda244e">read_keyboard_status</a></div><div class="ttdeci">int() read_keyboard_status(uint8_t *st)</div><div class="ttdoc">Reads the keyboard status.</div><div class="ttdef"><b>Definition:</b> keyboard.c:32</div></div>
-<div class="ttc" id="akeyboard_8h_html_acab4f5cf18da1c098fba9b09cba9fa78"><div class="ttname"><a href="keyboard_8h.html#acab4f5cf18da1c098fba9b09cba9fa78">read_kbc_scancode</a></div><div class="ttdeci">int() read_kbc_scancode(uint8_t st, uint8_t *scancode)</div><div class="ttdoc">Reads the scancode from the keyboard.</div><div class="ttdef"><b>Definition:</b> keyboard.c:47</div></div>
-<div class="ttc" id="akeyboard_8h_html_aea970a154161a35f6894898a092ed70a"><div class="ttname"><a href="keyboard_8h.html#aea970a154161a35f6894898a092ed70a">kbc_ih</a></div><div class="ttdeci">void() kbc_ih()</div><div class="ttdoc">Keyboard interrupt handler.</div><div class="ttdef"><b>Definition:</b> keyboard.c:40</div></div>
-<div class="ttc" id="akeyboard_8h_html_afdfb6322f4a75773b745fc6cc6c20d27"><div class="ttname"><a href="keyboard_8h.html#afdfb6322f4a75773b745fc6cc6c20d27">get_scancode</a></div><div class="ttdeci">uint8_t() get_scancode()</div><div class="ttdoc">Retrieves the scancode.</div><div class="ttdef"><b>Definition:</b> keyboard.c:6</div></div>
-<div class="ttc" id="amodel_8c_html_a8d2973c6573cafce9839e395a9f18434"><div class="ttname"><a href="model_8c.html#a8d2973c6573cafce9839e395a9f18434">word_guess</a></div><div class="ttdeci">int word_guess[12]</div><div class="ttdef"><b>Definition:</b> model.c:41</div></div>
-<div class="ttc" id="amodel_8c_html_ad2879855edd36728d48d68e1b5d0c1f3"><div class="ttname"><a href="model_8c.html#ad2879855edd36728d48d68e1b5d0c1f3">number_letters</a></div><div class="ttdeci">int number_letters</div><div class="ttdef"><b>Definition:</b> model.c:42</div></div>
-<div class="ttc" id="amouse_2i8042_8h_html"><div class="ttname"><a href="mouse_2i8042_8h.html">i8042.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

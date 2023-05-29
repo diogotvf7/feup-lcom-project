@@ -12,43 +12,6 @@
  */
 int config_uart();
 
-int set_uart_dlab(uint8_t status);
-
-int subscribe_uart_int(uint8_t *bit_no);
-
-int set_uart_fcr(uint8_t byte);
-
-int unsubscribe_uart_int();
-
-int set_uart_ier(uint8_t byte);
-
-int get_uart_ier(uint8_t *byte);
-
-int set_uart_lcr(uint8_t byte);
-
-int get_uart_lcr(uint8_t *byte);
-
-int set_uart_iir(uint8_t byte);
-
-int get_uart_iir(uint8_t *byte);
-
-int get_uart_lsr(uint8_t *byte);
-
-int set_uart_freq(uint16_t freq);
-
-void uart_ih();
-
-int send_uart_byte(uint8_t byte);
-
-int send_uart_bytes(uint8_t *bytes, uint32_t size);
-
-int receive_uart_byte(uint8_t *byte);
-
-int send_start_msg();
-
-
-
-
 /**
  * @brief Sets the DLAB (Divisor Latch Access Bit) of the UART.
  *
@@ -146,3 +109,37 @@ int set_uart_freq(uint16_t freq);
 
 /**
  * @brief UART interrupt handler.
+ */
+void uart_ih();
+
+/**
+ * @brief Sends a byte via UART.
+ *
+ * @param byte The byte to be sent.
+ * @return Return OK on success, !OK otherwise.
+ */
+int send_uart_byte(uint8_t byte);
+
+/**
+ * @brief Sends multiple bytes via UART.
+ *
+ * @param bytes The array of bytes to be sent.
+ * @param size The size of the array.
+ * @return Return OK on success, !OK otherwise.
+ */
+int send_uart_bytes(uint8_t *bytes, uint32_t size);
+
+/**
+ * @brief Receives a byte from UART.
+ *
+ * @param byte Address of memory to store the received byte.
+ * @return Return OK on success, !OK otherwise.
+ */
+int receive_uart_byte(uint8_t *byte);
+
+/**
+ * @brief Sends a start message via UART.
+ *
+ * @return Return OK on success, !OK otherwise.
+ */
+int send_start_msg();

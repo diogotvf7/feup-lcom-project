@@ -7,12 +7,14 @@
 {\ttfamily \#include \char`\"{}controller/timer/timer.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}controller/keyboard/keyboard.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}controller/mouse/mouse.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}controller/uart/ser\+\_\+port.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}model/model.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}model/base\+\_\+frame.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}global\+\_\+vars.\+h\char`\"{}}\newline
 {\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
 {\ttfamily \#include $<$lcom/video\+\_\+gr.\+h$>$}\newline
-Include dependency graph for proj.\+c\+:\nopagebreak
+Include dependency graph for proj.\+c\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -22,38 +24,56 @@ Include dependency graph for proj.\+c\+:\nopagebreak
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-int() \mbox{\hyperlink{proj_8c_af397c014b1ca8ac21809c7b1262fbe81}{main}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\mbox{\Hypertarget{proj_8c_af397c014b1ca8ac21809c7b1262fbe81}\label{proj_8c_af397c014b1ca8ac21809c7b1262fbe81}} 
+int() {\bfseries main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
 \item 
-int() \mbox{\hyperlink{proj_8c_a426d9473d659531b595e1974c88bf3cb}{start\+\_\+settings}} ()
+\mbox{\Hypertarget{proj_8c_a426d9473d659531b595e1974c88bf3cb}\label{proj_8c_a426d9473d659531b595e1974c88bf3cb}} 
+int() {\bfseries start\+\_\+settings} ()
 \item 
-int() \mbox{\hyperlink{proj_8c_ab73c1168d2a69cf7bf97edc282b5453f}{reset\+\_\+settings}} ()
+\mbox{\Hypertarget{proj_8c_ab73c1168d2a69cf7bf97edc282b5453f}\label{proj_8c_ab73c1168d2a69cf7bf97edc282b5453f}} 
+int() {\bfseries reset\+\_\+settings} ()
 \item 
-int() \mbox{\hyperlink{proj_8c_ad290208c74ef25eb347d1d96a390cd66}{proj\+\_\+main\+\_\+loop}} (int argc, char $\ast$$\ast$argv)
+\mbox{\Hypertarget{proj_8c_ad290208c74ef25eb347d1d96a390cd66}\label{proj_8c_ad290208c74ef25eb347d1d96a390cd66}} 
+int() {\bfseries proj\+\_\+main\+\_\+loop} (int argc, char $\ast$$\ast$argv)
 \end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-uint8\+\_\+t \mbox{\hyperlink{proj_8c_a8be64d00347cadbd31bf44162c2954eb}{irq\+\_\+set\+\_\+timer}}
+\mbox{\Hypertarget{proj_8c_a8be64d00347cadbd31bf44162c2954eb}\label{proj_8c_a8be64d00347cadbd31bf44162c2954eb}} 
+uint8\+\_\+t {\bfseries irq\+\_\+set\+\_\+timer}
 \item 
-uint8\+\_\+t \mbox{\hyperlink{proj_8c_a6a108922167e076916055b86b8566dac}{irq\+\_\+set\+\_\+keyboard}}
+\mbox{\Hypertarget{proj_8c_a6a108922167e076916055b86b8566dac}\label{proj_8c_a6a108922167e076916055b86b8566dac}} 
+uint8\+\_\+t {\bfseries irq\+\_\+set\+\_\+keyboard}
 \item 
-int \mbox{\hyperlink{proj_8c_afd357e4e90c5ce77865791f8e690db27}{irq\+\_\+set\+\_\+mouse}}
+\mbox{\Hypertarget{proj_8c_a884c0b7662794335384b50290fced534}\label{proj_8c_a884c0b7662794335384b50290fced534}} 
+uint8\+\_\+t {\bfseries irq\+\_\+set\+\_\+uart}
 \item 
-int \mbox{\hyperlink{proj_8c_ab9f863ebaa3805a6e366e055cd35626a}{ipc\+\_\+status}}
+\mbox{\Hypertarget{proj_8c_afd357e4e90c5ce77865791f8e690db27}\label{proj_8c_afd357e4e90c5ce77865791f8e690db27}} 
+int {\bfseries irq\+\_\+set\+\_\+mouse}
 \item 
-int \mbox{\hyperlink{proj_8c_acab531abaa74a7e664e3986f2522b33a}{r}}
+\mbox{\Hypertarget{proj_8c_ab9f863ebaa3805a6e366e055cd35626a}\label{proj_8c_ab9f863ebaa3805a6e366e055cd35626a}} 
+int {\bfseries ipc\+\_\+status}
 \item 
-message \mbox{\hyperlink{proj_8c_a9a27098ef2c3f4770fd8d4102a089c35}{msg}}
+\mbox{\Hypertarget{proj_8c_acab531abaa74a7e664e3986f2522b33a}\label{proj_8c_acab531abaa74a7e664e3986f2522b33a}} 
+int {\bfseries r}
 \item 
-uint16\+\_\+t \mbox{\hyperlink{proj_8c_a273db53582b308a7fd6d6448e10f018f}{bytes\+\_\+per\+\_\+pixel}}
+\mbox{\Hypertarget{proj_8c_a9a27098ef2c3f4770fd8d4102a089c35}\label{proj_8c_a9a27098ef2c3f4770fd8d4102a089c35}} 
+message {\bfseries msg}
 \item 
-uint16\+\_\+t \mbox{\hyperlink{proj_8c_ae1a3e7f751ccf2c6aab87b740d58065f}{h\+\_\+res}}
+\mbox{\Hypertarget{proj_8c_a273db53582b308a7fd6d6448e10f018f}\label{proj_8c_a273db53582b308a7fd6d6448e10f018f}} 
+uint16\+\_\+t {\bfseries bytes\+\_\+per\+\_\+pixel}
 \item 
-uint16\+\_\+t \mbox{\hyperlink{proj_8c_a9c67113f1cd2b08e5069bed5bcb04263}{v\+\_\+res}}
+\mbox{\Hypertarget{proj_8c_ae1a3e7f751ccf2c6aab87b740d58065f}\label{proj_8c_ae1a3e7f751ccf2c6aab87b740d58065f}} 
+uint16\+\_\+t {\bfseries h\+\_\+res}
 \item 
-\mbox{\hyperlink{model_8h_aa51313be2faacb739a18fdeecefbac75}{System\+State}} \mbox{\hyperlink{proj_8c_ac705089b22877f6322d09a9f0f5bdb1d}{system\+State}}
+\mbox{\Hypertarget{proj_8c_a9c67113f1cd2b08e5069bed5bcb04263}\label{proj_8c_a9c67113f1cd2b08e5069bed5bcb04263}} 
+uint16\+\_\+t {\bfseries v\+\_\+res}
 \item 
-struct \mbox{\hyperlink{structleaderboardValue}{leaderboard\+Value}} \mbox{\hyperlink{proj_8c_a786731c332eadc5dbf01f33a2cd8c222}{leaderboard}} \mbox{[}5\mbox{]}
+\mbox{\Hypertarget{proj_8c_ac705089b22877f6322d09a9f0f5bdb1d}\label{proj_8c_ac705089b22877f6322d09a9f0f5bdb1d}} 
+System\+State {\bfseries system\+State}
+\item 
+\mbox{\Hypertarget{proj_8c_a786731c332eadc5dbf01f33a2cd8c222}\label{proj_8c_a786731c332eadc5dbf01f33a2cd8c222}} 
+struct \mbox{\hyperlink{structleaderboard_value}{leaderboard\+Value}} {\bfseries leaderboard} \mbox{[}5\mbox{]}
 \end{DoxyCompactItemize}
 
 
@@ -63,122 +83,3 @@ struct \mbox{\hyperlink{structleaderboardValue}{leaderboard\+Value}} \mbox{\hype
   \mbox{\includegraphics[width=\textwidth,height=\textheight/2,keepaspectratio=true]{dot_inline_dotgraph_1}}
 \end{DoxyImageNoCaption}
  
-
-\doxysubsection{Function Documentation}
-\mbox{\Hypertarget{proj_8c_af397c014b1ca8ac21809c7b1262fbe81}\label{proj_8c_af397c014b1ca8ac21809c7b1262fbe81}} 
-\index{proj.c@{proj.c}!main@{main}}
-\index{main@{main}!proj.c@{proj.c}}
-\doxysubsubsection{\texorpdfstring{main()}{main()}}
-{\footnotesize\ttfamily int() main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{proj_8c_ad290208c74ef25eb347d1d96a390cd66}\label{proj_8c_ad290208c74ef25eb347d1d96a390cd66}} 
-\index{proj.c@{proj.c}!proj\_main\_loop@{proj\_main\_loop}}
-\index{proj\_main\_loop@{proj\_main\_loop}!proj.c@{proj.c}}
-\doxysubsubsection{\texorpdfstring{proj\_main\_loop()}{proj\_main\_loop()}}
-{\footnotesize\ttfamily int() proj\+\_\+main\+\_\+loop (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
-
-Here is the call graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[height=550pt]{proj_8c_ad290208c74ef25eb347d1d96a390cd66_cgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{proj_8c_ab73c1168d2a69cf7bf97edc282b5453f}\label{proj_8c_ab73c1168d2a69cf7bf97edc282b5453f}} 
-\index{proj.c@{proj.c}!reset\_settings@{reset\_settings}}
-\index{reset\_settings@{reset\_settings}!proj.c@{proj.c}}
-\doxysubsubsection{\texorpdfstring{reset\_settings()}{reset\_settings()}}
-{\footnotesize\ttfamily int() reset\+\_\+settings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-Here is the call graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{proj_8c_ab73c1168d2a69cf7bf97edc282b5453f_cgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{proj_8c_a426d9473d659531b595e1974c88bf3cb}\label{proj_8c_a426d9473d659531b595e1974c88bf3cb}} 
-\index{proj.c@{proj.c}!start\_settings@{start\_settings}}
-\index{start\_settings@{start\_settings}!proj.c@{proj.c}}
-\doxysubsubsection{\texorpdfstring{start\_settings()}{start\_settings()}}
-{\footnotesize\ttfamily int() start\+\_\+settings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-Here is the call graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{proj_8c_a426d9473d659531b595e1974c88bf3cb_cgraph}
-\end{center}
-\end{figure}
-
-
-\doxysubsection{Variable Documentation}
-\mbox{\Hypertarget{proj_8c_a273db53582b308a7fd6d6448e10f018f}\label{proj_8c_a273db53582b308a7fd6d6448e10f018f}} 
-\index{proj.c@{proj.c}!bytes\_per\_pixel@{bytes\_per\_pixel}}
-\index{bytes\_per\_pixel@{bytes\_per\_pixel}!proj.c@{proj.c}}
-\doxysubsubsection{\texorpdfstring{bytes\_per\_pixel}{bytes\_per\_pixel}}
-{\footnotesize\ttfamily uint16\+\_\+t bytes\+\_\+per\+\_\+pixel\hspace{0.3cm}{\ttfamily [extern]}}
-
-\mbox{\Hypertarget{proj_8c_ae1a3e7f751ccf2c6aab87b740d58065f}\label{proj_8c_ae1a3e7f751ccf2c6aab87b740d58065f}} 
-\index{proj.c@{proj.c}!h\_res@{h\_res}}
-\index{h\_res@{h\_res}!proj.c@{proj.c}}
-\doxysubsubsection{\texorpdfstring{h\_res}{h\_res}}
-{\footnotesize\ttfamily uint16\+\_\+t h\+\_\+res\hspace{0.3cm}{\ttfamily [extern]}}
-
-\mbox{\Hypertarget{proj_8c_ab9f863ebaa3805a6e366e055cd35626a}\label{proj_8c_ab9f863ebaa3805a6e366e055cd35626a}} 
-\index{proj.c@{proj.c}!ipc\_status@{ipc\_status}}
-\index{ipc\_status@{ipc\_status}!proj.c@{proj.c}}
-\doxysubsubsection{\texorpdfstring{ipc\_status}{ipc\_status}}
-{\footnotesize\ttfamily int ipc\+\_\+status}
-
-\mbox{\Hypertarget{proj_8c_a6a108922167e076916055b86b8566dac}\label{proj_8c_a6a108922167e076916055b86b8566dac}} 
-\index{proj.c@{proj.c}!irq\_set\_keyboard@{irq\_set\_keyboard}}
-\index{irq\_set\_keyboard@{irq\_set\_keyboard}!proj.c@{proj.c}}
-\doxysubsubsection{\texorpdfstring{irq\_set\_keyboard}{irq\_set\_keyboard}}
-{\footnotesize\ttfamily uint8\+\_\+t irq\+\_\+set\+\_\+keyboard}
-
-\mbox{\Hypertarget{proj_8c_afd357e4e90c5ce77865791f8e690db27}\label{proj_8c_afd357e4e90c5ce77865791f8e690db27}} 
-\index{proj.c@{proj.c}!irq\_set\_mouse@{irq\_set\_mouse}}
-\index{irq\_set\_mouse@{irq\_set\_mouse}!proj.c@{proj.c}}
-\doxysubsubsection{\texorpdfstring{irq\_set\_mouse}{irq\_set\_mouse}}
-{\footnotesize\ttfamily int irq\+\_\+set\+\_\+mouse}
-
-\mbox{\Hypertarget{proj_8c_a8be64d00347cadbd31bf44162c2954eb}\label{proj_8c_a8be64d00347cadbd31bf44162c2954eb}} 
-\index{proj.c@{proj.c}!irq\_set\_timer@{irq\_set\_timer}}
-\index{irq\_set\_timer@{irq\_set\_timer}!proj.c@{proj.c}}
-\doxysubsubsection{\texorpdfstring{irq\_set\_timer}{irq\_set\_timer}}
-{\footnotesize\ttfamily uint8\+\_\+t irq\+\_\+set\+\_\+timer}
-
-\mbox{\Hypertarget{proj_8c_a786731c332eadc5dbf01f33a2cd8c222}\label{proj_8c_a786731c332eadc5dbf01f33a2cd8c222}} 
-\index{proj.c@{proj.c}!leaderboard@{leaderboard}}
-\index{leaderboard@{leaderboard}!proj.c@{proj.c}}
-\doxysubsubsection{\texorpdfstring{leaderboard}{leaderboard}}
-{\footnotesize\ttfamily struct \mbox{\hyperlink{structleaderboardValue}{leaderboard\+Value}} leaderboard\mbox{[}5\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
-
-\mbox{\Hypertarget{proj_8c_a9a27098ef2c3f4770fd8d4102a089c35}\label{proj_8c_a9a27098ef2c3f4770fd8d4102a089c35}} 
-\index{proj.c@{proj.c}!msg@{msg}}
-\index{msg@{msg}!proj.c@{proj.c}}
-\doxysubsubsection{\texorpdfstring{msg}{msg}}
-{\footnotesize\ttfamily message msg}
-
-\mbox{\Hypertarget{proj_8c_acab531abaa74a7e664e3986f2522b33a}\label{proj_8c_acab531abaa74a7e664e3986f2522b33a}} 
-\index{proj.c@{proj.c}!r@{r}}
-\index{r@{r}!proj.c@{proj.c}}
-\doxysubsubsection{\texorpdfstring{r}{r}}
-{\footnotesize\ttfamily int r}
-
-\mbox{\Hypertarget{proj_8c_ac705089b22877f6322d09a9f0f5bdb1d}\label{proj_8c_ac705089b22877f6322d09a9f0f5bdb1d}} 
-\index{proj.c@{proj.c}!systemState@{systemState}}
-\index{systemState@{systemState}!proj.c@{proj.c}}
-\doxysubsubsection{\texorpdfstring{systemState}{systemState}}
-{\footnotesize\ttfamily \mbox{\hyperlink{model_8h_aa51313be2faacb739a18fdeecefbac75}{System\+State}} system\+State\hspace{0.3cm}{\ttfamily [extern]}}
-
-\mbox{\Hypertarget{proj_8c_a9c67113f1cd2b08e5069bed5bcb04263}\label{proj_8c_a9c67113f1cd2b08e5069bed5bcb04263}} 
-\index{proj.c@{proj.c}!v\_res@{v\_res}}
-\index{v\_res@{v\_res}!proj.c@{proj.c}}
-\doxysubsubsection{\texorpdfstring{v\_res}{v\_res}}
-{\footnotesize\ttfamily uint16\+\_\+t v\+\_\+res\hspace{0.3cm}{\ttfamily [extern]}}
-

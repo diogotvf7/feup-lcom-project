@@ -48,6 +48,12 @@ int (util_sys_inb)(int port, uint8_t *value);
  */
 uint8_t to_binary(uint8_t bcd_number);
 
+/**
+ * @brief Prints the bits of a value.
+ *
+ * @param size The size of the value.
+ * @param ptr Pointer to the value.
+ */
 void printBits(size_t const size, void const * const ptr);
 
 #endif

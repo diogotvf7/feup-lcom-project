@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['leaderboardvalue_419',['leaderboardValue',['../structleaderboardValue.html',1,'']]]
+  ['leaderboardvalue_49',['leaderboardValue',['../structleaderboard_value.html',1,'']]]
 ];

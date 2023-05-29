@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Paint with friends: model/model.h Source File</title>
+<title>LCOM_PROJ: model/model.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Paint with friends
+   <div id="projectname">LCOM_PROJ
    </div>
   </td>
  </tr>
@@ -69,147 +69,116 @@ $(function() {
 <div class="title">model.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="model_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;lcom/lcf.h&gt;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="sprite_8h.html">sprite.h</a>&quot;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="mouse_8h.html">controller/mouse/mouse.h</a>&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="rtc_8h.html">controller/rtc/rtc.h</a>&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="keyboard_8h.html">controller/keyboard/keyboard.h</a>&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="graphics__card_8h.html">controller/graphics_card/graphics_card.h</a>&quot;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="queue_8h.html">model/queue.h</a>&quot;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="timer_8h.html">controller/timer/timer.h</a>&quot;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="view_8h.html">view/view.h</a>&quot;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="base__frame_8h.html">model/base_frame.h</a>&quot;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="global__vars_8h.html">global_vars.h</a>&quot;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="colors_8h.html">colors.h</a>&quot;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">/*    importing xpms   */</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;xpm/mouse.xpm&quot;</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;xpm/topBarGameMode.xpm&quot;</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;xpm/quitButton.xpm&quot;</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;xpm/startButton.xpm&quot;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;xpm/letters.xpm&quot;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;xpm/numbers.xpm&quot;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;xpm/font.xpm&quot;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;xpm/Play_Again.xpm&quot;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;xpm/Quit.xpm&quot;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;xpm/Leaderboard.xpm&quot;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;xpm/leaderboardTable.xpm&quot;</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;xpm/leaderboardButtonInitialPage.xpm&quot;</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;xpm/coopGuessButton.xpm&quot;</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;xpm/coopDrawButton.xpm&quot;</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;xpm/Victory.xpm&quot;</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;xpm/Defeat.xpm&quot;</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;xpm/dealer.xpm&quot;</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="model_8h.html#aec7b4994021c554c1761ea31d016b680">   34</a></span>&#160;<span class="preprocessor">#define MAX_WORD_LENGTH 12</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="model_8h.html#af0f2173e3b202ddf5756531b4471dcb2">   35</a></span>&#160;<span class="preprocessor">#define MAX_LINE_LENGTH 50</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="model_8h.html#aa51313be2faacb739a18fdeecefbac75">   40</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="model_8h.html#aa51313be2faacb739a18fdeecefbac75a1061be6c3fb88d32829cba6f6b2be304">   41</a></span>&#160;    <a class="code" href="model_8h.html#aa51313be2faacb739a18fdeecefbac75a1061be6c3fb88d32829cba6f6b2be304">RUNNING</a>, </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="model_8h.html#aa51313be2faacb739a18fdeecefbac75a7a10b5d68d31711288e1fe0fa17dbf4f">EXIT</a> </div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="model_8h.html#aa51313be2faacb739a18fdeecefbac75a7a10b5d68d31711288e1fe0fa17dbf4f">   43</a></span>&#160;} <a class="code" href="model_8h.html#aa51313be2faacb739a18fdeecefbac75">SystemState</a>;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="model_8h.html#aa3041ae4242c0dd57a126d17505443b2">   48</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="model_8h.html#aa3041ae4242c0dd57a126d17505443b2a13d000b4d7dc70d90239b7430d1eb6b2">   49</a></span>&#160;    <a class="code" href="model_8h.html#aa3041ae4242c0dd57a126d17505443b2a13d000b4d7dc70d90239b7430d1eb6b2">START</a>, </div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="model_8h.html#aa3041ae4242c0dd57a126d17505443b2ad50cf309d7568040619ed26ee6835a84">   50</a></span>&#160;    <a class="code" href="model_8h.html#aa3041ae4242c0dd57a126d17505443b2ad50cf309d7568040619ed26ee6835a84">GAME</a>, </div>
-<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="model_8h.html#aa3041ae4242c0dd57a126d17505443b2a8ac6a0bc60a7a5faad394dc988be36eb">   51</a></span>&#160;    <a class="code" href="model_8h.html#aa3041ae4242c0dd57a126d17505443b2a8ac6a0bc60a7a5faad394dc988be36eb">LEADERBOARD</a>, </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="model_8h.html#aa3041ae4242c0dd57a126d17505443b2adc6f24fd6915a3f2786a1b7045406924">END</a> </div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="model_8h.html#aa3041ae4242c0dd57a126d17505443b2adc6f24fd6915a3f2786a1b7045406924">   53</a></span>&#160;} <a class="code" href="model_8h.html#aa3041ae4242c0dd57a126d17505443b2">MenuState</a>;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="model_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285">   58</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="model_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285a61f3c57b6943c85413975507aede78cd">   59</a></span>&#160;    <a class="code" href="model_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285a61f3c57b6943c85413975507aede78cd">DRAW</a>, </div>
-<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="model_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285ab8c769f7e7a67d0a91a2fe34fdc5dbea">   60</a></span>&#160;    <a class="code" href="model_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285ab8c769f7e7a67d0a91a2fe34fdc5dbea">GUESS</a>, </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="model_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285a43ea09f876a50cf7c5172507a484df32">DRAW_GUESS</a> </div>
-<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="model_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285a43ea09f876a50cf7c5172507a484df32">   62</a></span>&#160;} <a class="code" href="model_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285">GameState</a>;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="structleaderboardValue.html">   67</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structleaderboardValue.html">leaderboardValue</a> {</div>
-<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="structleaderboardValue.html#a42263f14722d69fb92138f130fcf5a7b">   68</a></span>&#160;    uint8_t <a class="code" href="structleaderboardValue.html#a42263f14722d69fb92138f130fcf5a7b">month</a>; </div>
-<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="structleaderboardValue.html#a3de871c4d761fc72b654bf0ed0d3ea12">   69</a></span>&#160;    uint8_t <a class="code" href="structleaderboardValue.html#a3de871c4d761fc72b654bf0ed0d3ea12">day</a>; </div>
-<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="structleaderboardValue.html#a3007ec12dc774ceaa26985e5dd2837e8">   70</a></span>&#160;    uint8_t <a class="code" href="structleaderboardValue.html#a3007ec12dc774ceaa26985e5dd2837e8">hour</a>; </div>
-<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="structleaderboardValue.html#ab9677761b98237accfc3ebe6a32b20cd">   71</a></span>&#160;    uint8_t <a class="code" href="structleaderboardValue.html#ab9677761b98237accfc3ebe6a32b20cd">minute</a>; </div>
-<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="structleaderboardValue.html#a9167b3e399707b682f54396120885442">   72</a></span>&#160;    uint8_t <a class="code" href="structleaderboardValue.html#a9167b3e399707b682f54396120885442">second</a>; </div>
-<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="structleaderboardValue.html#a800d14e022aa46fbe08ecced2fc8bab4">   73</a></span>&#160;    uint8_t <a class="code" href="structleaderboardValue.html#a800d14e022aa46fbe08ecced2fc8bab4">score</a>; </div>
-<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="model_8h.html#ad2b1810be4151f910066644c8cf804c5">   74</a></span>&#160;} <a class="code" href="model_8h.html#ad2b1810be4151f910066644c8cf804c5">leaderboardValue</a>;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keywordtype">void</span> <a class="code" href="model_8h.html#a2e7983abedd3fae94a24b4775a97210f">update_timer_state</a>();</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keywordtype">void</span> <a class="code" href="model_8h.html#aacf177f660c44528fc3926b3cd69fb88">update_keyboard_state</a>();</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keywordtype">void</span> <a class="code" href="model_8h.html#aa577e78e2462033d486b5d8fa64c7bec">update_mouse_state</a>();</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="keywordtype">void</span> <a class="code" href="model_8h.html#a834200084177d31e41dd9b28754a3312">setup_sprites</a>();</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="keywordtype">void</span> <a class="code" href="model_8h.html#a8fdbc6c7bfca3ef4a8800a3cdc19d932">destroy_sprites</a>();</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="keywordtype">void</span> <a class="code" href="model_8h.html#afbeae9084da66088f0c10d0f9552c031">updateLeaderboard</a>(<a class="code" href="structleaderboardValue.html">leaderboardValue</a> *newValue);</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="keywordtype">void</span> <a class="code" href="model_8h.html#aadcc26083caf604e98eeedac891f65ff">loadLeaderboardFromFile</a>(<a class="code" href="structleaderboardValue.html">leaderboardValue</a> <a class="code" href="model_8c.html#a786731c332eadc5dbf01f33a2cd8c222">leaderboard</a>[]);</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="keywordtype">void</span> <a class="code" href="model_8h.html#ad4f8085e20bf0c0e908b8ef2485d5630">saveLeaderboardToFile</a>(<span class="keyword">const</span> <a class="code" href="structleaderboardValue.html">leaderboardValue</a> <a class="code" href="model_8c.html#a786731c332eadc5dbf01f33a2cd8c222">leaderboard</a>[]);</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="keywordtype">void</span> <a class="code" href="model_8h.html#a13e3730ab86648c07aff994fa89da560">clearLeaderboardFile</a>();</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="keywordtype">void</span> <a class="code" href="model_8h.html#a7ee50be50b54058cc4bd8c286ae76bd3">addValueToLeaderboard</a>();</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="model_8h.html#a42d8f69fb7a7a41e3f3e754e0b18470e">checkResult</a>();</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="keywordtype">char</span>* <a class="code" href="model_8h.html#a7d2c8c148e87c6ac0ea00e1b17747bf4">getRandomWord</a>();</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="keywordtype">void</span> <a class="code" href="model_8h.html#ad407bbb0ed8ebc2c5bc3434a6757ebd5">updateStateMouseClick</a>();</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="keywordtype">void</span> <a class="code" href="model_8h.html#a9cc50208c690329cd26eed7611668367">updateStateKeyboardClick</a>();</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="keywordtype">int</span> <a class="code" href="model_8h.html#a664447168b53c1bf003924014760b4ef">convert_to_qwerty</a>(<span class="keywordtype">char</span>* str, <span class="keywordtype">int</span> word[], <span class="keywordtype">int</span>* word_size);</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
-<div class="ttc" id="abase__frame_8h_html"><div class="ttname"><a href="base__frame_8h.html">base_frame.h</a></div></div>
-<div class="ttc" id="acolors_8h_html"><div class="ttname"><a href="colors_8h.html">colors.h</a></div></div>
-<div class="ttc" id="aglobal__vars_8h_html"><div class="ttname"><a href="global__vars_8h.html">global_vars.h</a></div></div>
-<div class="ttc" id="agraphics__card_8h_html"><div class="ttname"><a href="graphics__card_8h.html">graphics_card.h</a></div></div>
-<div class="ttc" id="akeyboard_8h_html"><div class="ttname"><a href="keyboard_8h.html">keyboard.h</a></div></div>
-<div class="ttc" id="amodel_8c_html_a786731c332eadc5dbf01f33a2cd8c222"><div class="ttname"><a href="model_8c.html#a786731c332eadc5dbf01f33a2cd8c222">leaderboard</a></div><div class="ttdeci">struct leaderboardValue leaderboard[5]</div><div class="ttdef"><b>Definition:</b> model.c:34</div></div>
-<div class="ttc" id="amodel_8h_html_a13e3730ab86648c07aff994fa89da560"><div class="ttname"><a href="model_8h.html#a13e3730ab86648c07aff994fa89da560">clearLeaderboardFile</a></div><div class="ttdeci">void clearLeaderboardFile()</div><div class="ttdoc">Clears the leaderboard file.</div><div class="ttdef"><b>Definition:</b> model.c:257</div></div>
-<div class="ttc" id="amodel_8h_html_a2e7983abedd3fae94a24b4775a97210f"><div class="ttname"><a href="model_8h.html#a2e7983abedd3fae94a24b4775a97210f">update_timer_state</a></div><div class="ttdeci">void update_timer_state()</div><div class="ttdoc">Updates the timer state.</div><div class="ttdef"><b>Definition:</b> model.c:165</div></div>
-<div class="ttc" id="amodel_8h_html_a42d8f69fb7a7a41e3f3e754e0b18470e"><div class="ttname"><a href="model_8h.html#a42d8f69fb7a7a41e3f3e754e0b18470e">checkResult</a></div><div class="ttdeci">bool checkResult()</div><div class="ttdoc">Checks the result of the game.</div><div class="ttdef"><b>Definition:</b> model.c:314</div></div>
-<div class="ttc" id="amodel_8h_html_a664447168b53c1bf003924014760b4ef"><div class="ttname"><a href="model_8h.html#a664447168b53c1bf003924014760b4ef">convert_to_qwerty</a></div><div class="ttdeci">int convert_to_qwerty(char *str, int word[], int *word_size)</div><div class="ttdoc">Converts a string to QWERTY format.</div><div class="ttdef"><b>Definition:</b> model.c:297</div></div>
-<div class="ttc" id="amodel_8h_html_a7899b65f1ea0f655e4bbf8d2a5714285"><div class="ttname"><a href="model_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285">GameState</a></div><div class="ttdeci">GameState</div><div class="ttdoc">Enumeration representing the game state.</div><div class="ttdef"><b>Definition:</b> model.h:58</div></div>
-<div class="ttc" id="amodel_8h_html_a7899b65f1ea0f655e4bbf8d2a5714285a43ea09f876a50cf7c5172507a484df32"><div class="ttname"><a href="model_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285a43ea09f876a50cf7c5172507a484df32">DRAW_GUESS</a></div><div class="ttdeci">@ DRAW_GUESS</div><div class="ttdef"><b>Definition:</b> model.h:61</div></div>
-<div class="ttc" id="amodel_8h_html_a7899b65f1ea0f655e4bbf8d2a5714285a61f3c57b6943c85413975507aede78cd"><div class="ttname"><a href="model_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285a61f3c57b6943c85413975507aede78cd">DRAW</a></div><div class="ttdeci">@ DRAW</div><div class="ttdef"><b>Definition:</b> model.h:59</div></div>
-<div class="ttc" id="amodel_8h_html_a7899b65f1ea0f655e4bbf8d2a5714285ab8c769f7e7a67d0a91a2fe34fdc5dbea"><div class="ttname"><a href="model_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285ab8c769f7e7a67d0a91a2fe34fdc5dbea">GUESS</a></div><div class="ttdeci">@ GUESS</div><div class="ttdef"><b>Definition:</b> model.h:60</div></div>
-<div class="ttc" id="amodel_8h_html_a7d2c8c148e87c6ac0ea00e1b17747bf4"><div class="ttname"><a href="model_8h.html#a7d2c8c148e87c6ac0ea00e1b17747bf4">getRandomWord</a></div><div class="ttdeci">char * getRandomWord()</div><div class="ttdoc">Gets a random word for the game.</div><div class="ttdef"><b>Definition:</b> model.c:268</div></div>
-<div class="ttc" id="amodel_8h_html_a7ee50be50b54058cc4bd8c286ae76bd3"><div class="ttname"><a href="model_8h.html#a7ee50be50b54058cc4bd8c286ae76bd3">addValueToLeaderboard</a></div><div class="ttdeci">void addValueToLeaderboard()</div><div class="ttdoc">Adds a value to the leaderboard.</div><div class="ttdef"><b>Definition:</b> model.c:326</div></div>
-<div class="ttc" id="amodel_8h_html_a834200084177d31e41dd9b28754a3312"><div class="ttname"><a href="model_8h.html#a834200084177d31e41dd9b28754a3312">setup_sprites</a></div><div class="ttdeci">void setup_sprites()</div><div class="ttdoc">Sets up the sprites.</div><div class="ttdef"><b>Definition:</b> model.c:50</div></div>
-<div class="ttc" id="amodel_8h_html_a8fdbc6c7bfca3ef4a8800a3cdc19d932"><div class="ttname"><a href="model_8h.html#a8fdbc6c7bfca3ef4a8800a3cdc19d932">destroy_sprites</a></div><div class="ttdeci">void destroy_sprites()</div><div class="ttdoc">Destroys the sprites.</div><div class="ttdef"><b>Definition:</b> model.c:215</div></div>
-<div class="ttc" id="amodel_8h_html_a9cc50208c690329cd26eed7611668367"><div class="ttname"><a href="model_8h.html#a9cc50208c690329cd26eed7611668367">updateStateKeyboardClick</a></div><div class="ttdeci">void updateStateKeyboardClick()</div><div class="ttdoc">Updates the state on keyboard click.</div><div class="ttdef"><b>Definition:</b> model.c:367</div></div>
-<div class="ttc" id="amodel_8h_html_aa3041ae4242c0dd57a126d17505443b2"><div class="ttname"><a href="model_8h.html#aa3041ae4242c0dd57a126d17505443b2">MenuState</a></div><div class="ttdeci">MenuState</div><div class="ttdoc">Enumeration representing the menu state.</div><div class="ttdef"><b>Definition:</b> model.h:48</div></div>
-<div class="ttc" id="amodel_8h_html_aa3041ae4242c0dd57a126d17505443b2a13d000b4d7dc70d90239b7430d1eb6b2"><div class="ttname"><a href="model_8h.html#aa3041ae4242c0dd57a126d17505443b2a13d000b4d7dc70d90239b7430d1eb6b2">START</a></div><div class="ttdeci">@ START</div><div class="ttdef"><b>Definition:</b> model.h:49</div></div>
-<div class="ttc" id="amodel_8h_html_aa3041ae4242c0dd57a126d17505443b2a8ac6a0bc60a7a5faad394dc988be36eb"><div class="ttname"><a href="model_8h.html#aa3041ae4242c0dd57a126d17505443b2a8ac6a0bc60a7a5faad394dc988be36eb">LEADERBOARD</a></div><div class="ttdeci">@ LEADERBOARD</div><div class="ttdef"><b>Definition:</b> model.h:51</div></div>
-<div class="ttc" id="amodel_8h_html_aa3041ae4242c0dd57a126d17505443b2ad50cf309d7568040619ed26ee6835a84"><div class="ttname"><a href="model_8h.html#aa3041ae4242c0dd57a126d17505443b2ad50cf309d7568040619ed26ee6835a84">GAME</a></div><div class="ttdeci">@ GAME</div><div class="ttdef"><b>Definition:</b> model.h:50</div></div>
-<div class="ttc" id="amodel_8h_html_aa3041ae4242c0dd57a126d17505443b2adc6f24fd6915a3f2786a1b7045406924"><div class="ttname"><a href="model_8h.html#aa3041ae4242c0dd57a126d17505443b2adc6f24fd6915a3f2786a1b7045406924">END</a></div><div class="ttdeci">@ END</div><div class="ttdef"><b>Definition:</b> model.h:52</div></div>
-<div class="ttc" id="amodel_8h_html_aa51313be2faacb739a18fdeecefbac75"><div class="ttname"><a href="model_8h.html#aa51313be2faacb739a18fdeecefbac75">SystemState</a></div><div class="ttdeci">SystemState</div><div class="ttdoc">Enumeration representing the system state.</div><div class="ttdef"><b>Definition:</b> model.h:40</div></div>
-<div class="ttc" id="amodel_8h_html_aa51313be2faacb739a18fdeecefbac75a1061be6c3fb88d32829cba6f6b2be304"><div class="ttname"><a href="model_8h.html#aa51313be2faacb739a18fdeecefbac75a1061be6c3fb88d32829cba6f6b2be304">RUNNING</a></div><div class="ttdeci">@ RUNNING</div><div class="ttdef"><b>Definition:</b> model.h:41</div></div>
-<div class="ttc" id="amodel_8h_html_aa51313be2faacb739a18fdeecefbac75a7a10b5d68d31711288e1fe0fa17dbf4f"><div class="ttname"><a href="model_8h.html#aa51313be2faacb739a18fdeecefbac75a7a10b5d68d31711288e1fe0fa17dbf4f">EXIT</a></div><div class="ttdeci">@ EXIT</div><div class="ttdef"><b>Definition:</b> model.h:42</div></div>
-<div class="ttc" id="amodel_8h_html_aa577e78e2462033d486b5d8fa64c7bec"><div class="ttname"><a href="model_8h.html#aa577e78e2462033d486b5d8fa64c7bec">update_mouse_state</a></div><div class="ttdeci">void update_mouse_state()</div><div class="ttdoc">Updates the mouse state.</div><div class="ttdef"><b>Definition:</b> model.c:104</div></div>
-<div class="ttc" id="amodel_8h_html_aacf177f660c44528fc3926b3cd69fb88"><div class="ttname"><a href="model_8h.html#aacf177f660c44528fc3926b3cd69fb88">update_keyboard_state</a></div><div class="ttdeci">void update_keyboard_state()</div><div class="ttdoc">Updates the keyboard state.</div><div class="ttdef"><b>Definition:</b> model.c:199</div></div>
-<div class="ttc" id="amodel_8h_html_aadcc26083caf604e98eeedac891f65ff"><div class="ttname"><a href="model_8h.html#aadcc26083caf604e98eeedac891f65ff">loadLeaderboardFromFile</a></div><div class="ttdeci">void loadLeaderboardFromFile(leaderboardValue leaderboard[])</div><div class="ttdoc">Loads the leaderboard values from a file.</div><div class="ttdef"><b>Definition:</b> model.c:230</div></div>
-<div class="ttc" id="amodel_8h_html_ad2b1810be4151f910066644c8cf804c5"><div class="ttname"><a href="model_8h.html#ad2b1810be4151f910066644c8cf804c5">leaderboardValue</a></div><div class="ttdeci">struct leaderboardValue leaderboardValue</div><div class="ttdoc">Structure representing a leaderboard value.</div></div>
-<div class="ttc" id="amodel_8h_html_ad407bbb0ed8ebc2c5bc3434a6757ebd5"><div class="ttname"><a href="model_8h.html#ad407bbb0ed8ebc2c5bc3434a6757ebd5">updateStateMouseClick</a></div><div class="ttdeci">void updateStateMouseClick()</div><div class="ttdoc">Updates the state on mouse click.</div><div class="ttdef"><b>Definition:</b> model.c:344</div></div>
-<div class="ttc" id="amodel_8h_html_ad4f8085e20bf0c0e908b8ef2485d5630"><div class="ttname"><a href="model_8h.html#ad4f8085e20bf0c0e908b8ef2485d5630">saveLeaderboardToFile</a></div><div class="ttdeci">void saveLeaderboardToFile(const leaderboardValue leaderboard[])</div><div class="ttdoc">Saves the leaderboard values to a file.</div><div class="ttdef"><b>Definition:</b> model.c:247</div></div>
-<div class="ttc" id="amodel_8h_html_afbeae9084da66088f0c10d0f9552c031"><div class="ttname"><a href="model_8h.html#afbeae9084da66088f0c10d0f9552c031">updateLeaderboard</a></div><div class="ttdeci">void updateLeaderboard(leaderboardValue *newValue)</div><div class="ttdoc">Updates the leaderboard with a new value.</div><div class="ttdef"><b>Definition:</b> model.c:86</div></div>
-<div class="ttc" id="amouse_8h_html"><div class="ttname"><a href="mouse_8h.html">mouse.h</a></div></div>
-<div class="ttc" id="aqueue_8h_html"><div class="ttname"><a href="queue_8h.html">queue.h</a></div></div>
-<div class="ttc" id="artc_8h_html"><div class="ttname"><a href="rtc_8h.html">rtc.h</a></div></div>
-<div class="ttc" id="asprite_8h_html"><div class="ttname"><a href="sprite_8h.html">sprite.h</a></div></div>
-<div class="ttc" id="astructleaderboardValue_html"><div class="ttname"><a href="structleaderboardValue.html">leaderboardValue</a></div><div class="ttdoc">Structure representing a leaderboard value.</div><div class="ttdef"><b>Definition:</b> model.h:67</div></div>
-<div class="ttc" id="astructleaderboardValue_html_a3007ec12dc774ceaa26985e5dd2837e8"><div class="ttname"><a href="structleaderboardValue.html#a3007ec12dc774ceaa26985e5dd2837e8">leaderboardValue::hour</a></div><div class="ttdeci">uint8_t hour</div><div class="ttdef"><b>Definition:</b> model.h:70</div></div>
-<div class="ttc" id="astructleaderboardValue_html_a3de871c4d761fc72b654bf0ed0d3ea12"><div class="ttname"><a href="structleaderboardValue.html#a3de871c4d761fc72b654bf0ed0d3ea12">leaderboardValue::day</a></div><div class="ttdeci">uint8_t day</div><div class="ttdef"><b>Definition:</b> model.h:69</div></div>
-<div class="ttc" id="astructleaderboardValue_html_a42263f14722d69fb92138f130fcf5a7b"><div class="ttname"><a href="structleaderboardValue.html#a42263f14722d69fb92138f130fcf5a7b">leaderboardValue::month</a></div><div class="ttdeci">uint8_t month</div><div class="ttdef"><b>Definition:</b> model.h:68</div></div>
-<div class="ttc" id="astructleaderboardValue_html_a800d14e022aa46fbe08ecced2fc8bab4"><div class="ttname"><a href="structleaderboardValue.html#a800d14e022aa46fbe08ecced2fc8bab4">leaderboardValue::score</a></div><div class="ttdeci">uint8_t score</div><div class="ttdef"><b>Definition:</b> model.h:73</div></div>
-<div class="ttc" id="astructleaderboardValue_html_a9167b3e399707b682f54396120885442"><div class="ttname"><a href="structleaderboardValue.html#a9167b3e399707b682f54396120885442">leaderboardValue::second</a></div><div class="ttdeci">uint8_t second</div><div class="ttdef"><b>Definition:</b> model.h:72</div></div>
-<div class="ttc" id="astructleaderboardValue_html_ab9677761b98237accfc3ebe6a32b20cd"><div class="ttname"><a href="structleaderboardValue.html#ab9677761b98237accfc3ebe6a32b20cd">leaderboardValue::minute</a></div><div class="ttdeci">uint8_t minute</div><div class="ttdef"><b>Definition:</b> model.h:71</div></div>
-<div class="ttc" id="atimer_8h_html"><div class="ttname"><a href="timer_8h.html">timer.h</a></div></div>
-<div class="ttc" id="aview_8h_html"><div class="ttname"><a href="view_8h.html">view.h</a></div></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;sprite.h&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;controller/mouse/mouse.h&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;controller/rtc/rtc.h&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;controller/keyboard/keyboard.h&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;controller/graphics_card/graphics_card.h&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;controller/uart/ser_port.h&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;model/queue.h&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;controller/timer/timer.h&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;view/view.h&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;model/base_frame.h&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;global_vars.h&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;colors.h&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">/*    importing xpms   */</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;xpm/mouse.xpm&quot;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;xpm/topBarGameMode.xpm&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;xpm/quitButton.xpm&quot;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;xpm/startButton.xpm&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;xpm/letters.xpm&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;xpm/numbers.xpm&quot;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;xpm/font.xpm&quot;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;xpm/Play_Again.xpm&quot;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;xpm/Quit.xpm&quot;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;xpm/Leaderboard.xpm&quot;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;xpm/leaderboardTable.xpm&quot;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;xpm/leaderboardButtonInitialPage.xpm&quot;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;xpm/coopGuessButton.xpm&quot;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;xpm/coopDrawButton.xpm&quot;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;xpm/Victory.xpm&quot;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;xpm/Defeat.xpm&quot;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &quot;xpm/dealer.xpm&quot;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#define MAX_WORD_LENGTH 12</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#define MAX_LINE_LENGTH 50</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    DRAWER,</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    GUESSER,</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    SINGLE</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;} PlayerRole;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    RUNNING, </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    EXIT </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;} SystemState;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    START, </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    GAME, </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    LEADERBOARD, </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    END </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;} MenuState;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    SINGLEPLAYER,</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    DRAW,</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    GUESS</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;} GameState;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="structleaderboard_value.html">   71</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structleaderboard_value.html">leaderboardValue</a> {</div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="structleaderboard_value.html#a42263f14722d69fb92138f130fcf5a7b">   72</a></span>&#160;    uint8_t <a class="code" href="structleaderboard_value.html#a42263f14722d69fb92138f130fcf5a7b">month</a>; </div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="structleaderboard_value.html#a3de871c4d761fc72b654bf0ed0d3ea12">   73</a></span>&#160;    uint8_t <a class="code" href="structleaderboard_value.html#a3de871c4d761fc72b654bf0ed0d3ea12">day</a>; </div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="structleaderboard_value.html#a3007ec12dc774ceaa26985e5dd2837e8">   74</a></span>&#160;    uint8_t <a class="code" href="structleaderboard_value.html#a3007ec12dc774ceaa26985e5dd2837e8">hour</a>; </div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="structleaderboard_value.html#ab9677761b98237accfc3ebe6a32b20cd">   75</a></span>&#160;    uint8_t <a class="code" href="structleaderboard_value.html#ab9677761b98237accfc3ebe6a32b20cd">minute</a>; </div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="structleaderboard_value.html#a9167b3e399707b682f54396120885442">   76</a></span>&#160;    uint8_t <a class="code" href="structleaderboard_value.html#a9167b3e399707b682f54396120885442">second</a>; </div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="structleaderboard_value.html#a800d14e022aa46fbe08ecced2fc8bab4">   77</a></span>&#160;    uint8_t <a class="code" href="structleaderboard_value.html#a800d14e022aa46fbe08ecced2fc8bab4">score</a>; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;} <a class="code" href="structleaderboard_value.html">leaderboardValue</a>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keywordtype">void</span> update_timer_state();</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keywordtype">void</span> update_keyboard_state();</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="keywordtype">void</span> update_mouse_state();</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keywordtype">void</span> update_uart_state();</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="keywordtype">void</span> setup_sprites();</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="keywordtype">void</span> destroy_sprites();</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="keywordtype">void</span> updateLeaderboard(<a class="code" href="structleaderboard_value.html">leaderboardValue</a> *newValue);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="keywordtype">void</span> loadLeaderboardFromFile(<a class="code" href="structleaderboard_value.html">leaderboardValue</a> leaderboard[]);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="keywordtype">void</span> saveLeaderboardToFile(<span class="keyword">const</span> <a class="code" href="structleaderboard_value.html">leaderboardValue</a> leaderboard[]);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="keywordtype">void</span> clearLeaderboardFile();</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="keywordtype">void</span> addValueToLeaderboard();</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="keywordtype">bool</span> checkResult();</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="keywordtype">char</span>* getRandomWord();</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="keywordtype">void</span> updateStateMouseClick();</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="keywordtype">void</span> updateStateKeyboardClick();</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="keywordtype">int</span> convert_to_qwerty(<span class="keywordtype">char</span>* str, uint8_t word[], <span class="keywordtype">int</span>* word_size);</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
+<div class="ttc" id="astructleaderboard_value_html"><div class="ttname"><a href="structleaderboard_value.html">leaderboardValue</a></div><div class="ttdoc">Structure representing a leaderboard value.</div><div class="ttdef"><b>Definition:</b> model.h:71</div></div>
+<div class="ttc" id="astructleaderboard_value_html_a3007ec12dc774ceaa26985e5dd2837e8"><div class="ttname"><a href="structleaderboard_value.html#a3007ec12dc774ceaa26985e5dd2837e8">leaderboardValue::hour</a></div><div class="ttdeci">uint8_t hour</div><div class="ttdef"><b>Definition:</b> model.h:74</div></div>
+<div class="ttc" id="astructleaderboard_value_html_a3de871c4d761fc72b654bf0ed0d3ea12"><div class="ttname"><a href="structleaderboard_value.html#a3de871c4d761fc72b654bf0ed0d3ea12">leaderboardValue::day</a></div><div class="ttdeci">uint8_t day</div><div class="ttdef"><b>Definition:</b> model.h:73</div></div>
+<div class="ttc" id="astructleaderboard_value_html_a42263f14722d69fb92138f130fcf5a7b"><div class="ttname"><a href="structleaderboard_value.html#a42263f14722d69fb92138f130fcf5a7b">leaderboardValue::month</a></div><div class="ttdeci">uint8_t month</div><div class="ttdef"><b>Definition:</b> model.h:72</div></div>
+<div class="ttc" id="astructleaderboard_value_html_a800d14e022aa46fbe08ecced2fc8bab4"><div class="ttname"><a href="structleaderboard_value.html#a800d14e022aa46fbe08ecced2fc8bab4">leaderboardValue::score</a></div><div class="ttdeci">uint8_t score</div><div class="ttdef"><b>Definition:</b> model.h:77</div></div>
+<div class="ttc" id="astructleaderboard_value_html_a9167b3e399707b682f54396120885442"><div class="ttname"><a href="structleaderboard_value.html#a9167b3e399707b682f54396120885442">leaderboardValue::second</a></div><div class="ttdeci">uint8_t second</div><div class="ttdef"><b>Definition:</b> model.h:76</div></div>
+<div class="ttc" id="astructleaderboard_value_html_ab9677761b98237accfc3ebe6a32b20cd"><div class="ttname"><a href="structleaderboard_value.html#ab9677761b98237accfc3ebe6a32b20cd">leaderboardValue::minute</a></div><div class="ttdeci">uint8_t minute</div><div class="ttdef"><b>Definition:</b> model.h:75</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
