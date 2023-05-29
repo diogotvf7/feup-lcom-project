@@ -85,38 +85,47 @@ void draw_game_menu() {
 
     } else if (gameState == DRAW) {
         draw_sprite_xpm(chooseColors, 0, 0);
-        draw_word(word_solution,word_sol_number_letters, -1, -1, BLACK);
+        if (delayTime <= 5) draw_word(word_solution,word_sol_number_letters, -1, -1, BLACK);
     } else if (gameState == GUESS) {
         draw_sprite_xpm(chooseColors, 0, 0);
         draw_word(word_guess, number_letters, -1, -1, BLACK);
     }
 
     draw_game_time(game_counter);
-    // draw_word(word_guess, number_letters, -1, -1, BLACK);
 }
 
 void draw_end_menu(){
 
-    if(gameResult){
-        draw_sprite_xpm(victory, 337,0);
-        text_size = 0;
-        for (int i = 0; i < 18; i++) {
-            text[i] = -1;
-        }
+    draw_sprite_xpm(gameResult ? victory : defeat, 337,0);
+    text_size = 0;
+    for (int i = 0; i < 18; i++) {
+        text[i] = -1;
+    }
+    if (gameState == SINGLEPLAYER || gameState == DRAW) {
         convert_to_qwerty("the word was", text, &text_size);
         draw_word(text, text_size, 0,400, BLACK);
-        draw_word(word_solution,word_sol_number_letters, 300,500, GREEN);
+        draw_word(word_solution,word_sol_number_letters, 300,500, gameResult ? GREEN : RED);
     }
-    else{
-        draw_sprite_xpm(defeat, 337, 0);
-         text_size = 0;
-        for (int i = 0; i < 18; i++) {
-            text[i] = -1;
-        }
-        convert_to_qwerty("the word was", text, &text_size);
-        draw_word(text, text_size, 0,400, BLACK);
-        draw_word(word_solution,word_sol_number_letters, 300,500, RED);
-    }
+    
+    // if (gameResult) {
+    //     draw_sprite_xpm(victory, 337,0);
+    //     text_size = 0;
+    //     for (int i = 0; i < 18; i++) {
+    //         text[i] = -1;
+    //     }
+    //     convert_to_qwerty("the word was", text, &text_size);
+    //     draw_word(text, text_size, 0,400, BLACK);
+    //     draw_word(word_solution,word_sol_number_letters, 300,500, GREEN);
+    // } else{
+    //     draw_sprite_xpm(defeat, 337, 0);
+    //      text_size = 0;
+    //     for (int i = 0; i < 18; i++) {
+    //         text[i] = -1;
+    //     }
+    //     convert_to_qwerty("the word was", text, &text_size);
+    //     draw_word(text, text_size, 0,400, BLACK);
+    //     draw_word(word_solution,word_sol_number_letters, 300,500, RED);
+    // }
     
     draw_sprite_xpm(playAgainButton, 131, 600);
     draw_sprite_xpm(leaderboardButton, 462, 600);

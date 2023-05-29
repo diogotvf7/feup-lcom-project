@@ -80,9 +80,14 @@ void initGame(){
     for (int i = 0; i < 12; i++)
         word_solution[i] = -1;
     word_sol_number_letters = 0;
-    getRandomWord();
+    if (gameState == DRAW || gameState == SINGLEPLAYER) getRandomWord();
     delayTime = 0;
     gameResult = false;
+
+    printf("Word solution: ");
+    for (int i = 0; i < word_sol_number_letters; i++)
+        printf(" %d ", word_solution[i]);
+    printf("\n");
 }
 
 void updateLeaderboard(leaderboardValue *newValue){
@@ -186,8 +191,13 @@ void update_timer_state() {
     } else if (menuState == GAME) {
         if (gameState == DRAW) {
             while (!queue_empty(&rcvr_fifo)) {
+                printf("Received bytes on queue!\n");
                 uint8_t *byte = queue_front(&rcvr_fifo);
                 if (*byte == END_OF_PACKET) {
+printf("Received word guess: ");
+for (int i = 0; i < number_letters; i++)
+printf(" %d ", word_guess[i]);
+printf("\n");
                     gameResult = checkResult();
                     if (gameResult) {
                         menuState = END;
@@ -455,6 +465,10 @@ void updateStateKeyboardClick(){
 
         //User verifica se a sua repsosta esta correcta
         case ENTER:{
+            printf("Word guess: ");
+            for (int i = 0; i < number_letters; i++)
+                printf(" %d ", word_guess[i]);
+            printf("\n");
             if (gameState == SINGLEPLAYER) {
                 gameResult = checkResult();
                 if(gameResult) {
@@ -473,7 +487,7 @@ void updateStateKeyboardClick(){
         
         //User escreveu uma letra
         default:
-        if (((gameState == SINGLEPLAYER) && delayTime > 5) || gameState == GUESS) read_letter(get_scancode(), word_guess, &number_letters);
+        if (((gameState == SINGLEPLAYER) && delayTime > 5) || (gameState == GUESS)) read_letter(get_scancode(), word_guess, &number_letters);
             break;
     }
 }
