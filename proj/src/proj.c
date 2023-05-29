@@ -5,12 +5,14 @@
 #include "controller/timer/timer.h"
 #include "controller/keyboard/keyboard.h"
 #include "controller/mouse/mouse.h"
+#include "controller/uart/ser_port.h"
 #include "model/model.h"
 #include "model/base_frame.h"
 
 #include "global_vars.h"
 #include <lcom/lcf.h>
 #include <lcom/video_gr.h>
+
 
 /**
  * @file proj.c
@@ -31,8 +33,8 @@
  */
 
 
-uint8_t irq_set_timer, irq_set_keyboard;
-int irq_set_mouse,  ipc_status, r;
+uint8_t irq_set_timer, irq_set_keyboard, irq_set_uart;
+int irq_set_mouse, ipc_status, r;
 message msg;
 extern uint16_t bytes_per_pixel;
 extern uint16_t h_res;
@@ -68,6 +70,7 @@ int (start_settings)() {
     return EXIT_FAILURE;
 
   setup_sprites();
+  config_uart();
 
   if (set_data_reporting(TRUE) != OK) 
     return EXIT_FAILURE;
@@ -78,6 +81,8 @@ int (start_settings)() {
   if (mouse_subscribe_int(&irq_set_mouse) != OK)
     return EXIT_FAILURE;
   if (timer_set_frequency(SEL_TIMER0, FPS) != OK)
+    return EXIT_FAILURE;
+  if (subscribe_uart_int(&irq_set_uart) != OK)
     return EXIT_FAILURE;
 
   create_frame_buffer(h_res, v_res, bytes_per_pixel);
@@ -102,7 +107,6 @@ int (reset_settings)() {
 }
 
 int (proj_main_loop)(int argc, char **argv) {
-
   if (start_settings() != 0) return 1;
   while (systemState == RUNNING) {
     if ((r = driver_receive(ANY, &msg, &ipc_status)) != OK) {
@@ -120,6 +124,9 @@ int (proj_main_loop)(int argc, char **argv) {
         } 
         if (msg.m_notify.interrupts & irq_set_keyboard) {
           update_keyboard_state();
+        }
+        if (msg.m_notify.interrupts & irq_set_uart) {
+          update_uart_state();
         }
           break;
         default:

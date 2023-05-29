@@ -93,7 +93,7 @@ int draw_game_time(int num);
  * @param color The color of the letter.
  * @return 0 on success, non-zero on failure.
  */
-int draw_letter(int x, int y, int letter_index, uint32_t color);
+int draw_letter(int x, int y, uint8_t letter_index, uint32_t color);
 
 /**
  * @brief Draws a number on the screen at the specified coordinates using a sprite and index.
@@ -116,6 +116,6 @@ int draw_number(Sprite* sprite, int x, int y, int index);
  * @param color The color of the word.
  * @return 0 on success, non-zero on failure.
  */
-int draw_word(int word[], int word_size, int x, int y, uint32_t color);
+int draw_word(uint8_t word[], int word_size, int x, int y, uint32_t color);
 
 

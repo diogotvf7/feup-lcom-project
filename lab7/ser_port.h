@@ -1,25 +1,58 @@
 #include <lcom/lcf.h>
 
-int ser_subscribe_int(uint8_t *bit_no);
+#include "global_vars.h"
+#include "utils.h"
+#include "SER.h"
+#include "keyboard.h"
+#include "queue.h"
 
-int ser_unsubscribe_int();
+int config_uart();
 
-int ser_send_byte(uint8_t byte);
+int set_uart_dlab(uint8_t status);
 
-int ser_receive_byte(uint8_t *byte);
+int subscribe_uart_int(uint8_t *bit_no);
 
-int ser_send_string(char *string);
+int set_uart_fcr(uint8_t byte);
 
-int ser_receive_string(char *string);
+int unsubscribe_uart_int();
 
-int ser_set_conf(unsigned long bits, unsigned long stop, long parity, unsigned long rate);
+int set_uart_ier(uint8_t byte);
 
-int ser_get_conf(unsigned long *bits, unsigned long *stop, long *parity, unsigned long *rate);
+int get_uart_ier(uint8_t *byte);
 
-void ser_ih();
+int set_uart_lcr(uint8_t byte);
 
-int ser_poll();
+int get_uart_lcr(uint8_t *byte);
 
-int ser_int();
+int set_uart_iir(uint8_t byte);
 
-int ser_fifo();
+int get_uart_iir(uint8_t *byte);
+
+int get_uart_lsr(uint8_t *byte);
+
+int set_uart_freq(uint16_t freq);
+
+void uart_ih();
+
+int send_uart_byte(uint8_t byte);
+
+int receive_uart_byte(uint8_t *byte);
+
+/* tenso daqui para baixo */
+
+// int uart_send_byte(uint8_t byte);
+
+// int uart_receive_byte(uint8_t *byte);
+
+// int uart_send_string(char *string);
+
+// int uart_receive_string(char *string);
+
+// int uart_get_conf(unsigned long *bits, unsigned long *stop, long *parity, unsigned long *rate);
+
+// int uart_poll();
+
+// int uart_int();
+
+// int uart_fifo();
+

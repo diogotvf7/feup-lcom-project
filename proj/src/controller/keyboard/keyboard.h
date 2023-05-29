@@ -73,7 +73,7 @@ int (keyboard_restore)();
  * @param number_letters Pointer to the number of letters in the word.
  * @return 0 upon success, non-zero otherwise.
  */
-int (read_letter)(int scancode, int *word_guess, int *number_letters);
+int read_letter(int scancode, uint8_t *word_guess, int* number_letters);
 
 
 #endif /* __KEYBOARD_H */

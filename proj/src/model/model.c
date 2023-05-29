@@ -20,7 +20,7 @@ Sprite* dealer;
 
 int flag = 0, num_bytes = 1;
 uint8_t scancode_arr[2];
-int to_qwerty[27] = {10,23,21,12,2,13,14,15,7,16,17,18,25,24,8,9,0,3,11,4,6,22,1,20,5,19};
+uint8_t to_qwerty[27] = {10,23,21,12,2,13,14,15,7,16,17,18,25,24,8,9,0,3,11,4,6,22,1,20,5,19};
 extern int x, y;
 extern frame_buffer_t frame_buffer;
 extern real_time curr_time;
@@ -38,17 +38,19 @@ extern uint8_t read_data;
 int delayTime = 0;
 bool gameResult= false;
 
-int word_guess[12] = {-1};
-int number_letters = 0;
 
-int game_title[18] = {-1};
+extern Queue *xmit_fifo;
+extern Queue *rcvr_fifo;
+
+
+uint8_t game_title[18] = {-1};
 int game_title_size = 0;
-
-int word_solution[12] = {-1};
-int word_sol_number_letters = 0;
-
-int text[12] = {-1};
+uint8_t text[12] = {-1};
 int text_size = 0;
+uint8_t word_guess[12] = {-1};
+int number_letters = 0;
+uint8_t word_solution[12] = {-1};
+int word_sol_number_letters = 0;
 
 void setup_sprites() {
     chooseColors = create_sprite_xpm((xpm_map_t) topBarGameMode_xpm);
@@ -64,6 +66,7 @@ void setup_sprites() {
     victory = create_sprite_xpm((xpm_map_t) Victory_xpm);
     defeat = create_sprite_xpm((xpm_map_t) Defeat_xpm);
     ldbdButtonInitialPage = create_sprite_xpm((xpm_map_t) leaderboardButtonInitialPage_xpm);
+    coopDrawButton = create_sprite_xpm((xpm_map_t) coopDrawButton_xpm);
     dealer = create_sprite_xpm((xpm_map_t) dealer_xpm);
 
 }
@@ -71,17 +74,20 @@ void setup_sprites() {
 void initGame(){
     menuState = GAME;
     game_counter = ROUND_TIME;
-    for (int i = 0; i < 12; i++) {
+    for (int i = 0; i < 12; i++) 
         word_guess[i] = -1;
-    }
     number_letters = 0;
-    for (int i = 0; i < 12; i++) {
+    for (int i = 0; i < 12; i++)
         word_solution[i] = -1;
-    }
     word_sol_number_letters = 0;
-    getRandomWord();
+    if (gameState == DRAW || gameState == SINGLEPLAYER) getRandomWord();
     delayTime = 0;
     gameResult = false;
+
+    printf("Word solution: ");
+    for (int i = 0; i < word_sol_number_letters; i++)
+        printf(" %d ", word_solution[i]);
+    printf("\n");
 }
 
 void updateLeaderboard(leaderboardValue *newValue){
@@ -113,7 +119,7 @@ void update_mouse_state() {
                 }
                 break;
             case GAME:
-                if (gameState == SINGLEPLAYER){
+                if (gameState == DRAW || gameState == SINGLEPLAYER) {
                     if (get_mouse_packet()->lb) {
                         if (y < 150) {
                             updateDrawSpecs(&color, &radius);
@@ -147,9 +153,18 @@ void update_mouse_state() {
                 break;
             case END:
                 if(get_mouse_packet()->lb){
-                    if(( x >= 131 && x <= 331) && (y >= 481 && y <= 681)) {menuState = GAME; initGame();}
-                    else if(( x >= 462 && x <= 662) && (y >= 481 && y <= 681)) {menuState = LEADERBOARD;}
-                    else if(( x >= 793 && x <= 993) && (y >= 481 && y <= 681)) {menuState = START;}
+                    if (( x >= 131 && x <= 331) && (y >= 481 && y <= 681)) {
+                        if (gameState == DRAW || gameState == GUESS)
+                            send_uart_byte(PLAY_AGAIN);
+                        menuState = GAME; 
+                        initGame();
+                    }
+                    else if (( x >= 462 && x <= 662) && (y >= 481 && y <= 681)) {menuState = LEADERBOARD;}
+                    else if (( x >= 793 && x <= 993) && (y >= 481 && y <= 681)) {
+                        if (gameState == DRAW || gameState == GUESS)
+                            send_uart_byte(END_GAME);
+                        menuState = START;
+                    }
                 }
                 break;
                
@@ -163,6 +178,65 @@ void update_mouse_state() {
 void update_timer_state() {
     timer_int_handler();
     vg_flip_frame();
+
+    if (menuState == START) {
+        if (!queue_empty(&rcvr_fifo)) {
+            uint8_t *byte = queue_front(&rcvr_fifo);
+            if (*byte == START_GAME) {
+                gameState = GUESS;
+                initGame();
+            }
+            queue_pop(&rcvr_fifo);
+        }
+    } else if (menuState == GAME) {
+        if (gameState == DRAW) {
+            while (!queue_empty(&rcvr_fifo)) {
+                printf("Received bytes on queue!\n");
+                uint8_t *byte = queue_front(&rcvr_fifo);
+                if (*byte == END_OF_PACKET) {
+printf("Received word guess: ");
+for (int i = 0; i < number_letters; i++)
+printf(" %d ", word_guess[i]);
+printf("\n");
+                    gameResult = checkResult();
+                    if (gameResult) {
+                        menuState = END;
+                        addValueToLeaderboard();
+                        send_uart_byte(UART_ACK);
+                        reset_frame();
+                    } else send_uart_byte(UART_NACK);
+                }
+                word_guess[number_letters] = *byte;
+                number_letters++;
+                queue_pop(&rcvr_fifo);
+            }    
+        }
+        else if (gameState == GUESS) {
+            while (!queue_empty(&rcvr_fifo)) {
+                uint8_t *byte = queue_front(&rcvr_fifo);
+                if (*byte == UART_ACK) {
+                    menuState = END;
+                    gameResult = TRUE;
+                } else if (*byte == UART_NACK) {
+                    for (int i = 0; i < number_letters; i++)
+                        word_guess[i] = -1;
+                    number_letters = 0;
+                }
+                queue_pop(&rcvr_fifo);
+            }
+        }
+    } else if (menuState == END) {
+        if (!queue_empty(&rcvr_fifo)) {
+            uint8_t *byte = queue_front(&rcvr_fifo);
+            if (*byte == PLAY_AGAIN) {
+                menuState = GAME;
+                initGame();
+            } else if (*byte == END_GAME) {
+                menuState = START;
+            }
+            queue_pop(&rcvr_fifo);
+        }
+    }
     copy_base_frame(frame_buffer);
     for (int i = PACKETS_PER_INTERRUPT; i; i--) {
         if (process_packet(color, radius) != 0) break; 
@@ -187,10 +261,6 @@ void update_timer_state() {
             reset_frame();
         }
     }
-    //Podemos nao estar no modo de jogo mas o rtc tem sempre de se atualizar
-    else if(get_counter() % 30 == 0){
-        rtc_init();
-    }
     draw_new_frame();
 }
 
@@ -206,8 +276,11 @@ void update_keyboard_state() {
         num_bytes = 1;
         flag = 0;
     }
-
     updateStateKeyboardClick();
+}
+
+void update_uart_state() {
+    uart_ih();
 }
 
 void destroy_sprites() {
@@ -293,7 +366,7 @@ char* getRandomWord() {
     return line;
 }
 
-int convert_to_qwerty(char* str, int word[], int* word_size){
+int convert_to_qwerty(char* str, uint8_t word[], int* word_size){
     for (uint8_t i = 0; i < strlen(str); i++) {
         if (*(str + i) == '\n' || *(str + i) == '\r') {
             break;
@@ -327,6 +400,7 @@ void addValueToLeaderboard(){
     if (newValue == NULL) {
         printf("Error: Memory allocation failed.\n");
     }
+    rtc_init();
     newValue->month = curr_time.month;
     newValue->day = curr_time.day;
     newValue->hour = curr_time.hour;
@@ -338,9 +412,7 @@ void addValueToLeaderboard(){
     free(newValue);
 }
 
-
-
-void updateStateMouseClick(){
+void updateStateMouseClick() {
     //single player
     if(x >= 400 && x <= 670 && y >= 200 && y <= 325){
         initGame();
@@ -348,9 +420,14 @@ void updateStateMouseClick(){
     }
     //coop draw
     else if(x >= 400 && x <= 670 && y >= 350 && y <= 475){
-        menuState = LEADERBOARD;
+        send_start_msg();
+        initGame();
+        gameState = DRAW;
     }
     else if(x >= 400 && x <= 670 && y >= 500 && y <= 625){
+        menuState = LEADERBOARD;
+    }
+    else if(x >= 400 && x <= 670 && y >= 650 && y <= 800){
         systemState = EXIT;
     }
 }
@@ -388,18 +465,29 @@ void updateStateKeyboardClick(){
 
         //User verifica se a sua repsosta esta correcta
         case ENTER:{
-            gameResult = checkResult();
-            if(gameResult) {
-                reset_frame();
-                menuState = END;
-                addValueToLeaderboard();
-            };
-            break;
+            printf("Word guess: ");
+            for (int i = 0; i < number_letters; i++)
+                printf(" %d ", word_guess[i]);
+            printf("\n");
+            if (gameState == SINGLEPLAYER) {
+                gameResult = checkResult();
+                if(gameResult) {
+                    reset_frame();
+                    menuState = END;
+                    addValueToLeaderboard();
+                };
+                break;
+            } else if (gameState == GUESS) {
+                send_uart_bytes(word_guess, number_letters);
+                uint8_t end_of_packet = END_OF_PACKET;
+                send_uart_byte(end_of_packet);
+                break;
+            }
         }
         
         //User escreveu uma letra
         default:
-        if ((gameState == SINGLEPLAYER) && delayTime > 5) read_letter(get_scancode(), word_guess, &number_letters);
+        if (((gameState == SINGLEPLAYER) && delayTime > 5) || (gameState == GUESS)) read_letter(get_scancode(), word_guess, &number_letters);
             break;
     }
 }

@@ -15,10 +15,8 @@ typedef struct Position {
  * @brief Structure representing a node in a queue.
  */
 typedef struct Node {
-    void *data; /**< Pointer to the data stored in the node. */
-    int remaining; /**< The remaining value of the node. */
-    int size; /**< The size of the node. */
-    struct Node *prev; /**< Pointer to the previous node in the queue. */
+  void *data; /**< Pointer to the data stored in the node. */
+  struct Node *prev; /**< Pointer to the previous node in the queue. */
 } Node;
 
 /**
@@ -61,7 +59,7 @@ void *queue_front(Queue **queue);
  * @param data The pointer to the data to be pushed into the queue.
  * @param size The size of the data.
  */
-void queue_push(Queue **queue, void *data, int size);
+void queue_push(Queue **queue, void *data, size_t size);
 
 /**
  * @brief Pop the front element from the queue.

@@ -5,6 +5,7 @@
 #include "controller/rtc/rtc.h"
 #include "controller/keyboard/keyboard.h"
 #include "controller/graphics_card/graphics_card.h"
+#include "controller/uart/ser_port.h"
 #include "model/queue.h"
 #include "controller/timer/timer.h"
 #include "view/view.h"
@@ -34,6 +35,12 @@
 #define MAX_WORD_LENGTH 12
 #define MAX_LINE_LENGTH 50
 
+typedef enum {
+    DRAWER,
+    GUESSER,
+    SINGLE
+} PlayerRole;
+
 /**
  * @brief Enumeration representing the system state.
  */
@@ -52,8 +59,10 @@ typedef enum {
     END /**< The end game menu state. */
 } MenuState;
 
-typedef enum{
+typedef enum {
     SINGLEPLAYER,
+    DRAW,
+    GUESS
 } GameState;
 
 /**
@@ -82,6 +91,11 @@ void update_keyboard_state();
  * @brief Updates the mouse state.
  */
 void update_mouse_state();
+
+/**
+ * @brief Updates the uart state.
+*/
+void update_uart_state();
 
 /**
  * @brief Sets up the sprites.
@@ -156,6 +170,6 @@ void updateStateKeyboardClick();
  * @param word_size The size of the converted word.
  * @return The number of characters converted.
  */
-int convert_to_qwerty(char* str, int word[], int* word_size);
+int convert_to_qwerty(char* str, uint8_t word[], int* word_size);
 
 

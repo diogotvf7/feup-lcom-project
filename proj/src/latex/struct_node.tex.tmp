@@ -1,0 +1,45 @@
+\hypertarget{struct_node}{}\doxysection{Node Struct Reference}
+\label{struct_node}\index{Node@{Node}}
+
+
+Structure representing a node in a queue.  
+
+
+
+
+{\ttfamily \#include $<$queue.\+h$>$}
+
+
+
+Collaboration diagram for Node\+:
+% FIG 0
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+void $\ast$ \mbox{\hyperlink{struct_node_a38b733496e3eff5e0b4fcb11cd9b866a}{data}}
+\item 
+struct \mbox{\hyperlink{struct_node}{Node}} $\ast$ \mbox{\hyperlink{struct_node_aea9fefc3628c3ce98b967e8addf06e88}{prev}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Structure representing a node in a queue. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{struct_node_a38b733496e3eff5e0b4fcb11cd9b866a}\label{struct_node_a38b733496e3eff5e0b4fcb11cd9b866a}} 
+\index{Node@{Node}!data@{data}}
+\index{data@{data}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{data}{data}}
+{\footnotesize\ttfamily void$\ast$ Node\+::data}
+
+Pointer to the data stored in the node. \mbox{\Hypertarget{struct_node_aea9fefc3628c3ce98b967e8addf06e88}\label{struct_node_aea9fefc3628c3ce98b967e8addf06e88}} 
+\index{Node@{Node}!prev@{prev}}
+\index{prev@{prev}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{prev}{prev}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{struct_node}{Node}}$\ast$ Node\+::prev}
+
+Pointer to the previous node in the queue. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+model/queue.\+h\end{DoxyCompactItemize}
