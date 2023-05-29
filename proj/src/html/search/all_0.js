@@ -1,6 +1,9 @@
 var searchData=
 [
-  ['back_0',['back',['../struct_queue.html#a16a89ee65c5766e528f798bd9bbe915e',1,'Queue']]],
-  ['base_5faddr_1',['base_addr',['../structframe__buffer__t.html#aac766331a301b3d4cdf6e43cde938102',1,'frame_buffer_t']]],
-  ['bytes_5fper_5fpixel_2',['bytes_per_pixel',['../structframe__buffer__t.html#a3dc8aeb6b87758039accb49c8fddbfe9',1,'frame_buffer_t']]]
+  ['_5fbase_5faddr_0',['_base_addr',['../base__frame_8c.html#af03a5bb1cbbdb149cbb1a21eb05f4a68',1,'base_frame.c']]],
+  ['_5fbytes_5fper_5fpixel_1',['_bytes_per_pixel',['../base__frame_8c.html#a286d8828487dee7d6ce65fb26e40f749',1,'base_frame.c']]],
+  ['_5fheight_2',['_height',['../base__frame_8c.html#abe5c71b21006efa301e35d3819dea146',1,'base_frame.c']]],
+  ['_5fmode_3',['_mode',['../graphics__card_8c.html#a3f1ae3c5965c74be4c8fc645b3ae535e',1,'graphics_card.c']]],
+  ['_5fsize_4',['_size',['../base__frame_8c.html#a01c5535abb79f8abf8dc2658d7f768c7',1,'base_frame.c']]],
+  ['_5fwidth_5',['_width',['../base__frame_8c.html#ab8e5ee65b16c61cb81cfca4e827117bb',1,'base_frame.c']]]
 ];

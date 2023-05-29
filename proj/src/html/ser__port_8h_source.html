@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>LCOM_PROJ: controller/uart/ser_port.h Source File</title>
+<title>Paint with friends: controller/uart/ser_port.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">LCOM_PROJ
+   <div id="projectname">Paint with friends
    </div>
   </td>
  </tr>
@@ -69,48 +69,68 @@ $(function() {
 <div class="title">ser_port.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;lcom/lcf.h&gt;</span></div>
+<a href="ser__port_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;lcom/lcf.h&gt;</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;global_vars.h&quot;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="global__vars_8h.html">global_vars.h</a>&quot;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;../utils.h&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;SER.h&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="SER_8h.html">SER.h</a>&quot;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;../../model/queue.h&quot;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">int</span> config_uart();</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">int</span> <a class="code" href="ser__port_8h.html#aa403e44f6e56888f9edd1a920121800b">config_uart</a>();</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keywordtype">int</span> set_uart_dlab(uint8_t status);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keywordtype">int</span> <a class="code" href="ser__port_8h.html#aa36c182d20911549cf07bc7aa974fdc2">set_uart_dlab</a>(uint8_t status);</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keywordtype">int</span> subscribe_uart_int(uint8_t *bit_no);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keywordtype">int</span> <a class="code" href="ser__port_8h.html#ac3610e3ed951909fbe9c72c852b01967">subscribe_uart_int</a>(uint8_t *bit_no);</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keywordtype">int</span> set_uart_fcr(uint8_t <span class="keywordtype">byte</span>);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keywordtype">int</span> <a class="code" href="ser__port_8h.html#a0d3a14a7a11e780049df692f812538cf">set_uart_fcr</a>(uint8_t <span class="keywordtype">byte</span>);</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keywordtype">int</span> unsubscribe_uart_int();</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keywordtype">int</span> <a class="code" href="ser__port_8h.html#a1c81ab69c861dd604ed5438f15c5c68d">unsubscribe_uart_int</a>();</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keywordtype">int</span> set_uart_ier(uint8_t <span class="keywordtype">byte</span>);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keywordtype">int</span> <a class="code" href="ser__port_8h.html#a3333340fe13535c025e6c3befe26fd84">set_uart_ier</a>(uint8_t <span class="keywordtype">byte</span>);</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keywordtype">int</span> get_uart_ier(uint8_t *<span class="keywordtype">byte</span>);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keywordtype">int</span> <a class="code" href="ser__port_8h.html#a159431c22c586f18a2e73527e30b39b3">get_uart_ier</a>(uint8_t *<span class="keywordtype">byte</span>);</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keywordtype">int</span> set_uart_lcr(uint8_t <span class="keywordtype">byte</span>);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keywordtype">int</span> <a class="code" href="ser__port_8h.html#ab805c19f9ac6d19b13da5055c077ab84">set_uart_lcr</a>(uint8_t <span class="keywordtype">byte</span>);</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keywordtype">int</span> get_uart_lcr(uint8_t *<span class="keywordtype">byte</span>);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keywordtype">int</span> <a class="code" href="ser__port_8h.html#a60b614bf9ab6b52f3449d58092a079b3">get_uart_lcr</a>(uint8_t *<span class="keywordtype">byte</span>);</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keywordtype">int</span> set_uart_iir(uint8_t <span class="keywordtype">byte</span>);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keywordtype">int</span> <a class="code" href="ser__port_8h.html#a43b87024847ead2cd49c4926e0bfaced">set_uart_iir</a>(uint8_t <span class="keywordtype">byte</span>);</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="keywordtype">int</span> get_uart_iir(uint8_t *<span class="keywordtype">byte</span>);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="keywordtype">int</span> <a class="code" href="ser__port_8h.html#ab127e47dcbe66ddabeb059d1d9b9d662">get_uart_iir</a>(uint8_t *<span class="keywordtype">byte</span>);</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="keywordtype">int</span> get_uart_lsr(uint8_t *<span class="keywordtype">byte</span>);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="keywordtype">int</span> <a class="code" href="ser__port_8h.html#a0894779789486489e6af7f5780af9f56">get_uart_lsr</a>(uint8_t *<span class="keywordtype">byte</span>);</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="keywordtype">int</span> set_uart_freq(uint16_t freq);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="keywordtype">int</span> <a class="code" href="ser__port_8h.html#accd333f913935c67629d07be7c894f30">set_uart_freq</a>(uint16_t freq);</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="keywordtype">void</span> uart_ih();</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="keywordtype">void</span> <a class="code" href="ser__port_8h.html#a67d2da4dd20c731989c130bbe2cd4c85">uart_ih</a>();</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="keywordtype">int</span> send_uart_byte(uint8_t <span class="keywordtype">byte</span>);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="keywordtype">int</span> <a class="code" href="ser__port_8h.html#ad97974a71447aab4827aa2ba775d9924">send_uart_byte</a>(uint8_t <span class="keywordtype">byte</span>);</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="keywordtype">int</span> send_uart_bytes(uint8_t *bytes, uint32_t size);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="keywordtype">int</span> <a class="code" href="ser__port_8h.html#a1dd293668eee2da45a8f4fafbbea1bcd">send_uart_bytes</a>(uint8_t *bytes, uint32_t size);</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="keywordtype">int</span> receive_uart_byte(uint8_t *<span class="keywordtype">byte</span>);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="keywordtype">int</span> <a class="code" href="ser__port_8h.html#ab1e08af3eee322cfff420f9cabc15b82">receive_uart_byte</a>(uint8_t *<span class="keywordtype">byte</span>);</div>
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="keywordtype">int</span> send_start_msg();</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="keywordtype">int</span> <a class="code" href="ser__port_8h.html#ad8d905410a112e49f764b3946c202e2a">send_start_msg</a>();</div>
+<div class="ttc" id="aSER_8h_html"><div class="ttname"><a href="SER_8h.html">SER.h</a></div></div>
+<div class="ttc" id="aglobal__vars_8h_html"><div class="ttname"><a href="global__vars_8h.html">global_vars.h</a></div></div>
+<div class="ttc" id="aser__port_8h_html_a0894779789486489e6af7f5780af9f56"><div class="ttname"><a href="ser__port_8h.html#a0894779789486489e6af7f5780af9f56">get_uart_lsr</a></div><div class="ttdeci">int get_uart_lsr(uint8_t *byte)</div><div class="ttdoc">Retrieves the value of the LSR (Line Status Register) of the UART.</div><div class="ttdef"><b>Definition:</b> ser_port.c:83</div></div>
+<div class="ttc" id="aser__port_8h_html_a0d3a14a7a11e780049df692f812538cf"><div class="ttname"><a href="ser__port_8h.html#a0d3a14a7a11e780049df692f812538cf">set_uart_fcr</a></div><div class="ttdeci">int set_uart_fcr(uint8_t byte)</div><div class="ttdoc">Sets the FCR (FIFO Control Register) of the UART.</div><div class="ttdef"><b>Definition:</b> ser_port.c:43</div></div>
+<div class="ttc" id="aser__port_8h_html_a159431c22c586f18a2e73527e30b39b3"><div class="ttname"><a href="ser__port_8h.html#a159431c22c586f18a2e73527e30b39b3">get_uart_ier</a></div><div class="ttdeci">int get_uart_ier(uint8_t *byte)</div><div class="ttdoc">Retrieves the value of the IER (Interrupt Enable Register) of the UART.</div><div class="ttdef"><b>Definition:</b> ser_port.c:58</div></div>
+<div class="ttc" id="aser__port_8h_html_a1c81ab69c861dd604ed5438f15c5c68d"><div class="ttname"><a href="ser__port_8h.html#a1c81ab69c861dd604ed5438f15c5c68d">unsubscribe_uart_int</a></div><div class="ttdeci">int unsubscribe_uart_int()</div><div class="ttdoc">Unsubscribes from UART interrupts.</div><div class="ttdef"><b>Definition:</b> ser_port.c:48</div></div>
+<div class="ttc" id="aser__port_8h_html_a1dd293668eee2da45a8f4fafbbea1bcd"><div class="ttname"><a href="ser__port_8h.html#a1dd293668eee2da45a8f4fafbbea1bcd">send_uart_bytes</a></div><div class="ttdeci">int send_uart_bytes(uint8_t *bytes, uint32_t size)</div><div class="ttdoc">Sends multiple bytes via UART.</div><div class="ttdef"><b>Definition:</b> ser_port.c:141</div></div>
+<div class="ttc" id="aser__port_8h_html_a3333340fe13535c025e6c3befe26fd84"><div class="ttname"><a href="ser__port_8h.html#a3333340fe13535c025e6c3befe26fd84">set_uart_ier</a></div><div class="ttdeci">int set_uart_ier(uint8_t byte)</div><div class="ttdoc">Sets the IER (Interrupt Enable Register) of the UART.</div><div class="ttdef"><b>Definition:</b> ser_port.c:53</div></div>
+<div class="ttc" id="aser__port_8h_html_a43b87024847ead2cd49c4926e0bfaced"><div class="ttname"><a href="ser__port_8h.html#a43b87024847ead2cd49c4926e0bfaced">set_uart_iir</a></div><div class="ttdeci">int set_uart_iir(uint8_t byte)</div><div class="ttdoc">Sets the IIR (Interrupt Identification Register) of the UART.</div><div class="ttdef"><b>Definition:</b> ser_port.c:73</div></div>
+<div class="ttc" id="aser__port_8h_html_a60b614bf9ab6b52f3449d58092a079b3"><div class="ttname"><a href="ser__port_8h.html#a60b614bf9ab6b52f3449d58092a079b3">get_uart_lcr</a></div><div class="ttdeci">int get_uart_lcr(uint8_t *byte)</div><div class="ttdoc">Retrieves the value of the LCR (Line Control Register) of the UART.</div><div class="ttdef"><b>Definition:</b> ser_port.c:68</div></div>
+<div class="ttc" id="aser__port_8h_html_a67d2da4dd20c731989c130bbe2cd4c85"><div class="ttname"><a href="ser__port_8h.html#a67d2da4dd20c731989c130bbe2cd4c85">uart_ih</a></div><div class="ttdeci">void uart_ih()</div><div class="ttdoc">UART interrupt handler.</div><div class="ttdef"><b>Definition:</b> ser_port.c:101</div></div>
+<div class="ttc" id="aser__port_8h_html_aa36c182d20911549cf07bc7aa974fdc2"><div class="ttname"><a href="ser__port_8h.html#aa36c182d20911549cf07bc7aa974fdc2">set_uart_dlab</a></div><div class="ttdeci">int set_uart_dlab(uint8_t status)</div><div class="ttdoc">Sets the DLAB (Divisor Latch Access Bit) of the UART.</div><div class="ttdef"><b>Definition:</b> ser_port.c:28</div></div>
+<div class="ttc" id="aser__port_8h_html_aa403e44f6e56888f9edd1a920121800b"><div class="ttname"><a href="ser__port_8h.html#aa403e44f6e56888f9edd1a920121800b">config_uart</a></div><div class="ttdeci">int config_uart()</div><div class="ttdoc">Configures the UART with the desired settings.</div><div class="ttdef"><b>Definition:</b> ser_port.c:7</div></div>
+<div class="ttc" id="aser__port_8h_html_ab127e47dcbe66ddabeb059d1d9b9d662"><div class="ttname"><a href="ser__port_8h.html#ab127e47dcbe66ddabeb059d1d9b9d662">get_uart_iir</a></div><div class="ttdeci">int get_uart_iir(uint8_t *byte)</div><div class="ttdoc">Retrieves the value of the IIR (Interrupt Identification Register) of the UART.</div><div class="ttdef"><b>Definition:</b> ser_port.c:78</div></div>
+<div class="ttc" id="aser__port_8h_html_ab1e08af3eee322cfff420f9cabc15b82"><div class="ttname"><a href="ser__port_8h.html#ab1e08af3eee322cfff420f9cabc15b82">receive_uart_byte</a></div><div class="ttdeci">int receive_uart_byte(uint8_t *byte)</div><div class="ttdoc">Receives a byte from UART.</div><div class="ttdef"><b>Definition:</b> ser_port.c:152</div></div>
+<div class="ttc" id="aser__port_8h_html_ab805c19f9ac6d19b13da5055c077ab84"><div class="ttname"><a href="ser__port_8h.html#ab805c19f9ac6d19b13da5055c077ab84">set_uart_lcr</a></div><div class="ttdeci">int set_uart_lcr(uint8_t byte)</div><div class="ttdoc">Sets the LCR (Line Control Register) of the UART.</div><div class="ttdef"><b>Definition:</b> ser_port.c:63</div></div>
+<div class="ttc" id="aser__port_8h_html_ac3610e3ed951909fbe9c72c852b01967"><div class="ttname"><a href="ser__port_8h.html#ac3610e3ed951909fbe9c72c852b01967">subscribe_uart_int</a></div><div class="ttdeci">int subscribe_uart_int(uint8_t *bit_no)</div><div class="ttdoc">Subscribes to UART interrupts.</div><div class="ttdef"><b>Definition:</b> ser_port.c:36</div></div>
+<div class="ttc" id="aser__port_8h_html_accd333f913935c67629d07be7c894f30"><div class="ttname"><a href="ser__port_8h.html#accd333f913935c67629d07be7c894f30">set_uart_freq</a></div><div class="ttdeci">int set_uart_freq(uint16_t freq)</div><div class="ttdoc">Sets the frequency of the UART.</div><div class="ttdef"><b>Definition:</b> ser_port.c:88</div></div>
+<div class="ttc" id="aser__port_8h_html_ad8d905410a112e49f764b3946c202e2a"><div class="ttname"><a href="ser__port_8h.html#ad8d905410a112e49f764b3946c202e2a">send_start_msg</a></div><div class="ttdeci">int send_start_msg()</div><div class="ttdoc">Sends a start message via UART.</div><div class="ttdef"><b>Definition:</b> ser_port.c:167</div></div>
+<div class="ttc" id="aser__port_8h_html_ad97974a71447aab4827aa2ba775d9924"><div class="ttname"><a href="ser__port_8h.html#ad97974a71447aab4827aa2ba775d9924">send_uart_byte</a></div><div class="ttdeci">int send_uart_byte(uint8_t byte)</div><div class="ttdoc">Sends a byte via UART.</div><div class="ttdef"><b>Definition:</b> ser_port.c:124</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

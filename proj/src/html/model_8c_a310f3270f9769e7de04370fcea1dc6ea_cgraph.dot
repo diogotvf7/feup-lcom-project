@@ -1,0 +1,20 @@
+digraph "update_uart_state"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="update_uart_state",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Updates the uart state."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="uart_ih",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ser__port_8c.html#a67d2da4dd20c731989c130bbe2cd4c85",tooltip="UART interrupt handler."];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="receive_uart_byte",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ser__port_8c.html#ab1e08af3eee322cfff420f9cabc15b82",tooltip="Receives a byte from UART."];
+  Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="get_uart_lsr",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ser__port_8c.html#a0894779789486489e6af7f5780af9f56",tooltip="Retrieves the value of the LSR (Line Status Register) of the UART."];
+  Node4 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="util_sys_inb",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4",tooltip="Reads a byte from the specified port."];
+  Node3 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="queue_push",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$queue_8c.html#a23b231a08984555379fb52f40c4a5e78",tooltip="Push data into the queue."];
+  Node3 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

@@ -1,0 +1,55 @@
+digraph "updateStateKeyboardClick"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="updateStateKeyboardClick",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Updates the state on keyboard click."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="addValueToLeaderboard",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$model_8c.html#a7ee50be50b54058cc4bd8c286ae76bd3",tooltip="Adds a value to the leaderboard."];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="rtc_init",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$rtc_8c.html#abb4fa397a4a71ad09e3b0df51f40dbe8",tooltip="Initializes the RTC (Real-Time Clock)."];
+  Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="is_binary",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$rtc_8c.html#ae1b1b1cc88f89eae300cdeef578da474",tooltip="Checks if the RTC is using binary format."];
+  Node4 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="read_rtc_output",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$rtc_8c.html#aa911f1e40016efcd03231661c8271a3f",tooltip="Reads the output of the RTC."];
+  Node5 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="util_sys_inb",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4",tooltip="Reads a byte from the specified port."];
+  Node3 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="rtc_update_time",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$rtc_8c.html#ae22bdeb51eb630e1d579dfc1cd1b2f11",tooltip="Updates the time values (year, month, day, hour, minute, second) from the RTC."];
+  Node7 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="rtc_is_updating",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$rtc_8c.html#a47d5762e49eb390b04a09fc319c4e047",tooltip="Checks if the RTC is updating."];
+  Node8 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="to_binary",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$utils_8c.html#a891509fed13e0cac396e9c401f887d72",tooltip="Converts a BCD number to binary."];
+  Node2 -> Node10 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="updateLeaderboard",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$model_8c.html#afbeae9084da66088f0c10d0f9552c031",tooltip="Updates the leaderboard with a new value."];
+  Node1 -> Node11 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="checkResult",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$model_8c.html#a42d8f69fb7a7a41e3f3e754e0b18470e",tooltip="Checks the result of the game."];
+  Node1 -> Node12 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 [label="get_scancode",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$keyboard_8c.html#afdfb6322f4a75773b745fc6cc6c20d27",tooltip="Retrieves the scancode."];
+  Node1 -> Node13 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 [label="initGame",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$model_8c.html#a486f7b71aa892de0f05c6187647613b9",tooltip=" "];
+  Node13 -> Node14 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node14 [label="getRandomWord",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$model_8c.html#a7d2c8c148e87c6ac0ea00e1b17747bf4",tooltip="Gets a random word for the game."];
+  Node14 -> Node15 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node15 [label="convert_to_qwerty",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$model_8c.html#ac54ddc9eede93d25d5a7010e239ecc0a",tooltip="Converts a string to QWERTY format."];
+  Node1 -> Node16 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node16 [label="read_letter",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$keyboard_8c.html#a5de95da6a230ac9006b7521d69bc9edb",tooltip="Reads the letter corresponding to the scancode."];
+  Node1 -> Node17 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node17 [label="reset_frame",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$base__frame_8c.html#a0ca68dd8848dc3ffa75fcf6c6dc7d168",tooltip="Resets the frame buffer."];
+  Node1 -> Node18 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node18 [label="send_uart_byte",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ser__port_8c.html#ad97974a71447aab4827aa2ba775d9924",tooltip="Sends a byte via UART."];
+  Node18 -> Node19 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node19 [label="get_uart_lsr",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ser__port_8c.html#a0894779789486489e6af7f5780af9f56",tooltip="Retrieves the value of the LSR (Line Status Register) of the UART."];
+  Node19 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node18 -> Node20 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node20 [label="queue_empty",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$queue_8c.html#a85a67096df58b6a7eb887ebc5e5b99a3",tooltip="Check if the queue is empty."];
+  Node18 -> Node21 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node21 [label="queue_push",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$queue_8c.html#a23b231a08984555379fb52f40c4a5e78",tooltip="Push data into the queue."];
+  Node1 -> Node22 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node22 [label="send_uart_bytes",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ser__port_8c.html#a1dd293668eee2da45a8f4fafbbea1bcd",tooltip="Sends multiple bytes via UART."];
+  Node22 -> Node18 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

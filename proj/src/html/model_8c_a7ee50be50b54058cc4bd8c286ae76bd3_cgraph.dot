@@ -1,0 +1,27 @@
+digraph "addValueToLeaderboard"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="addValueToLeaderboard",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Adds a value to the leaderboard."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="rtc_init",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$rtc_8c.html#abb4fa397a4a71ad09e3b0df51f40dbe8",tooltip="Initializes the RTC (Real-Time Clock)."];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="is_binary",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$rtc_8c.html#ae1b1b1cc88f89eae300cdeef578da474",tooltip="Checks if the RTC is using binary format."];
+  Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="read_rtc_output",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$rtc_8c.html#aa911f1e40016efcd03231661c8271a3f",tooltip="Reads the output of the RTC."];
+  Node4 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="util_sys_inb",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4",tooltip="Reads a byte from the specified port."];
+  Node2 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="rtc_update_time",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$rtc_8c.html#ae22bdeb51eb630e1d579dfc1cd1b2f11",tooltip="Updates the time values (year, month, day, hour, minute, second) from the RTC."];
+  Node6 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="rtc_is_updating",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$rtc_8c.html#a47d5762e49eb390b04a09fc319c4e047",tooltip="Checks if the RTC is updating."];
+  Node7 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="to_binary",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$utils_8c.html#a891509fed13e0cac396e9c401f887d72",tooltip="Converts a BCD number to binary."];
+  Node1 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="updateLeaderboard",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$model_8c.html#afbeae9084da66088f0c10d0f9552c031",tooltip="Updates the leaderboard with a new value."];
+}

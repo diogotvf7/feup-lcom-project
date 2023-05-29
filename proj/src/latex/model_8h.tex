@@ -6,6 +6,7 @@
 {\ttfamily \#include \char`\"{}controller/rtc/rtc.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}controller/keyboard/keyboard.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}controller/graphics\+\_\+card/graphics\+\_\+card.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}controller/uart/ser\+\_\+port.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}model/queue.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}controller/timer/timer.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}view/view.\+h\char`\"{}}\newline
@@ -29,13 +30,8 @@
 {\ttfamily \#include \char`\"{}xpm/\+Victory.\+xpm\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}xpm/\+Defeat.\+xpm\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}xpm/dealer.\+xpm\char`\"{}}\newline
-Include dependency graph for model.\+h\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{model_8h__incl}
-\end{center}
-\end{figure}
+Include dependency graph for model.\+h\+:
+% FIG 0
 This graph shows which files directly or indirectly include this file\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -63,6 +59,11 @@ typedef struct \mbox{\hyperlink{structleaderboardValue}{leaderboard\+Value}} \mb
 \doxysubsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
+enum \mbox{\hyperlink{model_8h_aa7fafad826fe8356e3a7ec64ef1ef3a4}{Player\+Role}} \{ \mbox{\hyperlink{model_8h_aa7fafad826fe8356e3a7ec64ef1ef3a4a6e7c607a1a0b5c746db2838a32ba13e9}{DRAWER}}
+, \mbox{\hyperlink{model_8h_aa7fafad826fe8356e3a7ec64ef1ef3a4ac44bc6b4eaf36f29d74dd655b861202c}{GUESSER}}
+, \mbox{\hyperlink{model_8h_aa7fafad826fe8356e3a7ec64ef1ef3a4a3388f7110f6f25a54e215eb75d5d7516}{SINGLE}}
+ \}
+\item 
 enum \mbox{\hyperlink{model_8h_aa51313be2faacb739a18fdeecefbac75}{System\+State}} \{ \mbox{\hyperlink{model_8h_aa51313be2faacb739a18fdeecefbac75a1061be6c3fb88d32829cba6f6b2be304}{RUNNING}}
 , \mbox{\hyperlink{model_8h_aa51313be2faacb739a18fdeecefbac75a7a10b5d68d31711288e1fe0fa17dbf4f}{EXIT}}
  \}
@@ -73,11 +74,11 @@ enum \mbox{\hyperlink{model_8h_aa3041ae4242c0dd57a126d17505443b2}{Menu\+State}} 
 , \mbox{\hyperlink{model_8h_aa3041ae4242c0dd57a126d17505443b2adc6f24fd6915a3f2786a1b7045406924}{END}}
  \}
 \begin{DoxyCompactList}\small\item\em Enumeration representing the menu state. \end{DoxyCompactList}\item 
-enum \mbox{\hyperlink{model_8h_a7899b65f1ea0f655e4bbf8d2a5714285}{Game\+State}} \{ \mbox{\hyperlink{model_8h_a7899b65f1ea0f655e4bbf8d2a5714285a61f3c57b6943c85413975507aede78cd}{DRAW}}
+enum \mbox{\hyperlink{model_8h_a7899b65f1ea0f655e4bbf8d2a5714285}{Game\+State}} \{ \mbox{\hyperlink{model_8h_a7899b65f1ea0f655e4bbf8d2a5714285adf9c53b97637b5e5ac722fb2f6d26512}{SINGLEPLAYER}}
+, \mbox{\hyperlink{model_8h_a7899b65f1ea0f655e4bbf8d2a5714285a61f3c57b6943c85413975507aede78cd}{DRAW}}
 , \mbox{\hyperlink{model_8h_a7899b65f1ea0f655e4bbf8d2a5714285ab8c769f7e7a67d0a91a2fe34fdc5dbea}{GUESS}}
-, \mbox{\hyperlink{model_8h_a7899b65f1ea0f655e4bbf8d2a5714285a43ea09f876a50cf7c5172507a484df32}{DRAW\+\_\+\+GUESS}}
  \}
-\begin{DoxyCompactList}\small\item\em Enumeration representing the game state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -87,6 +88,8 @@ void \mbox{\hyperlink{model_8h_aacf177f660c44528fc3926b3cd69fb88}{update\+\_\+ke
 \begin{DoxyCompactList}\small\item\em Updates the keyboard state. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{model_8h_aa577e78e2462033d486b5d8fa64c7bec}{update\+\_\+mouse\+\_\+state}} ()
 \begin{DoxyCompactList}\small\item\em Updates the mouse state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{model_8h_a310f3270f9769e7de04370fcea1dc6ea}{update\+\_\+uart\+\_\+state}} ()
+\begin{DoxyCompactList}\small\item\em Updates the uart state. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{model_8h_a834200084177d31e41dd9b28754a3312}{setup\+\_\+sprites}} ()
 \begin{DoxyCompactList}\small\item\em Sets up the sprites. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{model_8h_a8fdbc6c7bfca3ef4a8800a3cdc19d932}{destroy\+\_\+sprites}} ()
@@ -109,7 +112,7 @@ void \mbox{\hyperlink{model_8h_ad407bbb0ed8ebc2c5bc3434a6757ebd5}{update\+State\
 \begin{DoxyCompactList}\small\item\em Updates the state on mouse click. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{model_8h_a9cc50208c690329cd26eed7611668367}{update\+State\+Keyboard\+Click}} ()
 \begin{DoxyCompactList}\small\item\em Updates the state on keyboard click. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{model_8h_a664447168b53c1bf003924014760b4ef}{convert\+\_\+to\+\_\+qwerty}} (char $\ast$str, int word\mbox{[}$\,$\mbox{]}, int $\ast$word\+\_\+size)
+int \mbox{\hyperlink{model_8h_ac54ddc9eede93d25d5a7010e239ecc0a}{convert\+\_\+to\+\_\+qwerty}} (char $\ast$str, uint8\+\_\+t word\mbox{[}$\,$\mbox{]}, int $\ast$word\+\_\+size)
 \begin{DoxyCompactList}\small\item\em Converts a string to QWERTY format. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -148,21 +151,17 @@ Structure representing a leaderboard value.
 \doxysubsubsection{\texorpdfstring{GameState}{GameState}}
 {\footnotesize\ttfamily enum \mbox{\hyperlink{model_8h_a7899b65f1ea0f655e4bbf8d2a5714285}{Game\+State}}}
 
-
-
-Enumeration representing the game state. 
-
 \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SINGLEPLAYER@{SINGLEPLAYER}!model.h@{model.h}}\index{model.h@{model.h}!SINGLEPLAYER@{SINGLEPLAYER}}}\mbox{\Hypertarget{model_8h_a7899b65f1ea0f655e4bbf8d2a5714285adf9c53b97637b5e5ac722fb2f6d26512}\label{model_8h_a7899b65f1ea0f655e4bbf8d2a5714285adf9c53b97637b5e5ac722fb2f6d26512}} 
+SINGLEPLAYER&\\
+\hline
+
 \raisebox{\heightof{T}}[0pt][0pt]{\index{DRAW@{DRAW}!model.h@{model.h}}\index{model.h@{model.h}!DRAW@{DRAW}}}\mbox{\Hypertarget{model_8h_a7899b65f1ea0f655e4bbf8d2a5714285a61f3c57b6943c85413975507aede78cd}\label{model_8h_a7899b65f1ea0f655e4bbf8d2a5714285a61f3c57b6943c85413975507aede78cd}} 
-DRAW&The draw state. \\
+DRAW&\\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{GUESS@{GUESS}!model.h@{model.h}}\index{model.h@{model.h}!GUESS@{GUESS}}}\mbox{\Hypertarget{model_8h_a7899b65f1ea0f655e4bbf8d2a5714285ab8c769f7e7a67d0a91a2fe34fdc5dbea}\label{model_8h_a7899b65f1ea0f655e4bbf8d2a5714285ab8c769f7e7a67d0a91a2fe34fdc5dbea}} 
-GUESS&The guess state. \\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{DRAW\_GUESS@{DRAW\_GUESS}!model.h@{model.h}}\index{model.h@{model.h}!DRAW\_GUESS@{DRAW\_GUESS}}}\mbox{\Hypertarget{model_8h_a7899b65f1ea0f655e4bbf8d2a5714285a43ea09f876a50cf7c5172507a484df32}\label{model_8h_a7899b65f1ea0f655e4bbf8d2a5714285a43ea09f876a50cf7c5172507a484df32}} 
-DRAW\+\_\+\+GUESS&The draw-\/guess state. \\
+GUESS&\\
 \hline
 
 \end{DoxyEnumFields}
@@ -191,6 +190,26 @@ LEADERBOARD&The leaderboard menu state. \\
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{END@{END}!model.h@{model.h}}\index{model.h@{model.h}!END@{END}}}\mbox{\Hypertarget{model_8h_aa3041ae4242c0dd57a126d17505443b2adc6f24fd6915a3f2786a1b7045406924}\label{model_8h_aa3041ae4242c0dd57a126d17505443b2adc6f24fd6915a3f2786a1b7045406924}} 
 END&The end game menu state. \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{model_8h_aa7fafad826fe8356e3a7ec64ef1ef3a4}\label{model_8h_aa7fafad826fe8356e3a7ec64ef1ef3a4}} 
+\index{model.h@{model.h}!PlayerRole@{PlayerRole}}
+\index{PlayerRole@{PlayerRole}!model.h@{model.h}}
+\doxysubsubsection{\texorpdfstring{PlayerRole}{PlayerRole}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{model_8h_aa7fafad826fe8356e3a7ec64ef1ef3a4}{Player\+Role}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DRAWER@{DRAWER}!model.h@{model.h}}\index{model.h@{model.h}!DRAWER@{DRAWER}}}\mbox{\Hypertarget{model_8h_aa7fafad826fe8356e3a7ec64ef1ef3a4a6e7c607a1a0b5c746db2838a32ba13e9}\label{model_8h_aa7fafad826fe8356e3a7ec64ef1ef3a4a6e7c607a1a0b5c746db2838a32ba13e9}} 
+DRAWER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GUESSER@{GUESSER}!model.h@{model.h}}\index{model.h@{model.h}!GUESSER@{GUESSER}}}\mbox{\Hypertarget{model_8h_aa7fafad826fe8356e3a7ec64ef1ef3a4ac44bc6b4eaf36f29d74dd655b861202c}\label{model_8h_aa7fafad826fe8356e3a7ec64ef1ef3a4ac44bc6b4eaf36f29d74dd655b861202c}} 
+GUESSER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SINGLE@{SINGLE}!model.h@{model.h}}\index{model.h@{model.h}!SINGLE@{SINGLE}}}\mbox{\Hypertarget{model_8h_aa7fafad826fe8356e3a7ec64ef1ef3a4a3388f7110f6f25a54e215eb75d5d7516}\label{model_8h_aa7fafad826fe8356e3a7ec64ef1ef3a4a3388f7110f6f25a54e215eb75d5d7516}} 
+SINGLE&\\
 \hline
 
 \end{DoxyEnumFields}
@@ -227,13 +246,8 @@ EXIT&The system is exiting. \\
 
 Adds a value to the leaderboard. 
 
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{model_8h_a7ee50be50b54058cc4bd8c286ae76bd3_cgraph}
-\end{center}
-\end{figure}
+Here is the call graph for this function\+:
+% FIG 1
 \mbox{\Hypertarget{model_8h_a42d8f69fb7a7a41e3f3e754e0b18470e}\label{model_8h_a42d8f69fb7a7a41e3f3e754e0b18470e}} 
 \index{model.h@{model.h}!checkResult@{checkResult}}
 \index{checkResult@{checkResult}!model.h@{model.h}}
@@ -257,11 +271,11 @@ True if the result is correct, false otherwise.
 
 Clears the leaderboard file. 
 
-\mbox{\Hypertarget{model_8h_a664447168b53c1bf003924014760b4ef}\label{model_8h_a664447168b53c1bf003924014760b4ef}} 
+\mbox{\Hypertarget{model_8h_ac54ddc9eede93d25d5a7010e239ecc0a}\label{model_8h_ac54ddc9eede93d25d5a7010e239ecc0a}} 
 \index{model.h@{model.h}!convert\_to\_qwerty@{convert\_to\_qwerty}}
 \index{convert\_to\_qwerty@{convert\_to\_qwerty}!model.h@{model.h}}
 \doxysubsubsection{\texorpdfstring{convert\_to\_qwerty()}{convert\_to\_qwerty()}}
-{\footnotesize\ttfamily int convert\+\_\+to\+\_\+qwerty (\begin{DoxyParamCaption}\item[{char $\ast$}]{str,  }\item[{int}]{word\mbox{[}$\,$\mbox{]},  }\item[{int $\ast$}]{word\+\_\+size }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int convert\+\_\+to\+\_\+qwerty (\begin{DoxyParamCaption}\item[{char $\ast$}]{str,  }\item[{uint8\+\_\+t}]{word\mbox{[}$\,$\mbox{]},  }\item[{int $\ast$}]{word\+\_\+size }\end{DoxyParamCaption})}
 
 
 
@@ -309,13 +323,8 @@ Gets a random word for the game.
 \begin{DoxyReturn}{Returns}
 A pointer to the random word. 
 \end{DoxyReturn}
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=321pt]{model_8h_a7d2c8c148e87c6ac0ea00e1b17747bf4_cgraph}
-\end{center}
-\end{figure}
+Here is the call graph for this function\+:
+% FIG 2
 \mbox{\Hypertarget{model_8h_aadcc26083caf604e98eeedac891f65ff}\label{model_8h_aadcc26083caf604e98eeedac891f65ff}} 
 \index{model.h@{model.h}!loadLeaderboardFromFile@{loadLeaderboardFromFile}}
 \index{loadLeaderboardFromFile@{loadLeaderboardFromFile}!model.h@{model.h}}
@@ -374,13 +383,7 @@ Here is the call graph for this function\+:\nopagebreak
 Updates the keyboard state. 
 
 Here is the call graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{model_8h_aacf177f660c44528fc3926b3cd69fb88_cgraph}
-\end{center}
-\end{figure}
+% FIG 3
 \mbox{\Hypertarget{model_8h_aa577e78e2462033d486b5d8fa64c7bec}\label{model_8h_aa577e78e2462033d486b5d8fa64c7bec}} 
 \index{model.h@{model.h}!update\_mouse\_state@{update\_mouse\_state}}
 \index{update\_mouse\_state@{update\_mouse\_state}!model.h@{model.h}}
@@ -391,13 +394,8 @@ Here is the call graph for this function\+:
 
 Updates the mouse state. 
 
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{model_8h_aa577e78e2462033d486b5d8fa64c7bec_cgraph}
-\end{center}
-\end{figure}
+Here is the call graph for this function\+:
+% FIG 4
 \mbox{\Hypertarget{model_8h_a2e7983abedd3fae94a24b4775a97210f}\label{model_8h_a2e7983abedd3fae94a24b4775a97210f}} 
 \index{model.h@{model.h}!update\_timer\_state@{update\_timer\_state}}
 \index{update\_timer\_state@{update\_timer\_state}!model.h@{model.h}}
@@ -408,13 +406,20 @@ Here is the call graph for this function\+:\nopagebreak
 
 Updates the timer state. 
 
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{model_8h_a2e7983abedd3fae94a24b4775a97210f_cgraph}
-\end{center}
-\end{figure}
+Here is the call graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{model_8h_a310f3270f9769e7de04370fcea1dc6ea}\label{model_8h_a310f3270f9769e7de04370fcea1dc6ea}} 
+\index{model.h@{model.h}!update\_uart\_state@{update\_uart\_state}}
+\index{update\_uart\_state@{update\_uart\_state}!model.h@{model.h}}
+\doxysubsubsection{\texorpdfstring{update\_uart\_state()}{update\_uart\_state()}}
+{\footnotesize\ttfamily void update\+\_\+uart\+\_\+state (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Updates the uart state. 
+
+Here is the call graph for this function\+:
+% FIG 6
 \mbox{\Hypertarget{model_8h_afbeae9084da66088f0c10d0f9552c031}\label{model_8h_afbeae9084da66088f0c10d0f9552c031}} 
 \index{model.h@{model.h}!updateLeaderboard@{updateLeaderboard}}
 \index{updateLeaderboard@{updateLeaderboard}!model.h@{model.h}}
@@ -441,13 +446,7 @@ Updates the leaderboard with a new value.
 Updates the state on keyboard click. 
 
 Here is the call graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{model_8h_a9cc50208c690329cd26eed7611668367_cgraph}
-\end{center}
-\end{figure}
+% FIG 7
 \mbox{\Hypertarget{model_8h_ad407bbb0ed8ebc2c5bc3434a6757ebd5}\label{model_8h_ad407bbb0ed8ebc2c5bc3434a6757ebd5}} 
 \index{model.h@{model.h}!updateStateMouseClick@{updateStateMouseClick}}
 \index{updateStateMouseClick@{updateStateMouseClick}!model.h@{model.h}}
@@ -458,10 +457,5 @@ Here is the call graph for this function\+:
 
 Updates the state on mouse click. 
 
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{model_8h_ad407bbb0ed8ebc2c5bc3434a6757ebd5_cgraph}
-\end{center}
-\end{figure}
+Here is the call graph for this function\+:
+% FIG 8

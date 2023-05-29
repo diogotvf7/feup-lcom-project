@@ -1,0 +1,29 @@
+digraph "config_uart"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="config_uart",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Configures the UART with the desired settings."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="set_uart_dlab",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ser__port_8c.html#aa36c182d20911549cf07bc7aa974fdc2",tooltip="Sets the DLAB (Divisor Latch Access Bit) of the UART."];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="get_uart_lcr",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ser__port_8c.html#a60b614bf9ab6b52f3449d58092a079b3",tooltip="Retrieves the value of the LCR (Line Control Register) of the UART."];
+  Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="util_sys_inb",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4",tooltip="Reads a byte from the specified port."];
+  Node2 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="set_uart_lcr",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ser__port_8c.html#ab805c19f9ac6d19b13da5055c077ab84",tooltip="Sets the LCR (Line Control Register) of the UART."];
+  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="set_uart_fcr",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ser__port_8c.html#a0d3a14a7a11e780049df692f812538cf",tooltip="Sets the FCR (FIFO Control Register) of the UART."];
+  Node1 -> Node7 [color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="set_uart_freq",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ser__port_8c.html#accd333f913935c67629d07be7c894f30",tooltip="Sets the frequency of the UART."];
+  Node7 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node7 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
+  Node7 -> Node8 [color="midnightblue",fontsize="10",style="solid"];
+  Node8 [label="util_get_LSB",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$utils_8c.html#a81621440b3d65680979425e39aa8c789",tooltip="Retrieves the least significant byte from a 16-bit value."];
+  Node7 -> Node9 [color="midnightblue",fontsize="10",style="solid"];
+  Node9 [label="util_get_MSB",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$utils_8c.html#a6a880076cd2ec468834438b6e0c58836",tooltip="Retrieves the most significant byte from a 16-bit value."];
+  Node1 -> Node10 [color="midnightblue",fontsize="10",style="solid"];
+  Node10 [label="set_uart_ier",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ser__port_8c.html#a3333340fe13535c025e6c3befe26fd84",tooltip="Sets the IER (Interrupt Enable Register) of the UART."];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
+}
