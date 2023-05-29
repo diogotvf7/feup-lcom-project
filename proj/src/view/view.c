@@ -26,17 +26,17 @@ extern int game_counter;
 
 extern int delayTime;
 extern int number_letters;
-extern int word_guess[10];
+extern uint8_t word_guess[10];
 
 extern bool gameResult;
 
-extern int word_solution[12];
+extern uint8_t word_solution[12];
 extern int word_sol_number_letters;
 
-extern int game_title[18];
+extern uint8_t game_title[18];
 extern int game_title_size;
 
-extern int text[12];
+extern uint8_t text[12];
 extern int text_size;
 
 void draw_new_frame() {
@@ -78,38 +78,54 @@ void draw_initial_menu() {
 void draw_game_menu() {
     draw_bottom_bar(0,750,1152,114, GOLD,80,780,900,70);
 
-    if(gameState == SINGLEPLAYER){
+    if (gameState == SINGLEPLAYER) {
         draw_sprite_xpm(chooseColors, 0, 0);
-        if(delayTime <= 5)
-            draw_word(word_solution,word_sol_number_letters, -1, -1, BLACK);
+        if (delayTime <= 5) draw_word(word_solution,word_sol_number_letters, -1, -1, BLACK);
+        else draw_word(word_guess, number_letters, -1, -1, BLACK);
+
+    } else if (gameState == DRAW) {
+        draw_sprite_xpm(chooseColors, 0, 0);
+        if (delayTime <= 5) draw_word(word_solution,word_sol_number_letters, -1, -1, BLACK);
+    } else if (gameState == GUESS) {
+        draw_sprite_xpm(chooseColors, 0, 0);
+        draw_word(word_guess, number_letters, -1, -1, BLACK);
     }
 
     draw_game_time(game_counter);
-    draw_word(word_guess, number_letters, -1, -1, BLACK);
 }
 
 void draw_end_menu(){
 
-    if(gameResult){
-        draw_sprite_xpm(victory, 337,0);
-        text_size = 0;
-        for (int i = 0; i < 18; i++) {
-            text[i] = -1;
-        }
+    draw_sprite_xpm(gameResult ? victory : defeat, 337,0);
+    text_size = 0;
+    for (int i = 0; i < 18; i++) {
+        text[i] = -1;
+    }
+    if (gameState == SINGLEPLAYER || gameState == DRAW) {
         convert_to_qwerty("the word was", text, &text_size);
         draw_word(text, text_size, 0,400, BLACK);
-        draw_word(word_solution,word_sol_number_letters, 300,500, GREEN);
+        draw_word(word_solution,word_sol_number_letters, 300,500, gameResult ? GREEN : RED);
     }
-    else{
-        draw_sprite_xpm(defeat, 337, 0);
-         text_size = 0;
-        for (int i = 0; i < 18; i++) {
-            text[i] = -1;
-        }
-        convert_to_qwerty("the word was", text, &text_size);
-        draw_word(text, text_size, 0,400, BLACK);
-        draw_word(word_solution,word_sol_number_letters, 300,500, RED);
-    }
+    
+    // if (gameResult) {
+    //     draw_sprite_xpm(victory, 337,0);
+    //     text_size = 0;
+    //     for (int i = 0; i < 18; i++) {
+    //         text[i] = -1;
+    //     }
+    //     convert_to_qwerty("the word was", text, &text_size);
+    //     draw_word(text, text_size, 0,400, BLACK);
+    //     draw_word(word_solution,word_sol_number_letters, 300,500, GREEN);
+    // } else{
+    //     draw_sprite_xpm(defeat, 337, 0);
+    //      text_size = 0;
+    //     for (int i = 0; i < 18; i++) {
+    //         text[i] = -1;
+    //     }
+    //     convert_to_qwerty("the word was", text, &text_size);
+    //     draw_word(text, text_size, 0,400, BLACK);
+    //     draw_word(word_solution,word_sol_number_letters, 300,500, RED);
+    // }
     
     draw_sprite_xpm(playAgainButton, 131, 600);
     draw_sprite_xpm(leaderboardButton, 462, 600);
@@ -206,7 +222,7 @@ int draw_sprite_xpm(Sprite *sprite, int x, int y) {
     for(uint16_t h = 0; h < height; h++) {
         for(uint16_t w = 0; w < width; w++) {
             current_color = sprite->colors[w + h*width];
-            if(current_color != TRANSPARENT) {
+            if (current_color != TRANSPARENT) {
                 vg_draw_pixel(x + w, y + h, current_color);
             }
         }
@@ -237,7 +253,7 @@ int draw_bottom_bar(int x, int y, int width, int height, uint32_t color, int squ
     return 0;
 }
 
-int draw_word(int word[], int word_size, int x, int y, uint32_t color){
+int draw_word(uint8_t word[], int word_size, int x, int y, uint32_t color){
     int letter_pos = 0;
     for(int i = 0; i < word_size; i++){
         if(word[i] == 26){letter_pos++; continue;}
@@ -250,9 +266,7 @@ int draw_word(int word[], int word_size, int x, int y, uint32_t color){
     return 0;
 }
 
-
-
-int draw_letter(int x, int y, int letter_index, uint32_t color){
+int draw_letter(int x, int y, uint8_t letter_index, uint32_t color){
 
     uint16_t width = 70;
     uint16_t height = 70;

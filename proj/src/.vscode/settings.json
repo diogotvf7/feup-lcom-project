@@ -31,6 +31,7 @@
     "global_vars.h": "c",
     "*.xpm": "c",
     "cstdio": "c",
-    "model.h": "c"
+    "model.h": "c",
+    "ser_port.h": "c"
   },
 }

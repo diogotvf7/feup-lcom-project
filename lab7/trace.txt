@@ -1,0 +1,2009 @@
+@lcflib.a:2019, lcf_start
+  video_test_init(mode, delay)
+> video_test_init(0x001, 1)
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fb, addr: 0xeffff5dc)
+  < sys_inb(0x3fb, addr: 0xeffff5dc [0x03 = 0b00000011])
+  @lab5.c:54, video_test_init
+    printf("lcr: ")
+    "lcr: "
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:35, printBits
+    printf("\n")
+    ""
+  @lab5.c:57, video_test_init
+    printf("DLAB:           %d\n", (lcr & DLAB_MASK) >> 7)
+    "DLAB:           0"
+  @lab5.c:58, video_test_init
+    printf("BREAK:          %d\n", (lcr & BREAK_CONTROL_MASK) >> 6)
+    "BREAK:          0"
+  @lab5.c:59, video_test_init
+    printf("PARITY:         %d\n", (lcr & PARITY_MASK) >> 3)
+    "PARITY:         0"
+  @lab5.c:60, video_test_init
+    printf("STOP:           %d\n", (lcr & STOP_BITS_MASK) >> 2)
+    "STOP:           0"
+  @lab5.c:61, video_test_init
+    printf("BITS P CHAR:    %d\n", lcr & BITS_PER_CHAR_MASK)
+    "BITS P CHAR:    3"
+  @ser_port.c:66, set_uart_lcr
+    sys_outb(COM1 + SER_LCR, byte)
+  > sys_outb(0x3fb, 0x0f = 0b00001111)
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fb, addr: 0xeffff5c4)
+  < sys_inb(0x3fb, addr: 0xeffff5c4 [0x0f = 0b00001111])
+  @ser_port.c:66, set_uart_lcr
+    sys_outb(COM1 + SER_LCR, byte)
+  > sys_outb(0x3fb, 0x8f = 0b10001111)
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fb, addr: 0xeffff59c)
+  < sys_inb(0x3fb, addr: 0xeffff59c [0x8f = 0b10001111])
+  @ser_port.c:66, set_uart_lcr
+    sys_outb(COM1 + SER_LCR, byte)
+  > sys_outb(0x3fb, 0x8f = 0b10001111)
+  @ser_port.c:95, set_uart_freq
+    util_get_LSB(freq, &lsb)
+  > util_get_LSB(0x0001, addr: 0xeffff5ca)
+  < util_get_LSB(0x0001, addr: 0xeffff5ca [0x01]) -> (ret: 0)
+  @ser_port.c:96, set_uart_freq
+    util_get_MSB(freq, &msb)
+  > util_get_MSB(0x0001, addr: 0xeffff5c9)
+  < util_get_MSB(0x0001, addr: 0xeffff5c9 [0x00]) -> (ret: 0)
+  @ser_port.c:97, set_uart_freq
+    sys_outb(COM1 + SER_DLL, lsb)
+  > sys_outb(0x3f8, 0x01 = 0b00000001)
+  @ser_port.c:97, set_uart_freq
+    sys_outb(COM1 + SER_DLM, msb)
+  > sys_outb(0x3f9, 0x00 = 0b00000000)
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fb, addr: 0xeffff5c4)
+  < sys_inb(0x3fb, addr: 0xeffff5c4 [0x8f = 0b10001111])
+  @ser_port.c:66, set_uart_lcr
+    sys_outb(COM1 + SER_LCR, byte)
+  > sys_outb(0x3fb, 0x0f = 0b00001111)
+  @ser_port.c:56, set_uart_ier
+    sys_outb(COM1 + SER_IER, byte)
+  > sys_outb(0x3f9, 0x07 = 0b00000111)
+  @ser_port.c:46, set_uart_fcr
+    sys_outb(COM1 + SER_FCR, byte)
+  > sys_outb(0x3fa, 0x07 = 0b00000111)
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fb, addr: 0xeffff5dc)
+  < sys_inb(0x3fb, addr: 0xeffff5dc [0x0f = 0b00001111])
+  @lab5.c:68, video_test_init
+    printf("____________________________\n")
+    "____________________________"
+  @lab5.c:69, video_test_init
+    printf("lcr: ")
+    "lcr: "
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:35, printBits
+    printf("\n")
+    ""
+  @lab5.c:72, video_test_init
+    printf("DLAB:           %d\n", (ctrl & DLAB_MASK) >> 7)
+    "DLAB:           0"
+  @lab5.c:73, video_test_init
+    printf("BREAK:          %d\n", (ctrl & BREAK_CONTROL_MASK) >> 6)
+    "BREAK:          0"
+  @lab5.c:74, video_test_init
+    printf("PARITY:         %d\n", (ctrl & PARITY_MASK) >> 3)
+    "PARITY:         1"
+  @lab5.c:75, video_test_init
+    printf("STOP:           %d\n", (ctrl & STOP_BITS_MASK) >> 2)
+    "STOP:           1"
+  @lab5.c:76, video_test_init
+    printf("BITS P CHAR:    %d\n", ctrl & BITS_PER_CHAR_MASK)
+    "BITS P CHAR:    3"
+  @ser_port.c:41, subscribe_uart_int
+    sys_irqsetpolicy(COM1_IRQ, IRQ_REENABLE | IRQ_EXCLUSIVE, &hook_id)
+  > sys_irqsetpolicy(4, 3, addr: 0x822e804 [4])
+  < sys_irqsetpolicy(4, 3, addr: 0x822e804 [10]) -> (ret: 0)
+  @keyboard.c:14, keyboard_subscribe_int
+    sys_irqsetpolicy(KBD_IRQ, IRQ_REENABLE | IRQ_EXCLUSIVE, &hook_id)
+  > sys_irqsetpolicy(1, 3, addr: 0x822e808 [1])
+  < sys_irqsetpolicy(1, 3, addr: 0x822e808 [11]) -> (ret: 0)
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab5.c:98, video_test_init
+    kbc_ih()
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff534)
+    < sys_inb(0x64, addr: 0xeffff534 [0x1d = 0b00011101])
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff534)
+    < sys_inb(0x60, addr: 0xeffff534 [0x9c = 0b10011100])
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab5.c:98, video_test_init
+    kbc_ih()
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff534)
+    < sys_inb(0x64, addr: 0xeffff534 [0x1d = 0b00011101])
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff534)
+    < sys_inb(0x60, addr: 0xeffff534 [0x1e = 0b00011110])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @ser_port.c:154, send_uart_byte
+    sys_outb(COM1 + SER_THR, byte)
+  > sys_outb(0x3f8, 0x61 = 0b01100001)
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000010000]>)
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fa, addr: 0xeffff5bc)
+  < sys_inb(0x3fa, addr: 0xeffff5bc [0xc2 = 0b11000010])
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:35, printBits
+    printf("\n")
+    ""
+  @ser_port.c:109, uart_ih
+    printf("WARNING: Interrupt pending")
+    "WARNING: Interrupt pending"
+  @ser_port.c:115, uart_ih
+    printf("   TRANSMITTER_EMPTY_INT\n")
+    "   TRANSMITTER_EMPTY_INT"
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab5.c:98, video_test_init
+    kbc_ih()
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff534)
+    < sys_inb(0x64, addr: 0xeffff534 [0x1d = 0b00011101])
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff534)
+    < sys_inb(0x60, addr: 0xeffff534 [0x1f = 0b00011111])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @ser_port.c:154, send_uart_byte
+    sys_outb(COM1 + SER_THR, byte)
+  > sys_outb(0x3f8, 0x73 = 0b01110011)
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000010000]>)
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fa, addr: 0xeffff5bc)
+  < sys_inb(0x3fa, addr: 0xeffff5bc [0xc2 = 0b11000010])
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:35, printBits
+    printf("\n")
+    ""
+  @ser_port.c:109, uart_ih
+    printf("WARNING: Interrupt pending")
+    "WARNING: Interrupt pending"
+  @ser_port.c:115, uart_ih
+    printf("   TRANSMITTER_EMPTY_INT\n")
+    "   TRANSMITTER_EMPTY_INT"
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab5.c:98, video_test_init
+    kbc_ih()
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff534)
+    < sys_inb(0x64, addr: 0xeffff534 [0x1d = 0b00011101])
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff534)
+    < sys_inb(0x60, addr: 0xeffff534 [0x20 = 0b00100000])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @ser_port.c:154, send_uart_byte
+    sys_outb(COM1 + SER_THR, byte)
+  > sys_outb(0x3f8, 0x64 = 0b01100100)
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000010000]>)
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fa, addr: 0xeffff5bc)
+  < sys_inb(0x3fa, addr: 0xeffff5bc [0xc2 = 0b11000010])
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:35, printBits
+    printf("\n")
+    ""
+  @ser_port.c:109, uart_ih
+    printf("WARNING: Interrupt pending")
+    "WARNING: Interrupt pending"
+  @ser_port.c:115, uart_ih
+    printf("   TRANSMITTER_EMPTY_INT\n")
+    "   TRANSMITTER_EMPTY_INT"
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab5.c:98, video_test_init
+    kbc_ih()
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff534)
+    < sys_inb(0x64, addr: 0xeffff534 [0x1d = 0b00011101])
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff534)
+    < sys_inb(0x60, addr: 0xeffff534 [0x9e = 0b10011110])
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab5.c:98, video_test_init
+    kbc_ih()
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff534)
+    < sys_inb(0x64, addr: 0xeffff534 [0x1d = 0b00011101])
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff534)
+    < sys_inb(0x60, addr: 0xeffff534 [0x9f = 0b10011111])
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab5.c:98, video_test_init
+    kbc_ih()
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff534)
+    < sys_inb(0x64, addr: 0xeffff534 [0x1d = 0b00011101])
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff534)
+    < sys_inb(0x60, addr: 0xeffff534 [0xa0 = 0b10100000])
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000010000]>)
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fa, addr: 0xeffff5bc)
+  < sys_inb(0x3fa, addr: 0xeffff5bc [0xc4 = 0b11000100])
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:35, printBits
+    printf("\n")
+    ""
+  @ser_port.c:109, uart_ih
+    printf("WARNING: Interrupt pending")
+    "WARNING: Interrupt pending"
+  @ser_port.c:119, uart_ih
+    printf("   Receiving data...\n")
+    "   Receiving data..."
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x61 = 0b01100001])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3f8, addr: 0xeffff5bc)
+  < sys_inb(0x3f8, addr: 0xeffff5bc [0x61 = 0b01100001])
+  @ser_port.c:121, uart_ih
+    printf("   Received byte: %c\n", byte)
+    "   Received byte: a"
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000010000]>)
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fa, addr: 0xeffff5bc)
+  < sys_inb(0x3fa, addr: 0xeffff5bc [0xc4 = 0b11000100])
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:35, printBits
+    printf("\n")
+    ""
+  @ser_port.c:109, uart_ih
+    printf("WARNING: Interrupt pending")
+    "WARNING: Interrupt pending"
+  @ser_port.c:119, uart_ih
+    printf("   Receiving data...\n")
+    "   Receiving data..."
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x61 = 0b01100001])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3f8, addr: 0xeffff5bc)
+  < sys_inb(0x3f8, addr: 0xeffff5bc [0x61 = 0b01100001])
+  @ser_port.c:121, uart_ih
+    printf("   Received byte: %c\n", byte)
+    "   Received byte: a"
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab5.c:98, video_test_init
+    kbc_ih()
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff534)
+    < sys_inb(0x64, addr: 0xeffff534 [0x1d = 0b00011101])
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff534)
+    < sys_inb(0x60, addr: 0xeffff534 [0x1e = 0b00011110])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @ser_port.c:154, send_uart_byte
+    sys_outb(COM1 + SER_THR, byte)
+  > sys_outb(0x3f8, 0x61 = 0b01100001)
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000010000]>)
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fa, addr: 0xeffff5bc)
+  < sys_inb(0x3fa, addr: 0xeffff5bc [0xc2 = 0b11000010])
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:35, printBits
+    printf("\n")
+    ""
+  @ser_port.c:109, uart_ih
+    printf("WARNING: Interrupt pending")
+    "WARNING: Interrupt pending"
+  @ser_port.c:115, uart_ih
+    printf("   TRANSMITTER_EMPTY_INT\n")
+    "   TRANSMITTER_EMPTY_INT"
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab5.c:98, video_test_init
+    kbc_ih()
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff534)
+    < sys_inb(0x64, addr: 0xeffff534 [0x1d = 0b00011101])
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff534)
+    < sys_inb(0x60, addr: 0xeffff534 [0x9e = 0b10011110])
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab5.c:98, video_test_init
+    kbc_ih()
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff534)
+    < sys_inb(0x64, addr: 0xeffff534 [0x1d = 0b00011101])
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff534)
+    < sys_inb(0x60, addr: 0xeffff534 [0x1e = 0b00011110])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @ser_port.c:154, send_uart_byte
+    sys_outb(COM1 + SER_THR, byte)
+  > sys_outb(0x3f8, 0x61 = 0b01100001)
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000010000]>)
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fa, addr: 0xeffff5bc)
+  < sys_inb(0x3fa, addr: 0xeffff5bc [0xc2 = 0b11000010])
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:35, printBits
+    printf("\n")
+    ""
+  @ser_port.c:109, uart_ih
+    printf("WARNING: Interrupt pending")
+    "WARNING: Interrupt pending"
+  @ser_port.c:115, uart_ih
+    printf("   TRANSMITTER_EMPTY_INT\n")
+    "   TRANSMITTER_EMPTY_INT"
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab5.c:98, video_test_init
+    kbc_ih()
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff534)
+    < sys_inb(0x64, addr: 0xeffff534 [0x1d = 0b00011101])
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff534)
+    < sys_inb(0x60, addr: 0xeffff534 [0x9e = 0b10011110])
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab5.c:98, video_test_init
+    kbc_ih()
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff534)
+    < sys_inb(0x64, addr: 0xeffff534 [0x1d = 0b00011101])
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff534)
+    < sys_inb(0x60, addr: 0xeffff534 [0x1e = 0b00011110])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @ser_port.c:154, send_uart_byte
+    sys_outb(COM1 + SER_THR, byte)
+  > sys_outb(0x3f8, 0x61 = 0b01100001)
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000010000]>)
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fa, addr: 0xeffff5bc)
+  < sys_inb(0x3fa, addr: 0xeffff5bc [0xc2 = 0b11000010])
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:35, printBits
+    printf("\n")
+    ""
+  @ser_port.c:109, uart_ih
+    printf("WARNING: Interrupt pending")
+    "WARNING: Interrupt pending"
+  @ser_port.c:115, uart_ih
+    printf("   TRANSMITTER_EMPTY_INT\n")
+    "   TRANSMITTER_EMPTY_INT"
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab5.c:98, video_test_init
+    kbc_ih()
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff534)
+    < sys_inb(0x64, addr: 0xeffff534 [0x1d = 0b00011101])
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff534)
+    < sys_inb(0x60, addr: 0xeffff534 [0x9e = 0b10011110])
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000010000]>)
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fa, addr: 0xeffff5bc)
+  < sys_inb(0x3fa, addr: 0xeffff5bc [0xc4 = 0b11000100])
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:35, printBits
+    printf("\n")
+    ""
+  @ser_port.c:109, uart_ih
+    printf("WARNING: Interrupt pending")
+    "WARNING: Interrupt pending"
+  @ser_port.c:119, uart_ih
+    printf("   Receiving data...\n")
+    "   Receiving data..."
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x61 = 0b01100001])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3f8, addr: 0xeffff5bc)
+  < sys_inb(0x3f8, addr: 0xeffff5bc [0x61 = 0b01100001])
+  @ser_port.c:121, uart_ih
+    printf("   Received byte: %c\n", byte)
+    "   Received byte: a"
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000010000]>)
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fa, addr: 0xeffff5bc)
+  < sys_inb(0x3fa, addr: 0xeffff5bc [0xc4 = 0b11000100])
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:35, printBits
+    printf("\n")
+    ""
+  @ser_port.c:109, uart_ih
+    printf("WARNING: Interrupt pending")
+    "WARNING: Interrupt pending"
+  @ser_port.c:119, uart_ih
+    printf("   Receiving data...\n")
+    "   Receiving data..."
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x61 = 0b01100001])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3f8, addr: 0xeffff5bc)
+  < sys_inb(0x3f8, addr: 0xeffff5bc [0x61 = 0b01100001])
+  @ser_port.c:121, uart_ih
+    printf("   Received byte: %c\n", byte)
+    "   Received byte: a"
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000010000]>)
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fa, addr: 0xeffff5bc)
+  < sys_inb(0x3fa, addr: 0xeffff5bc [0xc4 = 0b11000100])
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:35, printBits
+    printf("\n")
+    ""
+  @ser_port.c:109, uart_ih
+    printf("WARNING: Interrupt pending")
+    "WARNING: Interrupt pending"
+  @ser_port.c:119, uart_ih
+    printf("   Receiving data...\n")
+    "   Receiving data..."
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x61 = 0b01100001])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3f8, addr: 0xeffff5bc)
+  < sys_inb(0x3f8, addr: 0xeffff5bc [0x61 = 0b01100001])
+  @ser_port.c:121, uart_ih
+    printf("   Received byte: %c\n", byte)
+    "   Received byte: a"
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000010000]>)
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fa, addr: 0xeffff5bc)
+  < sys_inb(0x3fa, addr: 0xeffff5bc [0xc4 = 0b11000100])
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:35, printBits
+    printf("\n")
+    ""
+  @ser_port.c:109, uart_ih
+    printf("WARNING: Interrupt pending")
+    "WARNING: Interrupt pending"
+  @ser_port.c:119, uart_ih
+    printf("   Receiving data...\n")
+    "   Receiving data..."
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x61 = 0b01100001])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3f8, addr: 0xeffff5bc)
+  < sys_inb(0x3f8, addr: 0xeffff5bc [0x61 = 0b01100001])
+  @ser_port.c:121, uart_ih
+    printf("   Received byte: %c\n", byte)
+    "   Received byte: a"
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab5.c:98, video_test_init
+    kbc_ih()
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff534)
+    < sys_inb(0x64, addr: 0xeffff534 [0x1d = 0b00011101])
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff534)
+    < sys_inb(0x60, addr: 0xeffff534 [0x1e = 0b00011110])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @ser_port.c:154, send_uart_byte
+    sys_outb(COM1 + SER_THR, byte)
+  > sys_outb(0x3f8, 0x61 = 0b01100001)
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000010000]>)
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fa, addr: 0xeffff5bc)
+  < sys_inb(0x3fa, addr: 0xeffff5bc [0xc2 = 0b11000010])
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:35, printBits
+    printf("\n")
+    ""
+  @ser_port.c:109, uart_ih
+    printf("WARNING: Interrupt pending")
+    "WARNING: Interrupt pending"
+  @ser_port.c:115, uart_ih
+    printf("   TRANSMITTER_EMPTY_INT\n")
+    "   TRANSMITTER_EMPTY_INT"
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab5.c:98, video_test_init
+    kbc_ih()
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff534)
+    < sys_inb(0x64, addr: 0xeffff534 [0x1d = 0b00011101])
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff534)
+    < sys_inb(0x60, addr: 0xeffff534 [0x9e = 0b10011110])
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab5.c:98, video_test_init
+    kbc_ih()
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff534)
+    < sys_inb(0x64, addr: 0xeffff534 [0x1d = 0b00011101])
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff534)
+    < sys_inb(0x60, addr: 0xeffff534 [0x1e = 0b00011110])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @ser_port.c:154, send_uart_byte
+    sys_outb(COM1 + SER_THR, byte)
+  > sys_outb(0x3f8, 0x61 = 0b01100001)
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000010000]>)
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fa, addr: 0xeffff5bc)
+  < sys_inb(0x3fa, addr: 0xeffff5bc [0xc2 = 0b11000010])
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:35, printBits
+    printf("\n")
+    ""
+  @ser_port.c:109, uart_ih
+    printf("WARNING: Interrupt pending")
+    "WARNING: Interrupt pending"
+  @ser_port.c:115, uart_ih
+    printf("   TRANSMITTER_EMPTY_INT\n")
+    "   TRANSMITTER_EMPTY_INT"
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab5.c:98, video_test_init
+    kbc_ih()
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff534)
+    < sys_inb(0x64, addr: 0xeffff534 [0x1d = 0b00011101])
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff534)
+    < sys_inb(0x60, addr: 0xeffff534 [0x9e = 0b10011110])
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab5.c:98, video_test_init
+    kbc_ih()
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff534)
+    < sys_inb(0x64, addr: 0xeffff534 [0x1d = 0b00011101])
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff534)
+    < sys_inb(0x60, addr: 0xeffff534 [0x1e = 0b00011110])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @ser_port.c:154, send_uart_byte
+    sys_outb(COM1 + SER_THR, byte)
+  > sys_outb(0x3f8, 0x61 = 0b01100001)
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000010000]>)
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fa, addr: 0xeffff5bc)
+  < sys_inb(0x3fa, addr: 0xeffff5bc [0xc2 = 0b11000010])
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:35, printBits
+    printf("\n")
+    ""
+  @ser_port.c:109, uart_ih
+    printf("WARNING: Interrupt pending")
+    "WARNING: Interrupt pending"
+  @ser_port.c:115, uart_ih
+    printf("   TRANSMITTER_EMPTY_INT\n")
+    "   TRANSMITTER_EMPTY_INT"
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab5.c:98, video_test_init
+    kbc_ih()
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff534)
+    < sys_inb(0x64, addr: 0xeffff534 [0x1d = 0b00011101])
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff534)
+    < sys_inb(0x60, addr: 0xeffff534 [0x9e = 0b10011110])
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab5.c:98, video_test_init
+    kbc_ih()
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff534)
+    < sys_inb(0x64, addr: 0xeffff534 [0x1d = 0b00011101])
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff534)
+    < sys_inb(0x60, addr: 0xeffff534 [0x1e = 0b00011110])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @ser_port.c:154, send_uart_byte
+    sys_outb(COM1 + SER_THR, byte)
+  > sys_outb(0x3f8, 0x61 = 0b01100001)
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000010000]>)
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fa, addr: 0xeffff5bc)
+  < sys_inb(0x3fa, addr: 0xeffff5bc [0xc2 = 0b11000010])
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:35, printBits
+    printf("\n")
+    ""
+  @ser_port.c:109, uart_ih
+    printf("WARNING: Interrupt pending")
+    "WARNING: Interrupt pending"
+  @ser_port.c:115, uart_ih
+    printf("   TRANSMITTER_EMPTY_INT\n")
+    "   TRANSMITTER_EMPTY_INT"
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab5.c:98, video_test_init
+    kbc_ih()
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff534)
+    < sys_inb(0x64, addr: 0xeffff534 [0x1d = 0b00011101])
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff534)
+    < sys_inb(0x60, addr: 0xeffff534 [0x9e = 0b10011110])
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab5.c:98, video_test_init
+    kbc_ih()
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff534)
+    < sys_inb(0x64, addr: 0xeffff534 [0x1d = 0b00011101])
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff534)
+    < sys_inb(0x60, addr: 0xeffff534 [0x1e = 0b00011110])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @ser_port.c:154, send_uart_byte
+    sys_outb(COM1 + SER_THR, byte)
+  > sys_outb(0x3f8, 0x61 = 0b01100001)
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000010000]>)
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fa, addr: 0xeffff5bc)
+  < sys_inb(0x3fa, addr: 0xeffff5bc [0xc2 = 0b1100001      @utils.c:32, print  > sys_inb(0x3fa, addr: 0xe    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:35, printBits
+    printf("\n")
+    ""
+  @ser_port.c:109, uart_ih
+    printf("WARNING: Interrupt pending")
+    "WARNING: Interrupt pending"
+  @ser    ""
+  @ser_port.c:109, uart_ih
+    printf("WARNING: Interru    "   TRANSMITTER_EMPTY_INT"
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > dr    "   Receiving data..."
+  @utils.c:6, util_sys_inb
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab5.c:98, video_test_init
+    kbc_ih()
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff534)
+    < sys_inb(0x64, addr: 0xeffff534 [0x1d = 0b00011101])
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff534)
+    < sys_inb(0x60, addr: 0xeffff534 [0x9e = 0b10011110])
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab5.c:98, video_test_init
+    kbc_ih()
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff534)
+    < sys_inb(0x64, addr: 0xeffff534 [0x1d = 0b00011101])
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff534)
+    < sys_inb(0x60, addr: 0xeffff534 [0x1f = 0b00011111])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @ser_port.c:154, send_uart_byte
+    sys_outb(  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000010000]>)
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fa, addr: 0xeffff5bc)
+  < sys_inb(0x3fa, addr: 0xeffff5bc [0xc4 = 0b11000100])
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:35, printBits
+    printf("\n")
+    ""
+  @ser_port.c:109, uart_ih
+    printf("WARNING: Interrupt pending")
+    "WARNING: Interrupt pending"
+  @ser_port.c:119, uart_ih
+    printf("   Receiving data...\n")
+    "   Receiving data..."
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x61 = 0b01100001])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3f8, addr: 0xeffff5bc)
+  < sys_inb(0x3f8, addr: 0xeffff5bc [0x73 = 0b01110011])
+  @ser_port.c:121, uart_ih
+    printf("   Rec  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab5.c:98, video_test_init
+    kbc_ih()
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff534)
+    < sys_inb(0x64, addr: 0xeffff534 [0x1d = 0b00011101])
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff534)
+    < sys_inb(0x60, addr: 0xeffff534 [0x9f = 0b10011111])
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab5.c:98, video_test_init
+    kbc_ih()
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff534)
+    < sys_inb(0x64, addr: 0xeffff534 [0x1d = 0b00011101])
+    @utils.c:6, util_sys_inb
+        < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000010000]>)
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fa, addr: 0xeffff5bc)
+  < sys_inb(0x3fa, addr: 0xeffff5bc [0xc4 = 0b11000100])
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:35, printBits
+    printf("\n")
+    ""
+  @ser_port.c:109, uart_ih
+    printf("WARNING: Interrupt pending")
+    "WARNING: Interrupt pending"
+  @ser_port.c:119, uart_ih
+    printf("   Receiving data...\n")
+    "   Receiving data..."
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x61 = 0b01100001])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3f8, addr: 0xeffff5bc)
+  < sys_inb(0x3f8, addr: 0xeffff5bc [0x64 = 0b01100100])
+  @ser_port.c:121, uart_ih
+    printf("   Received byte: %c\n", byte)
+    "   Received byte: d"
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr:  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab5.c:98, video_test_init
+    kbc_ih()
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff534)
+    < sys_inb(0x64, addr: 0xeffff534 [0x1d = 0b00011101])
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff534)
+    < sys_inb(0x60, addr: 0xeffff534 [0xa0 = 0b10100000])
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000010000]>)
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fa, addr: 0xeffff5bc)
+  < sys_inb(0x3fa, addr: 0xeffff5bc [0xc4 = 0b11000100])
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:35, printBits
+    printf("\n")
+    ""
+  @ser_port.c:109, uart_ih
+    printf("WARNING: Interrupt pending")
+    "WARNING: Interrupt pending"
+  @ser_port.c:119, uart_ih
+    printf("   Receiving data...\n")
+    "   Receiving data..."
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x61 = 0b01100001])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3f8, addr: 0xeffff5bc)
+  < sys_inb(0x3f8, addr: 0xeffff5bc [0x61 = 0b01100001])
+  @ser_port.c:121, uart_ih
+    printf("   Received byte: %c\n", byte)
+    "   Received byte: a"
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @utils.c:6, util_sys_inb
+    < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab5.c:98, video_test_init
+    kbc_ih()
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff534)
+    < sys_in  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000010000]>)
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fa, addr: 0xeffff5bc)
+  < sys_inb(0x3fa, addr: 0xeffff5bc [0xc4 = 0b11000100])
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:35, printBits
+    printf("\n")
+    ""
+  @ser_port.c:109, uart_ih
+    printf("WARNING: Interrupt pending")
+    "WARNING: Interrupt pending"
+  @ser_port.c:119, uart_ih
+    printf("   Receiving data...\n")
+    "   Receiving data..."
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x61 = 0b01100001])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3f8, addr: 0xeffff5bc)
+  < sys_inb(0x3f8, addr: 0xeffff5bc [0x73 = 0b01110011])
+  @ser_port.c:121, uart_ih
+    printf("   Received byte: %c\n", byte)
+    "   Received byte: s"
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000010000]>)
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fa, addr: 0xeffff5bc)
+  < sys_inb(0x3fa, addr: 0xeffff5bc [0xc4 = 0b11000100])
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:35, printBits
+    printf("\n")
+    ""
+  @ser_port.c:109, uart_ih
+    printf("WARNING: Interrupt pending")
+    "WARNING: Interrupt pending"
+  @ser_port.c:119, uart_ih
+    printf("   Receiving data...\n")
+    "   Receiving data..."
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x61 = 0b01100001])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3f8, addr: 0xeffff5bc)
+  < sys_inb(0x3f8, addr: 0xeffff5bc [0x64 = 0b01100100])
+  @ser_port.c:121, uart_ih
+    printf("   Received byte: %c\n", byte)
+    "   Received byte: d"
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000010000]>)
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fa, addr: 0xeffff5bc)
+  < sys_inb(0x3fa, addr: 0xeffff5bc [0xc4 = 0b11000100])
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:35, printBits
+    printf("\n")
+    ""
+  @ser_port.c:109, uart_ih
+    printf("WARNING: Interrupt pending")
+    "WARNING: Interrupt pending"
+  @ser_port.c:119, uart_ih
+    printf("   Receiving data...\n")
+    "   Receiving data..."
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x61 = 0b01100001])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3f8, addr: 0xeffff5bc)
+  < sys_inb(0x3f8, addr: 0xeffff5bc [0x00 = 0b00000000])
+  @ser_port.c:121, uart_ih
+    printf("   Received byte: %c\n", byte)
+    "   Received byte: "
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab5.c:98, video_test_init
+    kbc_ih()
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff534)
+    < sys_inb(0x64, addr: 0xeffff534 [0x1d = 0b00011101])
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff534)
+    < sys_inb(0x60, addr: 0xeffff534 [0x01 = 0b00000001])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @ser_port.c:154, send_uart_byte
+    sys_outb(COM1 + SER_THR, byte)
+  > sys_outb(0x3f8, 0x00 = 0b00000000)
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000010000]>)
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fa, addr: 0xeffff5bc)
+  < sys_inb(0x3fa, addr: 0xeffff5bc [0xc4 = 0b11000100])
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "1"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:32, printBits
+    printf("%u", byte)
+    "0"
+  @utils.c:35, printBits
+    printf("\n")
+    ""
+  @ser_port.c:109, uart_ih
+    printf("WARNING: Interrupt pending")
+    "WARNING: Interrupt pending"
+  @ser_port.c:119, uart_ih
+    printf("   Receiving data...\n")
+    "   Receiving data..."
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x61 = 0b01100001])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3f8, addr: 0xeffff5bc)
+  < sys_inb(0x3f8, addr: 0xeffff5bc [0x5e = 0b01011110])
+  @ser_port.c:121, uart_ih
+    printf("   Received byte: %c\n", byte)
+    "   Received byte: ^"
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x61 = 0b01100001])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3f8, addr: 0xeffff5bc)
+  < sys_inb(0x3f8, addr: 0xeffff5bc [0x40 = 0b01000000])
+  @ser_port.c:121, uart_ih
+    printf("   Received byte: %c\n", byte)
+    "   Received byte: @"
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @utils.c:6, util_sys_inb
+    sys_inb(port, &val)
+  > sys_inb(0x3fd, addr: 0xeffff5bc)
+  < sys_inb(0x3fd, addr: 0xeffff5bc [0x60 = 0b01100000])
+  @lab5.c:90, video_test_init
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff620, addr: 0xeffff664)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab5.c:98, video_test_init
+    kbc_ih()
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff534)
+    < sys_inb(0x64, addr: 0xeffff534 [0x1d = 0b00011101])
+    @utils.c:6, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff534)
+    < sys_inb(0x60, addr: 0xeffff534 [0x81 = 0b10000001])
+  @keyboard.c:18, keyboard_unsubscribe_int
+    sys_irqrmpolicy(&hook_id)
+  > sys_irqrmpolicy(addr: 0x822e808 [11])
+  < sys_irqrmpolicy(addr: 0x822e808 [11]) -> (ret: 0)
+  @ser_port.c:51, unsubscribe_uart_int
+    sys_irqrmpolicy(&hook_id)
+  > sys_irqrmpolicy(addr: 0x822e804 [10])
+  < sys_irqrmpolicy(addr: 0x822e804 [10]) -> (ret: 0)
+  @ser_port.c:66, set_uart_lcr
+    sys_outb(COM1 + SER_LCR, byte)
+  > sys_outb(0x3fb, 0x03 = 0b00000011)
+< video_test_init(0x001, 1) -> (ret: 0)

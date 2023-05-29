@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Paint with friends: view/view.h Source File</title>
+<title>LCOM_PROJ: view/view.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Paint with friends
+   <div id="projectname">LCOM_PROJ
    </div>
   </td>
  </tr>
@@ -69,66 +69,44 @@ $(function() {
 <div class="title">view.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="view_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;lcom/lcf.h&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="mouse_8h.html">controller/mouse/mouse.h</a>&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="graphics__card_8h.html">controller/graphics_card/graphics_card.h</a>&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="sprite_8h.html">model/sprite.h</a>&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="colors_8h.html">model/colors.h</a>&quot;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="model_8h.html">model/model.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;controller/mouse/mouse.h&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;controller/graphics_card/graphics_card.h&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;model/sprite.h&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;model/colors.h&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;model/model.h&quot;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">void</span> <a class="code" href="view_8h.html#a8fe6fe827e29e6b0cb98cda00dc38355">draw_new_frame</a>();</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">void</span> draw_new_frame();</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">void</span> <a class="code" href="view_8h.html#a42f4903ab89aff9e3ee0206c52cf710a">draw_mouse</a>();</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">void</span> draw_mouse();</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keywordtype">void</span> <a class="code" href="view_8h.html#a2e293823f22abda1c98f45d8035282d8">draw_initial_menu</a>();</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keywordtype">void</span> draw_initial_menu();</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keywordtype">void</span> <a class="code" href="view_8h.html#a0a9f56467341cbe24bd981d4b9960fdd">draw_game_menu</a>();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keywordtype">void</span> draw_game_menu();</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keywordtype">void</span> <a class="code" href="view_8h.html#adc37ea95d6b131697311029bc38d65ea">draw_leaderboard</a>();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keywordtype">void</span> draw_leaderboard();</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keywordtype">void</span> <a class="code" href="view_8h.html#aa72c0c9d88ccd3fde2b5893fbe236b83">draw_end_menu</a>();</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keywordtype">void</span> draw_end_menu();</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keywordtype">int</span> <a class="code" href="view_8h.html#a6db4230a0003a09515d78b790d8ec52d">draw_sprite_xpm</a>(<a class="code" href="structSprite.html">Sprite</a>* sprite, <span class="keywordtype">int</span> <a class="code" href="mouse_8c.html#a6150e0515f7202e2fb518f7206ed97dc">x</a>, <span class="keywordtype">int</span> <a class="code" href="mouse_8c.html#a0a2f84ed7838f07779ae24c5a9086d33">y</a>);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keywordtype">int</span> draw_sprite_xpm(<a class="code" href="struct_sprite.html">Sprite</a>* sprite, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keywordtype">int</span> <a class="code" href="view_8h.html#ad10caead967ffc5e90d74152e28d9e1c">draw_bar</a>(<span class="keywordtype">int</span> <a class="code" href="mouse_8c.html#a6150e0515f7202e2fb518f7206ed97dc">x</a>, <span class="keywordtype">int</span> <a class="code" href="mouse_8c.html#a0a2f84ed7838f07779ae24c5a9086d33">y</a>, <span class="keywordtype">int</span> width, <span class="keywordtype">int</span> height, uint32_t <a class="code" href="model_8c.html#a66b2ef8398a8bbb0f5816f22a7b138da">color</a>);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keywordtype">int</span> draw_bar(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> width, <span class="keywordtype">int</span> height, uint32_t color);</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keywordtype">int</span> <a class="code" href="view_8h.html#aef8638ecb12b4ebdcfa0d7dae437129f">draw_bottom_bar</a>(<span class="keywordtype">int</span> <a class="code" href="mouse_8c.html#a6150e0515f7202e2fb518f7206ed97dc">x</a>, <span class="keywordtype">int</span> <a class="code" href="mouse_8c.html#a0a2f84ed7838f07779ae24c5a9086d33">y</a>, <span class="keywordtype">int</span> width, <span class="keywordtype">int</span> height, uint32_t <a class="code" href="model_8c.html#a66b2ef8398a8bbb0f5816f22a7b138da">color</a>, <span class="keywordtype">int</span> square_vertex_x, <span class="keywordtype">int</span> square_vertex_y, <span class="keywordtype">int</span> square_width, <span class="keywordtype">int</span> square_height);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keywordtype">int</span> draw_bottom_bar(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> width, <span class="keywordtype">int</span> height, uint32_t color, <span class="keywordtype">int</span> square_vertex_x, <span class="keywordtype">int</span> square_vertex_y, <span class="keywordtype">int</span> square_width, <span class="keywordtype">int</span> square_height);</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keywordtype">int</span> <a class="code" href="view_8h.html#ab3bf18436e0b405afd0e0a421d0fa218">draw_game_time</a>(<span class="keywordtype">int</span> num);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keywordtype">int</span> draw_game_time(<span class="keywordtype">int</span> num);</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keywordtype">int</span> <a class="code" href="view_8h.html#ada858fadee2450139d229f064b30f17b">draw_letter</a>(<span class="keywordtype">int</span> <a class="code" href="mouse_8c.html#a6150e0515f7202e2fb518f7206ed97dc">x</a>, <span class="keywordtype">int</span> <a class="code" href="mouse_8c.html#a0a2f84ed7838f07779ae24c5a9086d33">y</a>, <span class="keywordtype">int</span> letter_index, uint32_t <a class="code" href="model_8c.html#a66b2ef8398a8bbb0f5816f22a7b138da">color</a>);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keywordtype">int</span> draw_letter(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, uint8_t letter_index, uint32_t color);</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="keywordtype">int</span> <a class="code" href="view_8h.html#a58e061d468ef13a6a2099c9b31a3590a">draw_number</a>(<a class="code" href="structSprite.html">Sprite</a>* sprite, <span class="keywordtype">int</span> <a class="code" href="mouse_8c.html#a6150e0515f7202e2fb518f7206ed97dc">x</a>, <span class="keywordtype">int</span> <a class="code" href="mouse_8c.html#a0a2f84ed7838f07779ae24c5a9086d33">y</a>, <span class="keywordtype">int</span> index);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="keywordtype">int</span> draw_number(<a class="code" href="struct_sprite.html">Sprite</a>* sprite, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> index);</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="keywordtype">int</span> <a class="code" href="view_8h.html#a8961a3bca654ba4b82e25d500e72e51a">draw_word</a>(<span class="keywordtype">int</span> word[], <span class="keywordtype">int</span> word_size, <span class="keywordtype">int</span> <a class="code" href="mouse_8c.html#a6150e0515f7202e2fb518f7206ed97dc">x</a>, <span class="keywordtype">int</span> <a class="code" href="mouse_8c.html#a0a2f84ed7838f07779ae24c5a9086d33">y</a>, uint32_t <a class="code" href="model_8c.html#a66b2ef8398a8bbb0f5816f22a7b138da">color</a>);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="keywordtype">int</span> draw_word(uint8_t word[], <span class="keywordtype">int</span> word_size, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, uint32_t color);</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
-<div class="ttc" id="acolors_8h_html"><div class="ttname"><a href="colors_8h.html">colors.h</a></div></div>
-<div class="ttc" id="agraphics__card_8h_html"><div class="ttname"><a href="graphics__card_8h.html">graphics_card.h</a></div></div>
-<div class="ttc" id="amodel_8c_html_a66b2ef8398a8bbb0f5816f22a7b138da"><div class="ttname"><a href="model_8c.html#a66b2ef8398a8bbb0f5816f22a7b138da">color</a></div><div class="ttdeci">uint32_t color</div><div class="ttdef"><b>Definition:</b> model.c:27</div></div>
-<div class="ttc" id="amodel_8h_html"><div class="ttname"><a href="model_8h.html">model.h</a></div></div>
-<div class="ttc" id="amouse_8c_html_a0a2f84ed7838f07779ae24c5a9086d33"><div class="ttname"><a href="mouse_8c.html#a0a2f84ed7838f07779ae24c5a9086d33">y</a></div><div class="ttdeci">int y</div><div class="ttdef"><b>Definition:</b> mouse.c:8</div></div>
-<div class="ttc" id="amouse_8c_html_a6150e0515f7202e2fb518f7206ed97dc"><div class="ttname"><a href="mouse_8c.html#a6150e0515f7202e2fb518f7206ed97dc">x</a></div><div class="ttdeci">int x</div><div class="ttdef"><b>Definition:</b> mouse.c:7</div></div>
-<div class="ttc" id="amouse_8h_html"><div class="ttname"><a href="mouse_8h.html">mouse.h</a></div></div>
-<div class="ttc" id="asprite_8h_html"><div class="ttname"><a href="sprite_8h.html">sprite.h</a></div></div>
-<div class="ttc" id="astructSprite_html"><div class="ttname"><a href="structSprite.html">Sprite</a></div><div class="ttdoc">Structure representing a sprite.</div><div class="ttdef"><b>Definition:</b> sprite.h:7</div></div>
-<div class="ttc" id="aview_8h_html_a0a9f56467341cbe24bd981d4b9960fdd"><div class="ttname"><a href="view_8h.html#a0a9f56467341cbe24bd981d4b9960fdd">draw_game_menu</a></div><div class="ttdeci">void draw_game_menu()</div><div class="ttdoc">Draws the game menu on the screen.</div><div class="ttdef"><b>Definition:</b> view.c:81</div></div>
-<div class="ttc" id="aview_8h_html_a2e293823f22abda1c98f45d8035282d8"><div class="ttname"><a href="view_8h.html#a2e293823f22abda1c98f45d8035282d8">draw_initial_menu</a></div><div class="ttdeci">void draw_initial_menu()</div><div class="ttdoc">Draws the initial menu on the screen.</div><div class="ttdef"><b>Definition:</b> view.c:65</div></div>
-<div class="ttc" id="aview_8h_html_a42f4903ab89aff9e3ee0206c52cf710a"><div class="ttname"><a href="view_8h.html#a42f4903ab89aff9e3ee0206c52cf710a">draw_mouse</a></div><div class="ttdeci">void draw_mouse()</div><div class="ttdoc">Draws the mouse cursor on the screen.</div><div class="ttdef"><b>Definition:</b> view.c:61</div></div>
-<div class="ttc" id="aview_8h_html_a58e061d468ef13a6a2099c9b31a3590a"><div class="ttname"><a href="view_8h.html#a58e061d468ef13a6a2099c9b31a3590a">draw_number</a></div><div class="ttdeci">int draw_number(Sprite *sprite, int x, int y, int index)</div><div class="ttdoc">Draws a number on the screen at the specified coordinates using a sprite and index.</div><div class="ttdef"><b>Definition:</b> view.c:278</div></div>
-<div class="ttc" id="aview_8h_html_a6db4230a0003a09515d78b790d8ec52d"><div class="ttname"><a href="view_8h.html#a6db4230a0003a09515d78b790d8ec52d">draw_sprite_xpm</a></div><div class="ttdeci">int draw_sprite_xpm(Sprite *sprite, int x, int y)</div><div class="ttdoc">Draws a sprite on the screen at the specified coordinates.</div><div class="ttdef"><b>Definition:</b> view.c:197</div></div>
-<div class="ttc" id="aview_8h_html_a8961a3bca654ba4b82e25d500e72e51a"><div class="ttname"><a href="view_8h.html#a8961a3bca654ba4b82e25d500e72e51a">draw_word</a></div><div class="ttdeci">int draw_word(int word[], int word_size, int x, int y, uint32_t color)</div><div class="ttdoc">Draws a word on the screen at the specified coordinates with the given color.</div><div class="ttdef"><b>Definition:</b> view.c:237</div></div>
-<div class="ttc" id="aview_8h_html_a8fe6fe827e29e6b0cb98cda00dc38355"><div class="ttname"><a href="view_8h.html#a8fe6fe827e29e6b0cb98cda00dc38355">draw_new_frame</a></div><div class="ttdeci">void draw_new_frame()</div><div class="ttdoc">Draws a new frame on the screen.</div><div class="ttdef"><b>Definition:</b> view.c:41</div></div>
-<div class="ttc" id="aview_8h_html_aa72c0c9d88ccd3fde2b5893fbe236b83"><div class="ttname"><a href="view_8h.html#aa72c0c9d88ccd3fde2b5893fbe236b83">draw_end_menu</a></div><div class="ttdeci">void draw_end_menu()</div><div class="ttdoc">Draws the end menu on the screen.</div><div class="ttdef"><b>Definition:</b> view.c:186</div></div>
-<div class="ttc" id="aview_8h_html_ab3bf18436e0b405afd0e0a421d0fa218"><div class="ttname"><a href="view_8h.html#ab3bf18436e0b405afd0e0a421d0fa218">draw_game_time</a></div><div class="ttdeci">int draw_game_time(int num)</div><div class="ttdoc">Draws the game time on the screen.</div><div class="ttdef"><b>Definition:</b> view.c:295</div></div>
-<div class="ttc" id="aview_8h_html_ad10caead967ffc5e90d74152e28d9e1c"><div class="ttname"><a href="view_8h.html#ad10caead967ffc5e90d74152e28d9e1c">draw_bar</a></div><div class="ttdeci">int draw_bar(int x, int y, int width, int height, uint32_t color)</div><div class="ttdoc">Draws a bar on the screen with the specified dimensions and color.</div><div class="ttdef"><b>Definition:</b> view.c:214</div></div>
-<div class="ttc" id="aview_8h_html_ada858fadee2450139d229f064b30f17b"><div class="ttname"><a href="view_8h.html#ada858fadee2450139d229f064b30f17b">draw_letter</a></div><div class="ttdeci">int draw_letter(int x, int y, int letter_index, uint32_t color)</div><div class="ttdoc">Draws a letter on the screen at the specified coordinates with the given color.</div><div class="ttdef"><b>Definition:</b> view.c:259</div></div>
-<div class="ttc" id="aview_8h_html_adc37ea95d6b131697311029bc38d65ea"><div class="ttname"><a href="view_8h.html#adc37ea95d6b131697311029bc38d65ea">draw_leaderboard</a></div><div class="ttdeci">void draw_leaderboard()</div><div class="ttdoc">Draws the leaderboard on the screen.</div><div class="ttdef"><b>Definition:</b> view.c:106</div></div>
-<div class="ttc" id="aview_8h_html_aef8638ecb12b4ebdcfa0d7dae437129f"><div class="ttname"><a href="view_8h.html#aef8638ecb12b4ebdcfa0d7dae437129f">draw_bottom_bar</a></div><div class="ttdeci">int draw_bottom_bar(int x, int y, int width, int height, uint32_t color, int square_vertex_x, int square_vertex_y, int square_width, int square_height)</div><div class="ttdoc">Draws a bottom bar on the screen with the specified dimensions, color, and square parameters.</div><div class="ttdef"><b>Definition:</b> view.c:223</div></div>
+<div class="ttc" id="astruct_sprite_html"><div class="ttname"><a href="struct_sprite.html">Sprite</a></div><div class="ttdoc">Structure representing a sprite.</div><div class="ttdef"><b>Definition:</b> sprite.h:7</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
