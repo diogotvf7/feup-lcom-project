@@ -1,0 +1,219 @@
+\hypertarget{base__frame_8c}{}\doxysection{model/base\+\_\+frame.c File Reference}
+\label{base__frame_8c}\index{model/base\_frame.c@{model/base\_frame.c}}
+{\ttfamily \#include \char`\"{}base\+\_\+frame.\+h\char`\"{}}\newline
+Include dependency graph for base\+\_\+frame.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=303pt]{base__frame_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{base__frame_8c_ab00d8022c641562da3becc117fb15bbc}{create\+\_\+frame\+\_\+buffer}} (uint16\+\_\+t width, uint16\+\_\+t height, uint16\+\_\+t \mbox{\hyperlink{view_8c_a273db53582b308a7fd6d6448e10f018f}{bytes\+\_\+per\+\_\+pixel}})
+\begin{DoxyCompactList}\small\item\em Creates a frame buffer with the specified width, height, and bytes per pixel. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{base__frame_8c_abd6b092940e72f501885017f6c18febd}{draw\+\_\+frame\+\_\+pixel}} (uint16\+\_\+t \mbox{\hyperlink{view_8c_a6150e0515f7202e2fb518f7206ed97dc}{x}}, uint16\+\_\+t \mbox{\hyperlink{view_8c_a0a2f84ed7838f07779ae24c5a9086d33}{y}}, uint32\+\_\+t \mbox{\hyperlink{model_8c_a66b2ef8398a8bbb0f5816f22a7b138da}{color}})
+\begin{DoxyCompactList}\small\item\em Draws a pixel with the specified color at the given coordinates in the frame buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{base__frame_8c_a9d6dd219f82794bf17103d63a15978f6}{draw\+\_\+frame\+\_\+circle}} (\mbox{\hyperlink{structPosition}{Position}} p, uint16\+\_\+t thickness, uint32\+\_\+t \mbox{\hyperlink{model_8c_a66b2ef8398a8bbb0f5816f22a7b138da}{color}})
+\begin{DoxyCompactList}\small\item\em Draws a circle with the specified position, thickness, and color in the frame buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{base__frame_8c_a22d65fbf80bd282c6b4ec1765c1ea180}{draw\+\_\+bresenham\+\_\+line}} (\mbox{\hyperlink{structPosition}{Position}} p1, \mbox{\hyperlink{structPosition}{Position}} p2, uint32\+\_\+t \mbox{\hyperlink{model_8c_a66b2ef8398a8bbb0f5816f22a7b138da}{color}}, uint16\+\_\+t thickness)
+\begin{DoxyCompactList}\small\item\em Draws a line using Bresenham\textquotesingle{}s algorithm with the specified positions, color, and thickness in the frame buffer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{base__frame_8c_a1e165abcb00cf1ab25eb043ae85ab8f8}{process\+\_\+packet}} (uint32\+\_\+t \mbox{\hyperlink{model_8c_a66b2ef8398a8bbb0f5816f22a7b138da}{color}}, int \mbox{\hyperlink{model_8c_a395279899207ce7f17adf9fdb8ee97ee}{radius}})
+\begin{DoxyCompactList}\small\item\em Processes a packet with the specified color and radius. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{base__frame_8c_a0ca68dd8848dc3ffa75fcf6c6dc7d168}{reset\+\_\+frame}} ()
+\begin{DoxyCompactList}\small\item\em Resets the frame buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structframe__buffer__t}{frame\+\_\+buffer\+\_\+t}} \mbox{\hyperlink{base__frame_8c_a759e7825b70e7520a026615c171bbea6}{frame\+\_\+buffer}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{base__frame_8c_ab8e5ee65b16c61cb81cfca4e827117bb}{\+\_\+width}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{base__frame_8c_abe5c71b21006efa301e35d3819dea146}{\+\_\+height}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{base__frame_8c_a286d8828487dee7d6ce65fb26e40f749}{\+\_\+bytes\+\_\+per\+\_\+pixel}}
+\item 
+unsigned \mbox{\hyperlink{base__frame_8c_a01c5535abb79f8abf8dc2658d7f768c7}{\+\_\+size}}
+\item 
+uint8\+\_\+t $\ast$ \mbox{\hyperlink{base__frame_8c_af03a5bb1cbbdb149cbb1a21eb05f4a68}{\+\_\+base\+\_\+addr}}
+\item 
+\mbox{\hyperlink{structQueue}{Queue}} $\ast$ \mbox{\hyperlink{base__frame_8c_abfba47cf03c816b3edc710dbfd9794d1}{pos\+\_\+queue}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{base__frame_8c_ab00d8022c641562da3becc117fb15bbc}\label{base__frame_8c_ab00d8022c641562da3becc117fb15bbc}} 
+\index{base\_frame.c@{base\_frame.c}!create\_frame\_buffer@{create\_frame\_buffer}}
+\index{create\_frame\_buffer@{create\_frame\_buffer}!base\_frame.c@{base\_frame.c}}
+\doxysubsubsection{\texorpdfstring{create\_frame\_buffer()}{create\_frame\_buffer()}}
+{\footnotesize\ttfamily void create\+\_\+frame\+\_\+buffer (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{width,  }\item[{uint16\+\_\+t}]{height,  }\item[{uint16\+\_\+t}]{bytes\+\_\+per\+\_\+pixel }\end{DoxyParamCaption})}
+
+
+
+Creates a frame buffer with the specified width, height, and bytes per pixel. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & The width of the frame buffer. \\
+\hline
+{\em height} & The height of the frame buffer. \\
+\hline
+{\em bytes\+\_\+per\+\_\+pixel} & The number of bytes per pixel. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{base__frame_8c_a22d65fbf80bd282c6b4ec1765c1ea180}\label{base__frame_8c_a22d65fbf80bd282c6b4ec1765c1ea180}} 
+\index{base\_frame.c@{base\_frame.c}!draw\_bresenham\_line@{draw\_bresenham\_line}}
+\index{draw\_bresenham\_line@{draw\_bresenham\_line}!base\_frame.c@{base\_frame.c}}
+\doxysubsubsection{\texorpdfstring{draw\_bresenham\_line()}{draw\_bresenham\_line()}}
+{\footnotesize\ttfamily void draw\+\_\+bresenham\+\_\+line (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structPosition}{Position}}}]{p1,  }\item[{\mbox{\hyperlink{structPosition}{Position}}}]{p2,  }\item[{uint32\+\_\+t}]{color,  }\item[{uint16\+\_\+t}]{thickness }\end{DoxyParamCaption})}
+
+
+
+Draws a line using Bresenham\textquotesingle{}s algorithm with the specified positions, color, and thickness in the frame buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p1} & The starting position of the line. \\
+\hline
+{\em p2} & The ending position of the line. \\
+\hline
+{\em color} & The color of the line. \\
+\hline
+{\em thickness} & The thickness of the line. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{base__frame_8c_a22d65fbf80bd282c6b4ec1765c1ea180_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{base__frame_8c_a9d6dd219f82794bf17103d63a15978f6}\label{base__frame_8c_a9d6dd219f82794bf17103d63a15978f6}} 
+\index{base\_frame.c@{base\_frame.c}!draw\_frame\_circle@{draw\_frame\_circle}}
+\index{draw\_frame\_circle@{draw\_frame\_circle}!base\_frame.c@{base\_frame.c}}
+\doxysubsubsection{\texorpdfstring{draw\_frame\_circle()}{draw\_frame\_circle()}}
+{\footnotesize\ttfamily void draw\+\_\+frame\+\_\+circle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structPosition}{Position}}}]{p,  }\item[{uint16\+\_\+t}]{thickness,  }\item[{uint32\+\_\+t}]{color }\end{DoxyParamCaption})}
+
+
+
+Draws a circle with the specified position, thickness, and color in the frame buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & The position of the center of the circle. \\
+\hline
+{\em thickness} & The thickness of the circle. \\
+\hline
+{\em color} & The color of the circle. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=327pt]{base__frame_8c_a9d6dd219f82794bf17103d63a15978f6_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{base__frame_8c_abd6b092940e72f501885017f6c18febd}\label{base__frame_8c_abd6b092940e72f501885017f6c18febd}} 
+\index{base\_frame.c@{base\_frame.c}!draw\_frame\_pixel@{draw\_frame\_pixel}}
+\index{draw\_frame\_pixel@{draw\_frame\_pixel}!base\_frame.c@{base\_frame.c}}
+\doxysubsubsection{\texorpdfstring{draw\_frame\_pixel()}{draw\_frame\_pixel()}}
+{\footnotesize\ttfamily void draw\+\_\+frame\+\_\+pixel (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y,  }\item[{uint32\+\_\+t}]{color }\end{DoxyParamCaption})}
+
+
+
+Draws a pixel with the specified color at the given coordinates in the frame buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the pixel. \\
+\hline
+{\em y} & The y-\/coordinate of the pixel. \\
+\hline
+{\em color} & The color of the pixel. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{base__frame_8c_a1e165abcb00cf1ab25eb043ae85ab8f8}\label{base__frame_8c_a1e165abcb00cf1ab25eb043ae85ab8f8}} 
+\index{base\_frame.c@{base\_frame.c}!process\_packet@{process\_packet}}
+\index{process\_packet@{process\_packet}!base\_frame.c@{base\_frame.c}}
+\doxysubsubsection{\texorpdfstring{process\_packet()}{process\_packet()}}
+{\footnotesize\ttfamily int process\+\_\+packet (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{color,  }\item[{int}]{radius }\end{DoxyParamCaption})}
+
+
+
+Processes a packet with the specified color and radius. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & The color of the packet. \\
+\hline
+{\em radius} & The radius of the packet. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The result of the packet processing. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{base__frame_8c_a1e165abcb00cf1ab25eb043ae85ab8f8_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{base__frame_8c_a0ca68dd8848dc3ffa75fcf6c6dc7d168}\label{base__frame_8c_a0ca68dd8848dc3ffa75fcf6c6dc7d168}} 
+\index{base\_frame.c@{base\_frame.c}!reset\_frame@{reset\_frame}}
+\index{reset\_frame@{reset\_frame}!base\_frame.c@{base\_frame.c}}
+\doxysubsubsection{\texorpdfstring{reset\_frame()}{reset\_frame()}}
+{\footnotesize\ttfamily void reset\+\_\+frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Resets the frame buffer. 
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{base__frame_8c_af03a5bb1cbbdb149cbb1a21eb05f4a68}\label{base__frame_8c_af03a5bb1cbbdb149cbb1a21eb05f4a68}} 
+\index{base\_frame.c@{base\_frame.c}!\_base\_addr@{\_base\_addr}}
+\index{\_base\_addr@{\_base\_addr}!base\_frame.c@{base\_frame.c}}
+\doxysubsubsection{\texorpdfstring{\_base\_addr}{\_base\_addr}}
+{\footnotesize\ttfamily uint8\+\_\+t$\ast$ \+\_\+base\+\_\+addr}
+
+\mbox{\Hypertarget{base__frame_8c_a286d8828487dee7d6ce65fb26e40f749}\label{base__frame_8c_a286d8828487dee7d6ce65fb26e40f749}} 
+\index{base\_frame.c@{base\_frame.c}!\_bytes\_per\_pixel@{\_bytes\_per\_pixel}}
+\index{\_bytes\_per\_pixel@{\_bytes\_per\_pixel}!base\_frame.c@{base\_frame.c}}
+\doxysubsubsection{\texorpdfstring{\_bytes\_per\_pixel}{\_bytes\_per\_pixel}}
+{\footnotesize\ttfamily uint8\+\_\+t \+\_\+bytes\+\_\+per\+\_\+pixel}
+
+\mbox{\Hypertarget{base__frame_8c_abe5c71b21006efa301e35d3819dea146}\label{base__frame_8c_abe5c71b21006efa301e35d3819dea146}} 
+\index{base\_frame.c@{base\_frame.c}!\_height@{\_height}}
+\index{\_height@{\_height}!base\_frame.c@{base\_frame.c}}
+\doxysubsubsection{\texorpdfstring{\_height}{\_height}}
+{\footnotesize\ttfamily uint16\+\_\+t \+\_\+height}
+
+\mbox{\Hypertarget{base__frame_8c_a01c5535abb79f8abf8dc2658d7f768c7}\label{base__frame_8c_a01c5535abb79f8abf8dc2658d7f768c7}} 
+\index{base\_frame.c@{base\_frame.c}!\_size@{\_size}}
+\index{\_size@{\_size}!base\_frame.c@{base\_frame.c}}
+\doxysubsubsection{\texorpdfstring{\_size}{\_size}}
+{\footnotesize\ttfamily unsigned \+\_\+size}
+
+\mbox{\Hypertarget{base__frame_8c_ab8e5ee65b16c61cb81cfca4e827117bb}\label{base__frame_8c_ab8e5ee65b16c61cb81cfca4e827117bb}} 
+\index{base\_frame.c@{base\_frame.c}!\_width@{\_width}}
+\index{\_width@{\_width}!base\_frame.c@{base\_frame.c}}
+\doxysubsubsection{\texorpdfstring{\_width}{\_width}}
+{\footnotesize\ttfamily uint16\+\_\+t \+\_\+width}
+
+\mbox{\Hypertarget{base__frame_8c_a759e7825b70e7520a026615c171bbea6}\label{base__frame_8c_a759e7825b70e7520a026615c171bbea6}} 
+\index{base\_frame.c@{base\_frame.c}!frame\_buffer@{frame\_buffer}}
+\index{frame\_buffer@{frame\_buffer}!base\_frame.c@{base\_frame.c}}
+\doxysubsubsection{\texorpdfstring{frame\_buffer}{frame\_buffer}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structframe__buffer__t}{frame\+\_\+buffer\+\_\+t}} frame\+\_\+buffer}
+
+\mbox{\Hypertarget{base__frame_8c_abfba47cf03c816b3edc710dbfd9794d1}\label{base__frame_8c_abfba47cf03c816b3edc710dbfd9794d1}} 
+\index{base\_frame.c@{base\_frame.c}!pos\_queue@{pos\_queue}}
+\index{pos\_queue@{pos\_queue}!base\_frame.c@{base\_frame.c}}
+\doxysubsubsection{\texorpdfstring{pos\_queue}{pos\_queue}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structQueue}{Queue}}$\ast$ pos\+\_\+queue\hspace{0.3cm}{\ttfamily [extern]}}
+

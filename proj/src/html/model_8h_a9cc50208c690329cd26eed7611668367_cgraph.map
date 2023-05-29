@@ -1,0 +1,12 @@
+<map id="updateStateKeyboardClick" name="updateStateKeyboardClick">
+<area shape="rect" id="node1" title="Updates the state on keyboard click." alt="" coords="5,132,200,159"/>
+<area shape="rect" id="node2" href="$model_8c.html#a7ee50be50b54058cc4bd8c286ae76bd3" title="Adds a value to the leaderboard." alt="" coords="248,5,425,32"/>
+<area shape="rect" id="node4" href="$model_8c.html#a42d8f69fb7a7a41e3f3e754e0b18470e" title="Checks the result of the game." alt="" coords="286,56,387,83"/>
+<area shape="rect" id="node5" href="$keyboard_8c.html#afdfb6322f4a75773b745fc6cc6c20d27" title="Retrieves the scancode." alt="" coords="281,107,392,133"/>
+<area shape="rect" id="node6" href="$model_8c.html#a486f7b71aa892de0f05c6187647613b9" title=" " alt="" coords="295,157,378,184"/>
+<area shape="rect" id="node9" href="$keyboard_8c.html#a701a9af5a717d6604c9721fd2fa401a1" title="Reads the letter corresponding to the scancode." alt="" coords="290,208,383,235"/>
+<area shape="rect" id="node10" href="$base__frame_8c.html#a0ca68dd8848dc3ffa75fcf6c6dc7d168" title="Resets the frame buffer." alt="" coords="286,259,387,285"/>
+<area shape="rect" id="node3" href="$model_8c.html#afbeae9084da66088f0c10d0f9552c031" title="Updates the leaderboard with a new value." alt="" coords="473,5,621,32"/>
+<area shape="rect" id="node7" href="$model_8c.html#a7d2c8c148e87c6ac0ea00e1b17747bf4" title="Gets a random word for the game." alt="" coords="482,157,613,184"/>
+<area shape="rect" id="node8" href="$model_8c.html#a664447168b53c1bf003924014760b4ef" title="Converts a string to QWERTY format." alt="" coords="669,157,812,184"/>
+</map>

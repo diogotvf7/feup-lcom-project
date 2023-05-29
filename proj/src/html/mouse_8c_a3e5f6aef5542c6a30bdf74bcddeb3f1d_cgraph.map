@@ -1,0 +1,6 @@
+<map id="set_data_reporting" name="set_data_reporting">
+<area shape="rect" id="node1" title="Enables or disables data reporting from the mouse." alt="" coords="5,31,149,57"/>
+<area shape="rect" id="node2" href="$kbc_8c.html#a27ea4b97f35e05614f292a23a0dce3c5" title="Writes a command to the mouse." alt="" coords="197,5,304,32"/>
+<area shape="rect" id="node4" href="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4" title="Reads a byte from the specified port." alt="" coords="549,31,648,57"/>
+<area shape="rect" id="node3" href="$kbc_8c.html#a05ba0954260bbefa9d8abb7715d5c252" title="Reads the mouse status." alt="" coords="352,5,501,32"/>
+</map>

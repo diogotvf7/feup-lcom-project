@@ -1,0 +1,7 @@
+<map id="kbc_ih" name="kbc_ih">
+<area shape="rect" id="node1" title="Handles keyboard interrupts (C implementation)" alt="" coords="5,56,69,83"/>
+<area shape="rect" id="node2" href="$keyboard_8c.html#a5f400a225a968e44b3fedc850209e56c" title=" " alt="" coords="117,5,289,32"/>
+<area shape="rect" id="node3" href="$group__keyboard.html#gacab4f5cf18da1c098fba9b09cba9fa78" title=" " alt="" coords="129,56,278,83"/>
+<area shape="rect" id="node4" href="$group__keyboard.html#gab5b778c1e5e9ea40b69932da4fda244e" title=" " alt="" coords="121,107,286,133"/>
+<area shape="rect" id="node5" href="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4" title="Reads a byte from the specified port." alt="" coords="337,107,436,133"/>
+</map>

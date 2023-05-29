@@ -1,6 +1,3 @@
-#include <lcom/lcf.h>
-
-#include <stdint.h>
 #include "utils.h"
 
 
@@ -48,9 +45,3 @@ void printBits(size_t const size, void const * const ptr)
   // puts("");
 }
 
-void append_char(char *s, char c, int *size) {
-  int len = strlen(s);
-  s[len] = c;
-  s[len+1] = '\0';
-  *size += 1;
-}

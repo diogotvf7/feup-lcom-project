@@ -1,0 +1,11 @@
+<map id="reset_settings" name="reset_settings">
+<area shape="rect" id="node1" title=" " alt="" coords="5,107,120,133"/>
+<area shape="rect" id="node2" href="$keyboard_8c.html#a32cc4de66854f8a7bd909e7aa8b901ed" title="Unsubscribes from keyboard interrupts." alt="" coords="168,5,359,32"/>
+<area shape="rect" id="node3" href="$mouse_8c.html#a3ecf823d80520009ae5e0d76ae40a3c3" title="Unsubscribes from mouse interrupts." alt="" coords="176,56,351,83"/>
+<area shape="rect" id="node4" href="$model_8c.html#ad4f8085e20bf0c0e908b8ef2485d5630" title="Saves the leaderboard values to a file." alt="" coords="178,107,349,133"/>
+<area shape="rect" id="node5" href="$mouse_8c.html#a3e5f6aef5542c6a30bdf74bcddeb3f1d" title="Enables or disables data reporting from the mouse." alt="" coords="191,157,335,184"/>
+<area shape="rect" id="node9" href="$timer_8c.html#afabd21de449be154dd65d5fdb2d8045d" title=" " alt="" coords="180,208,347,235"/>
+<area shape="rect" id="node6" href="$kbc_8c.html#a27ea4b97f35e05614f292a23a0dce3c5" title="Writes a command to the mouse." alt="" coords="407,132,513,159"/>
+<area shape="rect" id="node8" href="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4" title="Reads a byte from the specified port." alt="" coords="759,157,857,184"/>
+<area shape="rect" id="node7" href="$kbc_8c.html#a05ba0954260bbefa9d8abb7715d5c252" title="Reads the mouse status." alt="" coords="561,132,711,159"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="updateStateMouseClick" name="updateStateMouseClick">
+<area shape="rect" id="node1" title="Updates the state on mouse click." alt="" coords="5,5,181,32"/>
+<area shape="rect" id="node2" href="$model_8c.html#a486f7b71aa892de0f05c6187647613b9" title=" " alt="" coords="229,5,312,32"/>
+<area shape="rect" id="node3" href="$model_8c.html#a7d2c8c148e87c6ac0ea00e1b17747bf4" title="Gets a random word for the game." alt="" coords="360,5,491,32"/>
+<area shape="rect" id="node4" href="$model_8c.html#a664447168b53c1bf003924014760b4ef" title="Converts a string to QWERTY format." alt="" coords="539,5,681,32"/>
+</map>

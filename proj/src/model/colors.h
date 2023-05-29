@@ -10,4 +10,5 @@
 #define TRANSPARENT 0xFFFFFE
 #define WHITE 0XFFFFFF
 #define GREY 0xF6F3F3
+#define GOLD 0xFFD700
 

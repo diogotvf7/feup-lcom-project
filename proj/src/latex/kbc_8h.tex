@@ -1,0 +1,107 @@
+\hypertarget{kbc_8h}{}\doxysection{controller/mouse/kbc.h File Reference}
+\label{kbc_8h}\index{controller/mouse/kbc.h@{controller/mouse/kbc.h}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}i8042.\+h\char`\"{}}\newline
+Include dependency graph for kbc.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{kbc_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kbc_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{kbc_8h_af9509054286fa5c35dae599cb56fe8b3}{read\+\_\+mouse\+\_\+status}} (uint8\+\_\+t $\ast$st)
+\begin{DoxyCompactList}\small\item\em Reads the mouse status. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{kbc_8h_a7a84a4e2f4ed7dbcbd11e5436d71e95d}{read\+\_\+output\+\_\+buffer}} (uint8\+\_\+t $\ast$out)
+\begin{DoxyCompactList}\small\item\em Reads the output buffer of the mouse. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{kbc_8h_a929c38044600d961b1912750d4cbe596}{mouse\+\_\+write}} (int port, uint8\+\_\+t cmd)
+\begin{DoxyCompactList}\small\item\em Writes a command to the mouse. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{kbc_8h_a929c38044600d961b1912750d4cbe596}\label{kbc_8h_a929c38044600d961b1912750d4cbe596}} 
+\index{kbc.h@{kbc.h}!mouse\_write@{mouse\_write}}
+\index{mouse\_write@{mouse\_write}!kbc.h@{kbc.h}}
+\doxysubsubsection{\texorpdfstring{mouse\_write()}{mouse\_write()}}
+{\footnotesize\ttfamily int mouse\+\_\+write (\begin{DoxyParamCaption}\item[{int}]{port,  }\item[{uint8\+\_\+t}]{cmd }\end{DoxyParamCaption})}
+
+
+
+Writes a command to the mouse. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & The port to write the command to. \\
+\hline
+{\em cmd} & The command to be written. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kbc_8h_a929c38044600d961b1912750d4cbe596_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{kbc_8h_af9509054286fa5c35dae599cb56fe8b3}\label{kbc_8h_af9509054286fa5c35dae599cb56fe8b3}} 
+\index{kbc.h@{kbc.h}!read\_mouse\_status@{read\_mouse\_status}}
+\index{read\_mouse\_status@{read\_mouse\_status}!kbc.h@{kbc.h}}
+\doxysubsubsection{\texorpdfstring{read\_mouse\_status()}{read\_mouse\_status()}}
+{\footnotesize\ttfamily int read\+\_\+mouse\+\_\+status (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{st }\end{DoxyParamCaption})}
+
+
+
+Reads the mouse status. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em st} & Pointer to store the status read from the mouse. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=302pt]{kbc_8h_af9509054286fa5c35dae599cb56fe8b3_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{kbc_8h_a7a84a4e2f4ed7dbcbd11e5436d71e95d}\label{kbc_8h_a7a84a4e2f4ed7dbcbd11e5436d71e95d}} 
+\index{kbc.h@{kbc.h}!read\_output\_buffer@{read\_output\_buffer}}
+\index{read\_output\_buffer@{read\_output\_buffer}!kbc.h@{kbc.h}}
+\doxysubsubsection{\texorpdfstring{read\_output\_buffer()}{read\_output\_buffer()}}
+{\footnotesize\ttfamily int read\+\_\+output\+\_\+buffer (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{out }\end{DoxyParamCaption})}
+
+
+
+Reads the output buffer of the mouse. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out} & Pointer to store the data read from the output buffer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kbc_8h_a7a84a4e2f4ed7dbcbd11e5436d71e95d_cgraph}
+\end{center}
+\end{figure}

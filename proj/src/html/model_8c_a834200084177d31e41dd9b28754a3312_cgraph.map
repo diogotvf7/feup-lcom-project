@@ -1,0 +1,4 @@
+<map id="setup_sprites" name="setup_sprites">
+<area shape="rect" id="node1" title="Sets up the sprites." alt="" coords="5,5,115,32"/>
+<area shape="rect" id="node2" href="$sprite_8c.html#a632aa689a0339b3558dadac05df9e5da" title="Creates a sprite from an XPM map." alt="" coords="163,5,305,32"/>
+</map>

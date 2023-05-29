@@ -15,11 +15,12 @@ Sprite* initialMenuButton;
 Sprite* ldbdButtonInitialPage;
 Sprite* coopGuessButton;
 Sprite* coopDrawButton;
+Sprite* dealer;
 
 
 int flag = 0, num_bytes = 1;
 uint8_t scancode_arr[2];
-uint8_t to_qwerty[26] = {10,23,21,12,2,13,14,15,7,16,17,18,25,24,8,9,0,3,11,4,6,22,1,20,5,19};
+uint8_t to_qwerty[27] = {10,23,21,12,2,13,14,15,7,16,17,18,25,24,8,9,0,3,11,4,6,22,1,20,5,19};
 extern int x, y;
 extern frame_buffer_t frame_buffer;
 extern real_time curr_time;
@@ -33,18 +34,23 @@ int offset;
 struct leaderboardValue leaderboard[5];
 extern struct Queue *pos_queue;
 extern struct Queue *garbage;
+extern uint8_t read_data;
 int delayTime = 0;
 bool gameResult= false;
 
-uint8_t word_guess[12] = {-1};
-int number_letters = 0;
 
 extern Queue *xmit_fifo;
 extern Queue *rcvr_fifo;
 
 
+uint8_t game_title[18] = {-1};
+int game_title_size = 0;
+uint8_t text[12] = {-1};
+int text_size = 0;
+uint8_t word_guess[12] = {-1};
+int number_letters = 0;
 uint8_t word_solution[12] = {-1};
-int word_sol_number_letters;
+int word_sol_number_letters = 0;
 
 void setup_sprites() {
     chooseColors = create_sprite_xpm((xpm_map_t) topBarGameMode_xpm);
@@ -60,8 +66,9 @@ void setup_sprites() {
     victory = create_sprite_xpm((xpm_map_t) Victory_xpm);
     defeat = create_sprite_xpm((xpm_map_t) Defeat_xpm);
     ldbdButtonInitialPage = create_sprite_xpm((xpm_map_t) leaderboardButtonInitialPage_xpm);
-    coopGuessButton = create_sprite_xpm((xpm_map_t) coopGuessButton_xpm);
     coopDrawButton = create_sprite_xpm((xpm_map_t) coopDrawButton_xpm);
+    dealer = create_sprite_xpm((xpm_map_t) dealer_xpm);
+
 }
 
 void initGame(){
@@ -107,7 +114,7 @@ void update_mouse_state() {
                 }
                 break;
             case GAME:
-                if (gameState == DRAW || gameState == DRAW_GUESS){
+                if (gameState == DRAW || gameState == SINGLEPLAYER) {
                     if (get_mouse_packet()->lb) {
                         if (y < 150) {
                             updateDrawSpecs(&color, &radius);
@@ -130,10 +137,7 @@ void update_mouse_state() {
                         reset_frame();
                         queue_clear(&pos_queue);
                     }
-                }
-                //isto e preciso ?
-                if(menuState == START){
-                }         
+                } 
                 break;
             case LEADERBOARD:
                 if(get_mouse_packet()->lb){
@@ -157,11 +161,11 @@ void update_mouse_state() {
                         menuState = START;
                     }
                 }
+                break;
                
             default:
                 break;
         }
-
         updateMouseLocation();   
     }
 }
@@ -225,13 +229,12 @@ void update_timer_state() {
     }
     copy_base_frame(frame_buffer);
     for (int i = PACKETS_PER_INTERRUPT; i; i--) {
-        if (process_packet(color, radius) != 0)
-            break;
+        if (process_packet(color, radius) != 0) break; 
     }
     if (get_counter() % 30 == 0 && menuState == GAME){
 
         //tempo de delay onde so conseguimos ver a palavra - o game counter nao diminui aqui
-        if(gameState == DRAW_GUESS && delayTime < 6){delayTime++;}
+        if(gameState == SINGLEPLAYER && delayTime < 6){delayTime++;}
         else{
             game_counter--;
         }
@@ -248,7 +251,6 @@ void update_timer_state() {
             reset_frame();
         }
     }
-
     draw_new_frame();
 }
 
@@ -258,7 +260,8 @@ void update_keyboard_state() {
         scancode_arr[0] = get_scancode();
         flag = 1;
         num_bytes = 2;
-    } else {
+    } 
+    else {
         scancode_arr[flag] = get_scancode();
         num_bytes = 1;
         flag = 0;
@@ -283,6 +286,7 @@ void destroy_sprites() {
     destroy_sprite(leaderboardButton);
     destroy_sprite(victory);
     destroy_sprite(defeat);
+    destroy_sprite(dealer);
 }
 
 void loadLeaderboardFromFile(leaderboardValue leaderboard[]) {
@@ -324,14 +328,14 @@ void clearLeaderboardFile() {
 }
 
 char* getRandomWord() {
+
     FILE* file = fopen("/home/lcom/labs/g1/proj/src/model/test.txt", "r");
-    
     if (file == NULL) {
         printf("Error opening file: \n" );
         return NULL;
     }
     
-    int random_line_number = (rand() % 49);    
+    int random_line_number = (rand() % 49);
     char* line = malloc(MAX_WORD_LENGTH * sizeof(char));
     if (line == NULL) {
         printf("Error allocating memory: \n");
@@ -346,15 +350,27 @@ char* getRandomWord() {
             return NULL;
         }
     }
-    word_sol_number_letters = strlen(line) - 1;
-
-    for (uint8_t i = 0; i < strlen(line); i++) {
-        int index = to_qwerty[(*(line + i)) - 'a'];
-        word_solution[i] = index;
-    }
-
+    
+    convert_to_qwerty(line,word_solution,&word_sol_number_letters);
     fclose(file); 
     return line;
+}
+
+int convert_to_qwerty(char* str, uint8_t word[], int* word_size){
+    for (uint8_t i = 0; i < strlen(str); i++) {
+        if (*(str + i) == '\n' || *(str + i) == '\r') {
+            break;
+        }
+        (*word_size)++;
+        if (*(str + i) == ' ') {
+            word[i] = 26;
+            continue;
+        }
+        int index = to_qwerty[(*(str + i)) - 'a'];
+        if (index > 27) return 1;
+        word[i] = index;
+    }
+    return 0;
 }
 
 bool checkResult(){
@@ -388,24 +404,20 @@ void addValueToLeaderboard(){
 
 void updateStateMouseClick() {
     //single player
-    if(x >= 100 && x <= 370 && y >= 300 && y <= 425){
+    if(x >= 400 && x <= 670 && y >= 200 && y <= 325){
         initGame();
-        gameState = DRAW_GUESS;
+        gameState = SINGLEPLAYER;
     }
     //coop draw
-    else if(x >= 450 && x <= 710 && y >= 300 && y <= 425){
+    else if(x >= 400 && x <= 670 && y >= 350 && y <= 475){
         send_start_msg();
         initGame();
         gameState = DRAW;
     }
-    else if(x >= 800 && x <= 1060 && y >= 300 && y <= 425){
-        initGame();
-        gameState = GUESS;
-    }
-    else if(x >= 250 && x <= 510 && y >= 500 && y <= 625){
+    else if(x >= 400 && x <= 670 && y >= 500 && y <= 625){
         menuState = LEADERBOARD;
     }
-    else if(x >= 600 && x <= 860 && y >= 500 && y <= 625){
+    else if(x >= 400 && x <= 670 && y >= 650 && y <= 800){
         systemState = EXIT;
     }
 }
@@ -423,53 +435,30 @@ void updateStateKeyboardClick(){
             reset_frame();
             break;
 
-        //Modo de jogo multiplayer - desenhar
-        case TWO_KEY:
-            if (menuState == GAME) break;
+        //Modo de jogo singleplayer
+        case TWO_KEY:{
+            if(menuState == GAME) break;
+            gameState = SINGLEPLAYER;
             initGame();
-            gameState = DRAW;
+            reset_frame();
             break;
-
-        //Modo de jogo multiplayer - adivinhar
-        case THREE_KEY:
-            if (menuState == GAME) break;
-            initGame();
-            gameState = GUESS;
-            break;
+        }
 
         //Ver a leaderboard
         case FOUR_KEY:{
             if(menuState == LEADERBOARD) break;
-        
             menuState = LEADERBOARD;
             reset_frame();
             break;               
         }
 
-        //Modo de jogo singleplayer
-        case FIVE_KEY:{
-            if(menuState == GAME) break;
-            gameState = DRAW_GUESS;
-            game_counter = 0;
-            delayTime = 0;
-            initGame();
-            reset_frame();
-            break;
-        }
-
-        //Ecra que aparece depois de acabar um jogo
-        case SIX_KEY:{
-            if(menuState != GAME) break;
-            menuState = END;
-            reset_frame();
-            break;
-        }
 
         //User verifica se a sua repsosta esta correcta
         case ENTER:{
-            if (gameState == DRAW_GUESS) {
+            if (gameState == SINGLEPLAYER) {
                 gameResult = checkResult();
                 if(gameResult) {
+                    reset_frame();
                     menuState = END;
                     addValueToLeaderboard();
                 };
@@ -481,10 +470,10 @@ void updateStateKeyboardClick(){
                 break;
             }
         }
-
+        
         //User escreveu uma letra
         default:
-        if (gameState == GUESS || gameState == DRAW_GUESS) read_letter(get_scancode(), word_guess, &number_letters);
+        if (((gameState == SINGLEPLAYER) && delayTime > 5) || gameState == GUESS) read_letter(get_scancode(), word_guess, &number_letters);
             break;
     }
 }

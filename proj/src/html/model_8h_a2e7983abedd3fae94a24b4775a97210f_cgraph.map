@@ -1,0 +1,37 @@
+<map id="update_timer_state" name="update_timer_state">
+<area shape="rect" id="node1" title="Updates the timer state." alt="" coords="5,480,155,507"/>
+<area shape="rect" id="node2" href="$graphics__card_8c.html#a75333ed25b62bdbe6d7dd51445a15721" title="Copies the base frame buffer to the specified frame buffer." alt="" coords="203,201,340,228"/>
+<area shape="rect" id="node3" href="$view_8c.html#a8fe6fe827e29e6b0cb98cda00dc38355" title="Draws a new frame on the screen." alt="" coords="204,252,339,279"/>
+<area shape="rect" id="node18" href="$timer_8c.html#a50bbb0b8a1f3c1ac59dc0a62f283a86f" title="Retrieves the counter value." alt="" coords="222,404,321,431"/>
+<area shape="rect" id="node19" href="$base__frame_8c.html#a1e165abcb00cf1ab25eb043ae85ab8f8" title="Processes a packet with the specified color and radius." alt="" coords="210,455,333,481"/>
+<area shape="rect" id="node26" href="$base__frame_8c.html#a0ca68dd8848dc3ffa75fcf6c6dc7d168" title="Resets the frame buffer." alt="" coords="221,505,322,532"/>
+<area shape="rect" id="node27" href="$rtc_8c.html#abb4fa397a4a71ad09e3b0df51f40dbe8" title="Initializes the RTC (Real&#45;Time Clock)." alt="" coords="238,556,305,583"/>
+<area shape="rect" id="node34" href="$timer_8c.html#a91a2072306c68353712a6b771287dc2c" title=" " alt="" coords="203,607,340,633"/>
+<area shape="rect" id="node35" href="$graphics__card_8c.html#ab95b427277e3b2cefdd6c0f5249f0416" title="Flips the frame buffer to display the newly drawn frame." alt="" coords="216,657,327,684"/>
+<area shape="rect" id="node4" href="$view_8c.html#aa72c0c9d88ccd3fde2b5893fbe236b83" title="Draws the end menu on the screen." alt="" coords="406,201,535,228"/>
+<area shape="rect" id="node7" href="$view_8c.html#a0a9f56467341cbe24bd981d4b9960fdd" title="Draws the game menu on the screen." alt="" coords="399,100,542,127"/>
+<area shape="rect" id="node14" href="$view_8c.html#a2e293823f22abda1c98f45d8035282d8" title="Draws the initial menu on the screen." alt="" coords="399,151,542,177"/>
+<area shape="rect" id="node16" href="$view_8c.html#adc37ea95d6b131697311029bc38d65ea" title="Draws the leaderboard on the screen." alt="" coords="401,303,540,329"/>
+<area shape="rect" id="node17" href="$view_8c.html#a42f4903ab89aff9e3ee0206c52cf710a" title="Draws the mouse cursor on the screen." alt="" coords="418,252,523,279"/>
+<area shape="rect" id="node5" href="$view_8c.html#a6db4230a0003a09515d78b790d8ec52d" title="Draws a sprite on the screen at the specified coordinates." alt="" coords="605,252,740,279"/>
+<area shape="rect" id="node6" href="$graphics__card_8c.html#a08c498ffeb0a3962e3b7711b57397741" title="Draws a pixel at the specified coordinates with the given color." alt="" coords="976,125,1091,152"/>
+<area shape="rect" id="node8" href="$view_8c.html#ad10caead967ffc5e90d74152e28d9e1c" title="Draws a bar on the screen with the specified dimensions and color." alt="" coords="819,63,901,89"/>
+<area shape="rect" id="node9" href="$view_8c.html#aef8638ecb12b4ebdcfa0d7dae437129f" title="Draws a bottom bar on the screen with the specified dimensions, color, and square parameters." alt="" coords="792,5,928,32"/>
+<area shape="rect" id="node10" href="$view_8c.html#ab3bf18436e0b405afd0e0a421d0fa218" title="Draws the game time on the screen." alt="" coords="605,100,740,127"/>
+<area shape="rect" id="node12" href="$view_8c.html#a8961a3bca654ba4b82e25d500e72e51a" title="Draws a word on the screen at the specified coordinates with the given color." alt="" coords="626,151,719,177"/>
+<area shape="rect" id="node11" href="$view_8c.html#a58e061d468ef13a6a2099c9b31a3590a" title="Draws a number on the screen at the specified coordinates using a sprite and index." alt="" coords="805,227,915,253"/>
+<area shape="rect" id="node13" href="$view_8c.html#ada858fadee2450139d229f064b30f17b" title="Draws a letter on the screen at the specified coordinates with the given color." alt="" coords="812,125,908,152"/>
+<area shape="rect" id="node15" href="$model_8c.html#a664447168b53c1bf003924014760b4ef" title="Converts a string to QWERTY format." alt="" coords="601,201,744,228"/>
+<area shape="rect" id="node20" href="$base__frame_8c.html#a22d65fbf80bd282c6b4ec1765c1ea180" title="Draws a line using Bresenham&#39;s algorithm with the specified positions, color, and thickness in the fr..." alt="" coords="388,404,553,431"/>
+<area shape="rect" id="node22" href="$base__frame_8c.html#a9d6dd219f82794bf17103d63a15978f6" title="Draws a circle with the specified position, thickness, and color in the frame buffer." alt="" coords="399,455,542,481"/>
+<area shape="rect" id="node23" href="$queue_8c.html#ae5deb426b6bdc798397e6ea5a5dbba21" title="Get the data at the front of the queue." alt="" coords="421,505,521,532"/>
+<area shape="rect" id="node24" href="$queue_8c.html#a3c40fc97d1bbe72d200d5a8af0667da0" title="Pop the front element from the queue." alt="" coords="424,556,517,583"/>
+<area shape="rect" id="node25" href="$queue_8c.html#afbf36f2936d224adc3a32b0f6444e240" title="Get the size of the queue." alt="" coords="423,353,518,380"/>
+<area shape="rect" id="node21" href="$base__frame_8c.html#abd6b092940e72f501885017f6c18febd" title="Draws a pixel with the specified color at the given coordinates in the frame buffer." alt="" coords="603,429,742,456"/>
+<area shape="rect" id="node28" href="$rtc_8c.html#ae1b1b1cc88f89eae300cdeef578da474" title="Checks if the RTC is using binary format." alt="" coords="632,607,713,633"/>
+<area shape="rect" id="node31" href="$rtc_8c.html#ae22bdeb51eb630e1d579dfc1cd1b2f11" title="Updates the time values (year, month, day, hour, minute, second) from the RTC." alt="" coords="407,657,535,684"/>
+<area shape="rect" id="node29" href="$rtc_8c.html#aa911f1e40016efcd03231661c8271a3f" title="Reads the output of the RTC." alt="" coords="798,657,922,684"/>
+<area shape="rect" id="node30" href="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4" title="Reads a byte from the specified port." alt="" coords="984,657,1083,684"/>
+<area shape="rect" id="node32" href="$rtc_8c.html#a47d5762e49eb390b04a09fc319c4e047" title="Checks if the RTC is updating." alt="" coords="612,708,733,735"/>
+<area shape="rect" id="node33" href="$utils_8c.html#a891509fed13e0cac396e9c401f887d72" title="Converts a BCD number to binary." alt="" coords="631,759,714,785"/>
+</map>

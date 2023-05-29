@@ -13,6 +13,26 @@
 #include <lcom/lcf.h>
 #include <lcom/video_gr.h>
 
+
+/**
+ * @file proj.c
+ *
+ * \dot
+ * digraph MyFiles {
+ *   // Graph directives and node/edge definitions
+
+ *   // Example graph attributes for layout
+ *   rankdir=TB;
+ *   splines=polyline; // Use curved edges
+ *   nodesep=10; // Adjust the distance between nodes
+ *   ranksep=0.5; // Adjust the distance between ranks
+ *   node [shape=rectangle]; // Set node shape
+ *   edge [color=blue]; // Set edge color
+ * }
+ * \enddot
+ */
+
+
 uint8_t irq_set_timer, irq_set_keyboard, irq_set_uart;
 int irq_set_mouse, ipc_status, r;
 message msg;
@@ -42,7 +62,6 @@ int(main)(int argc, char *argv[]) {
   // LCF clean up tasks
   // [must be the last statement before return]
   lcf_cleanup();
-
   return 0;
 }
 
@@ -68,8 +87,6 @@ int (start_settings)() {
 
   create_frame_buffer(h_res, v_res, bytes_per_pixel);
   loadLeaderboardFromFile(leaderboard);
-  
-
   return 0;  
 }
 
@@ -91,7 +108,6 @@ int (reset_settings)() {
 
 int (proj_main_loop)(int argc, char **argv) {
   if (start_settings() != 0) return 1;
-
   while (systemState == RUNNING) {
     if ((r = driver_receive(ANY, &msg, &ipc_status)) != OK) {
       printf("driver_receive failed with: %d", r);
@@ -102,19 +118,15 @@ int (proj_main_loop)(int argc, char **argv) {
       case HARDWARE:
         if (msg.m_notify.interrupts & irq_set_mouse) {
           update_mouse_state();
-          // printf("mouse interrupt\n");
         }
         if (msg.m_notify.interrupts & irq_set_timer) {
           update_timer_state();
-          // printf("timer interrupt\n");
         } 
         if (msg.m_notify.interrupts & irq_set_keyboard) {
           update_keyboard_state();
-          // printf("keyboard interrupt\n");
         }
         if (msg.m_notify.interrupts & irq_set_uart) {
           update_uart_state();
-          printf("uart interrupt\n");
         }
           break;
         default:
