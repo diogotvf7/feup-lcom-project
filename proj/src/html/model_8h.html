@@ -81,6 +81,7 @@ $(function() {
 <code>#include &quot;<a class="el" href="rtc_8h_source.html">controller/rtc/rtc.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="keyboard_8h_source.html">controller/keyboard/keyboard.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="graphics__card_8h_source.html">controller/graphics_card/graphics_card.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="ser__port_8h_source.html">controller/uart/ser_port.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="queue_8h_source.html">model/queue.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="timer_8h_source.html">controller/timer/timer.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="view_8h_source.html">view/view.h</a>&quot;</code><br />
@@ -184,6 +185,11 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
+<tr class="memitem:aa7fafad826fe8356e3a7ec64ef1ef3a4"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="model_8h.html#aa7fafad826fe8356e3a7ec64ef1ef3a4">PlayerRole</a> { <a class="el" href="model_8h.html#aa7fafad826fe8356e3a7ec64ef1ef3a4a6e7c607a1a0b5c746db2838a32ba13e9">DRAWER</a>
+, <a class="el" href="model_8h.html#aa7fafad826fe8356e3a7ec64ef1ef3a4ac44bc6b4eaf36f29d74dd655b861202c">GUESSER</a>
+, <a class="el" href="model_8h.html#aa7fafad826fe8356e3a7ec64ef1ef3a4a3388f7110f6f25a54e215eb75d5d7516">SINGLE</a>
+ }</td></tr>
+<tr class="separator:aa7fafad826fe8356e3a7ec64ef1ef3a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa51313be2faacb739a18fdeecefbac75"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="model_8h.html#aa51313be2faacb739a18fdeecefbac75">SystemState</a> { <a class="el" href="model_8h.html#aa51313be2faacb739a18fdeecefbac75a1061be6c3fb88d32829cba6f6b2be304">RUNNING</a>
 , <a class="el" href="model_8h.html#aa51313be2faacb739a18fdeecefbac75a7a10b5d68d31711288e1fe0fa17dbf4f">EXIT</a>
  }</td></tr>
@@ -196,11 +202,10 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:aa3041ae4242c0dd57a126d17505443b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumeration representing the menu state.  <a href="model_8h.html#aa3041ae4242c0dd57a126d17505443b2">More...</a><br /></td></tr>
 <tr class="separator:aa3041ae4242c0dd57a126d17505443b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7899b65f1ea0f655e4bbf8d2a5714285"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="model_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285">GameState</a> { <a class="el" href="model_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285a61f3c57b6943c85413975507aede78cd">DRAW</a>
+<tr class="memitem:a7899b65f1ea0f655e4bbf8d2a5714285"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="model_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285">GameState</a> { <a class="el" href="model_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285adf9c53b97637b5e5ac722fb2f6d26512">SINGLEPLAYER</a>
+, <a class="el" href="model_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285a61f3c57b6943c85413975507aede78cd">DRAW</a>
 , <a class="el" href="model_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285ab8c769f7e7a67d0a91a2fe34fdc5dbea">GUESS</a>
-, <a class="el" href="model_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285a43ea09f876a50cf7c5172507a484df32">DRAW_GUESS</a>
  }</td></tr>
-<tr class="memdesc:a7899b65f1ea0f655e4bbf8d2a5714285"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumeration representing the game state.  <a href="model_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285">More...</a><br /></td></tr>
 <tr class="separator:a7899b65f1ea0f655e4bbf8d2a5714285"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -214,6 +219,9 @@ Functions</h2></td></tr>
 <tr class="memitem:aa577e78e2462033d486b5d8fa64c7bec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="model_8h.html#aa577e78e2462033d486b5d8fa64c7bec">update_mouse_state</a> ()</td></tr>
 <tr class="memdesc:aa577e78e2462033d486b5d8fa64c7bec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the mouse state.  <a href="model_8h.html#aa577e78e2462033d486b5d8fa64c7bec">More...</a><br /></td></tr>
 <tr class="separator:aa577e78e2462033d486b5d8fa64c7bec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a310f3270f9769e7de04370fcea1dc6ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="model_8h.html#a310f3270f9769e7de04370fcea1dc6ea">update_uart_state</a> ()</td></tr>
+<tr class="memdesc:a310f3270f9769e7de04370fcea1dc6ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the uart state.  <a href="model_8h.html#a310f3270f9769e7de04370fcea1dc6ea">More...</a><br /></td></tr>
+<tr class="separator:a310f3270f9769e7de04370fcea1dc6ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a834200084177d31e41dd9b28754a3312"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="model_8h.html#a834200084177d31e41dd9b28754a3312">setup_sprites</a> ()</td></tr>
 <tr class="memdesc:a834200084177d31e41dd9b28754a3312"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets up the sprites.  <a href="model_8h.html#a834200084177d31e41dd9b28754a3312">More...</a><br /></td></tr>
 <tr class="separator:a834200084177d31e41dd9b28754a3312"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -247,9 +255,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a9cc50208c690329cd26eed7611668367"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="model_8h.html#a9cc50208c690329cd26eed7611668367">updateStateKeyboardClick</a> ()</td></tr>
 <tr class="memdesc:a9cc50208c690329cd26eed7611668367"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the state on keyboard click.  <a href="model_8h.html#a9cc50208c690329cd26eed7611668367">More...</a><br /></td></tr>
 <tr class="separator:a9cc50208c690329cd26eed7611668367"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a664447168b53c1bf003924014760b4ef"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="model_8h.html#a664447168b53c1bf003924014760b4ef">convert_to_qwerty</a> (char *str, int word[], int *word_size)</td></tr>
-<tr class="memdesc:a664447168b53c1bf003924014760b4ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a string to QWERTY format.  <a href="model_8h.html#a664447168b53c1bf003924014760b4ef">More...</a><br /></td></tr>
-<tr class="separator:a664447168b53c1bf003924014760b4ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac54ddc9eede93d25d5a7010e239ecc0a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="model_8h.html#ac54ddc9eede93d25d5a7010e239ecc0a">convert_to_qwerty</a> (char *str, uint8_t word[], int *word_size)</td></tr>
+<tr class="memdesc:ac54ddc9eede93d25d5a7010e239ecc0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a string to QWERTY format.  <a href="model_8h.html#ac54ddc9eede93d25d5a7010e239ecc0a">More...</a><br /></td></tr>
+<tr class="separator:ac54ddc9eede93d25d5a7010e239ecc0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="af0f2173e3b202ddf5756531b4471dcb2"></a>
@@ -309,15 +317,10 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Enumeration representing the game state. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a7899b65f1ea0f655e4bbf8d2a5714285a61f3c57b6943c85413975507aede78cd"></a>DRAW&#160;</td><td class="fielddoc"><p>The draw state. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a7899b65f1ea0f655e4bbf8d2a5714285ab8c769f7e7a67d0a91a2fe34fdc5dbea"></a>GUESS&#160;</td><td class="fielddoc"><p>The guess state. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a7899b65f1ea0f655e4bbf8d2a5714285a43ea09f876a50cf7c5172507a484df32"></a>DRAW_GUESS&#160;</td><td class="fielddoc"><p>The draw-guess state. </p>
-</td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a7899b65f1ea0f655e4bbf8d2a5714285adf9c53b97637b5e5ac722fb2f6d26512"></a>SINGLEPLAYER&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a7899b65f1ea0f655e4bbf8d2a5714285a61f3c57b6943c85413975507aede78cd"></a>DRAW&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a7899b65f1ea0f655e4bbf8d2a5714285ab8c769f7e7a67d0a91a2fe34fdc5dbea"></a>GUESS&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>
@@ -344,6 +347,25 @@ Functions</h2></td></tr>
 </td></tr>
 <tr><td class="fieldname"><a id="aa3041ae4242c0dd57a126d17505443b2adc6f24fd6915a3f2786a1b7045406924"></a>END&#160;</td><td class="fielddoc"><p>The end game menu state. </p>
 </td></tr>
+</table>
+
+</div>
+</div>
+<a id="aa7fafad826fe8356e3a7ec64ef1ef3a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7fafad826fe8356e3a7ec64ef1ef3a4">&#9670;&nbsp;</a></span>PlayerRole</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="model_8h.html#aa7fafad826fe8356e3a7ec64ef1ef3a4">PlayerRole</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aa7fafad826fe8356e3a7ec64ef1ef3a4a6e7c607a1a0b5c746db2838a32ba13e9"></a>DRAWER&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aa7fafad826fe8356e3a7ec64ef1ef3a4ac44bc6b4eaf36f29d74dd655b861202c"></a>GUESSER&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aa7fafad826fe8356e3a7ec64ef1ef3a4a3388f7110f6f25a54e215eb75d5d7516"></a>SINGLE&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>
@@ -438,8 +460,8 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="a664447168b53c1bf003924014760b4ef"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a664447168b53c1bf003924014760b4ef">&#9670;&nbsp;</a></span>convert_to_qwerty()</h2>
+<a id="ac54ddc9eede93d25d5a7010e239ecc0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac54ddc9eede93d25d5a7010e239ecc0a">&#9670;&nbsp;</a></span>convert_to_qwerty()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -453,7 +475,7 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">uint8_t&#160;</td>
           <td class="paramname"><em>word</em>[], </td>
         </tr>
         <tr>
@@ -771,6 +793,30 @@ Here is the call graph for this function:</div>
 <area shape="rect" href="rtc_8c.html#a47d5762e49eb390b04a09fc319c4e047" title="Checks if the RTC is updating." alt="" coords="612,708,733,735"/>
 <area shape="rect" href="utils_8c.html#a891509fed13e0cac396e9c401f887d72" title="Converts a BCD number to binary." alt="" coords="631,759,714,785"/>
 </map>
+</div>
+
+</div>
+</div>
+<a id="a310f3270f9769e7de04370fcea1dc6ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a310f3270f9769e7de04370fcea1dc6ea">&#9670;&nbsp;</a></span>update_uart_state()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void update_uart_state </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Updates the uart state. </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="model_8h_a310f3270f9769e7de04370fcea1dc6ea_cgraph.png" border="0" usemap="#amodel_8h_a310f3270f9769e7de04370fcea1dc6ea_cgraph" alt=""/></div>
 </div>
 
 </div>

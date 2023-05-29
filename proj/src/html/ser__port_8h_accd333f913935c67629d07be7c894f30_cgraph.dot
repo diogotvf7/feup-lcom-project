@@ -1,0 +1,18 @@
+digraph "set_uart_freq"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="set_uart_freq",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Sets the frequency of the UART."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="get_uart_lcr",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ser__port_8c.html#a60b614bf9ab6b52f3449d58092a079b3",tooltip="Retrieves the value of the LCR (Line Control Register) of the UART."];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="util_sys_inb",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4",tooltip="Reads a byte from the specified port."];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="set_uart_lcr",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ser__port_8c.html#ab805c19f9ac6d19b13da5055c077ab84",tooltip="Sets the LCR (Line Control Register) of the UART."];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="util_get_LSB",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$utils_8c.html#a81621440b3d65680979425e39aa8c789",tooltip="Retrieves the least significant byte from a 16-bit value."];
+  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="util_get_MSB",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$utils_8c.html#a6a880076cd2ec468834438b6e0c58836",tooltip="Retrieves the most significant byte from a 16-bit value."];
+}

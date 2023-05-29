@@ -1,0 +1,380 @@
+\hypertarget{ser__port_8h}{}\doxysection{controller/uart/ser\+\_\+port.h File Reference}
+\label{ser__port_8h}\index{controller/uart/ser\_port.h@{controller/uart/ser\_port.h}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}global\+\_\+vars.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../utils.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}SER.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../../model/queue.\+h\char`\"{}}\newline
+Include dependency graph for ser\+\_\+port.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{ser__port_8h_aa403e44f6e56888f9edd1a920121800b}{config\+\_\+uart}} ()
+\begin{DoxyCompactList}\small\item\em Configures the UART with the desired settings. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{ser__port_8h_aa36c182d20911549cf07bc7aa974fdc2}{set\+\_\+uart\+\_\+dlab}} (uint8\+\_\+t status)
+\begin{DoxyCompactList}\small\item\em Sets the DLAB (Divisor Latch Access Bit) of the UART. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{ser__port_8h_ac3610e3ed951909fbe9c72c852b01967}{subscribe\+\_\+uart\+\_\+int}} (uint8\+\_\+t $\ast$bit\+\_\+no)
+\begin{DoxyCompactList}\small\item\em Subscribes to UART interrupts. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{ser__port_8h_a0d3a14a7a11e780049df692f812538cf}{set\+\_\+uart\+\_\+fcr}} (uint8\+\_\+t byte)
+\begin{DoxyCompactList}\small\item\em Sets the FCR (FIFO Control Register) of the UART. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{ser__port_8h_a1c81ab69c861dd604ed5438f15c5c68d}{unsubscribe\+\_\+uart\+\_\+int}} ()
+\begin{DoxyCompactList}\small\item\em Unsubscribes from UART interrupts. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{ser__port_8h_a3333340fe13535c025e6c3befe26fd84}{set\+\_\+uart\+\_\+ier}} (uint8\+\_\+t byte)
+\begin{DoxyCompactList}\small\item\em Sets the IER (Interrupt Enable Register) of the UART. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{ser__port_8h_a159431c22c586f18a2e73527e30b39b3}{get\+\_\+uart\+\_\+ier}} (uint8\+\_\+t $\ast$byte)
+\begin{DoxyCompactList}\small\item\em Retrieves the value of the IER (Interrupt Enable Register) of the UART. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{ser__port_8h_ab805c19f9ac6d19b13da5055c077ab84}{set\+\_\+uart\+\_\+lcr}} (uint8\+\_\+t byte)
+\begin{DoxyCompactList}\small\item\em Sets the LCR (Line Control Register) of the UART. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{ser__port_8h_a60b614bf9ab6b52f3449d58092a079b3}{get\+\_\+uart\+\_\+lcr}} (uint8\+\_\+t $\ast$byte)
+\begin{DoxyCompactList}\small\item\em Retrieves the value of the LCR (Line Control Register) of the UART. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{ser__port_8h_a43b87024847ead2cd49c4926e0bfaced}{set\+\_\+uart\+\_\+iir}} (uint8\+\_\+t byte)
+\begin{DoxyCompactList}\small\item\em Sets the IIR (Interrupt Identification Register) of the UART. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{ser__port_8h_ab127e47dcbe66ddabeb059d1d9b9d662}{get\+\_\+uart\+\_\+iir}} (uint8\+\_\+t $\ast$byte)
+\begin{DoxyCompactList}\small\item\em Retrieves the value of the IIR (Interrupt Identification Register) of the UART. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{ser__port_8h_a0894779789486489e6af7f5780af9f56}{get\+\_\+uart\+\_\+lsr}} (uint8\+\_\+t $\ast$byte)
+\begin{DoxyCompactList}\small\item\em Retrieves the value of the LSR (Line Status Register) of the UART. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{ser__port_8h_accd333f913935c67629d07be7c894f30}{set\+\_\+uart\+\_\+freq}} (uint16\+\_\+t freq)
+\begin{DoxyCompactList}\small\item\em Sets the frequency of the UART. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ser__port_8h_a67d2da4dd20c731989c130bbe2cd4c85}{uart\+\_\+ih}} ()
+\begin{DoxyCompactList}\small\item\em UART interrupt handler. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{ser__port_8h_ad97974a71447aab4827aa2ba775d9924}{send\+\_\+uart\+\_\+byte}} (uint8\+\_\+t byte)
+\begin{DoxyCompactList}\small\item\em Sends a byte via UART. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{ser__port_8h_a1dd293668eee2da45a8f4fafbbea1bcd}{send\+\_\+uart\+\_\+bytes}} (uint8\+\_\+t $\ast$bytes, uint32\+\_\+t size)
+\begin{DoxyCompactList}\small\item\em Sends multiple bytes via UART. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{ser__port_8h_ab1e08af3eee322cfff420f9cabc15b82}{receive\+\_\+uart\+\_\+byte}} (uint8\+\_\+t $\ast$byte)
+\begin{DoxyCompactList}\small\item\em Receives a byte from UART. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{ser__port_8h_ad8d905410a112e49f764b3946c202e2a}{send\+\_\+start\+\_\+msg}} ()
+\begin{DoxyCompactList}\small\item\em Sends a start message via UART. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{ser__port_8h_aa403e44f6e56888f9edd1a920121800b}\label{ser__port_8h_aa403e44f6e56888f9edd1a920121800b}} 
+\index{ser\_port.h@{ser\_port.h}!config\_uart@{config\_uart}}
+\index{config\_uart@{config\_uart}!ser\_port.h@{ser\_port.h}}
+\doxysubsubsection{\texorpdfstring{config\_uart()}{config\_uart()}}
+{\footnotesize\ttfamily int config\+\_\+uart (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Configures the UART with the desired settings. 
+
+\begin{DoxyReturn}{Returns}
+Return OK on success, !\+OK otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{ser__port_8h_a159431c22c586f18a2e73527e30b39b3}\label{ser__port_8h_a159431c22c586f18a2e73527e30b39b3}} 
+\index{ser\_port.h@{ser\_port.h}!get\_uart\_ier@{get\_uart\_ier}}
+\index{get\_uart\_ier@{get\_uart\_ier}!ser\_port.h@{ser\_port.h}}
+\doxysubsubsection{\texorpdfstring{get\_uart\_ier()}{get\_uart\_ier()}}
+{\footnotesize\ttfamily int get\+\_\+uart\+\_\+ier (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{byte }\end{DoxyParamCaption})}
+
+
+
+Retrieves the value of the IER (Interrupt Enable Register) of the UART. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em byte} & Address of memory to store the value of the IER. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return OK on success, !\+OK otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{ser__port_8h_ab127e47dcbe66ddabeb059d1d9b9d662}\label{ser__port_8h_ab127e47dcbe66ddabeb059d1d9b9d662}} 
+\index{ser\_port.h@{ser\_port.h}!get\_uart\_iir@{get\_uart\_iir}}
+\index{get\_uart\_iir@{get\_uart\_iir}!ser\_port.h@{ser\_port.h}}
+\doxysubsubsection{\texorpdfstring{get\_uart\_iir()}{get\_uart\_iir()}}
+{\footnotesize\ttfamily int get\+\_\+uart\+\_\+iir (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{byte }\end{DoxyParamCaption})}
+
+
+
+Retrieves the value of the IIR (Interrupt Identification Register) of the UART. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em byte} & Address of memory to store the value of the IIR. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return OK on success, !\+OK otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{ser__port_8h_a60b614bf9ab6b52f3449d58092a079b3}\label{ser__port_8h_a60b614bf9ab6b52f3449d58092a079b3}} 
+\index{ser\_port.h@{ser\_port.h}!get\_uart\_lcr@{get\_uart\_lcr}}
+\index{get\_uart\_lcr@{get\_uart\_lcr}!ser\_port.h@{ser\_port.h}}
+\doxysubsubsection{\texorpdfstring{get\_uart\_lcr()}{get\_uart\_lcr()}}
+{\footnotesize\ttfamily int get\+\_\+uart\+\_\+lcr (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{byte }\end{DoxyParamCaption})}
+
+
+
+Retrieves the value of the LCR (Line Control Register) of the UART. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em byte} & Address of memory to store the value of the LCR. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return OK on success, !\+OK otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{ser__port_8h_a0894779789486489e6af7f5780af9f56}\label{ser__port_8h_a0894779789486489e6af7f5780af9f56}} 
+\index{ser\_port.h@{ser\_port.h}!get\_uart\_lsr@{get\_uart\_lsr}}
+\index{get\_uart\_lsr@{get\_uart\_lsr}!ser\_port.h@{ser\_port.h}}
+\doxysubsubsection{\texorpdfstring{get\_uart\_lsr()}{get\_uart\_lsr()}}
+{\footnotesize\ttfamily int get\+\_\+uart\+\_\+lsr (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{byte }\end{DoxyParamCaption})}
+
+
+
+Retrieves the value of the LSR (Line Status Register) of the UART. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em byte} & Address of memory to store the value of the LSR. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return OK on success, !\+OK otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 6
+\mbox{\Hypertarget{ser__port_8h_ab1e08af3eee322cfff420f9cabc15b82}\label{ser__port_8h_ab1e08af3eee322cfff420f9cabc15b82}} 
+\index{ser\_port.h@{ser\_port.h}!receive\_uart\_byte@{receive\_uart\_byte}}
+\index{receive\_uart\_byte@{receive\_uart\_byte}!ser\_port.h@{ser\_port.h}}
+\doxysubsubsection{\texorpdfstring{receive\_uart\_byte()}{receive\_uart\_byte()}}
+{\footnotesize\ttfamily int receive\+\_\+uart\+\_\+byte (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{byte }\end{DoxyParamCaption})}
+
+
+
+Receives a byte from UART. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em byte} & Address of memory to store the received byte. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return OK on success, !\+OK otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 7
+\mbox{\Hypertarget{ser__port_8h_ad8d905410a112e49f764b3946c202e2a}\label{ser__port_8h_ad8d905410a112e49f764b3946c202e2a}} 
+\index{ser\_port.h@{ser\_port.h}!send\_start\_msg@{send\_start\_msg}}
+\index{send\_start\_msg@{send\_start\_msg}!ser\_port.h@{ser\_port.h}}
+\doxysubsubsection{\texorpdfstring{send\_start\_msg()}{send\_start\_msg()}}
+{\footnotesize\ttfamily int send\+\_\+start\+\_\+msg (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Sends a start message via UART. 
+
+\begin{DoxyReturn}{Returns}
+Return OK on success, !\+OK otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 8
+\mbox{\Hypertarget{ser__port_8h_ad97974a71447aab4827aa2ba775d9924}\label{ser__port_8h_ad97974a71447aab4827aa2ba775d9924}} 
+\index{ser\_port.h@{ser\_port.h}!send\_uart\_byte@{send\_uart\_byte}}
+\index{send\_uart\_byte@{send\_uart\_byte}!ser\_port.h@{ser\_port.h}}
+\doxysubsubsection{\texorpdfstring{send\_uart\_byte()}{send\_uart\_byte()}}
+{\footnotesize\ttfamily int send\+\_\+uart\+\_\+byte (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{byte }\end{DoxyParamCaption})}
+
+
+
+Sends a byte via UART. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em byte} & The byte to be sent. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return OK on success, !\+OK otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 9
+\mbox{\Hypertarget{ser__port_8h_a1dd293668eee2da45a8f4fafbbea1bcd}\label{ser__port_8h_a1dd293668eee2da45a8f4fafbbea1bcd}} 
+\index{ser\_port.h@{ser\_port.h}!send\_uart\_bytes@{send\_uart\_bytes}}
+\index{send\_uart\_bytes@{send\_uart\_bytes}!ser\_port.h@{ser\_port.h}}
+\doxysubsubsection{\texorpdfstring{send\_uart\_bytes()}{send\_uart\_bytes()}}
+{\footnotesize\ttfamily int send\+\_\+uart\+\_\+bytes (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{bytes,  }\item[{uint32\+\_\+t}]{size }\end{DoxyParamCaption})}
+
+
+
+Sends multiple bytes via UART. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bytes} & The array of bytes to be sent. \\
+\hline
+{\em size} & The size of the array. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return OK on success, !\+OK otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 10
+\mbox{\Hypertarget{ser__port_8h_aa36c182d20911549cf07bc7aa974fdc2}\label{ser__port_8h_aa36c182d20911549cf07bc7aa974fdc2}} 
+\index{ser\_port.h@{ser\_port.h}!set\_uart\_dlab@{set\_uart\_dlab}}
+\index{set\_uart\_dlab@{set\_uart\_dlab}!ser\_port.h@{ser\_port.h}}
+\doxysubsubsection{\texorpdfstring{set\_uart\_dlab()}{set\_uart\_dlab()}}
+{\footnotesize\ttfamily int set\+\_\+uart\+\_\+dlab (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{status }\end{DoxyParamCaption})}
+
+
+
+Sets the DLAB (Divisor Latch Access Bit) of the UART. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em status} & The status of the DLAB (1 -\/ enable, 0 -\/ disable). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return OK on success, !\+OK otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 11
+\mbox{\Hypertarget{ser__port_8h_a0d3a14a7a11e780049df692f812538cf}\label{ser__port_8h_a0d3a14a7a11e780049df692f812538cf}} 
+\index{ser\_port.h@{ser\_port.h}!set\_uart\_fcr@{set\_uart\_fcr}}
+\index{set\_uart\_fcr@{set\_uart\_fcr}!ser\_port.h@{ser\_port.h}}
+\doxysubsubsection{\texorpdfstring{set\_uart\_fcr()}{set\_uart\_fcr()}}
+{\footnotesize\ttfamily int set\+\_\+uart\+\_\+fcr (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{byte }\end{DoxyParamCaption})}
+
+
+
+Sets the FCR (FIFO Control Register) of the UART. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em byte} & The value to set in the FCR. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return OK on success, !\+OK otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ser__port_8h_accd333f913935c67629d07be7c894f30}\label{ser__port_8h_accd333f913935c67629d07be7c894f30}} 
+\index{ser\_port.h@{ser\_port.h}!set\_uart\_freq@{set\_uart\_freq}}
+\index{set\_uart\_freq@{set\_uart\_freq}!ser\_port.h@{ser\_port.h}}
+\doxysubsubsection{\texorpdfstring{set\_uart\_freq()}{set\_uart\_freq()}}
+{\footnotesize\ttfamily int set\+\_\+uart\+\_\+freq (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{freq }\end{DoxyParamCaption})}
+
+
+
+Sets the frequency of the UART. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em freq} & The desired frequency. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return OK on success, !\+OK otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 12
+\mbox{\Hypertarget{ser__port_8h_a3333340fe13535c025e6c3befe26fd84}\label{ser__port_8h_a3333340fe13535c025e6c3befe26fd84}} 
+\index{ser\_port.h@{ser\_port.h}!set\_uart\_ier@{set\_uart\_ier}}
+\index{set\_uart\_ier@{set\_uart\_ier}!ser\_port.h@{ser\_port.h}}
+\doxysubsubsection{\texorpdfstring{set\_uart\_ier()}{set\_uart\_ier()}}
+{\footnotesize\ttfamily int set\+\_\+uart\+\_\+ier (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{byte }\end{DoxyParamCaption})}
+
+
+
+Sets the IER (Interrupt Enable Register) of the UART. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em byte} & The value to set in the IER. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return OK on success, !\+OK otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ser__port_8h_a43b87024847ead2cd49c4926e0bfaced}\label{ser__port_8h_a43b87024847ead2cd49c4926e0bfaced}} 
+\index{ser\_port.h@{ser\_port.h}!set\_uart\_iir@{set\_uart\_iir}}
+\index{set\_uart\_iir@{set\_uart\_iir}!ser\_port.h@{ser\_port.h}}
+\doxysubsubsection{\texorpdfstring{set\_uart\_iir()}{set\_uart\_iir()}}
+{\footnotesize\ttfamily int set\+\_\+uart\+\_\+iir (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{byte }\end{DoxyParamCaption})}
+
+
+
+Sets the IIR (Interrupt Identification Register) of the UART. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em byte} & The value to set in the IIR. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return OK on success, !\+OK otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ser__port_8h_ab805c19f9ac6d19b13da5055c077ab84}\label{ser__port_8h_ab805c19f9ac6d19b13da5055c077ab84}} 
+\index{ser\_port.h@{ser\_port.h}!set\_uart\_lcr@{set\_uart\_lcr}}
+\index{set\_uart\_lcr@{set\_uart\_lcr}!ser\_port.h@{ser\_port.h}}
+\doxysubsubsection{\texorpdfstring{set\_uart\_lcr()}{set\_uart\_lcr()}}
+{\footnotesize\ttfamily int set\+\_\+uart\+\_\+lcr (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{byte }\end{DoxyParamCaption})}
+
+
+
+Sets the LCR (Line Control Register) of the UART. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em byte} & The value to set in the LCR. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return OK on success, !\+OK otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ser__port_8h_ac3610e3ed951909fbe9c72c852b01967}\label{ser__port_8h_ac3610e3ed951909fbe9c72c852b01967}} 
+\index{ser\_port.h@{ser\_port.h}!subscribe\_uart\_int@{subscribe\_uart\_int}}
+\index{subscribe\_uart\_int@{subscribe\_uart\_int}!ser\_port.h@{ser\_port.h}}
+\doxysubsubsection{\texorpdfstring{subscribe\_uart\_int()}{subscribe\_uart\_int()}}
+{\footnotesize\ttfamily int subscribe\+\_\+uart\+\_\+int (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{bit\+\_\+no }\end{DoxyParamCaption})}
+
+
+
+Subscribes to UART interrupts. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bit\+\_\+no} & Address of memory to store the bit number associated with the UART interrupt. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return OK on success, !\+OK otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ser__port_8h_a67d2da4dd20c731989c130bbe2cd4c85}\label{ser__port_8h_a67d2da4dd20c731989c130bbe2cd4c85}} 
+\index{ser\_port.h@{ser\_port.h}!uart\_ih@{uart\_ih}}
+\index{uart\_ih@{uart\_ih}!ser\_port.h@{ser\_port.h}}
+\doxysubsubsection{\texorpdfstring{uart\_ih()}{uart\_ih()}}
+{\footnotesize\ttfamily void uart\+\_\+ih (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+UART interrupt handler. 
+
+Here is the call graph for this function\+:
+% FIG 13
+\mbox{\Hypertarget{ser__port_8h_a1c81ab69c861dd604ed5438f15c5c68d}\label{ser__port_8h_a1c81ab69c861dd604ed5438f15c5c68d}} 
+\index{ser\_port.h@{ser\_port.h}!unsubscribe\_uart\_int@{unsubscribe\_uart\_int}}
+\index{unsubscribe\_uart\_int@{unsubscribe\_uart\_int}!ser\_port.h@{ser\_port.h}}
+\doxysubsubsection{\texorpdfstring{unsubscribe\_uart\_int()}{unsubscribe\_uart\_int()}}
+{\footnotesize\ttfamily int unsubscribe\+\_\+uart\+\_\+int (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Unsubscribes from UART interrupts. 
+
+\begin{DoxyReturn}{Returns}
+Return OK on success, !\+OK otherwise. 
+\end{DoxyReturn}

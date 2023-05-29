@@ -9,13 +9,8 @@ Include dependency graph for utils.\+h\+:\nopagebreak
 \includegraphics[width=216pt]{utils_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{utils_8h__dep__incl}
-\end{center}
-\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+% FIG 0
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -28,10 +23,29 @@ int() \mbox{\hyperlink{utils_8h_a6a880076cd2ec468834438b6e0c58836}{util\+\_\+get
 int() \mbox{\hyperlink{utils_8h_a79a031a8611f5b2d6afa4158e92b0fb4}{util\+\_\+sys\+\_\+inb}} (int port, uint8\+\_\+t $\ast$value)
 \begin{DoxyCompactList}\small\item\em Reads a byte from the specified port. \end{DoxyCompactList}\item 
 uint8\+\_\+t \mbox{\hyperlink{utils_8h_a891509fed13e0cac396e9c401f887d72}{to\+\_\+binary}} (uint8\+\_\+t bcd\+\_\+number)
-\begin{DoxyCompactList}\small\item\em Converts a BCD number to binary. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Converts a BCD number to binary. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{utils_8h_a553dc49f84a0874f09d55f9e84fb31d2}{print\+Bits}} (size\+\_\+t const size, void const $\ast$const ptr)
+\begin{DoxyCompactList}\small\item\em Prints the bits of a value. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
+\mbox{\Hypertarget{utils_8h_a553dc49f84a0874f09d55f9e84fb31d2}\label{utils_8h_a553dc49f84a0874f09d55f9e84fb31d2}} 
+\index{utils.h@{utils.h}!printBits@{printBits}}
+\index{printBits@{printBits}!utils.h@{utils.h}}
+\doxysubsubsection{\texorpdfstring{printBits()}{printBits()}}
+{\footnotesize\ttfamily void print\+Bits (\begin{DoxyParamCaption}\item[{size\+\_\+t const}]{size,  }\item[{void const $\ast$const}]{ptr }\end{DoxyParamCaption})}
+
+
+
+Prints the bits of a value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & The size of the value. \\
+\hline
+{\em ptr} & Pointer to the value. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{utils_8h_a891509fed13e0cac396e9c401f887d72}\label{utils_8h_a891509fed13e0cac396e9c401f887d72}} 
 \index{utils.h@{utils.h}!to\_binary@{to\_binary}}
 \index{to\_binary@{to\_binary}!utils.h@{utils.h}}

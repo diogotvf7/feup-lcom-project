@@ -1,0 +1,45 @@
+digraph "draw_new_frame"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="draw_new_frame",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Draws a new frame on the screen."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="draw_end_menu",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$view_8c.html#aa72c0c9d88ccd3fde2b5893fbe236b83",tooltip="Draws the end menu on the screen."];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="convert_to_qwerty",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$model_8c.html#ac54ddc9eede93d25d5a7010e239ecc0a",tooltip="Converts a string to QWERTY format."];
+  Node2 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="draw_sprite_xpm",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$view_8c.html#a6db4230a0003a09515d78b790d8ec52d",tooltip="Draws a sprite on the screen at the specified coordinates."];
+  Node4 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="vg_draw_pixel",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$graphics__card_8c.html#a08c498ffeb0a3962e3b7711b57397741",tooltip="Draws a pixel at the specified coordinates with the given color."];
+  Node2 -> Node6 [color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="draw_word",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$view_8c.html#aed96ed9277344b909ab5661c5328cc82",tooltip="Draws a word on the screen at the specified coordinates with the given color."];
+  Node6 -> Node7 [color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="draw_letter",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$view_8c.html#a52a272d2eb515c2608e7f61aecc0e7d8",tooltip="Draws a letter on the screen at the specified coordinates with the given color."];
+  Node7 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node8 [color="midnightblue",fontsize="10",style="solid"];
+  Node8 [label="draw_game_menu",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$view_8c.html#a0a9f56467341cbe24bd981d4b9960fdd",tooltip="Draws the game menu on the screen."];
+  Node8 -> Node9 [color="midnightblue",fontsize="10",style="solid"];
+  Node9 [label="draw_bottom_bar",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$view_8c.html#aef8638ecb12b4ebdcfa0d7dae437129f",tooltip="Draws a bottom bar on the screen with the specified dimensions, color, and square parameters."];
+  Node9 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
+  Node8 -> Node10 [color="midnightblue",fontsize="10",style="solid"];
+  Node10 [label="draw_game_time",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$view_8c.html#ab3bf18436e0b405afd0e0a421d0fa218",tooltip="Draws the game time on the screen."];
+  Node10 -> Node11 [color="midnightblue",fontsize="10",style="solid"];
+  Node11 [label="draw_number",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$view_8c.html#a58e061d468ef13a6a2099c9b31a3590a",tooltip="Draws a number on the screen at the specified coordinates using a sprite and index."];
+  Node11 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
+  Node8 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node8 -> Node6 [color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node12 [color="midnightblue",fontsize="10",style="solid"];
+  Node12 [label="draw_initial_menu",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$view_8c.html#a2e293823f22abda1c98f45d8035282d8",tooltip="Draws the initial menu on the screen."];
+  Node12 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node12 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node12 -> Node6 [color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node13 [color="midnightblue",fontsize="10",style="solid"];
+  Node13 [label="draw_leaderboard",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$view_8c.html#adc37ea95d6b131697311029bc38d65ea",tooltip="Draws the leaderboard on the screen."];
+  Node13 -> Node11 [color="midnightblue",fontsize="10",style="solid"];
+  Node13 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node14 [color="midnightblue",fontsize="10",style="solid"];
+  Node14 [label="draw_mouse",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$view_8c.html#a42f4903ab89aff9e3ee0206c52cf710a",tooltip="Draws the mouse cursor on the screen."];
+  Node14 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+}

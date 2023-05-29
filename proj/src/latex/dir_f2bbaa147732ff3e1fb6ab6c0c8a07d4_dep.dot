@@ -1,0 +1,12 @@
+digraph "controller/graphics_card" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_d3bff1ab3a40b4e5d0775c67ace1b0da {
+    graph [ bgcolor="#ddddee", pencolor="black", label="controller" fontname="Helvetica", fontsize="10", URL="dir_d3bff1ab3a40b4e5d0775c67ace1b0da.html"]
+  dir_f2bbaa147732ff3e1fb6ab6c0c8a07d4 [shape=box, label="graphics_card", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_f2bbaa147732ff3e1fb6ab6c0c8a07d4.html"];
+  }
+  dir_3f14f6767c31cb4a1d22c13c18cc6fc3 [shape=box label="model" URL="dir_3f14f6767c31cb4a1d22c13c18cc6fc3.html"];
+  dir_f2bbaa147732ff3e1fb6ab6c0c8a07d4->dir_3f14f6767c31cb4a1d22c13c18cc6fc3 [headlabel="2", labeldistance=1.5 headhref="dir_000001_000007.html"];
+  dir_3f14f6767c31cb4a1d22c13c18cc6fc3->dir_f2bbaa147732ff3e1fb6ab6c0c8a07d4 [headlabel="1", labeldistance=1.5 headhref="dir_000007_000001.html"];
+}

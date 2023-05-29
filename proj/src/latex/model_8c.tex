@@ -1,13 +1,8 @@
 \hypertarget{model_8c}{}\doxysection{model/model.c File Reference}
 \label{model_8c}\index{model/model.c@{model/model.c}}
 {\ttfamily \#include \char`\"{}model.\+h\char`\"{}}\newline
-Include dependency graph for model.\+c\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{model_8c__incl}
-\end{center}
-\end{figure}
+Include dependency graph for model.\+c\+:
+% FIG 0
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -23,6 +18,8 @@ void \mbox{\hyperlink{model_8c_a2e7983abedd3fae94a24b4775a97210f}{update\+\_\+ti
 \begin{DoxyCompactList}\small\item\em Updates the timer state. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{model_8c_aacf177f660c44528fc3926b3cd69fb88}{update\+\_\+keyboard\+\_\+state}} ()
 \begin{DoxyCompactList}\small\item\em Updates the keyboard state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{model_8c_a310f3270f9769e7de04370fcea1dc6ea}{update\+\_\+uart\+\_\+state}} ()
+\begin{DoxyCompactList}\small\item\em Updates the uart state. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{model_8c_a8fdbc6c7bfca3ef4a8800a3cdc19d932}{destroy\+\_\+sprites}} ()
 \begin{DoxyCompactList}\small\item\em Destroys the sprites. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{model_8c_aadcc26083caf604e98eeedac891f65ff}{load\+Leaderboard\+From\+File}} (\mbox{\hyperlink{structleaderboardValue}{leaderboard\+Value}} \mbox{\hyperlink{view_8c_a786731c332eadc5dbf01f33a2cd8c222}{leaderboard}}\mbox{[}$\,$\mbox{]})
@@ -33,7 +30,7 @@ void \mbox{\hyperlink{model_8c_a13e3730ab86648c07aff994fa89da560}{clear\+Leaderb
 \begin{DoxyCompactList}\small\item\em Clears the leaderboard file. \end{DoxyCompactList}\item 
 char $\ast$ \mbox{\hyperlink{model_8c_a7d2c8c148e87c6ac0ea00e1b17747bf4}{get\+Random\+Word}} ()
 \begin{DoxyCompactList}\small\item\em Gets a random word for the game. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{model_8c_a664447168b53c1bf003924014760b4ef}{convert\+\_\+to\+\_\+qwerty}} (char $\ast$str, int word\mbox{[}$\,$\mbox{]}, int $\ast$word\+\_\+size)
+int \mbox{\hyperlink{model_8c_ac54ddc9eede93d25d5a7010e239ecc0a}{convert\+\_\+to\+\_\+qwerty}} (char $\ast$str, uint8\+\_\+t word\mbox{[}$\,$\mbox{]}, int $\ast$word\+\_\+size)
 \begin{DoxyCompactList}\small\item\em Converts a string to QWERTY format. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{model_8c_a42d8f69fb7a7a41e3f3e754e0b18470e}{check\+Result}} ()
 \begin{DoxyCompactList}\small\item\em Checks the result of the game. \end{DoxyCompactList}\item 
@@ -84,7 +81,7 @@ int \mbox{\hyperlink{model_8c_af3bf0c8d86afd228847f62c0033cf65d}{num\+\_\+bytes}
 \item 
 uint8\+\_\+t \mbox{\hyperlink{model_8c_a535966fd2bad4cccbe0e37852aa2982f}{scancode\+\_\+arr}} \mbox{[}2\mbox{]}
 \item 
-int \mbox{\hyperlink{model_8c_af4c440ab6b3475e94cb056becb238dd2}{to\+\_\+qwerty}} \mbox{[}27\mbox{]} = \{10,23,21,12,2,13,14,15,7,16,17,18,25,24,8,9,0,3,11,4,6,22,1,20,5,19\}
+uint8\+\_\+t \mbox{\hyperlink{model_8c_a988bad0433cbf79cc4a94a258574c8aa}{to\+\_\+qwerty}} \mbox{[}27\mbox{]} = \{10,23,21,12,2,13,14,15,7,16,17,18,25,24,8,9,0,3,11,4,6,22,1,20,5,19\}
 \item 
 int \mbox{\hyperlink{model_8c_a6150e0515f7202e2fb518f7206ed97dc}{x}}
 \item 
@@ -120,15 +117,23 @@ int \mbox{\hyperlink{model_8c_ae5ff5ad4047716f5d26843073c8293f1}{delay\+Time}} =
 \item 
 bool \mbox{\hyperlink{model_8c_af46e847ee7ee34e7bfb5bf80ab22a8e0}{game\+Result}} = false
 \item 
-int \mbox{\hyperlink{model_8c_a8d2973c6573cafce9839e395a9f18434}{word\+\_\+guess}} \mbox{[}12\mbox{]} = \{-\/1\}
+\mbox{\hyperlink{structQueue}{Queue}} $\ast$ \mbox{\hyperlink{model_8c_aed0393fc12ff66eef65e4745da34dec4}{xmit\+\_\+fifo}}
 \item 
-int \mbox{\hyperlink{model_8c_ad2879855edd36728d48d68e1b5d0c1f3}{number\+\_\+letters}} = 0
+\mbox{\hyperlink{structQueue}{Queue}} $\ast$ \mbox{\hyperlink{model_8c_aef11b54ec300b2e18a51b8fb5aaf260b}{rcvr\+\_\+fifo}}
 \item 
-int \mbox{\hyperlink{model_8c_a549a16624ead1ac6adc9e771580d675e}{game\+\_\+title}} \mbox{[}18\mbox{]} = \{-\/1\}
+uint8\+\_\+t \mbox{\hyperlink{model_8c_a796af96a3f3e44a0e50683280c5aba44}{game\+\_\+title}} \mbox{[}18\mbox{]} = \{-\/1\}
 \item 
 int \mbox{\hyperlink{model_8c_a2835710ce23ca916da2f1782d17d7949}{game\+\_\+title\+\_\+size}} = 0
 \item 
-int \mbox{\hyperlink{model_8c_ad52d3af01aa7794c42d83d9c4c3706a1}{word\+\_\+solution}} \mbox{[}12\mbox{]} = \{-\/1\}
+uint8\+\_\+t \mbox{\hyperlink{model_8c_adbcb63207a00ea5461bb9c1e22a179fd}{text}} \mbox{[}12\mbox{]} = \{-\/1\}
+\item 
+int \mbox{\hyperlink{model_8c_a70163219ede8395a1e8908372ae76f94}{text\+\_\+size}} = 0
+\item 
+uint8\+\_\+t \mbox{\hyperlink{model_8c_a9b6007be64a41ed79f33bcf91ba6911c}{word\+\_\+guess}} \mbox{[}12\mbox{]} = \{-\/1\}
+\item 
+int \mbox{\hyperlink{model_8c_ad2879855edd36728d48d68e1b5d0c1f3}{number\+\_\+letters}} = 0
+\item 
+uint8\+\_\+t \mbox{\hyperlink{model_8c_a90f1d01a2fb0207a5ff4469b5100a0e2}{word\+\_\+solution}} \mbox{[}12\mbox{]} = \{-\/1\}
 \item 
 int \mbox{\hyperlink{model_8c_a5983566cb1142b9116005c03b48b6fa6}{word\+\_\+sol\+\_\+number\+\_\+letters}} = 0
 \end{DoxyCompactItemize}
@@ -145,13 +150,8 @@ int \mbox{\hyperlink{model_8c_a5983566cb1142b9116005c03b48b6fa6}{word\+\_\+sol\+
 
 Adds a value to the leaderboard. 
 
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{model_8c_a7ee50be50b54058cc4bd8c286ae76bd3_cgraph}
-\end{center}
-\end{figure}
+Here is the call graph for this function\+:
+% FIG 1
 \mbox{\Hypertarget{model_8c_a42d8f69fb7a7a41e3f3e754e0b18470e}\label{model_8c_a42d8f69fb7a7a41e3f3e754e0b18470e}} 
 \index{model.c@{model.c}!checkResult@{checkResult}}
 \index{checkResult@{checkResult}!model.c@{model.c}}
@@ -175,11 +175,11 @@ True if the result is correct, false otherwise.
 
 Clears the leaderboard file. 
 
-\mbox{\Hypertarget{model_8c_a664447168b53c1bf003924014760b4ef}\label{model_8c_a664447168b53c1bf003924014760b4ef}} 
+\mbox{\Hypertarget{model_8c_ac54ddc9eede93d25d5a7010e239ecc0a}\label{model_8c_ac54ddc9eede93d25d5a7010e239ecc0a}} 
 \index{model.c@{model.c}!convert\_to\_qwerty@{convert\_to\_qwerty}}
 \index{convert\_to\_qwerty@{convert\_to\_qwerty}!model.c@{model.c}}
 \doxysubsubsection{\texorpdfstring{convert\_to\_qwerty()}{convert\_to\_qwerty()}}
-{\footnotesize\ttfamily int convert\+\_\+to\+\_\+qwerty (\begin{DoxyParamCaption}\item[{char $\ast$}]{str,  }\item[{int}]{word\mbox{[}$\,$\mbox{]},  }\item[{int $\ast$}]{word\+\_\+size }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int convert\+\_\+to\+\_\+qwerty (\begin{DoxyParamCaption}\item[{char $\ast$}]{str,  }\item[{uint8\+\_\+t}]{word\mbox{[}$\,$\mbox{]},  }\item[{int $\ast$}]{word\+\_\+size }\end{DoxyParamCaption})}
 
 
 
@@ -227,26 +227,16 @@ Gets a random word for the game.
 \begin{DoxyReturn}{Returns}
 A pointer to the random word. 
 \end{DoxyReturn}
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=321pt]{model_8c_a7d2c8c148e87c6ac0ea00e1b17747bf4_cgraph}
-\end{center}
-\end{figure}
+Here is the call graph for this function\+:
+% FIG 2
 \mbox{\Hypertarget{model_8c_a486f7b71aa892de0f05c6187647613b9}\label{model_8c_a486f7b71aa892de0f05c6187647613b9}} 
 \index{model.c@{model.c}!initGame@{initGame}}
 \index{initGame@{initGame}!model.c@{model.c}}
 \doxysubsubsection{\texorpdfstring{initGame()}{initGame()}}
 {\footnotesize\ttfamily void init\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{model_8c_a486f7b71aa892de0f05c6187647613b9_cgraph}
-\end{center}
-\end{figure}
+Here is the call graph for this function\+:
+% FIG 3
 \mbox{\Hypertarget{model_8c_aadcc26083caf604e98eeedac891f65ff}\label{model_8c_aadcc26083caf604e98eeedac891f65ff}} 
 \index{model.c@{model.c}!loadLeaderboardFromFile@{loadLeaderboardFromFile}}
 \index{loadLeaderboardFromFile@{loadLeaderboardFromFile}!model.c@{model.c}}
@@ -305,13 +295,7 @@ Here is the call graph for this function\+:\nopagebreak
 Updates the keyboard state. 
 
 Here is the call graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{model_8c_aacf177f660c44528fc3926b3cd69fb88_cgraph}
-\end{center}
-\end{figure}
+% FIG 4
 \mbox{\Hypertarget{model_8c_aa577e78e2462033d486b5d8fa64c7bec}\label{model_8c_aa577e78e2462033d486b5d8fa64c7bec}} 
 \index{model.c@{model.c}!update\_mouse\_state@{update\_mouse\_state}}
 \index{update\_mouse\_state@{update\_mouse\_state}!model.c@{model.c}}
@@ -322,13 +306,8 @@ Here is the call graph for this function\+:
 
 Updates the mouse state. 
 
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{model_8c_aa577e78e2462033d486b5d8fa64c7bec_cgraph}
-\end{center}
-\end{figure}
+Here is the call graph for this function\+:
+% FIG 5
 \mbox{\Hypertarget{model_8c_a2e7983abedd3fae94a24b4775a97210f}\label{model_8c_a2e7983abedd3fae94a24b4775a97210f}} 
 \index{model.c@{model.c}!update\_timer\_state@{update\_timer\_state}}
 \index{update\_timer\_state@{update\_timer\_state}!model.c@{model.c}}
@@ -339,13 +318,20 @@ Here is the call graph for this function\+:\nopagebreak
 
 Updates the timer state. 
 
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{model_8c_a2e7983abedd3fae94a24b4775a97210f_cgraph}
-\end{center}
-\end{figure}
+Here is the call graph for this function\+:
+% FIG 6
+\mbox{\Hypertarget{model_8c_a310f3270f9769e7de04370fcea1dc6ea}\label{model_8c_a310f3270f9769e7de04370fcea1dc6ea}} 
+\index{model.c@{model.c}!update\_uart\_state@{update\_uart\_state}}
+\index{update\_uart\_state@{update\_uart\_state}!model.c@{model.c}}
+\doxysubsubsection{\texorpdfstring{update\_uart\_state()}{update\_uart\_state()}}
+{\footnotesize\ttfamily void update\+\_\+uart\+\_\+state (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Updates the uart state. 
+
+Here is the call graph for this function\+:
+% FIG 7
 \mbox{\Hypertarget{model_8c_afbeae9084da66088f0c10d0f9552c031}\label{model_8c_afbeae9084da66088f0c10d0f9552c031}} 
 \index{model.c@{model.c}!updateLeaderboard@{updateLeaderboard}}
 \index{updateLeaderboard@{updateLeaderboard}!model.c@{model.c}}
@@ -372,13 +358,7 @@ Updates the leaderboard with a new value.
 Updates the state on keyboard click. 
 
 Here is the call graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{model_8c_a9cc50208c690329cd26eed7611668367_cgraph}
-\end{center}
-\end{figure}
+% FIG 8
 \mbox{\Hypertarget{model_8c_ad407bbb0ed8ebc2c5bc3434a6757ebd5}\label{model_8c_ad407bbb0ed8ebc2c5bc3434a6757ebd5}} 
 \index{model.c@{model.c}!updateStateMouseClick@{updateStateMouseClick}}
 \index{updateStateMouseClick@{updateStateMouseClick}!model.c@{model.c}}
@@ -389,13 +369,8 @@ Here is the call graph for this function\+:
 
 Updates the state on mouse click. 
 
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{model_8c_ad407bbb0ed8ebc2c5bc3434a6757ebd5_cgraph}
-\end{center}
-\end{figure}
+Here is the call graph for this function\+:
+% FIG 9
 
 
 \doxysubsection{Variable Documentation}
@@ -465,11 +440,11 @@ Here is the call graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{game\_counter}{game\_counter}}
 {\footnotesize\ttfamily int game\+\_\+counter}
 
-\mbox{\Hypertarget{model_8c_a549a16624ead1ac6adc9e771580d675e}\label{model_8c_a549a16624ead1ac6adc9e771580d675e}} 
+\mbox{\Hypertarget{model_8c_a796af96a3f3e44a0e50683280c5aba44}\label{model_8c_a796af96a3f3e44a0e50683280c5aba44}} 
 \index{model.c@{model.c}!game\_title@{game\_title}}
 \index{game\_title@{game\_title}!model.c@{model.c}}
 \doxysubsubsection{\texorpdfstring{game\_title}{game\_title}}
-{\footnotesize\ttfamily int game\+\_\+title\mbox{[}18\mbox{]} = \{-\/1\}}
+{\footnotesize\ttfamily uint8\+\_\+t game\+\_\+title\mbox{[}18\mbox{]} = \{-\/1\}}
 
 \mbox{\Hypertarget{model_8c_a2835710ce23ca916da2f1782d17d7949}\label{model_8c_a2835710ce23ca916da2f1782d17d7949}} 
 \index{model.c@{model.c}!game\_title\_size@{game\_title\_size}}
@@ -591,6 +566,12 @@ Here is the call graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{radius}{radius}}
 {\footnotesize\ttfamily int radius = 10}
 
+\mbox{\Hypertarget{model_8c_aef11b54ec300b2e18a51b8fb5aaf260b}\label{model_8c_aef11b54ec300b2e18a51b8fb5aaf260b}} 
+\index{model.c@{model.c}!rcvr\_fifo@{rcvr\_fifo}}
+\index{rcvr\_fifo@{rcvr\_fifo}!model.c@{model.c}}
+\doxysubsubsection{\texorpdfstring{rcvr\_fifo}{rcvr\_fifo}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structQueue}{Queue}}$\ast$ rcvr\+\_\+fifo\hspace{0.3cm}{\ttfamily [extern]}}
+
 \mbox{\Hypertarget{model_8c_ac2e72b5a2e01b5b5ae740469f6c558b2}\label{model_8c_ac2e72b5a2e01b5b5ae740469f6c558b2}} 
 \index{model.c@{model.c}!read\_data@{read\_data}}
 \index{read\_data@{read\_data}!model.c@{model.c}}
@@ -615,11 +596,23 @@ Here is the call graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{systemState}{systemState}}
 {\footnotesize\ttfamily \mbox{\hyperlink{model_8h_aa51313be2faacb739a18fdeecefbac75}{System\+State}} system\+State = \mbox{\hyperlink{model_8h_aa51313be2faacb739a18fdeecefbac75a1061be6c3fb88d32829cba6f6b2be304}{RUNNING}}}
 
-\mbox{\Hypertarget{model_8c_af4c440ab6b3475e94cb056becb238dd2}\label{model_8c_af4c440ab6b3475e94cb056becb238dd2}} 
+\mbox{\Hypertarget{model_8c_adbcb63207a00ea5461bb9c1e22a179fd}\label{model_8c_adbcb63207a00ea5461bb9c1e22a179fd}} 
+\index{model.c@{model.c}!text@{text}}
+\index{text@{text}!model.c@{model.c}}
+\doxysubsubsection{\texorpdfstring{text}{text}}
+{\footnotesize\ttfamily uint8\+\_\+t text\mbox{[}12\mbox{]} = \{-\/1\}}
+
+\mbox{\Hypertarget{model_8c_a70163219ede8395a1e8908372ae76f94}\label{model_8c_a70163219ede8395a1e8908372ae76f94}} 
+\index{model.c@{model.c}!text\_size@{text\_size}}
+\index{text\_size@{text\_size}!model.c@{model.c}}
+\doxysubsubsection{\texorpdfstring{text\_size}{text\_size}}
+{\footnotesize\ttfamily int text\+\_\+size = 0}
+
+\mbox{\Hypertarget{model_8c_a988bad0433cbf79cc4a94a258574c8aa}\label{model_8c_a988bad0433cbf79cc4a94a258574c8aa}} 
 \index{model.c@{model.c}!to\_qwerty@{to\_qwerty}}
 \index{to\_qwerty@{to\_qwerty}!model.c@{model.c}}
 \doxysubsubsection{\texorpdfstring{to\_qwerty}{to\_qwerty}}
-{\footnotesize\ttfamily int to\+\_\+qwerty\mbox{[}27\mbox{]} = \{10,23,21,12,2,13,14,15,7,16,17,18,25,24,8,9,0,3,11,4,6,22,1,20,5,19\}}
+{\footnotesize\ttfamily uint8\+\_\+t to\+\_\+qwerty\mbox{[}27\mbox{]} = \{10,23,21,12,2,13,14,15,7,16,17,18,25,24,8,9,0,3,11,4,6,22,1,20,5,19\}}
 
 \mbox{\Hypertarget{model_8c_aa2ffa7cb4094f6dc635b0aa7fa2e25ba}\label{model_8c_aa2ffa7cb4094f6dc635b0aa7fa2e25ba}} 
 \index{model.c@{model.c}!victory@{victory}}
@@ -627,11 +620,11 @@ Here is the call graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{victory}{victory}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structSprite}{Sprite}}$\ast$ victory}
 
-\mbox{\Hypertarget{model_8c_a8d2973c6573cafce9839e395a9f18434}\label{model_8c_a8d2973c6573cafce9839e395a9f18434}} 
+\mbox{\Hypertarget{model_8c_a9b6007be64a41ed79f33bcf91ba6911c}\label{model_8c_a9b6007be64a41ed79f33bcf91ba6911c}} 
 \index{model.c@{model.c}!word\_guess@{word\_guess}}
 \index{word\_guess@{word\_guess}!model.c@{model.c}}
 \doxysubsubsection{\texorpdfstring{word\_guess}{word\_guess}}
-{\footnotesize\ttfamily int word\+\_\+guess\mbox{[}12\mbox{]} = \{-\/1\}}
+{\footnotesize\ttfamily uint8\+\_\+t word\+\_\+guess\mbox{[}12\mbox{]} = \{-\/1\}}
 
 \mbox{\Hypertarget{model_8c_a5983566cb1142b9116005c03b48b6fa6}\label{model_8c_a5983566cb1142b9116005c03b48b6fa6}} 
 \index{model.c@{model.c}!word\_sol\_number\_letters@{word\_sol\_number\_letters}}
@@ -639,17 +632,23 @@ Here is the call graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{word\_sol\_number\_letters}{word\_sol\_number\_letters}}
 {\footnotesize\ttfamily int word\+\_\+sol\+\_\+number\+\_\+letters = 0}
 
-\mbox{\Hypertarget{model_8c_ad52d3af01aa7794c42d83d9c4c3706a1}\label{model_8c_ad52d3af01aa7794c42d83d9c4c3706a1}} 
+\mbox{\Hypertarget{model_8c_a90f1d01a2fb0207a5ff4469b5100a0e2}\label{model_8c_a90f1d01a2fb0207a5ff4469b5100a0e2}} 
 \index{model.c@{model.c}!word\_solution@{word\_solution}}
 \index{word\_solution@{word\_solution}!model.c@{model.c}}
 \doxysubsubsection{\texorpdfstring{word\_solution}{word\_solution}}
-{\footnotesize\ttfamily int word\+\_\+solution\mbox{[}12\mbox{]} = \{-\/1\}}
+{\footnotesize\ttfamily uint8\+\_\+t word\+\_\+solution\mbox{[}12\mbox{]} = \{-\/1\}}
 
 \mbox{\Hypertarget{model_8c_a6150e0515f7202e2fb518f7206ed97dc}\label{model_8c_a6150e0515f7202e2fb518f7206ed97dc}} 
 \index{model.c@{model.c}!x@{x}}
 \index{x@{x}!model.c@{model.c}}
 \doxysubsubsection{\texorpdfstring{x}{x}}
 {\footnotesize\ttfamily int x\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{model_8c_aed0393fc12ff66eef65e4745da34dec4}\label{model_8c_aed0393fc12ff66eef65e4745da34dec4}} 
+\index{model.c@{model.c}!xmit\_fifo@{xmit\_fifo}}
+\index{xmit\_fifo@{xmit\_fifo}!model.c@{model.c}}
+\doxysubsubsection{\texorpdfstring{xmit\_fifo}{xmit\_fifo}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structQueue}{Queue}}$\ast$ xmit\+\_\+fifo\hspace{0.3cm}{\ttfamily [extern]}}
 
 \mbox{\Hypertarget{model_8c_a0a2f84ed7838f07779ae24c5a9086d33}\label{model_8c_a0a2f84ed7838f07779ae24c5a9086d33}} 
 \index{model.c@{model.c}!y@{y}}

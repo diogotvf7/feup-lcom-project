@@ -1,0 +1,26 @@
+digraph "updateStateMouseClick"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="updateStateMouseClick",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Updates the state on mouse click."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="initGame",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$model_8c.html#a486f7b71aa892de0f05c6187647613b9",tooltip=" "];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="getRandomWord",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$model_8c.html#a7d2c8c148e87c6ac0ea00e1b17747bf4",tooltip="Gets a random word for the game."];
+  Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="convert_to_qwerty",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$model_8c.html#ac54ddc9eede93d25d5a7010e239ecc0a",tooltip="Converts a string to QWERTY format."];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="send_start_msg",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ser__port_8c.html#ad8d905410a112e49f764b3946c202e2a",tooltip="Sends a start message via UART."];
+  Node5 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="send_uart_byte",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ser__port_8c.html#ad97974a71447aab4827aa2ba775d9924",tooltip="Sends a byte via UART."];
+  Node6 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="get_uart_lsr",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ser__port_8c.html#a0894779789486489e6af7f5780af9f56",tooltip="Retrieves the value of the LSR (Line Status Register) of the UART."];
+  Node7 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="util_sys_inb",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4",tooltip="Reads a byte from the specified port."];
+  Node6 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="queue_empty",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$queue_8c.html#a85a67096df58b6a7eb887ebc5e5b99a3",tooltip="Check if the queue is empty."];
+  Node6 -> Node10 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="queue_push",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$queue_8c.html#a23b231a08984555379fb52f40c4a5e78",tooltip="Push data into the queue."];
+}

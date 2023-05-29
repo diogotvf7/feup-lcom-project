@@ -1,0 +1,12 @@
+digraph "draw_word"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="draw_word",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Draws a word on the screen at the specified coordinates with the given color."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="draw_letter",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$view_8c.html#a52a272d2eb515c2608e7f61aecc0e7d8",tooltip="Draws a letter on the screen at the specified coordinates with the given color."];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="vg_draw_pixel",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$graphics__card_8c.html#a08c498ffeb0a3962e3b7711b57397741",tooltip="Draws a pixel at the specified coordinates with the given color."];
+}
