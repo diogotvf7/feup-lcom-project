@@ -3,8 +3,8 @@
 #define QUEUE_LIMIT                   20
 #define XMIT_TRIES                    5
 #define RCVR_TRIES                    5
-#define UART_cOOLDOWN                 15
-#define ROUND_TIME 10
+#define UART_COOLDOWN                 15
+#define ROUND_TIME                    60
 
 
 // ESC    |  1       |  2     |  3      |  4     |  5     |  6     |  7     |  8     |  9       |  0     |  ?     |  «       |  BACK    |  INS
