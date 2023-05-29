@@ -69,9 +69,10 @@ void draw_initial_menu() {
     convert_to_qwerty("paint with friends", game_title, &game_title_size);
     draw_word(game_title, game_title_size, 50, 50, GOLD);
     draw_sprite_xpm(startButton, 400, 200);
-    draw_sprite_xpm(ldbdButtonInitialPage, 400, 350);
-    draw_sprite_xpm(quitButton, 400, 500);
-    draw_sprite_xpm(dealer,700,500);    
+    draw_sprite_xpm(coopDrawButton, 400, 350);
+    draw_sprite_xpm(ldbdButtonInitialPage, 400, 500);
+    draw_sprite_xpm(quitButton, 400, 650);
+    draw_sprite_xpm(dealer,700,500);
 }
 
 void draw_game_menu() {
