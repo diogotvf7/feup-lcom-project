@@ -107,26 +107,6 @@ void draw_end_menu(){
         draw_word(word_solution,word_sol_number_letters, 300,500, gameResult ? GREEN : RED);
     }
     
-    // if (gameResult) {
-    //     draw_sprite_xpm(victory, 337,0);
-    //     text_size = 0;
-    //     for (int i = 0; i < 18; i++) {
-    //         text[i] = -1;
-    //     }
-    //     convert_to_qwerty("the word was", text, &text_size);
-    //     draw_word(text, text_size, 0,400, BLACK);
-    //     draw_word(word_solution,word_sol_number_letters, 300,500, GREEN);
-    // } else{
-    //     draw_sprite_xpm(defeat, 337, 0);
-    //      text_size = 0;
-    //     for (int i = 0; i < 18; i++) {
-    //         text[i] = -1;
-    //     }
-    //     convert_to_qwerty("the word was", text, &text_size);
-    //     draw_word(text, text_size, 0,400, BLACK);
-    //     draw_word(word_solution,word_sol_number_letters, 300,500, RED);
-    // }
-    
     draw_sprite_xpm(playAgainButton, 131, 600);
     draw_sprite_xpm(leaderboardButton, 462, 600);
     draw_sprite_xpm(initialMenuButton, 793, 600);

@@ -123,7 +123,6 @@ void uart_ih()
 
 int send_uart_byte(uint8_t byte) 
 {
-  printf("Sending byte: %x\n", byte);
   uint8_t lsr;
   if (get_uart_lsr(&lsr)) return !OK;
   if (lsr & (OVERRUN_ERR | PARITY_ERR | FRAME_ERR | FIFO_ERROR)) {
@@ -151,12 +150,10 @@ int send_uart_bytes(uint8_t *bytes, uint32_t size)
 
 int receive_uart_byte(uint8_t *byte) 
 {
-  printf("Receiving byte\n");
   uint8_t lsr;
   if (get_uart_lsr(&lsr) != OK) return !OK;
   if (lsr & RECEIVER_DATA) {
     if (util_sys_inb(COM1 + SER_RBR, byte) != OK) return !OK;
-    printf("Received byte: %x\n", *byte);
     queue_push(&rcvr_fifo, byte, sizeof(uint8_t));
 
     return OK;
